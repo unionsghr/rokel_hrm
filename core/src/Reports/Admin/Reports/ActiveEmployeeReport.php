@@ -10,7 +10,7 @@ class ActiveEmployeeReport extends CSVReportBuilder implements CSVReportBuilderI
 {
   
     public function getMainQuery()
-    {
+    { 
 
         $query = "SELECT 
             (SELECT `employee_id` from Employees where id = at.id) as 'Employee ID',
@@ -18,29 +18,33 @@ class ActiveEmployeeReport extends CSVReportBuilder implements CSVReportBuilderI
             (SELECT name from Nationality where id = nationality) as 'Nationality',
             birthday as 'Birthday',
             gender as 'Gender',
-            -- marital_status as 'Marital Status',
-            -- ssn_num as 'SSN Number',
-            -- nic_num as 'NIC Number',
-            -- other_id as 'Other IDs',
-            -- driving_license as 'Driving License Number',
-            -- (SELECT name from EmploymentStatus where id = employment_status) as 'Employment Status',
-            -- (SELECT name from JobTitles where id = job_title) as 'Job Title',
-            -- (SELECT name from PayGrades where id = pay_grade) as 'Pay Grade',
-            -- work_station_id as 'Work Station ID',
-            -- address1 as 'Address 1',
-            -- address2 as 'Address 2',
-            -- city as 'City',
-            -- (SELECT name from Country where code = country) as 'Country',
-            -- (SELECT name from Province where id = province) as 'Province',
-            -- postal_code as 'Postal Code',
-            -- home_phone as 'Home Phone',
-            -- mobile_phone as 'Mobile Phone',
-            -- work_phone as 'Work Phone',
-            -- work_email as 'Work Email',
-            -- private_email as 'Private Email',
-            -- recruitment_date as 'Joined Date',
-            -- confirmation_date as 'Confirmation Date',
-            (SELECT title from CompanyStructures where id = department) as 'Department'
+            marital_status as 'Marital Status',
+            ssn_num as 'SSN Number',
+            bank_acc_no as 'Account Number',
+            nic_num as 'NIC Number',
+            other_id as 'Other IDs',
+            driving_license as 'Driving License Number',
+            (SELECT name from EmploymentStatus where id = employment_status) as 'Employment Status',
+            (SELECT name from JobTitles where id = job_title) as 'Job Title',
+            (SELECT name from PayGrades where id = pay_grade) as 'Pay Grade',
+            (SELECT name from Notches where id = notches) as 'Notch',
+            work_station_id as 'Work Station ID',
+            address1 as 'Address 1',
+            address2 as 'Address 2',
+            city as 'City',
+            (SELECT name from Country where code = country) as 'Country',            
+            (SELECT name from Province where id = province) as 'Province',
+            postal_code as 'Postal Code',
+            home_phone as 'Home Phone',
+            mobile_phone as 'Mobile Phone',
+            work_phone as 'Work Phone',
+            work_email as 'Work Email',
+            private_email as 'Private Email',
+            recruitment_date as 'Joined Date',
+            confirmation_date as 'Confirmation Date',
+            (SELECT title from CompanyStructures where id = department) as 'Department',
+            (SELECT title from CompanyStructures where comp_code = branch) as 'Branch'
+
             -- (SELECT concat(`first_name`,' ',`middle_name`,' ', `last_name`,' [Employee ID:',`employee_id`,']') 
             -- from Employees e1 where e1.id = e.supervisor) as 'Supervisor', notes as 'Notes'- in_time as 'Time In'
 
@@ -60,7 +64,8 @@ class ActiveEmployeeReport extends CSVReportBuilder implements CSVReportBuilderI
             $query = "where ((termination_date is NULL or termination_date = '0001-01-01 00:00:00' 
             or termination_date = '0000-00-00 00:00:00') and recruitment_date < NOW()) or 
             (termination_date > NOW() and recruitment_date < NOW())";
-        } else {
+        } else 
+        {
             $depts = $this->getChildCompanyStuctures($request['department']);
             $query = "where department in (".implode(",", $depts)
                 .") and (((termination_date is NULL or termination_date = '0001-01-01 00:00:00' 

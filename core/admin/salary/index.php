@@ -1,5 +1,5 @@
 <?php
-
+ 
 $moduleName = 'salary';
 $moduleGroup = 'admin';
 define('MODULE_PATH',dirname(__FILE__));
@@ -18,10 +18,16 @@ $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
 	'EmployeeSalary','EmployeeSalary','Employee Salary Components','EmployeeSalaryAdapter','','',false,array("setRemoteTable"=>"true"))
 );
 $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
-	'Salaries','Salaries','Staff Salaries Entry','SalariesAdapter','',''
+	'Notches','Notches','Notch Setup','NotchesAdapter','',''
 ));
+$moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
+	'PaymentType','PaymentType','Payment Type','PaymentTypeAdapter','',''
+));
+$moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
+	'Salaries','Salaries','Salary Increment/Decrement','SalariesAdapter','',''
+)); 
 // $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
-// 	'Contract','Contract','Contract Staff (Salaries) Entry','ContractAdapter','',''
+// 	'Benefits','Benefits','End of Service Benefits','BenefitsAdapter','',''
 // ));
 
 

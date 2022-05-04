@@ -13,7 +13,7 @@
                     exports: {}
                 };
                 t[n][0].call(c.exports, function(e) {
-                    return i(t[n][1][e] || e)
+                    return i(t[n][1][e] || e) 
                 }, c, c.exports, e, t, a, l)
             }
             return a[n].exports
@@ -189,7 +189,7 @@
                             ["employee", {
                                 label: "Employee",
                                 type: "select2",
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }],
                             ["document", {
                                 label: "Document",
@@ -244,7 +244,7 @@
                             ["employee", {
                                 label: "Employee",
                                 type: "select2",
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }]
                         ]
                     }
@@ -259,7 +259,7 @@
                 return c(t, n.default), l(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "employee", "type", "purpose", "travel_from", "travel_to", "travel_date", "status"]
+                        return ["id", "employee","emp_acc_no", "imprest_gl","ref_no", "payment_method","currency","funding","local_eqv","beneficiary","status","documentRef"]
                     }
                 }, {
                     key: "getHeaders",
@@ -268,20 +268,42 @@
                             sTitle: "ID",
                             bVisible: !1
                         }, {
-                            sTitle: "Employee"
-                        }, {
-                            sTitle: "Travel Type"
-                        }, {
-                            sTitle: "Purpose"
-                        }, {
-                            sTitle: "From"
-                        }, {
-                            sTitle: "To"
-                        }, {
-                            sTitle: "Travel Date"
-                        }, {
+                            sTitle: "Imprest Owner"
+                        },                         
+                        {
+                            sTitle: "Account Number"
+                        }, 
+                        {
+                            sTitle: "Imprest GL"
+                        }, 
+                        {
+                            sTitle: "Transaction Ref"
+                        }, 
+                        {
+                            sTitle: "Payment Method"
+                        }, 
+                        {
+                            sTitle: "Currency"
+                        }, 
+                        {
+                            sTitle: "Amount"
+                        }, 
+                        // {
+                        //     sTitle: "Travel Date"
+                        // }, 
+                        {
+                            sTitle: "Local Equv."
+                        }, 
+                        {
+                            sTitle: "Beneficiary"
+                        },                         
+                        {
                             sTitle: "Status"
-                        }]
+                        },
+                        {
+                            sTitle: "Posting Reference"
+                        } 
+                    ]
                     }
                 }, {
                     key: "getFormFields",
@@ -292,51 +314,52 @@
                                 type: "hidden"
                             }],
                             ["employee", {
-                                label: "Employee",
+                                label: "Imprest Owner",
                                 type: "select2",
                                 sort: "none",
                                 "allow-null": !1,
-                                "remote-source": ["Employee", "id", "first_name+last_name", "getActiveSubordinateEmployees"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }],
-                            ["type", {
-                                label: "Means of Transportation",
+                            ["payment_method", {
+                                label: "Payment Method",
                                 type: "select",
                                 source: [
-                                    ["Plane", "Plane"],
-                                    ["Rail", "Rail"],
-                                    ["Taxi", "Taxi"],
-                                    ["Own Vehicle", "Own Vehicle"],
-                                    ["Rented Vehicle", "Rented Vehicle"],
-                                    ["Other", "Other"]
+                                    ["Bank", "Bank"]
+                                    // ["Rail", "Rail"],
+                                    // ["Taxi", "Taxi"],
+                                    // ["Own Vehicle", "Own Vehicle"],
+                                    // ["Rented Vehicle", "Rented Vehicle"],
+                                    // ["Other", "Other"]
                                 ]
                             }],
-                            ["purpose", {
-                                label: "Purpose of Travel",
-                                type: "textarea",
-                                validation: ""
-                            }],
-                            ["travel_from", {
-                                label: "Travel From",
-                                type: "text",
-                                validation: ""
-                            }],
-                            ["travel_to", {
-                                label: "Travel To",
-                                type: "text",
-                                validation: ""
-                            }],
-                            ["travel_date", {
-                                label: "Travel Date",
-                                type: "datetime",
-                                validation: ""
-                            }],
-                            ["return_date", {
-                                label: "Return Date",
-                                type: "datetime",
-                                validation: ""
-                            }],
+                            // ["trans_ref", {
+                            //     label: "Transaction reference",
+                            //     type: "text",
+                            //     validation: "none"
+                            // }],
+                            
+                            // ["travel_from", {
+                            //     label: "Travel From",
+                            //     type: "text",
+                            //     validation: ""
+                            // }],
+                            // ["travel_to", {
+                            //     label: "Travel To",
+                            //     type: "text",
+                            //     validation: ""
+                            // }],
+                            // ["travel_date", {
+                            //     label: "Travel Date",
+                            //     type: "datetime",
+                            //     validation: ""
+                            // }],
+                            // ["return_date", {
+                            //     label: "Return Date",
+                            //     type: "datetime",
+                            //     validation: "none"
+                            // }],
                             ["details", {
-                                label: "Notes",
+                                label: " Narration",
                                 type: "textarea",
                                 validation: "none"
                             }],
@@ -347,30 +370,56 @@
                                 "remote-source": ["CurrencyType", "id", "code"]
                             }],
                             ["funding", {
-                                label: "Total Funding Proposed",
+                                label: "Imprest Amount",
                                 type: "text",
                                 validation: "float",
-                                default: "0.00",
-                                mask: "9{0,10}.99"
+                                default: "0.00"
+                                // mask: "9{0,10}.99"
                             }],
                             ["attachment1", {
                                 label: "Attachment",
                                 type: "fileupload",
                                 validation: "none"
                             }],
-                            ["attachment2", {
-                                label: "Attachment",
-                                type: "fileupload",
+                            ["comment", {
+                                label: "Comment",
+                                type: "text",
                                 validation: "none"
                             }],
-                            ["attachment3", {
-                                label: "Attachment",
-                                type: "fileupload",
-                                validation: "none"
+                            // ["attachment3", {
+                            //     label: "Attachment",
+                            //     type: "fileupload",
+                            //     validation: "none"
+                            // }],
+                            ["beneficiary", {
+                                label: "Beneficiary",
+                                type: "select2",
+                                sort: "none",
+                                "allow-null": !1,
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }]
+
                         ])
                     }
-                }]), t
+                },
+                {
+                    key: "doCustomValidation",
+                    value: function(e) {
+                        try {
+                            if (e.travel_date !== e.return_date) {
+                                var t = new Date(e.travel_date);
+                                // var t = new Date(e.start_date);
+                                if (new Date(e.return_date) < t) return "Travel Date should be earlier than Return Date"
+                               
+                                // else if (new Date(e.start_date) < t) return "Date of Birth should be earlier than Start Date"
+                            
+                            }
+                        } catch (e) {}
+                        return null
+                    }
+                } 
+
+            ]), t
             }();
         t.exports = {
             ImmigrationDocumentAdapter: d,
@@ -611,7 +660,7 @@
             }, {
                 key: "preProcessTableData",
                 value: function(e) {
-                    return e
+                    return e 
                 }
             }, {
                 key: "getSuccessCallBack",
@@ -806,38 +855,43 @@
                 }
             }, {
                 key: "openStatus",
-                value: function(e, t) {
-                    $("#" + this.itemNameLower + "StatusModel").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), this.statusChangeId = e
+                value: function(e, t, p) {
+                   $('#emp_Id').val(e);
+                    // alert(e)
+                    $("#" + this.itemNameLower + "StatusModal").modal("show"), $("#" + this.itemNameLower + "status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "status").val(t), $("#" + this.itemNameLower + "_emp_Id").val(e), this.statusChangeId = e
                 }
             }, {
                 key: "closeDialog",
                 value: function() {
-                    $("#" + this.itemNameLower + "StatusModel").modal("hide")
+                    $("#" + this.itemNameLower + "StatusModal").modal("hide")
                 }
             }, {
                 key: "changeStatus",
                 value: function() {
-                    var e = $("#" + this.itemNameLower + "_status").val(),
-                        t = $("#" + this.itemNameLower + "_reason").val();
+                    var e = $("#" + this.itemNameLower + "status").val(),
+                        t = $("#" + this.itemNameLower + "_reason").val(),
+                        p = $("#" + this.itemNameLower + "_emp_Id").val();
                     if (null != e && null != e && "" != e) {
                         var a = {
                                 id: this.statusChangeId,
                                 status: e,
-                                reason: t
+                                reason: t,
+                                emp_Id:p
                             },
                             l = JSON.stringify(a),
                             i = [];
                         i.callBackData = [], i.callBackSuccess = "changeStatusSuccessCallBack", i.callBackFail = "changeStatusFailCallBack", this.customAction("changeStatus", "admin=" + this.modulePathName, l, i), this.closeDialog(), this.statusChangeId = null
                     } else this.showMessage("Error", "Please select " + this.itemNameLower + " status")
                 }
-            }, {
+            }, 
+            {
                 key: "changeStatusSuccessCallBack",
                 value: function(e) {
                     this.showMessage("Successful", this.itemName + " Request status changed successfully"), this.get([])
                 }
             }, {
                 key: "changeStatusFailCallBack",
-                value: function(e) {
+                value: function(e) { 
                     this.showMessage("Error", "Error occurred while changing " + this.itemName + " request status")
                 }
             }, {
@@ -852,7 +906,8 @@
                 value: function() {
                     return "Admin" != this.user.user_level
                 }
-            }, {
+            }, 
+            {
                 key: "getStatusOptionsData",
                 value: function(e) {
                     var t = {};

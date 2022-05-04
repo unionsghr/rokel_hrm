@@ -70,7 +70,7 @@ class PayrollActionManager extends SubActionManager
         }
 
         $sum = 0;
-
+ 
         $payRollEmp = new PayrollEmployee();
         $payRollEmp->Load("id = ?", array($payrollEmployeeId));
 

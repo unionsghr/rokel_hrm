@@ -112,7 +112,7 @@ class TrainingActionManager extends SubActionManager
                     "Training Attended \ name:".$trainingSession->name."\ id:".$trainingSession->id
                 );
 
-                $notificationMsg = $employee->first_name." ".$employee->last_name
+                $notificationMsg = $employee->first_name." ".$employee->middle_name." ".$employee->last_name
                     ." changed the status of training (".$ts->name.") to attended. Please approve";
 
                 $this->baseService->notificationManager->addNotification(
@@ -166,7 +166,7 @@ class TrainingActionManager extends SubActionManager
                     "Training Completed \ name:".$trainingSession->name."\ id:".$trainingSession->id
                 );
 
-                $notificationMsg = $employee->first_name." ".$employee->last_name
+                $notificationMsg = $employee->first_name." ".$employee->middle_name." ".$employee->last_name
                     ." approved the attendance status of training (".$ts->name.")";
 
                 $this->baseService->notificationManager->addNotification(

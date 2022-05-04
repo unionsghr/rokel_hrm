@@ -25,7 +25,7 @@
     1: [function(e, t, a) {
         "use strict";
         var l = e("./lib");
-        window.ExpensesCategoryAdapter = l.ExpensesCategoryAdapter, window.ExpensesPaymentMethodAdapter = l.ExpensesPaymentMethodAdapter, window.EmployeeExpenseAdminAdapter = l.EmployeeExpenseAdminAdapter
+        window.ExpensesCategoryAdapter = l.ExpensesCategoryAdapter, window.ExpensesPaymentMethodAdapter = l.ExpensesPaymentMethodAdapter, window.ExpensesBusinessPurposeAdapter = l.ExpensesBusinessPurposeAdapter, window.EmployeeExpenseAdminAdapter = l.EmployeeExpenseAdminAdapter
     }, {
         "./lib": 2
     }],
@@ -77,22 +77,17 @@
                 }
                 return u(t, i.default), t
             }(),
-            d = function(e) {
-                function t() {
-                    return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
-                }
-                return u(t, i.default), t
-            }(),
-            h = function(e) {
+            b = function(e) {
                 function t(e, a, l, i) {
-                    o(this, t);
-                    var r = s(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e, a, l, i));
-                    return r.itemName = "Expense", r.itemNameLower = "expense", r.modulePathName = "expenses", r
+                    o(this, t);   
+                    return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))     
+                    // var r = s(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e, a, l, i));
+                    // return r.itemName = "Expense", r.itemNameLower = "expense", r.modulePathName = "expenses", r
                 }
                 return u(t, r.default), l(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "employee", "expense_date", "exp_gl", "payment_method", "transaction_no", "category", "amount", "currency", "status"]
+                        return ["id", "code", "name"]
                     }
                 }, {
                     key: "getHeaders",
@@ -101,23 +96,9 @@
                             sTitle: "ID",
                             bVisible: !1
                         }, {
-                            sTitle: "Expense Owner"
+                            sTitle: "Code"
                         }, {
-                            sTitle: "Date"
-                        },{
-                            sTitle: "Expense GL"
-                        }, {
-                            sTitle: "Payment Method"
-                        }, {
-                            sTitle: "Transaction Ref."
-                        }, {
-                            sTitle: "Category"
-                        }, {
-                            sTitle: "Amount"
-                        }, {
-                            sTitle: "Currency"
-                        }, {
-                            sTitle: "Status"
+                            sTitle: "Name"
                         }]
                     }
                 }, {
@@ -128,69 +109,292 @@
                                 label: "ID",
                                 type: "hidden"
                             }],
+                            ["code", {
+                                label: "Code",
+                                type: "text",
+                                validation: ""
+                            }],
+                            ["name", {
+                                label: "Name",
+                                type: "text",
+                                validation: ""
+                            }]
+                        ]
+                    }
+                }, {
+                    key: "getHelpLink",
+                    value: function() {
+                        return "https://icehrm.gitbook.io/icehrm/payroll-and-expenses/expense-management"
+                    }
+                }]), t
+            }(),
+            
+            d = function(e) {
+                function t(e, a, l, i) {
+                    o(this, t);   
+                    return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))     
+                    // var r = s(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e, a, l, i));
+                    // return r.itemName = "Expense", r.itemNameLower = "expense", r.modulePathName = "expenses", r
+                }
+                return u(t, r.default), l(t, [{
+                    key: "getDataMapping",
+                    value: function() {
+                        return ["id", "name"]
+                    }
+                }, {
+                    key: "getHeaders",
+                    value: function() {
+                        return [{
+                            sTitle: "ID",
+                            bVisible: !1
+                        }, {
+                            sTitle: "Name"
+                        }]
+                    }
+                }, {
+                    key: "getFormFields",
+                    value: function() {
+                        return [
+                            ["id", {
+                                label: "ID",
+                                type: "hidden"
+                            }],
+                            ["name", {
+                                label: "Name",
+                                type: "text",
+                                validation: ""
+                            }]
+                        ]
+                    }
+                }, {
+                    key: "getHelpLink",
+                    value: function() {
+                        return "https://icehrm.gitbook.io/icehrm/payroll-and-expenses/expense-management"
+                    }
+                }]), t
+            }(),
+            h = function(e) {
+                function t(e, a, l, i) {
+                    o(this, t);
+                    var r = s(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e, a, l, i));
+                    return r.itemName = "Expense", r.itemNameLower = "expense", r.modulePathName = "expenses", r
+                }
+                return u(t, r.default), l(t, [{
+                    key: "getDataMapping",
+                    value: function() {
+                        // return ["id", "employee", "expense_date", "exp_gl", "payment_method", "transaction_no", "category", "amount", "currency", "status"]
+                        return ["id", "employee", "emp_acc_no", "business_purpose","payment_method", "ref_no","amount","status","documentRef"]
+                   
+                    }
+                }, {
+                    key: "getHeaders",
+                    value: function() {
+                        return [{
+                            sTitle: "ID",
+                            bVisible: !1
+                        }, {
+                            sTitle: "Expense Owner"
+                        }, 
+                        // {
+                        //     sTitle: "Date"
+                        // },
+                        {
+                            sTitle: "Account Number"
+                        }, 
+                        {
+                            sTitle: "Business Purpose"
+                        }, 
+                        {
+                            sTitle: "Payment Method"
+                        }, 
+                        {
+                            sTitle: "Transaction Ref."
+                        }, 
+                        {
+                            sTitle: "Total Amount"
+                        }, 
+                        {
+                            sTitle: "Status"
+                        },
+                        {
+                            sTitle: "Posting Reference"
+                        } 
+                    ]
+                    }
+                }, {
+                    key: "getFormFields",
+                    value: function() {
+                        return [
+                            ["id", {
+                                label: "ID",
+                                type: "hidden"
+                            }],
                             ["employee", {
-                                label: "Employee",
+                                label: "Expense Owner",
                                 type: "select2",
                                 sort: "none",
                                 "allow-null": !1,
+                                // "remote-source": ["Employee", "id", "first_name+middle_name+last_name", "getActiveSubordinateEmployees"]
                                 "remote-source": ["Employee", "id", "first_name+middle_name+last_name", "getActiveSubordinateEmployees"]
                             }],
-                            ["expense_date", {
-                                label: "Date",
-                                type: "date",
-                                validation: ""
+                            // ["expense_date", {
+                            //     label: "Date",
+                            //     type: "date",
+                            //     validation: "",
+                                
+                            // }],
+                            // ["to_date", {
+                            //     label: "To Date",
+                            //     type: "date",
+                            //     validation: "none"
+                            // }],
+                            ["business_purpose", {
+                                label: "Business Purpose",
+                                type: "select2",
+                                "remote-source": ["ExpensesBusinessPurpose", "code", "name"]
+                                // "remote-source": ["ExpensesPaymentMethod", "id", "name"]
                             }],
                             ["payment_method", {
                                 label: "Payment Method",
                                 type: "select2",
                                 "remote-source": ["ExpensesPaymentMethod", "id", "name"]
                             }],
-                            ["transaction_no", {
-                                label: "Transaction / Ref No",
-                                type: "text",
+                            // ["posting_branch", {
+                            //     label: "Posting Branch",
+                            //     type: "select2",
+                            //     "remote-source": ["CompanyStructure", "id", "title"]
+                            // }],
+                            ["start_date", {
+                                label: "Start Date",
+                                type: "date",
                                 validation: "none"
+                                
                             }],
-                            ["payee", {
-                                label: "Payee",
-                                type: "text",
-                                validation: ""
+                            ["end_date", {
+                                label: "End Date",
+                                type: "date",
+                                validation: "none"
+                                
                             }],
-                            ["category", {
-                                label: "Expense Category",
-                                type: "select2",
-                                "remote-source": ["ExpensesCategory", "id", "name"]
-                            }],
-                            ["notes", {
-                                label: "Notes",
+
+                            ["description", {
+                                label: "Description",
                                 type: "textarea",
-                                validation: ""
+                                validation: "none"
                             }],
-                            ["currency", {
-                                label: "Currency",
-                                type: "select2",
-                                "allow-null": !1,
-                                "remote-source": ["CurrencyType", "id", "code"]
-                            }],
+                            // ["transaction_no", {
+                            //     label: "Transaction / Ref No",
+                            //     type: "text",
+                            //     validation: "none"
+                            // }],
+                            // ["notes1", {
+                            //     label: "Comment",
+                            //     type: "textarea",
+                            //     validation: "none"
+                            // }],
                             ["amount", {
-                                label: "Amount",
-                                type: "text",
-                                validation: "float"
-                            }],
-                            ["attachment1", {
-                                label: "Receipt",
-                                type: "fileupload",
+                                label: "Total Amount",
+                                type: "disabled",
                                 validation: "none"
+                                
                             }],
-                            ["attachment2", {
-                                label: "Other Attachment 1",
-                                type: "fileupload",
-                                validation: "none"
+                            ["imprest_code", {
+                                label: "Imprest Code",
+                                type: "select2",
+                                "allow-null": !0,
+                                "remote-source": ["Vw_EmployeeImprest", "id", "ref_no+details+status"]
+                                
                             }],
-                            ["attachment3", {
-                                label: "Other Attachment 2",
-                                type: "fileupload",
-                                validation: "none"
-                            }]
+                            
+                            ["items", {
+                                label: "Expense Items",
+                                type: "datagroup",
+                                form: [
+                                    ["payee", {
+                                        label: "Vendor",
+                                        type: "text",
+                                        validation: "none"
+                                    }],
+                                    ["expense_date", {
+                                        label: "Expense Date",
+                                        type: "date",
+                                        validation: ""
+                                       
+                                    }],
+                                    ["category", {
+                                    label: "Expense Type",
+                                    type: "select2",
+                                    "remote-source": ["ExpensesCategory", "name", "name"]
+                                    }],
+                                    ["expense_gl", {
+                                        label: "GL",
+                                        type: "disabled",
+                                        validation: ""
+                                    }],
+                                    ["notes", {
+                                        label: "Narration",
+                                        type: "textarea",
+                                        validation: "none"
+                                    }],
+                                    ["currency", {
+                                        label: "Currency",
+                                        type: "select2",
+                                        "allow-null": !1,
+                                        "remote-source": ["CurrencyType", "code", "code"]
+                                    }],
+                                    ["amount_", {
+                                        label: "Amount",
+                                        type: "text",
+                                        validation: "float"
+                                    }],
+                                    ["local_equivalent", {
+                                        label: "Local Equivalence",
+                                        type: "disabled",
+                                        // "allow-null": !0
+                                        // validation: "none"
+                                        // disabled: true
+                                        // "null-label": "none"
+                                        validation: "float"
+                                        
+                                    }],
+                                    ["attachment1", {
+                                        label: "Receipt",
+                                        type: "fileupload",
+                                        validation: "none"
+                                    }],
+                                    ["attachment2", {
+                                        label: "Other Attachment 1",
+                                        type: "fileupload",
+                                        validation: "none"
+                                    }],
+                                    ["attachment3", {
+                                        label: "Other Attachment 2",
+                                        type: "fileupload",
+                                        validation: "none"
+                                    }]
+                                ],
+                                // html: '<div id="#_id_#" class="panel panel-default"><div class="panel-heading"><p style="text-align:center"><b>#_category_#</b></p> #_delete_##_edit_#</div><div class="panel-body"> <b>Vendor: </b>#_payee_# <d style="padding-left:3em"><b>Narration: </b>#_notes_#</d><br/><br/> <b>Currency: </b>#_currency_#<d style="padding-left:3em"><b>Equv. Amount: </b>#_amount_#</d></div></div>',
+                                // html: '<head><style>table, td {border: 1px solid;}</style></head><div id="#_id_#" class="panel panel-default" style="width:100%"><div class="panel-heading"><p style="text-align:center"><b>#_category_#</b></p>#_delete_##_edit_#</div><div class="panel-heading"><table style="width:100%"><tr><th>Expense GL</th><th>Vendor</th><th>Narration</th><th>Currency</th><th>Amount</th><th>Local Equivalence</th></tr><tr><td>#_expense_gl_#</td><td>#_payee_#</td><td>#_notes_#</td><td>#_currency_#</td><td>#_amount__#</td><td>#_local_equivalent_#</td></tr></table></div></div>',
+                                html: '<head><style>table, td {border: 1px solid;}</style></head><div id="#_id_#" class="panel panel-default" style="width:100%"><div class="panel-heading"><p style="text-align:center"><b>#_category_#</b></p>#_delete_##_edit_#</div><div class="panel-heading"><table style="width:150%"><tr><th>Expense Date</th><th>Expense GL</th><th>Narration</th><th>Amt</th><th>Currency</th><th>Local Eqv</th><th>Vendor</th></tr><tr><td>#_expense_date_#</td><td>#_expense_gl_#</td><td>#_notes_#</td><td>#_amount__#</td><td>#_currency_#</td><td>#_local_equivalent_#</td><td>#_payee_#</td></tr></table></div></div>',
+                               
+                                validation: "none",
+                                // "sort-function": function(e, t) {
+                                //     return e.startyear + modJs.getMonthId(e.startmonth) < t.startyear + modJs.getMonthId(t.startmonth)
+                                // },
+                                // "custom-validate-function": function(e) {
+                                //     var t = {};
+                                //     return t.valid = !0, 12 * parseInt(e.startyear) + modJs.getMonthId(e.startmonth) >= 12 * parseInt(e.endyear) + modJs.getMonthId(e.endmonth) && (t.message = "From year/month should be less than To year/month", t.valid = !1), t.params = e, t
+                                // },
+                                // "pre-format-function": function(e) {
+                                //     "Yes" === e.current ? e.currently_working = " (Current)" : e.currently_working = "";
+                                //     var t = 12 * parseInt(e.endyear) + modJs.getMonthId(e.endmonth) - (12 * parseInt(e.startyear) + modJs.getMonthId(e.startmonth)),
+                                //         a = t % 12,
+                                //         l = (t - a) / 12;
+                                //     return e.exp = 0 === l ? 1 === a ? a + " Month" : a + " Months" : 1 === l ? 0 === a ? l + " Year" : 1 === a ? l + " Year and " + a + " Month" : l + " Year and " + a + " Months" : 0 === a ? l + " Years" : 1 === a ? l + " Years and " + a + " Month" : l + " Years and " + a + " Months", e
+                                // }
+
+                            }],
+                   
                         ]
                     }
                 }, {
@@ -226,6 +430,7 @@
         t.exports = {
             ExpensesCategoryAdapter: c,
             ExpensesPaymentMethodAdapter: d,
+            ExpensesBusinessPurposeAdapter: b,
             EmployeeExpenseAdminAdapter: h
         }
     }, {
@@ -653,10 +858,13 @@
                 value: function() {
                     return this.getDataMapping().length - 1
                 }
-            }, {
+            }, 
+            {
                 key: "openStatus",
-                value: function(e, t) {
-                    $("#" + this.itemNameLower + "StatusModel").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), this.statusChangeId = e
+                value: function(e, t, p) { 
+                    $('#employee_Id').val(e);
+                     // alert(e)
+                     $("#" + this.itemNameLower + "StatusModel").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), $("#" + this.itemNameLower + "_employee_Id").val(e), this.statusChangeId = e
                 }
             }, {
                 key: "closeDialog",
@@ -667,12 +875,14 @@
                 key: "changeStatus",
                 value: function() {
                     var e = $("#" + this.itemNameLower + "_status").val(),
-                        t = $("#" + this.itemNameLower + "_reason").val();
+                        t = $("#" + this.itemNameLower + "_reason").val(),
+                        p = $("#_employee_Id").val();
                     if (null != e && null != e && "" != e) {
                         var a = {
                                 id: this.statusChangeId,
                                 status: e,
-                                reason: t
+                                reason: t,
+                                employee_Id:p
                             },
                             l = JSON.stringify(a),
                             i = [];
@@ -689,7 +899,8 @@
                 value: function(e) {
                     this.showMessage("Error", "Error occurred while changing " + this.itemName + " request status")
                 }
-            }, {
+            }, 
+            {
                 key: "getActionButtonsHtml",
                 value: function(e, t) {
                     var a = '<div style="width:120px;">_edit__delete__status__logs_</div>',
@@ -897,7 +1108,7 @@
             }(t, n.default), i(t, [{
                 key: "getDataMapping",
                 value: function() {
-                    return ["id", "name"]
+                    return ["id", "name", "expense_gl", "amount_limit"]
                 }
             }, {
                 key: "getHeaders",
@@ -907,7 +1118,13 @@
                         bVisible: !1
                     }, {
                         sTitle: "Name"
-                    }]
+                    },{
+                        sTitle: "Expense GL"
+                    },
+                    {
+                        sTitle: "Expense Limit"
+                    }
+                ]
                 }
             }, {
                 key: "getFormFields",
@@ -921,6 +1138,16 @@
                             label: "Name",
                             type: "text",
                             validation: ""
+                        }],
+                        ["expense_gl", {
+                            label: "Expense GL",
+                            type: "text",
+                            validation: ""
+                        }],
+                        ["amount_limit", {
+                            label: "Expense Limit",
+                            type: "text",
+                            validation: "number"
                         }]
                     ]
                 }
@@ -970,7 +1197,8 @@
                         configurable: !0
                     }
                 }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
-            }(t, n.default), i(t, [{
+            }(t, n.default), i(t, [
+                {
                 key: "getLogs",
                 value: function(e) {
                     var t = {
@@ -1567,7 +1795,7 @@
                 key: "makeEmptyDateFieldsNull",
                 value: function(e) {
                     return this.getFormFields().forEach(function(t) {
-                        "date" !== t[1].type && "datetime" !== t[1].type || "" !== e[t[0]] && "0000-00-00" !== e[t[0]] && "0000-00-00 00:00:00" !== e[t[0]] || ("none" === t[1].validation ? e[t[0]] = "NULL" : delete e[t[0]])
+                        "date" !== t[1].type && "datetime" !== t[1].type || "" !== e[t[0]] && "00-00-0000" !== e[t[0]] && "00-00-0000 00:00:00" !== e[t[0]] || ("none" === t[1].validation ? e[t[0]] = "NULL" : delete e[t[0]])
                     }), e
                 }
             }, {
@@ -1689,6 +1917,36 @@
             }, {
                 key: "renderForm",
                 value: function(e) {
+                    // alert("here"); return false;
+                    var profile = this.getCurrentProfile();
+                    let currentProfile = profile.id;
+                    // alert(currentProfile);
+
+                    var approval;
+                                           
+                // let id_ = e;
+                $.ajax({
+                    url: '../../../../rokel_hrm/core/employeeImprest.php',
+                    type: 'post',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({
+                        // id: id_,
+                        currentUser: currentProfile
+                    }), 
+                    success: function(data, textStatus, jQxhr) {
+                       
+                        if(data.responseCode == '000'){
+                            // alert("Successfully Verified"); 
+
+                            let approval = data.data
+                        }else{alert("Data Unavailable");                        
+                    }
+                }
+             });
+            //  location.reload();
+           
                     var t = [];
                     null != e && void 0 !== e || (this.currentId = null), this.preRenderForm(e);
                     for (var a = this.templates.formTemplate, l = "", i = this.getFormFields(), r = 0; r < i.length; r++) {
@@ -1730,8 +1988,56 @@
                     });
                     for (var c = 0; c < i.length; c++) "datagroup" === i[c][1].type && s.find("#" + i[c][0]).data("field", i[c]);
                     if (!1 === this.showSave ? s.find(".saveBtn").remove() : (s.find(".saveBtn").off(), s.find(".saveBtn").data("modJs", this), s.find(".saveBtn").on("click", function() {
+  
+                        // alert("here"); return false;
+                        let id_ = $('#items').val();
+                        
+                        let  json_itemdata= $('#items').val();
+                        
+                        //MODIFIED TO ENABLE EXPENSE CATEGORY TO WORK
+                        
+
+                        let json_item = JSON.parse(json_itemdata);
+                        let total_amount = 0;
+
+                        // let amt = $('#amount_').val();
+                        $.each(json_item, function(index) {
+
+
+                            total_amount = total_amount + parseFloat(json_item[index].local_equivalent)
+                            
+                            });
+
+                            $('#amount').val(total_amount);
+                        // console.log (total_amount);
+                        // alert(total_amount);
+                        // alert(amt);
+
+                        // return false
+
+                        $.ajax({
+                            url: '../../../../rokel_hrm/core/expensecalculator_amount.php',
+                            type: 'post',
+                            contentType: 'application/json',
+                            dataType: "json",
+                            data: JSON.stringify({
+                            id: id_ 
+                            }), 
+                            success: function(data, textStatus, jQxhr) {
+                                // console.log(data);
+                                var cal_amount = data;
+                                // alert(cal_amount.data); 
+                                // alert(data);
+                                $('#amount').val(cal_amount.data);
+                      
+                            }
+                        });
+
                             return null != $(this).data("modJs").saveSuccessItemCallback && void 0 !== $(this).data("modJs").saveSuccessItemCallback ? $(this).data("modJs").save($(this).data("modJs").retriveItemsAfterSave(), $(this).data("modJs").saveSuccessItemCallback) : $(this).data("modJs").save(), !1
                         })), !1 === this.showCancel ? s.find(".cancelBtn").remove() : (s.find(".cancelBtn").off(), s.find(".cancelBtn").data("modJs", this), s.find(".cancelBtn").on("click", function() {
+                           
+                           
+                           
                             return $(this).data("modJs").cancel(), !1
                         })), s.find("[mask]").each(function() {
                             $(this).inputmask($(this).attr("mask"))
@@ -1755,6 +2061,8 @@
                         this.showMessage("Edit", "", null, null, !0), $("#plainMessageModel .modal-body").html(""), $("#plainMessageModel .modal-body").append(s);
                         for (var d = 0; d < t.length; d++) $("#" + t[d]).data("signaturePad", new SignaturePad(document.getElementById(t[d])));
                         void 0 !== e && null != e ? this.fillForm(e, "#" + u) : this.setDefaultValues("#" + u)
+
+
                     } else {
                         $("#" + this.getTableName() + "Form").show(), $("#" + this.getTableName()).hide();
                         for (var h = 0; h < t.length; h++) $("#" + t[h]).data("signaturePad", new SignaturePad(document.getElementById(t[h])));
@@ -1800,6 +2108,7 @@
             }, {
                 key: "showDataGroup",
                 value: function(e, t) {
+                    $('#local_equivalent').val('0.00');
                     var a = this.templates.datagroupTemplate,
                         l = "",
                         i = e[1].form;
@@ -1809,7 +2118,7 @@
                     var n = this.generateRandom(14),
                         o = $('<div class="reviewBlock popupForm" data-content="Form"></div>');
                     o.attr("id", n), o.html(a), o.find(".datefield").datepicker({
-                        viewMode: 2
+                        viewMode: 2 
                     }), o.find(".timefield").datetimepicker({
                         language: "en",
                         pickDate: !1
@@ -1827,6 +2136,9 @@
                         $(this).select2().select2("val", $(this).find("option:eq(0)").val())
                     }), o.find(".select2Multi").each(function() {
                         $(this).select2().on("change", function(e) {
+                            var cur = $(this).val();
+                        
+
                             var t = $(this).parents(".row"),
                                 a = t.find(".select2-choices").height();
                             t.height(parseInt(a, 10))
@@ -1840,6 +2152,102 @@
                         }
                         return !1
                     }) : $(".groupAddBtn").on("click", function(e) {
+
+                        let amount_ = $('#amount_').val();
+                        let currency = $('#currency').val();
+                        let category = $('#category').val();
+                      
+                        var cal_local_currency;
+                        $.ajax({
+                            url: '../../../../rokel_hrm/core/expensecalculator.php',
+                            type: 'post',
+                            contentType: 'application/json',
+                            dataType: "json",
+                            async: false,
+                            data: JSON.stringify({
+                                currency: currency,
+                                amount: amount_ 
+                                // category: category 
+                            }),
+                            success: function(data, textStatus, jQxhr) {
+                                // console.log(data);
+                                // alert(data);
+                                
+                                cal_local_currency = data;
+
+                                // console.log(cal_local_currency);
+
+                                $('#local_equivalent').val(cal_local_currency.data);   
+                            }   
+                        });
+                        // console.log(cal_local_currency);
+
+                        $.ajax({
+                            url: '../../../../rokel_hrm/core/expense_gl.php',
+                            type: 'post',
+                            contentType: 'application/json',
+                            dataType: "json",
+                            data: JSON.stringify({
+                                category: category 
+                            }),
+                            success: function(data, textStatus, jQxhr) {
+                                // console.log(data);
+                                // alert(data);
+
+                                var gl = data;
+                                // alert(gl.data);
+
+                                $('#expense_gl').val(gl.data);
+                                
+                            }
+                            
+                        });
+
+                      
+                        var amount_limit;
+
+                        $.ajax({
+                            url: '../../../../rokel_hrm/core/expense_limit.php',
+                            type: 'post',
+                            contentType: 'application/json',
+                            dataType: "json",
+                            async: false,
+                            data: JSON.stringify({
+                                category: category
+                                // local_equivalent: local_equivalent 
+                                // category: category 
+                            }),
+                            success: function(data, textStatus, jQxhr) {
+                                // console.log(data);
+                                // alert(data);
+                                
+                                amount_limit = data;
+
+                                // console.log(amount_limit);
+
+                                // $('#local_equivalent').val(cal_local_currency.data);   
+                            }   
+                        });
+                        // alert(amount_limit);return false;
+                        console.log(amount_limit);
+                        console.log(cal_local_currency);
+
+                        var amount = JSON.stringify(amount_limit);  
+                        var limit = JSON.parse(amount);
+                        var expense_limit = limit.data;
+
+                        var local_equiv = JSON.stringify(cal_local_currency);  
+                        var expense = JSON.parse(local_equiv);
+                        var expense_amount = expense.data;
+                        // alert("Expense Limit..: " + expense_limit + " Expense amount...: " + expense_amount);
+
+                        if (expense.data > limit.data){
+
+                            alert("Expense Amount for "+ category + " cannot be highier than its Expense Limit");
+                            return false; 
+                           
+                        }
+                        
                         e.preventDefault(), e.stopPropagation();
                         try {
                             modJs.addDataGroup()
@@ -1994,10 +2402,10 @@
                     var l = void 0;
                     null != a && void 0 !== a || (a = this.getFormFields()), null != t && void 0 !== t && "" !== t || (t = "#" + this.getTableName() + "Form");
                     for (var i = 0; i < a.length; i++)
-                        if ("date" === a[i][1].type) "0000-00-00" !== e[a[i][0]] && "" !== e[a[i][0]] && null != e[a[i][0]] && void 0 !== e[a[i][0]] && $(t + " #" + a[i][0] + "_date").datepicker("setValue", e[a[i][0]]);
+                        if ("date" === a[i][1].type) "00-00-0000" !== e[a[i][0]] && "" !== e[a[i][0]] && null != e[a[i][0]] && void 0 !== e[a[i][0]] && $(t + " #" + a[i][0] + "_date").datepicker("setValue", e[a[i][0]]);
                         else if ("colorpick" === a[i][1].type) null != e[a[i][0]] && void 0 !== e[a[i][0]] && ($(t + " #" + a[i][0] + "_colorpick").colorpicker("setValue", e[a[i][0]]), $(t + " #" + a[i][0]).val(e[a[i][0]]));
                     else if ("datetime" === a[i][1].type || "time" === a[i][1].type) {
-                        if ("0000-00-00 00:00:00" !== e[a[i][0]] && "" !== e[a[i][0]] && null != e[a[i][0]] && void 0 !== e[a[i][0]]) {
+                        if ("00-00-0000 00:00:00" !== e[a[i][0]] && "" !== e[a[i][0]] && null != e[a[i][0]] && void 0 !== e[a[i][0]]) {
                             var r = e[a[i][0]].split(" "),
                                 n = r[0].split("-"),
                                 o = r[1].split(":");
@@ -2040,7 +2448,7 @@
                     $("#" + this.getTableName() + "Form").hide(), $("#" + this.getTableName()).show()
                 }
             }, {
-                key: "renderFormField",
+                key: "renderFormField", 
                 value: function(e) {
                     var t = 0;
                     if (void 0 === this.fieldTemplates[e[1].type] || null == this.fieldTemplates[e[1].type]) return "";
@@ -2048,7 +2456,7 @@
                     if (e[1].label = this.gt(e[1].label), "none" !== e[1].validation && "emailOrEmpty" !== e[1].validation && "numberOrEmpty" !== e[1].validation && "placeholder" !== e[1].type && e[1].label.indexOf("*") < 0) {
                         ["select", "select2"].indexOf(e[1].type) >= 0 && !0 === e[1]["allow-null"] || (e[1].label = e[1].label + '<font class="redFont">*</font>')
                     }
-                    if ("text" === e[1].type || "textarea" === e[1].type || "hidden" === e[1].type || "label" === e[1].type || "placeholder" === e[1].type) a = (a = a.replace(/_id_/g, e[0])).replace(/_label_/g, e[1].label);
+                    if ("text" === e[1].type || "textarea" === e[1].type || "hidden" === e[1].type || "label" === e[1].type || "placeholder" === e[1].type || "disabled" === e[1].type) a = (a = a.replace(/_id_/g, e[0])).replace(/_label_/g, e[1].label);
                     else if ("select" === e[1].type || "select2" === e[1].type || "select2multi" === e[1].type) {
                         if (a = (a = a.replace(/_id_/g, e[0])).replace(/_label_/g, e[1].label), void 0 !== e[1].source && null != e[1].source) a = a.replace("_options_", this.renderFormSelectOptions(e[1].source, e));
                         else if (void 0 !== e[1]["remote-source"] && null != e[1]["remote-source"]) {
@@ -2066,7 +2474,8 @@
                     } else "datagroup" === e[1].type ? a = (a = a.replace(/_id_/g, e[0])).replace(/_label_/g, e[1].label) : "signature" === e[1].type ? a = (a = a.replace(/_id_/g, e[0])).replace(/_label_/g, e[1].label) : "tinymce" !== e[1].type && "simplemde" !== e[1].type || (a = (a = a.replace(/_id_/g, e[0])).replace(/_label_/g, e[1].label));
                     return a = void 0 !== e[1].validation && null != e[1].validation && "" !== e[1].validation ? a.replace(/_validation_/g, 'validation="' + e[1].validation + '"') : a.replace(/_validation_/g, ""), a = void 0 !== e[1].help && null !== e[1].help ? (a = a.replace(/_helpline_/g, e[1].help)).replace(/_hidden_class_help_/g, "") : (a = a.replace(/_helpline_/g, "")).replace(/_hidden_class_help_/g, "hide"), a = void 0 !== e[1].placeholder && null !== e[1].placeholder ? a.replace(/_placeholder_/g, 'placeholder="' + e[1].placeholder + '"') : a.replace(/_placeholder_/g, ""), a = void 0 !== e[1].mask && null !== e[1].mask ? a.replace(/_mask_/g, 'mask="' + e[1].mask + '"') : a.replace(/_mask_/g, "")
                 }
-            }, {
+            }, 
+            {
                 key: "renderFormSelectOptions",
                 value: function(e, t) {
                     var a = "";
@@ -2084,7 +2493,8 @@
                     }
                     return a
                 }
-            }, {
+            }, 
+            {
                 key: "renderFormSelectOptionsRemote",
                 value: function(e, t) {
                     var a = "";
@@ -2102,7 +2512,8 @@
                     }
                     return a
                 }
-            }, {
+            }, 
+            {
                 key: "setCustomTemplates",
                 value: function(e) {
                     this.customTemplates = e
@@ -2140,6 +2551,7 @@
             }, {
                 key: "getAddNewLabel",
                 value: function() {
+                    // alert("here"); return false;
                     return "Add New"
                 }
             }, {

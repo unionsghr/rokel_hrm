@@ -24,14 +24,22 @@
             </section>
             <?php if($job->display != "Text Only"){?>
                 <section class="job-content-description">
-                    <img src="<?=$job->attachment?>"/>
+                    <img src="<?=$job->attachment?>" style="margin-left:120px;"/>
                 </section>
             <?php }?>
-
+            
             <?php if($job->display == "Text Only" || $job->display == "Image and Full Text"){?>
                 <section class="job-content-description">
                     <?=nl2br($job->description)?>
                 </section>
+                <?php if(!empty($job->shortDescription)){?>
+                    <section class="job-content-header">
+                        <h2>Short Description</h2>
+                    </section>
+                    <section class="job-content-description">
+                        <?=nl2br($job->shortDescription)?>
+                    </section>
+                <?php }?>
                 <?php if(!empty($job->requirements)){?>
                     <section class="job-content-header">
                         <h2>Requirements</h2>
@@ -39,7 +47,7 @@
                     <section class="job-content-description">
                         <?=nl2br($job->requirements)?>
                     </section>
-                <?php }?>
+                <?php }?>                
                 <?php if(!empty($benifits)){?>
                     <section class="job-content-header">
                         <h2>Benefits</h2>
@@ -49,10 +57,20 @@
                             <span class="label label-primary"><?=$benifit?></span>&nbsp;&nbsp;&nbsp;
                         <?php }?>
                     </section>
-                <?php }?>
+                <?php }?> 
+                <?php if(!empty($job->closingDate)){?>
+                    <section class="job-content-header">
+                        <h2>Closing Date</h2>
+                    </section>
+                    <section class="job-content-description">
+                    <?=nl2br($job->closingDate)?>
+                    </section>
+                <?php }?>     
+                
             <?php }?>
 
-            <?php if($job->display == "Text Only" || $job->display == "Image and Full Text" || $job->display == "Image and Other Details"){?>
+           
+            <?php if($job->display == "Image and Other Details"){?>
                 <section class="job-content-header">
                     <h2>Other Details</h2>
                 </section>
@@ -86,7 +104,7 @@
                         <div class="col-md-8">: <?=$enrichedJob->$educationLevelName?></div>
                     </section>
                 <?php }?>
-                <?php if($job->showSalary == "Yes"){?>
+                 <?php if($job->showSalary == "Yes"){?>
                     <section class="job-content-description">
                         <div class="col-md-4"><b>Salary</b></div>
                         <div class="col-md-8">: <?=money_format("%!n", $job->salaryMin)?> <?=$currency->code?> - <?=money_format("%!n", $job->salaryMax)?> <?=$currency->code?></div>
@@ -117,7 +135,7 @@
                         <img src="<?=$hiringManager->image?>" class="img-circle recruiter-image" alt="User Image">
                     </div>
                     <div class="col-md-9">
-                        <h3><?=$hiringManager->first_name?> <?=$hiringManager->last_name?></h3>
+                        <h3><?=$hiringManager->first_name?> <?=$hiringManager->middle_name?> <?=$hiringManager->last_name?></h3>
                         <p style="">Please fill your details bellow and apply. I'll get in touch once you are short listed</p>
                     </div>
                 </div>
@@ -147,6 +165,6 @@
           $('.help-info').remove();
           $('.help_error_message').remove();
 
-        });
+        }); 
 
     </script>

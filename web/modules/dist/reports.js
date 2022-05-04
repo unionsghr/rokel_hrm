@@ -236,7 +236,10 @@
                         if (l = (l = 0 === a.indexOf("https:") ? '<a href="' + a + '" target="_blank" style="font-size:14px;font-weight:bold;">Download Report <img src="_BASE_images/download.png"></img> </a>' : '<a href="' + modJs.getCustomActionUrl("download", {
                                 file: a
                             }) + '" target="_blank" style="font-size:14px;font-weight:bold;">Download Report <img src="_BASE_images/download.png"></img> </a>').replace(/_BASE_/g, this.baseUrl), "PDF" === this.currentReport.output || "JSON" === this.currentReport.output) this.showMessage("Download Report", l);
-                        else {
+                        // }) + '" target="_blank" style="font-size:14px;font-weight:bold;">Download Report <img src="_BASE_images/download.png"></img> </a>').replace(/_BASE_/g, this.baseUrl), "PDF" === output || "JSON" === output) this.showMessage("Download Report", l);
+                        
+                        
+                            else {
                             if (0 === t[1].length) return void this.showMessage("Empty Report", "There were no data for selected filters");
                             var i = l + '<br/><br/><div class="box-body table-responsive" style="overflow-x:scroll;padding: 5px;border: solid 1px #DDD;"><table id="tempReportTable" cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-striped"></table></div>';
                             $("#tempReportTable").remove(), $("#" + this.table).html(i), $("#" + this.table).show(), $("#" + this.table + "Form").hide();
@@ -1270,6 +1273,7 @@
             }, {
                 key: "edit",
                 value: function(e) {
+                    // alert(e); return false;
                     this.currentId = e, this.getElement(e, [])
                 }
             }, {
@@ -1781,6 +1785,7 @@
             }, {
                 key: "editDataGroupItem",
                 value: function(e) {
+                    // alert(e); return false;
                     for (var t = e.substring(0, e.lastIndexOf("_")), a = $("#" + t).val(), l = JSON.parse(a), i = {}, r = 0; r < l.length; r++) {
                         var n = l[r];
                         n.id === e && (i = n)

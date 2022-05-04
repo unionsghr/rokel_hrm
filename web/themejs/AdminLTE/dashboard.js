@@ -78,7 +78,7 @@ $(function() {
         series: {
             regions: [{
                     values: visitorsData,
-                    scale: ["#3c8dbc", "#2D79A6"], //['#3E5E6B', '#A6BAC2'],
+                    scale: ["#003C5F", "#2D79A6"], //['#3E5E6B', '#A6BAC2'],
                     normalizeFunction: 'polynomial'
                 }]
         },
@@ -145,8 +145,8 @@ $(function() {
             {
                 title: 'All Day Event',
                 start: new Date(y, m, 1),
-                backgroundColor: "#3c8dbc", //light-blue 
-                borderColor: "#3c8dbc" //light-blue
+                backgroundColor: "#003C5F", //light-blue 
+                borderColor: "#003C5F" //light-blue
             },
             {
                 title: 'Long Event',
@@ -227,14 +227,14 @@ $(function() {
         xkey: 'y',
         ykeys: ['item1', 'item2'],
         labels: ['Item 1', 'Item 2'],
-        lineColors: ['#a0d0e0', '#3c8dbc'],
+        lineColors: ['#a0d0e0', '#003C5F'],
         hideHover: 'auto'
     });
     //Donut Chart
     var donut = new Morris.Donut({
         element: 'sales-chart',
         resize: true,
-        colors: ["#3c8dbc", "#f56954", "#00a65a"],
+        colors: ["#003C5F", "#f56954", "#00a65a"],
         data: [
             {label: "Download Sales", value: 12},
             {label: "In-Store Sales", value: 30},

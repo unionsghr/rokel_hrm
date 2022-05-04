@@ -86,7 +86,7 @@ class TimeSheetsActionManager extends SubActionManager
 
         $this->baseService->audit(
             IceConstants::AUDIT_ACTION,
-            "Timesheet [".$timeSheetEmployee->first_name." ".$timeSheetEmployee->last_name
+            "Timesheet [".$timeSheetEmployee->first_name." ".$timeSheetEmployee->middle_name." ".$timeSheetEmployee->last_name
             ." - ".date("M d, Y (l)", strtotime($timeSheet->date_start))." to "
             .date("M d, Y (l)", strtotime($timeSheet->date_end))."] status changed from:"
             .$oldStatus." to:".$req->status
@@ -276,7 +276,7 @@ class TimeSheetsActionManager extends SubActionManager
         $event['start'] = $holiday->dateh;
         $event['end'] = $holiday->dateh;
 
-        $eventBackgroundColor = "#3c8dbc";
+        $eventBackgroundColor = "#003C5F";
 
         $event['color'] = $eventBackgroundColor;
         $event['backgroundColor'] = $eventBackgroundColor;

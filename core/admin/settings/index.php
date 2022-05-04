@@ -18,6 +18,9 @@ $options1['setShowAddNew'] = 'false';
 $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
     'CompanySetting','Setting','Company','SettingAdapter','{"name":["Company:"]}','name',true,$options1
 ));
+// $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
+// 	'CompanySetting1','CompanySetting','Global Setting','CompanyAdapter','','',true
+// ));
 $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
     'SystemSetting','Setting','System','SettingAdapter','{"name":["System:"]}','name',false,$options1
 ));

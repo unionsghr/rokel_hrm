@@ -133,7 +133,7 @@ var modJs = modJsList['tabEmployeeLeaveAll'];
 <div class="modal-content">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><li class="fa fa-times"/></button>
-		<h3 style="font-size: 17px;">Change Leave Status</h3>
+		<h3 style="font-size: 17px;">Save</h3>
 	</div>
 	<div class="modal-body">
 		<form id="leaveStatusForm">

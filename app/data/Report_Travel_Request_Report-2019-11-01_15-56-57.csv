@@ -1,8 +1,0 @@
-Employee,Type,Purpose,"Travel From","Travel To","Travel Date","Return Date","Other Details",Funding,Status,Created,Updated
-"Andrew Afful",Plane,Travel,Ghana,"Sierra Leone","2018-12-01 16:40:00","2018-12-25 16:40:00","Period of stay is variable","150000.00 182",Approved,"2018-10-30 22:13:03","2018-10-30 22:13:03"
-,Plane,Travel,"Accra, Ghana","SIerra Leone","2018-12-01 16:56:00","2018-12-15 16:56:00",,"6000.00 182",Approved,"2018-11-12 22:31:41","2018-11-12 22:31:41"
-"Derrick Osei-Acheampong",Taxi,Travel,USG,GN,"2018-11-30 11:53:00","2018-12-05 11:53:00",,"4200.00 182",Approved,"2018-11-26 17:24:22","2018-11-26 17:24:22"
-"Chris Armarfio",Plane,Travel,Ghana,Liberia,"2018-11-30 13:48:00","2018-12-29 13:48:00",,"120000.00 182",Approved,"2018-11-26 19:19:43","2018-11-26 19:19:43"
-"Derrick Osei-Acheampong",Plane,Imprest,Ghana,China,"2018-12-01 17:19:00","2018-12-07 17:19:00",,"120000.00 182",Approved,"2018-11-26 22:50:29","2018-11-26 22:50:29"
-"Amos Asiamah","Own Vehicle",Travel,"USG, Ghana","GN Liberia","2019-01-31 12:00:00","2019-02-28 12:00:00","Travel Request","20000.00 182",Processing,"0000-00-00 00:00:00","0000-00-00 00:00:00"
-"Paul Yidana",Taxi,Travel,USG,GN,"2019-07-24 12:37:00","2019-07-24 17:37:00","GN support","15.00 182",Pending,"2019-07-24 17:09:06","2019-07-24 17:09:06"

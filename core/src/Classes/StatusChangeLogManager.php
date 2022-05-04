@@ -62,7 +62,7 @@ class StatusChangeLogManager
                     if (!empty($lgUser->employee)) {
                         $lgEmployee = new Employee();
                         $lgEmployee->Load("id = ?", array($lgUser->employee));
-                        $userName = $lgEmployee->first_name." ".$lgEmployee->last_name;
+                        $userName = $lgEmployee->first_name." ".$lgEmployee->middle_name." ".$lgEmployee->last_name;
                     } else {
                         $userName = $lgUser->userName;
                     }

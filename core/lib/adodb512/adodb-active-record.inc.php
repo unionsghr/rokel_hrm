@@ -424,10 +424,10 @@ class ADODB_Active_Record {
 			} else
 				$pkeys = $this->GetPrimaryKeys($db, $table);
 		}
-		if (empty($pkeys)) {
-			$this->Error("No primary key found for table $table",'UpdateActiveTable');
-			return false;
-		}
+		// if (empty($pkeys)) {
+		// 	$this->Error("No primary key found for table $table",'UpdateActiveTable');
+		// 	return false;
+		// }
 
 		$attr = array();
 		$keys = array();

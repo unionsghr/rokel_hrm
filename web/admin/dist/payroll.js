@@ -147,7 +147,7 @@
                 return d(t, n.default), l(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "name", "pay_period", "department", "date_start", "date_end", "status"]
+                        return ["id", "name", "pay_period", "department", "type", "pay_month","status","documentRef"]
                     }
                 }, {
                     key: "getHeaders",
@@ -162,12 +162,20 @@
                         }, {
                             sTitle: "Department"
                         }, {
-                            sTitle: "Date Start"
+                            sTitle: "Payment Type"
                         }, {
-                            sTitle: "Date End"
-                        }, {
+                            sTitle: "Pay Period"
+                        }, 
+                        // {
+                        //     sTitle: "Date Start"
+                        // },                         
+                        {
                             sTitle: "Status"
-                        }]
+                        },
+                        {
+                            sTitle: "Posting Reference"
+                        }
+                    ]
                     }
                 }, {
                     key: "getFormFields",
@@ -204,16 +212,28 @@
                                 "remote-source": ["CompanyStructure", "id", "title"],
                                 sort: "none"
                             }],
-                            ["date_start", {
-                                label: "Start Date",
-                                type: "date",
+                            ["type", {
+                                label: "Payment Type",
+                                type: "select2",
+                                "remote-source": ["PaymentType", "name", "name"],
+                                sort: "none"
+                            }],
+                            ["pay_month", {
+                                label: "Pay Month-Year",
+                                type: "text",
+                                placeholder:"(eg. JUL-2020)",
                                 validation: ""
                             }],
-                            ["date_end", {
-                                label: "End Date",
-                                type: "date",
-                                validation: ""
-                            }],
+                            // ["date_start", {
+                            //     label: "Start Date",
+                            //     type: "date",
+                            //     validation: ""
+                            // }],
+                            // ["date_end", {
+                            //     label: "End Date",
+                            //     type: "date",
+                            //     validation: ""
+                            // }],
                             ["columns", {
                                 label: "Payroll Columns",
                                 type: "select2multi",
@@ -230,7 +250,29 @@
                             }]
                         ]
                     }
-                }, {
+                }, 
+                {
+                    key: "getFilters",
+                    value: function() {
+                        return [
+                            ["department", {
+                                label: "Department/Branch",
+                                type: "select2",
+                                "allow-null": !0,
+                                "null-label": "Select",
+                                "remote-source": ["CompanyStructure", "id", "title"]
+                            }],
+                            ["pay_month", {
+                                label: "Pay Period",
+                                type: "select2",
+                                "allow-null": !0,
+                                "null-label": "Select",
+                                "remote-source": ["Payroll", "id", "pay_month"]
+                            }]
+                        ]
+                    }
+                }, 
+                {
                     key: "postRenderForm",
                     value: function(e, t) {
                         null != e && void 0 !== e && void 0 !== e.id && null != e.id && (t.find("#pay_period").attr("disabled", "disabled"), t.find("#department").attr("disabled", "disabled"))
@@ -239,41 +281,416 @@
                 {
                     key: "process",
                     value: function(e, t) {
+                        // alert(e);
+                        // let id_ = $(e).val();
+                       $('#payroll_id_').val(e);
+                        // alert(id_);
+
+                        // $.ajax({
+                        //     url: '../../../../utb_hr/app/bulk_api_.php',
+                        //     type: 'post',
+                        //     contentType: 'application/json',
+                        //     dataType: "json",
+                        //     data: JSON.stringify({
+                        //         payroll_id_: e 
+                        //     }), 
+                        //     success: function(data, textStatus, jQxhr) {
+                        //         // console.log(data);
+                        //         // var cal_amount = data;
+                        //         alert(payroll_id_.data); 
+                        //         // alert(data);
+                        //         $('#amount').val(cal_amount.data);
+                      
+                        //     }
+                        // });
+
                         modJs = modJsList.tabPayrollData, modJs.setCurrentPayroll(e), $("#Payroll").hide(), $("#PayrollData").show(), $("#PayrollDataButtons").show(), "Completed" === t ? ($(".completeBtnTable").hide(), $(".saveBtnTable").hide()) : ($(".completeBtnTable").show(), $(".saveBtnTable").show()), modJs.get([])
                     }
-                }, 
+                },
                 {
+                    key: "showMessage",
+                    value: function (e, t) {
+                      var a =
+                          arguments.length > 2 && void 0 !== arguments[2]
+                            ? arguments[2]
+                            : null,
+                        l =
+                          arguments.length > 3 && void 0 !== arguments[3]
+                            ? arguments[3]
+                            : null,
+                        i =
+                          arguments.length > 4 &&
+                          void 0 !== arguments[4] &&
+                          arguments[4],
+                        r = this,
+                        n = "";
+                      (n = i ? "#plainMessageModel" : "#messageModel"),
+                        $(n).off(),
+                        i
+                          ? this.renderModel("plainMessage", e, t)
+                          : this.renderModel("message", e, t),
+                        null != a
+                          ? ($(n).modal({ show: !0 }),
+                            $(n).on("hidden.bs.modal", function () {
+                              a.apply(r, l), $(".modal-backdrop").remove();
+                            }))
+                          : $(n).modal({ backdrop: "static" });
+                    },
+                  },
+                  {
+                      key: "formatNumber",
+                      value: function (num){
+                    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+                      }
+                    },
+                  {
                     key: "view",
-                    value: function(e, t) {
-                        modJs = modJsList.tabPayrollData, modJs.setCurrentPayroll(e), $("#PayrollDataButtons").show(), "Completed" === t ? ($(".completeBtnTable").hide(), $(".saveBtnTable").hide()) : ($(".completeBtnTable").show(), $(".saveBtnTable").show()), modJs.get([])
+                    value: function (e, t, p) {
+                        $('#employee_Id').val(e);
+                        // alert(e);
+                    
+                        this.renderModel(""), $
+                        ("#payroll_summary").modal("show"), $("#employee_Id").val
+                                           
+                    let id_ = e;
+
+$.ajax({
+                        url: '../../../../rokel_hrm/core/payroll_summary.php',
+                        type: 'post',
+                        contentType: 'application/json',
+                        dataType: "json",
+                        async: false,
+                        data: JSON.stringify({
+                            id: id_ 
+                        }), 
+                        success: function(data, textStatus, jQxhr) {
+
+                           
+                            // let approval = data.data1
+                            // if(data.data1 == 'Approved'){
+                            //     alert(JSON.stringify(approval));
+                            // }else if(data.data1 == 'Rejected'){
+                            //     alert(JSON.stringify(approval));
+                            // }
+                            // alert(data); return false;
+                           
+                            if(data.responseCode == '000'){
+                                // alert("here"); return false;
+
+                                let payroll_summary = data.data
+
+                                // alert(JSON.stringify(payroll_summary)); return false;
+                                // <h5><b>Payroll: &nbsp;</b> ${payroll_summary.payroll}</h5>
+
+                        var theDiv = document.getElementById("payrollModelBody");
+                        theDiv.innerHTML = `
+                        <head>
+                        <style>
+                        table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        }
+                        th, td {
+                        padding: 5px;
+                        text-align: left;    
+                        }
+                        tr:nth-child(even) {
+                            background-color: #dddddd;
+                          }
+                        </style>
+                        <script type="text/javascript">  
+                        function thousands_separators(num)
+                    {
+                        var num_parts = num.toString().split(".");
+                        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        return num_parts.join(".");
                     }
+
+                        
+                        </script>  
+                        </head>
+                        <body>
+                        
+                        <table style="width:100%">
+                        <th style = "color:black; background-color: #8ea9dc;"> PAYROLL ITEM </th>
+                        <th style = "color:black; background-color: #8ea9dc;"> AMOUNT (SLL) </th>
+                        <tr>
+                            <th>Basic Salary</th>
+                            <td>${payroll_summary.basic}</td>
+                        </tr>
+                        <tr>
+                            <th>Casual Labour</th>
+                            <td>${payroll_summary.casual_labour}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Car Allowance</th>
+                            <td>${payroll_summary.car_allowance}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Transport Allowance</th>
+                            <td>${payroll_summary.transport}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Lunch Allowance</th>
+                            <td>${payroll_summary.lunch}</td>                            
+                        </tr>
+                
+                        <tr>
+                            <th>Stewards Allowance</th>
+                            <td>${payroll_summary.stewards_allowance}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Displacement Allowance</th>
+                            <td>${payroll_summary.displacement_allowance}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Audit Allowance</th>
+                            <td>${payroll_summary.audit_allowance}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Word Processing Allowance</th>
+                            <td>${payroll_summary.word_processing}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Sundry Allowance</th>
+                            <td>${payroll_summary.sundry_allowance}</td>                            
+                        </tr>
+                       
+                        <tr>
+                            <th>Duty Allowance</th>
+                            <td>${payroll_summary.duty_allowance}</td>                            
+                        </tr>
+                        <tr>
+                        <th>Overtime Allowance</th>
+                        <td>${payroll_summary.overtime}</td>                            
+                    </tr>
+                        <tr>
+                            <th>Gross Salary</th>
+                            <td>${payroll_summary.gross_salary}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Employer NASSIT(10%)</th>
+                            <td>${payroll_summary.employer_nassit}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Employee NASSIT(5%)</th>
+                            <td>${payroll_summary.employee_nassit}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Medical Excess</th>
+                            <td>${payroll_summary.medical_excess}</td>                            
+                        </tr>                       
+                        <tr>
+                            <th>Staff Association</th>
+                            <td>${payroll_summary.staff_association}</td>                            
+                        </tr>
+                        <tr>
+                            <th>PAYE</th>
+                            <td>${payroll_summary.paye}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Witholding Tax</th>
+                            <td>${payroll_summary.witholding_tax}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Total Deduction</th>
+                            <td>${payroll_summary.total_deduction}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Net Salary (Permanent Staff)</th>
+                            <td>${payroll_summary.net_salary}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Net Salary (Contract Staff)</th>
+                            <td>${payroll_summary.net_salary_contract}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Posting Date</th>
+                            <td>${payroll_summary.posting_date}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Verified by</th>
+                            <td>${payroll_summary.verified_by}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Finalized by</th>
+                            <td>${payroll_summary.approved_by}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Finalized Date</th>
+                            <td>${payroll_summary.finalized_date}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Posting Reference</th>
+                            <td>${payroll_summary.documentRef}</td>                            
+                        </tr>
+
+                        </table>
+
+                        </body>
+                        `;
+                        // theDiv.appendChild(content);                            
+                            }else{
+                                alert('Unavailable Data...')
+                            }                                          
+                        }
+                        
+                    });
+                                          
+                   
+                    },
+                  },
+                  {
+                    key: "approve",
+                    value: function(e) {
+                        var profile = this.getCurrentProfile();
+                        let currentProfile = profile.id;
+                        // alert(currentProfile);
+
+                        var e = $("#employee_Id").val();
+
+                        // alert(e);
+                        // alert("Approval...."); return false;
+                        var approval;
+                                               
+                    let id_ = e;
+                    $.ajax({
+                        url: '../../../../rokel_hrm/core/payroll_approve.php',
+                        type: 'post',
+                        contentType: 'application/json',
+                        dataType: "json",
+                        async: false,
+                        data: JSON.stringify({
+                            id: id_,
+                            currentUser: currentProfile
+                        }), 
+                        success: function(data, textStatus, jQxhr) {
+                           
+                            if(data.responseCode == '000'){
+                                alert("Successfully Verified"); 
+
+                                let approval = data.data
+                            }else{alert("Data Unavailable");                        
+                        }
+                    }
+                 });
+                //  alert("Successfully Verified");
+                this.renderModel(""), $
+                        ("#payroll_summary").modal("hide")
+                        location.reload();
+
+                 }
                 }, 
                 {
+                    key: "reject",
+                    value: function(e) {
+                        var e = $("#employee_Id").val();
+                        // alert(e);
+                        // alert("Rejection...."); return false;
+                        // var approval;
+                                               
+                    let id_ = e;
+                    $.ajax({
+                        url: '../../../../rokel_hrm/core/payroll_reject.php',
+                        type: 'post',
+                        contentType: 'application/json',
+                        dataType: "json",
+                        async: false,
+                        data: JSON.stringify({
+                            id: id_ 
+                        }), 
+                        success: function(data, textStatus, jQxhr) {
+                           
+                            if(data.responseCode == '000'){
+                                alert("Rejected Successfully "); 
+
+                                // let approval = data.data
+                            }else{alert("Data Unavailable");                        
+                        }
+                    }
+                 });
+                 alert("Rejected Successfully");
+                this.renderModel(""), $
+                        ("#payroll_summary").modal("hide")
+                        location.reload();
+
+                 }
+                },     
+                {
+                    key: "view_log",
+                    value: function(e) {
+                        $('#employee_Id').val(e);
+                        // alert(e);
+                        // alert("Rejection...."); return false;
+                        // var approval;
+                                               
+                    let id_ = e;
+                    $.ajax({
+                        url: '../../../../rokel_hrm/core/viewPayrollLogs.php',
+                        type: 'post',
+                        contentType: 'application/json',
+                        dataType: "json",
+                        async: false,
+                        data: JSON.stringify({
+                            id: id_ 
+                        }), 
+                        success: function(data, textStatus, jQxhr) {
+                           
+                            if(data.responseCode == '000'){
+                                // alert(" Successfull"); 
+                                let payroll_log = data.data
+                                // alert(payroll_log);return false;
+                                alert(JSON.stringify(payroll_log)); 
+                            }else{alert("Data Unavailable");                        
+                        }
+                    }
+                 });
+                //  alert("Rejected Successfully");
+                // this.renderModel(""), $
+                //         ("#payroll_summary").modal("hide")
+                //         location.reload();
+
+                 }
+                },  
+                  {
+                    key: "closeDialog",
+                    value: function() {
+                        $("#payroll_summary").modal("hide")
+                    }
+                },                    
+                             
+                  {
                     key: "getActionButtonsHtml",
                     value: function(e, t) {
-                        var a = '<div style="width:160px;">_edit__process__clone__delete__view_</div>';
-                        return a = this.showAddNew ? a.replace("_view_", '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View Process Status" onclick="modJs.view(_id_);return false;"></img>') : a.replace("_view_", ""), a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_process_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = (a = (a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace("_process_", '<img class="tableActionButton" src="_BASE_images/run.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Process" onclick="modJs.process(_id_,\'_status_\');return false;"></img>')).replace(/_id_/g, e)).replace(/_status_/g, t[6])).replace(/_BASE_/g, this.baseUrl)
+                        var a = '<div style="width:180px;">_edit__process__clone__delete_</div>';
+                        return a = this.showAddNew ? a.replace("_view_", '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View Process Status" onclick="modJs.view(_id_);return false;"></img>') : a.replace("_view_", ""), a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_process_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"><img class="tableActionButton" src="_BASE_images/view.png" style="cursor:pointer;margin-left:15px;" rel="tooltip" title="View Summary" onclick="modJs.view(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/log.png" style="cursor:pointer;margin-left:15px;" rel="tooltip" title="View Transaction Log" onclick="modJs.view_log(_id_);return false;"></img>') : a.replace("_delete_", ""), a = (a = (a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace("_process_", '<img class="tableActionButton" src="_BASE_images/run.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Process" onclick="modJs.process(_id_,\'_status_\');return false;"></img>')).replace(/_id_/g, e)).replace(/_status_/g, t[6])).replace(/_BASE_/g, this.baseUrl)
                     }
-                }, 
-                // {
-                //     key: "getFailedAcctButtonsHtml",
-                //     value: function(e, t) {
-                //         var a = '<div style="width:120px;">_edit__process__clone__delete_</div>';
-                //         return a = this.showAddNew ? a.replace("_clone_", '<img class="tableFailedAcctButtonsHtml" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_clone_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableFailedAcctButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = (a = (a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableFailedAcctActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace("_process_", '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Process" onclick="modJs.process(_id_,\'_status_\');return false;"></img>')).replace(/_id_/g, e)).replace(/_status_/g, t[6])).replace(/_BASE_/g, this.baseUrl)
-                //     }
-                // }, 
+                },{
+                    key: "getStatusOptionsData",
+                    value: function(e) {
+                        var t = {};
+                        return "Approved" == e || ("Pending" == e ? (t.Approved = "Approved", t.Rejected = "Rejected") : "Rejected" == e || "Cancelled" == e || "Processing" == e || (t["Cancellation Requested"] = "Cancellation Requested", t.Cancelled = "Cancelled")), t
+                    }
+                }, {
+                    key: "getStatusOptions",
+                    value: function(e) {
+                        return this.generateOptions(this.getStatusOptionsData(e))
+                    }
+                },
+
                 {
                     key: "get",
                     value: function(e) {
                         $("#PayrollData").hide(), $("#PayrollForm").hide(), $("#PayrollDataButtons").hide(), $("#Payroll").show(), modJsList.tabPayrollData.setCurrentPayroll(null), i(t.prototype.__proto__ || Object.getPrototypeOf(t.prototype), "get", this).call(this, e)
                     }
                 }, 
-                {
-                    key: "getHelpLink",
-                    value: function() {
-                        return "https://icehrm.gitbook.io/icehrm/payroll-and-expenses/payroll-management"
-                    }
-                }]), t
+                // {
+                //     key: "getHelpLink",
+                //     value: function() {
+                //         return "https://icehrm.gitbook.io/icehrm/payroll-and-expenses/payroll-management"
+                //     }
+                // }
+            ]), t
             }(),
             h = function(e) {
                 function t(e, a, l, i) {
@@ -315,12 +732,9 @@
                         var e = document.createElement("a");
                         e.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(this.getCSVData())), e.setAttribute("download", "payroll_" + this.payrollId + ".csv"), e.style.display = "none", document.body.appendChild(e), e.click(), document.body.removeChild(e)
                     }
-                }, {
-                    key: "getHelpLink",
-                    value: function() {
-                        return "https://icehrm.gitbook.io/icehrm/payroll-and-expenses/payroll-management"
-                    }
-                }]), t
+                }, 
+               
+            ]), t
             }(),
             f = function(e) {
                 function t() {
@@ -329,7 +743,7 @@
                 return d(t, n.default), l(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "name", "colorder", "calculation_hook", "deduction_group", "editable", "enabled"]
+                        return ["id", "name", "salarycomponent_gl", "colorder", "payment_deduction", "deduction_group", "editable", "enabled"]
                     }
                 }, {
                     key: "getHeaders",
@@ -340,9 +754,11 @@
                         }, {
                             sTitle: "Name"
                         }, {
+                            sTitle: "Component GL"
+                        }, {
                             sTitle: "Column Order"
                         }, {
-                            sTitle: "Calculation Method"
+                            sTitle: "Component Type"
                         }, {
                             sTitle: "Calculation Group"
                         }, {
@@ -351,7 +767,8 @@
                             sTitle: "Enabled"
                         }]
                     }
-                }, {
+                }, 
+                {
                     key: "getFormFields",
                     value: function() {
                         return [
@@ -364,13 +781,50 @@
                                 type: "text",
                                 validation: ""
                             }],
-                            ["calculation_hook", {
-                                label: "Predefined Calculations",
-                                type: "select2",
-                                "allow-null": !0,
-                                "null-label": "None",
-                                "remote-source": ["CalculationHook", "code", "name"]
+                            ["salarycomponent_gl", {
+                                label: "Component GL",
+                                type: "text",
+                                validation: "none"
+                                // "allow-null": !0,
+                                // "null-label": "None",
+                                // "remote-source": ["CalculationHook", "code", "name"]
                             }],
+                            
+                            ["posting_column", {
+                                label: "Posting Column",
+                                type: "select",
+                                help: "Yes means the amount on this column should be posted to core-banking, No means otherwise.",
+                                source: [
+                                    ["Yes", "Yes"],
+                                    ["No", "No"]
+                                ]
+                            }],
+                            ["payment_deduction", {
+                                label: "Component Type",
+                                type: "select2",
+                                "allow-null": !1,
+                                "null-label": "None",
+                                "remote-source": ["SalaryComponentType", "code", "name"]
+                                
+                            }],
+                            ["posting_branch", {
+                                label: "Posting Type",
+                                type: "select",
+                                help: "Select the destination of this transaction",
+                                validation: "none",
+                                source: [
+                                    ["011", "Head Office"],
+                                    ["022", "Branch"]
+                                ]
+                            }],
+                            // ["calculation_hook", {
+                            //     label: "Predefined Calculations",
+                            //     type: "select2",
+                            //     help: "If this column is based on a predefined hourly calculation, Select from the list",
+                            //     "allow-null": !0,
+                            //     "null-label": "None",
+                            //     "remote-source": ["CalculationHook", "code", "name"]
+                            // }],
                             ["deduction_group", {
                                 label: "Calculation Group",
                                 type: "select2",
@@ -381,26 +835,33 @@
                             ["salary_components", {
                                 label: "Salary Components",
                                 type: "select2multi",
+                                validation: "none",
+                                help: "Select related salary component, if this column has been defined",
                                 "remote-source": ["SalaryComponent", "id", "name"]
                             }],
                             ["deductions", {
                                 label: "Calculation Method",
                                 type: "select2multi",
+                                validation: "none",
+                                help: "Select the calculation method, if this column relates to a predefined calculation",
                                 "remote-source": ["Deduction", "id", "name"]
                             }],
                             ["add_columns", {
                                 label: "Columns to Add",
                                 type: "select2multi",
+                                validation: "none",
                                 "remote-source": ["PayrollColumn", "id", "name"]
                             }],
                             ["sub_columns", {
                                 label: "Columns to Subtract",
                                 type: "select2multi",
+                                validation: "none",
                                 "remote-source": ["PayrollColumn", "id", "name"]
                             }],
                             ["colorder", {
                                 label: "Column Order",
                                 type: "text",
+                                help: "Specify column position as it appears on payroll report",
                                 validation: "number"
                             }],
                             ["editable", {
@@ -424,27 +885,27 @@
                                 type: "text",
                                 validation: ""
                             }],
-                            ["calculation_columns", {
-                                label: "Calculation Columns",
-                                type: "datagroup",
-                                form: [
-                                    ["name", {
-                                        label: "Name",
-                                        type: "text",
-                                        validation: ""
-                                    }],
-                                    ["column", {
-                                        label: "Column",
-                                        type: "select2",
-                                        "remote-source": ["PayrollColumn", "id", "name"]
-                                    }]
-                                ],
-                                html: '<div id="#_id_#" class="panel panel-default">#_delete_##_edit_#<div class="panel-body">#_renderFunction_#</div></div>',
-                                validation: "none",
-                                render: function(e) {
-                                    return "Variable:" + e.name
-                                }
-                            }],
+                            // ["calculation_columns", {
+                            //     label: "Calculation Columns",
+                            //     type: "datagroup",
+                            //     form: [
+                            //         ["name", {
+                            //             label: "Name",
+                            //             type: "text",
+                            //             validation: ""
+                            //         }],
+                            //         ["column", {
+                            //             label: "Column",
+                            //             type: "select2",
+                            //             "remote-source": ["PayrollColumn", "id", "name"]
+                            //         }]
+                            //     ],
+                            //     html: '<div id="#_id_#" class="panel panel-default">#_delete_##_edit_#<div class="panel-body">#_renderFunction_#</div></div>',
+                            //     validation: "none",
+                            //     render: function(e) {
+                            //         return "Variable:" + e.name
+                            //     }
+                            // }],
                             ["calculation_function", {
                                 label: "Function",
                                 type: "text",
@@ -452,7 +913,8 @@
                             }]
                         ]
                     }
-                }, {
+                }, 
+                {
                     key: "getFilters",
                     value: function() {
                         return [
@@ -465,12 +927,8 @@
                             }]
                         ]
                     }
-                }, {
-                    key: "getHelpLink",
-                    value: function() {
-                        return "https://icehrm.gitbook.io/icehrm/payroll-and-expenses/payroll-management"
-                    }
-                }]), t
+                }, 
+                ]), t
             }(),
             m = function(e) {
                 function t() {
@@ -573,13 +1031,13 @@
                                 type: "select2multi",
                                 "remote-source": ["Deduction", "id", "name"],
                                 validation: "none"
-                            }],
-                            ["deduction_allowed", {
-                                label: "Calculations Assigned",
-                                type: "select2multi",
-                                "remote-source": ["Deduction", "id", "name"],
-                                validation: "none"
                             }]
+                            // ["deduction_allowed", {
+                            //     label: "Calculations Assigned",
+                            //     type: "select2multi",
+                            //     "remote-source": ["Deduction", "id", "name"],
+                            //     validation: "none"
+                            // }]
                         ]
                     }
                 }, {
@@ -593,7 +1051,8 @@
                             }]
                         ]
                     }
-                }]), t
+                }
+            ]), t
             }(),
             y = function(e) {
                 function t() {
@@ -2107,6 +2566,34 @@
                     });
                     for (var d = 0; d < i.length; d++) "datagroup" === i[d][1].type && s.find("#" + i[d][0]).data("field", i[d]);
                     if (!1 === this.showSave ? s.find(".saveBtn").remove() : (s.find(".saveBtn").off(), s.find(".saveBtn").data("modJs", this), s.find(".saveBtn").on("click", function() {
+
+
+                        let id_ = $('#id').val();
+
+                        // alert(id_);
+
+                        // alert('here');
+ 
+                        $.ajax({
+                            url: '../../../../rokel_hrm/app/bulk_api_.php',
+                            type: 'post',
+                            contentType: 'application/json',
+                            dataType: "json",
+                            data: JSON.stringify({
+                                id: id_ 
+                            }), 
+                            success: function(data, textStatus, jQxhr) {
+                                // console.log(data);
+                                var cal_amount = data;
+                                // alert(cal_amount.data); 
+                                // alert(data);
+                                $('#amount').val(cal_amount.data);
+                      
+                            }
+                        });
+
+
+
                             return null != $(this).data("modJs").saveSuccessItemCallback && void 0 !== $(this).data("modJs").saveSuccessItemCallback ? $(this).data("modJs").save($(this).data("modJs").retriveItemsAfterSave(), $(this).data("modJs").saveSuccessItemCallback) : $(this).data("modJs").save(), !1
                         })), !1 === this.showCancel ? s.find(".cancelBtn").remove() : (s.find(".cancelBtn").off(), s.find(".cancelBtn").data("modJs", this), s.find(".cancelBtn").on("click", function() {
                             return $(this).data("modJs").cancel(), !1
@@ -2859,10 +3346,27 @@
                 key: "updateDataFailCallBack",
                 value: function(e, t) {
                     this.hideLoader()
-                }
+                } 
             }, {
+                key: "sendAllCellDataUpdates_",
+                value: function() {
+                    var profile = this.getCurrentProfile();
+                        let currentProfile = profile.id;
+                        // alert(currentProfile); return false;
+
+                    var e = this.cellDataUpdates;
+                    e.rowTable = this.rowTable, e.columnTable = this.columnTable, e.valueTable = this.valueTable, e = this.addAdditionalRequestData("updateAllData", e);
+                    var t = JSON.stringify(e),
+                        a = [];
+                    a.callBackData = [], a.callBackSuccess = "updateDataAllSuccessCallBack", a.callBackFail = "updateDataAllFailCallBack", this.showLoader(), this.customAction("updateAllData", this.modulePath, t, a)
+                }
+            },{
                 key: "sendAllCellDataUpdates",
                 value: function() {
+                    var profile = this.getCurrentProfile();
+                        let currentProfile = profile.id;
+                        // alert(currentProfile);
+
                     var e = this.cellDataUpdates;
                     e.rowTable = this.rowTable, e.columnTable = this.columnTable, e.valueTable = this.valueTable, e = this.addAdditionalRequestData("updateAllData", e);
                     var t = JSON.stringify(e),
@@ -2872,12 +3376,14 @@
             }, {
                 key: "updateDataAllSuccessCallBack",
                 value: function(e, t) {
-                    this.hideLoader(), modJs.cellDataUpdates = {}, modJs.getAllData(!0)
+                    this.hideLoader(), modJs.cellDataUpdates = {}, modJs.getAllData(!0);
+                    alert('Data Saved Successfully');
                 }
             }, {
                 key: "updateDataAllFailCallBack",
                 value: function(e, t) {
                     this.hideLoader()
+                    // alert('Failed to save... Please try again');
                 }
             }, {
                 key: "showActionButtons",

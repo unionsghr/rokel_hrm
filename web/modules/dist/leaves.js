@@ -1082,6 +1082,7 @@
             }, {
                 key: "save",
                 value: function(e, t) {
+                    // alert(e); return false;
                     var a = new n.default(this.getTableName() + "_submit", !0, {
                         ShowPopup: !1,
                         LabelErrorClass: "error"
@@ -2051,9 +2052,19 @@
                             sTitle: "Leave Start Date"
                         }, {
                             sTitle: "Leave End Date"
-                        }, {
+                        },
+                        // {
+                        //     sTitle: "Request Allowance"
+                        // }, 
+                        {
                             sTitle: "Status"
-                        }]
+                        }
+                        // {
+                        //     sTitle: "Allowance Status"
+                        // },{
+                        //     sTitle: "Reference No."
+                        // }
+                        ]
                     }
                 }, {
                     key: "getFormFields",
@@ -2080,9 +2091,14 @@
                             }],
                             ["details", {
                                 label: "Reason",
-                                type: "textarea",
-                                validation: "none"
+                                type: "textarea"
+                                // source: [["Yes", "Yes"],["No", "No"]],
                             }],
+                            // ["req_allowance", {
+                            //     label: "Request Allowance",
+                            //     type: "select",
+                            //     source: [["Yes", "Yes"],["No", "No"]]
+                            // }],
                             ["attachment", {
                                 label: "Attachment",
                                 type: "fileupload",
@@ -2117,7 +2133,7 @@
                 }, {
                     key: "addSuccessCallBack",
                     value: function(e) {
-                        this.hideLoader(), this.showMessage("Successful", "Leave application successful. You will be notified once your supervisor approve your leaves."), this.get([])
+                        this.hideLoader(), this.showMessage("Successful", "Leave application successful. You will be notified once your supervisor approves your leave."), this.get([])
                     }
                 }, {
                     key: "addFailCallBack",
@@ -2185,7 +2201,8 @@
                     value: function(e) {
                         this.showMessage("Error Occured while Applying Leave", e)
                     }
-                }, {
+                },
+                 {
                     key: "doCustomValidation",
                     value: function(e) {
                         try {
@@ -2196,7 +2213,8 @@
                         } catch (e) {}
                         return null
                     }
-                }, {
+                }, 
+                {
                     key: "showLeaveView",
                     value: function() {
                         $("#EmployeeLeaveAll_submit").show(), $("#leave_days_table_cont").hide()
@@ -2338,7 +2356,7 @@
                                 label: "Employee",
                                 type: "select",
                                 "allow-null": !1,
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }],
                             ["leave_type", {
                                 label: "Leave Type",
@@ -2360,6 +2378,10 @@
                                 type: "textarea",
                                 validation: "none"
                             }]
+                            // ["req_allowance", {
+                            //     label: "Request Allowance",
+                            //     type: "select", source: [["Yes", "Yes"],["No", "No"]]
+                            // }]
                         ]
                     }
                 }, {
@@ -2434,7 +2456,7 @@
                                 type: "select2",
                                 "allow-null": !0,
                                 "null-label": "All Employees",
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }],
                             ["leave_type", {
                                 label: "Leave Type",

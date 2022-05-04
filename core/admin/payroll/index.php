@@ -11,11 +11,11 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
 </style>
 <div class="span9">
     <ul class="nav nav-tabs" id="modTab" style="margin-bottom:0px;margin-left:5px;border-bottom: none;">
-        <li class="active"><a id="tabPayrollEmployee" href="#tabPagePayrollEmployee"><?=t('Company Payroll')?></a></li>
+        <li class="active"><a id="tabPayrollEmployee" href="#tabPagePayrollEmployee"><?=t('Payroll Employees')?></a></li>
         <li class=""><a id="tabPayroll" href="#tabPagePayroll"><?=t('Payroll Reports')?></a></li>
         <li class=""><a id="tabPayrollColumn" href="#tabPagePayrollColumn"><?=t('Payroll Columns')?></a></li>
         <li class=""><a id="tabDeductionGroup" href="#tabPageDeductionGroup"><?=t('Calculation Groups')?></a></li>
-        <li class=""><a id="tabDeduction" href="#tabPageDeduction"><?=t('Calculation Methods')?></a></li>
+        <li class=""><a id="tabDeduction" href="#tabPageDeduction"><?=t('Saved Calculations')?></a></li>
         <li class=""><a id="tabPayslipTemplate" href="#tabPagePayslipTemplate"><?=t('Payslip Templates')?></a></li>
     </ul>
 
@@ -43,19 +43,10 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
                 <button class="cancelBtnTable btn" style="margin-right:5px;"><i class="fa fa-times-circle-o"></i> Cancel</button>
                 <button class="saveBtnTable btn btn-primary" style="margin-right:5px;"><i class="fa fa-save"></i> Save</button>
                 <button class="downloadBtnTable btn btn-primary" style="margin-right:5px;"><i class="fa fa-check"></i> Download</button>
-                <form method="POST" action="bulk_api.php">
-               
-                <button class="completeBtnTable btn btn-primary" style="margin-right:5px;"><i class="fa fa-check-square-o"></i> Finalize</button>
-                                               
-                </form>                
+                <!-- <button class="verifyBtnTable btn btn-primary" style="margin-right:5px;"><i class="fa fa-check"></i> Verify</button> -->
+                <form method="POST" action="bulk_api.php" ><input type="hidden" id="payroll_id_" name="payroll_id_"><button type="submit" class="completeBtnTable btn btn-primary" style="margin-right:5px;"><i class="fa fa-check-square-o"></i> Finalize</button></form>
+                               
             </div>
-
-            <!-- Begin process data buttons -->
-            <div id="ProcessDataButtons" style="text-align: right;margin-top: 10px;">
-                <button class="cancelBtnTable btn" style="margin-right:5px;"><i class="fa fa-times-circle-o"></i> Cancel</button>
-                            
-            </div>
-            <!-- End process data buttons -->
 
         </div>
 
@@ -67,15 +58,6 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
 
             </div>
         </div>
-
-        <!--<div class="tab-pane" id="tabPagePayrollColumnTemplate">
-            <div id="PayrollColumnTemplate" class="reviewBlock" data-content="List" style="padding-left:5px;">
-
-            </div>
-            <div id="PayrollColumnTemplateForm" class="reviewBlock" data-content="Form" style="padding-left:5px;display:none;">
-
-            </div>
-        </div>-->
 
         <div class="tab-pane" id="tabPageDeductionGroup">
             <div id="DeductionGroup" class="reviewBlock" data-content="List" style="padding-left:5px;">
@@ -109,6 +91,7 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
 
 </div>
 <script>
+
     var modJsList = new Array();
 
     modJsList['tabPayday'] = new PaydayAdapter('PayFrequency','Payday');
@@ -135,17 +118,35 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
     var modJs = modJsList['tabPayrollEmployee'];
 
     $(".saveBtnTable").off().on('click',function(){
-        modJsList['tabPayrollData'].sendCellDataUpdates();
-    });
-
-    $(".completeBtnTable").off().on('click',function(){
         modJsList['tabPayrollData'].sendAllCellDataUpdates();
+        // modJsList['tabPayrollData'].sendCellDataUpdates();
+        // $(".saveBtnTable").hide();
+        // let id_ = $('#id').val();
+        // alert(id_);
+
+    }); 
+
+    $(".completeBtnTable").off().on('click',function(e){ 
+        modJsList['tabPayrollData'].sendAllCellDataUpdates_();    
+       
+        
         $(".completeBtnTable").hide();
         $(".saveBtnTable").hide();
     });
 
     $(".downloadBtnTable").off().on('click',function(){
         modJsList['tabPayrollData'].downloadPayroll();
+    });
+
+    $(".verifyBtnTable").off().on('click',function(){
+        
+        $(".completeBtnTable").hide();
+        $(".saveBtnTable").hide();
+        $(".completeBtnTable").hide();
+        $(".verifyBtnTable").hide();
+        alert("Verified");
+        modJsList['tabPayrollData'].verifyPayroll();
+        
     });
 
     $(".cancelBtnTable").off().on('click',function(){

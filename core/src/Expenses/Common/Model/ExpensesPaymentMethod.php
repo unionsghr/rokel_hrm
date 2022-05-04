@@ -9,7 +9,7 @@
 namespace Expenses\Common\Model;
 
 use Model\BaseModel;
-
+ 
 class ExpensesPaymentMethod extends BaseModel
 {
     public $table = 'ExpensesPaymentMethods';

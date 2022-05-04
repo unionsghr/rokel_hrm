@@ -1,6 +1,6 @@
 {
     "label": "Medicals",
-    "menu": "Employees",
+    "menu": "System",
     "order": "87",
     "icon": "fa fa-medkit",
     "user_levels": "Admin",

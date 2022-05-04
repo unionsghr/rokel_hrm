@@ -43,7 +43,7 @@ abstract class ApproveModel extends BaseModel
             if (!empty($employee->supervisor)) {
                 $notificationMsg = "A new "
                     .$this->notificationUnitName." has been added by "
-                    . $employee->first_name . " " . $employee->last_name
+                    . $employee->first_name . " " . $employee->middle_name . " " . $employee->last_name
                     . ". Please visit ".$this->notificationModuleName." module to review it";
 
                 BaseService::getInstance()->notificationManager->addNotification(
@@ -77,7 +77,7 @@ abstract class ApproveModel extends BaseModel
                     $admins = BaseService::getInstance()->getAllAdmins();
                     foreach ($admins as $admin) {
                         $notificationMsg = "A new ".$this->notificationUnitName." has been added by "
-                            .$employee->first_name . " " . $employee->last_name . ". Please visit "
+                            .$employee->first_name . " " . $employee->middle_name . " " . $employee->last_name . ". Please visit "
                             .$this->notificationModuleName
                             ." module to review it. You are getting this notification since you are an "
                             ."administrator and the user do not have any supervisor assigned.";
@@ -136,7 +136,7 @@ abstract class ApproveModel extends BaseModel
                 if (!empty($employee->supervisor)) {
                     $notificationMsg = $this->notificationUnitPrefix." "
                         .$this->notificationUnitName." has been updated by "
-                        .$employee->first_name . " " . $employee->last_name
+                        .$employee->first_name . " " . $employee->middle_name . " " . $employee->last_name
                         .". Please visit ".$this->notificationModuleName." module to review it";
 
                     BaseService::getInstance()->notificationManager->addNotification(
@@ -158,7 +158,7 @@ abstract class ApproveModel extends BaseModel
                         foreach ($admins as $admin) {
                             $notificationMsg = $this->notificationUnitPrefix." "
                                 .$this->notificationUnitName." request has been updated by "
-                                .$employee->first_name . " " . $employee->last_name
+                                .$employee->first_name . " " . $employee->middle_name . " " . $employee->last_name
                                 .". Please visit ".$this->notificationModuleName
                                 ." module to review it. You are getting this notification since you are "
                                 ."an administrator and the user do not have any supervisor assigned.";

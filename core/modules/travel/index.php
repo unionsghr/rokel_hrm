@@ -4,11 +4,11 @@
  Developer: Thilina Hasantha (http://lk.linkedin.com/in/thilinah | https://github.com/thilinah)
  */
 
-$moduleName = 'travel';
+$moduleName = 'imprest';
 $moduleGroup = 'modules';
 $moduleMainName = "EmployeeTravelRecord"; // for creating module js lib
 $subModuleMainName = "SubordinateEmployeeTravelRecord";
-$moduleItemName = "Travel Request"; // For permissions
+$moduleItemName = "Imprest Request"; // For permissions
 
 $itemName = $moduleItemName; // for status change popup
 $itemNameLower = strtolower($moduleMainName);  // for status change popup
@@ -21,12 +21,12 @@ $customFields = \Classes\BaseService::getInstance()->getCustomFields("EmployeeTr
 
 $additionalJs = array();
 include APP_BASE_PATH.'modulejslibs.inc.php';
-?><div class="span9">
+?><div class="span9"> 
 
     <ul class="nav nav-tabs" id="modTab" style="margin-bottom:0px;margin-left:5px;border-bottom: none;">
-        <li class="active"><a id="tab<?=$moduleMainName?>" href="#tabPage<?=$moduleMainName?>"><?=t('Travel Requests')?></a></li>
-        <li class=""><a id="tab<?=$subModuleMainName?>" href="#tabPage<?=$subModuleMainName?>"><?=t('Subordinate Travel Requests')?></a></li>
-        <li class=""><a id="tab<?=$appModName?>" href="#tabPage<?=$appModName?>"><?=t('Travel Request Approval')?></a></li>
+        <li class="active"><a id="tab<?=$moduleMainName?>" href="#tabPage<?=$moduleMainName?>"><?=t('Imprest Requests')?></a></li>
+        <li class=""><a id="tab<?=$subModuleMainName?>" href="#tabPage<?=$subModuleMainName?>"><?=t('Subordinate Imprest Requests')?></a></li>
+        <li class=""><a id="tab<?=$appModName?>" href="#tabPage<?=$appModName?>"><?=t('Imprest Request Approval')?></a></li>
     </ul>
 
     <div class="tab-content">
@@ -53,7 +53,7 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
             <div id="<?=$appModName?>Form" class="reviewBlock" data-content="Form" style="padding-left:5px;display:none;">
 
             </div>
-        </div>
+        </div>l
     </div>
 
 </div>

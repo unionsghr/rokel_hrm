@@ -117,7 +117,7 @@
                                 "null-label":"Select",
                                 "sort": "none",
                                 "allow-null": false,
-                                "remote-source": ["Employee", "id", "first_name+last_name", "getActiveSubordinateEmployees"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name", "getActiveSubordinateEmployees"]
                             }],
                             [ "from_date", {
                                 "label":"Date Attended",
@@ -309,7 +309,7 @@
                             ["employee", {
                                 label: "Employee",
                                 type: "select2",
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }],
                             ["project", {
                                 label: "Project",
@@ -330,7 +330,7 @@
                             ["employee", {
                                 label: "Employee",
                                 type: "select2",
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }]
                         ]
                     }

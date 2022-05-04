@@ -11,7 +11,7 @@ namespace Leaves\Common\Model;
 use Classes\BaseService;
 use Employees\Common\Model\EmployeeApproval;
 
-class EmployeeLeaveApprove extends EmployeeLeave
+class EmployeeLeaveApprove extends EmployeeLeave 
 {
     // @codingStandardsIgnoreStart
     public function Find($whereOrderBy, $bindarr = false, $pkeysArr = false, $extra = array())
@@ -23,7 +23,7 @@ class EmployeeLeaveApprove extends EmployeeLeave
             "type = ? and approver = ? and status = -1 and active = 1",
             array('EmployeeLeave',$currentEmployee)
         );
-        $ids = array();
+        $ids = array(); 
         foreach ($approveals as $appr) {
             $ids[] = $appr->element;
         }

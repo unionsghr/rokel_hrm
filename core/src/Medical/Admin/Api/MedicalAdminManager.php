@@ -30,7 +30,10 @@ class MedicalAdminManager extends AbstractModuleManager
     {
 
         $this->addModelClass('StaffMedical');
-        $this->addModelClass('DependantMedical');
+        $this->addModelClass('DependentMedical');
+        $this->addModelClass('MedicalLimit');
+        $this->addModelClass('WorkInjuries');
+        $this->addModelClass('MedEnquiry');
     }
 
     // public function getDashboardItemData()

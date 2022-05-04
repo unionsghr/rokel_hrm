@@ -1,4 +1,5 @@
 ! function() {
+    // var emp_id = '';
     return function e(t, a, l) {
         function i(o, s) {
             if (!a[o]) {
@@ -96,18 +97,21 @@
                 }, {
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "jobId", "first_name", "last_name", "email", "country"]
+                        return ["id", "jobId", "first_name", "middle_name", "last_name", "email", "country"]
                     }
                 }, {
                     key: "getHeaders",
                     value: function() {
                         return [{
-                            sTitle: "ID"
+                            sTitle: "ID",
+                            bVisible: !1
                         }, {
                             sTitle: "Position Applied"
                         }, {
                             sTitle: "First Name"
                         }, {
+                            sTitle: "Middle Name"
+                        },{
                             sTitle: "Last Name"
                         }, {
                             sTitle: "Email"
@@ -137,20 +141,30 @@
                         for (var i = 0; i < t.length; i++) a.push([t[i], t[i]]);
                         for (var n = (new Date).getFullYear(), o = n = parseInt(n); o > n - 25; o--) l.push(["" + o, "" + o]);
                         var s = [
+                            ["id", {
+                                label: "ID",
+                                type: "hidden",
+                                validation: "none"
+                            }],
                             ["jobId", {
                                 label: "Position Applied",
                                 type: "select2",
                                 "remote-source": ["Job", "id", "title"]
                             }],
-                            ["hiringStage", {
-                                label: "Hiring Stage",
-                                type: "select2",
-                                "remote-source": ["HiringPipeline", "id", "name"]
-                            }],
+                            // ["hiringStage", {
+                            //     label: "Hiring Stage",
+                            //     type: "select2",
+                            //     "remote-source": ["HiringPipeline", "id", "name"]
+                            // }],
                             ["first_name", {
                                 label: "First Name",
                                 type: "text",
                                 validation: ""
+                            }],
+                            ["middle_name", {
+                                label: "Middle Name",
+                                type: "text",
+                                validation: "none"
                             }],
                             ["last_name", {
                                 label: "Last Name",
@@ -166,8 +180,8 @@
                                 label: "Gender",
                                 type: "select",
                                 source: [
-                                    ["Male", "Male"],
-                                    ["Female", "Female"]
+                                    ["M", "Male"],
+                                    ["F", "Female"]
                                 ]
                             }],
                             ["city", {
@@ -215,14 +229,16 @@
                                 type: "datagroup",
                                 form: [
                                     ["medicalcondition", {
-                                        label: "Applicable Conditions",
-                                        type: "select2multi",
-                                        "remote-source": ["MedicalCondition", "id", "name"]
+                                        label: "Applicable Condition",
+                                        type: "select2",
+                                        // type: "select2multi",
+                                        "remote-source": ["MedicalCondition", "name", "name"]
                                     }],
                                     ["medicalsymptom", {
-                                        label: "Applicable Symptoms",
-                                        type: "select2multi",
-                                        "remote-source": ["MedicalSymptom", "id", "name"]
+                                        label: "Applicable Symptom",
+                                        type: "select2",
+                                        // type: "select2multi",
+                                        "remote-source": ["MedicalSymptom", "name", "name"]
                                     }],
                                     ["medications", {
                                         label: "Are you currently under medication?",
@@ -270,9 +286,9 @@
                                         ]
                                     }]
                                 ],
-                                html: '<div id="#_id_#" class="panel panel-default"><div class="panel-heading"><b>#_name_#</b> #_delete_##_edit_#</div><div class="panel-body">#_designation_#<br/><span style="color:#999;font-size:11px;font-weight:bold">#_company_#</span><br/><b>Phone :</b>#_phone_#<br/><b>Email :</b>#_email_#<br/></div></div>',
+                                html: '<div id="#_id_#" class="panel panel-default"><div class="panel-heading"><b>#_medicalcondition_#</b> #_delete_##_edit_#</div><div class="panel-body"><b>Health Symptom: </b>#_medicalsymptom_#<br/><b>Medication: </b>#_medications_#<br/><b>Allergies: </b>#_allergies_#<br/><b>Tobacco History: </b>#_tobacco_#<br/><b>Ilegal Drugs: </b>#_drugs_#<br/><b>Alcohol Consumption: </b>#_alcohol_#<br/></div></div>',
                                 validation: "none"
-                            }],
+                            }], 
                             ["work_history", {
                                 label: "Work History",
                                 type: "datagroup",
@@ -497,8 +513,9 @@
                             }],
                             ["industry", {
                                 label: "Prefered Industry",
-                                type: "select2multi",
-                                "remote-source": ["Industry", "name", "name"]
+                                type: "text",
+                                validation: "none"
+                                // "remote-source": ["Industry", "name", "name"]
                             }],
                             ["expectedSalary", {
                                 label: "Expected Salary",
@@ -512,6 +529,11 @@
                                 type: "text",
                                 validation: ""
                             }],
+                            // ["middle_name", {
+                            //     label: "Middle Name",
+                            //     type: "text",
+                            //     validation: "none"
+                            // }],
                             ["last_name", {
                                 label: "Last Name",
                                 type: "text",
@@ -630,6 +652,7 @@
                             a = JSON.stringify(t),
                             l = [];
                         l.callBackData = [], l.callBackSuccess = "renderCandidate", l.callBackFail = "viewFailCallBack", this.customAction("getCandidateObject", "admin=candidates", a, l)
+                  
                     }
                 }, {
                     key: "viewFailCallBack",
@@ -648,13 +671,52 @@
                             }, "created desc"), modJs.subModJsList.tabCandidateCall.parent = this, modJs.subModJsList) modJs.subModJsList.hasOwnProperty(a) && (modJs.subModJsList[a].setPermissions(this.permissions), modJs.subModJsList[a].setFieldTemplates(this.fieldTemplates), modJs.subModJsList[a].setTemplates(this.templates), modJs.subModJsList[a].setCustomTemplates(this.customTemplates), modJs.subModJsList[a].setEmailTemplates(this.emailTemplates), modJs.subModJsList[a].setUser(this.user), modJs.subModJsList[a].initFieldMasterData(), modJs.subModJsList[a].setBaseUrl(this.baseUrl), modJs.subModJsList[a].setCurrentProfile(this.currentProfile), modJs.subModJsList[a].setInstanceId(this.instanceId), modJs.subModJsList[a].setGoogleAnalytics(ga), modJs.subModJsList[a].setNoJSONRequests(this.noJSONRequests));
                         modJs.subModJsList.tabCandidateInterview.setShowFormOnPopup(!0), modJs.subModJsList.tabCandidateInterview.setShowAddNew(!1), modJs.subModJsList.tabCandidateInterview.setShowCancel(!1), modJs.subModJsList.tabCandidateInterview.get([]), modJs.subModJsList.tabCandidateCall.setShowFormOnPopup(!0), modJs.subModJsList.tabCandidateCall.setShowAddNew(!1), modJs.subModJsList.tabCandidateCall.setShowCancel(!1), modJs.subModJsList.tabCandidateCall.get([])
                     }
-                }, {
+                }, 
+                {
                     key: "downloadCV",
                     value: function() {
                         this.candidate.cv.split("?")[0];
                         download(this.candidate.cv_file)
                     }
-                }, {
+                }, 
+                {
+                    key: "recruitStaff",
+                    value: function(e) {
+
+                        let emp_id = this.candidate.id
+
+                        // alert("Candidate Successfully Added to Staff list");                        
+                       
+                        $.ajax({
+                            url: '../../../../rokel_hrm/core/recruitstaff.php',
+                            type: 'post',
+                            contentType: 'application/json',
+                            dataType: "json",
+                            data: JSON.stringify({
+                            employee_id: emp_id 
+                            }),
+                            success: function(data, textStatus, jQxhr) {
+                            
+                            var respose = data;
+
+                            // $('#imprest_amount').val(imprest.data);
+
+                                // alert(respose);
+
+                                // $('#id').val(gl.data);
+                                
+                            }
+                            
+                        });
+
+                        alert("Candidate Successfully Added to Employees");
+                        window.location.reload();
+                        
+                        // this.candidate.cv.split("?")[0];
+                        // download(this.candidate.cv_file)
+                    }
+                }, 
+                {
                     key: "showCV",
                     value: function(e) {
                         $("#cvModel .modal-content").html("");
@@ -863,7 +925,7 @@
                                 label: "Interviewers",
                                 type: "select2multi",
                                 "allow-null": !0,
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }],
                             ["status", {
                                 label: "Status",
@@ -1030,7 +1092,7 @@
                                 label: "Candidate",
                                 type: "select2",
                                 "allow-null": !1,
-                                "remote-source": ["Candidate", "id", "first_name+last_name"]
+                                "remote-source": ["Candidate", "id", "first_name+middle_name+last_name"]
                             }],
                             ["referredByEmail", {
                                 label: "Referred By",
@@ -1053,7 +1115,7 @@
                                 label: "Candidate",
                                 type: "select2",
                                 "allow-null": !1,
-                                "remote-source": ["Candidate", "id", "first_name+last_name"]
+                                "remote-source": ["Candidate", "id", "first_name+middle_name+last_name"]
                             }]
                         ]
                     }

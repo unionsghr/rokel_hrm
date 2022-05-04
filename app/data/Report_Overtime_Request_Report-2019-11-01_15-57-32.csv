@@ -1,5 +1,0 @@
-"Employee ID",Employee,Category,Project,"Start Time","End Time",Notes,Status
-EMP020,"Paul Yidana","Migration Urgency","HRM, Payroll & Expense Mgt. App","2019-07-25 11:06:00","2019-07-26 11:06:00",,Pending
-EMP014,"Stephen Agbeli","Migration Urgency","CRM Application","2019-06-05 17:18:00","2019-06-06 17:18:00",testing,Pending
-,,"Migration Urgency","HRM, Payroll & Expense Mgt. App","2018-11-14 18:33:00","2018-11-14 20:33:00",,Pending
-,,"Migration Urgency","HRM, Payroll & Expense Mgt. App","2018-10-31 16:20:00","2018-11-08 16:20:00","Expected to be deployed by 1st December, 2018",Approved

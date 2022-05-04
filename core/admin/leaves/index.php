@@ -71,14 +71,23 @@ $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
 	'',
 	''
 ));
-$moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
-	'LeaveStartingBalance',
-	'LeaveStartingBalance',
-	'Paid Time Off',
-	'LeaveStartingBalanceAdapter',
-	'',
-	''
-));
+// $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
+// 	'LeaveAllowance',
+// 	'LeaveAllowance',
+// 	'Leave Allowance',
+// 	'LeaveStartingBalanceAdapter',
+// 	'',
+// 	''
+// ));
+
+// $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
+// 	'LeaveStartingBalance',
+// 	'LeaveStartingBalance',
+// 	'Paid Time Off',
+// 	'LeaveStartingBalanceAdapter',
+// 	'',
+// 	''
+// ));
 
 
 $moduleGroup1 = new \Classes\ModuleBuilder\ModuleTabGroup(
@@ -143,6 +152,14 @@ echo \Classes\UIManager::getInstance()->renderModule($moduleBuilder);
 			</div> 
 		</div>
 		<div class="control-group">
+							<label class="control-label" for="employee_id"><?=$itemName?> ID</label>
+							<div class="controls">
+							<input type="text" class="form-control" id="<?=$itemNameLower?>_employee_Id"  name ="<?=$itemNameLower?>_employee_Id">
+							
+								</select>
+							</div>
+						</div>
+		<div class="control-group">
 			<label class="control-label" for="leave_status"><?=t('Status Change Note')?></label>
 			<div class="controls">
 			  	<textarea id="leave_reason" class="form-control" name="leave_reason" maxlength="500"></textarea>
@@ -154,7 +171,7 @@ echo \Classes\UIManager::getInstance()->renderModule($moduleBuilder);
  		<button class="btn btn-primary" onclick="modJs.changeLeaveStatus();"><?=t('Change Leave Status')?></button>
  		<button class="btn" onclick="modJs.closeLeaveStatus();"><?=t('Cancel')?></button>
 	</div>
-</div>
+</div> 
 </div>
 </div>
 

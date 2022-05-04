@@ -49,7 +49,7 @@ abstract class EmailSender
 
             if ($delayed) {
                 $this->sendEmailDelayed(
-                    'IceHrm Notification from '.$notification->type,
+                    'XHRM Notification from '.$notification->type,
                     $user->email,
                     $emailBody,
                     array(),
@@ -58,7 +58,7 @@ abstract class EmailSender
                 );
             } else {
                 $this->sendEmail(
-                    'IceHrm Notification from '.$notification->type,
+                    'XHRM Notification from '.$notification->type,
                     $user->email,
                     $emailBody,
                     array(),

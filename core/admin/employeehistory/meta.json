@@ -10,3 +10,4 @@
     "model_namespace": "\\EmployeeHistory\\Common\\Model",
     "manager": "\\EmployeeHistory\\Admin\\Api\\EmployeehistoryAdminManager"
 }
+

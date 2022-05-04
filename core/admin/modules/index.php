@@ -59,7 +59,7 @@ if(empty($groups)){
 								&nbsp;Leave Management System
 							</h4>
 							<p style="font-size: 1.2em;">
-								Use IceHrm as a Leave / Vacation Management System, Allow Employees to Apply for leave,
+								Use Xhrm as a Leave / Vacation Management System, Allow Employees to Apply for leave,
 								Approve leave requests and track leave balances
 							</p>
 						</div>

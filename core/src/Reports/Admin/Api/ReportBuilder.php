@@ -5,11 +5,11 @@
  * Date: 8/19/17
  * Time: 6:36 PM
  */
+
 namespace Reports\Admin\Api;
 
 use Classes\BaseService;
 use Classes\S3FileSystem;
-use Classes\UIManager;
 use Classes\SettingsManager;
 use Model\File;
 use Model\ReportFile;
@@ -31,7 +31,7 @@ abstract class ReportBuilder
 
         $reportNamesFilled = false;
         $columnNames = array();
-        $reportData = array();
+        $reportData = array(); 
         foreach ($rs as $rowId => $row) {
             $reportData[] = array();
             if (!$reportNamesFilled) {
@@ -54,221 +54,26 @@ abstract class ReportBuilder
         return $reportData;
     }
 
-/*
-// TEMPLATES
-    protected $twig;
-    protected function getDefaultData()
-    {
-        $defaultData = array();
-        $defaultData['BASE_URL'] = BASE_URL;
-        $defaultData['LOGO'] = UIManager::getInstance()->getCompanyLogoUrl();
-        $defaultData['LOGO'] = str_replace("https:", "http:", $defaultData['LOGO']);
-        $compName = $defaultData['companyName'] = SettingsManager::getInstance()->getSetting("Company: Name");
-        LogManager::getInstance()->debug("Logo Url:".$defaultData['LOGO']);
-        return $defaultData;
-    }
-   protected function initTemplateEngine($report)
-    {
-        if ($report->_table = "UserReports") {
-            $path = APP_BASE_PATH."modules/reports/customTemplates/";
-        } else {
-            $path = APP_BASE_PATH."admin/reports/customTemplates/";
-        }
-        $loader = new \Twig_Loader_Filesystem($path);
-        $twigOptions = array();
-        //false
-        if (defined('CACHE_THEME') && CACHE_THEME) {
-            $twigOptions = array(
-            );
-        } else {
-            $twigOptions = array(
-                "cache"=>false
-            );
-        }
-        $this->twig = new \Twig_Environment($loader, $twigOptions);
-    }
-
-
-//End of templates
-
-*/
     public function transformData($name, $value)
     {
-        $value = '<td>'.$value.'</td>';
         return $value;
     }
-
-    // public function createReportFile($report, $data)
-    // {
-    //     $fileFirstPart = "Report_".str_replace(" ", "_", $report->name)."-".date("Y-m-d_H-i-s");
-    //     $fileName = $fileFirstPart.".csv";
-
-    //     $fileFullName = CLIENT_BASE_PATH.'data/'.$fileName;
-    //     $fp = fopen($fileFullName, 'w');
-
-    //     foreach ($data as $fields) {
-    //         fputcsv($fp, $fields);
-    //     }
-
-    //     fclose($fp);
-    //     return array($fileFirstPart, $fileName, $fileFullName);
-    // }
 
     public function createReportFile($report, $data)
     {
         $fileFirstPart = "Report_".str_replace(" ", "_", $report->name)."-".date("Y-m-d_H-i-s");
-        $fileName = $fileFirstPart.".html";
+        $fileName = $fileFirstPart.".csv";
 
         $fileFullName = CLIENT_BASE_PATH.'data/'.$fileName;
-
-    $mysqli = mysqli_connect("localhost", "root", "", "hrmdatatest_utb");
-    if (mysqli_connect_errno($mysqli)) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
-     
-    $date_query = "SELECT * From payroll";
-    $audit_query = "SELECT * FROM auditlog ORDER BY id DESC LIMIT 1";
-
-    $date_res = mysqli_query($mysqli, $date_query);
-
-    $audit_res = mysqli_query($mysqli, $audit_query);
-
-    while ($row = mysqli_fetch_assoc($date_res) ) {
-
-    $date_start = $row['date_start'];
-    $date_end = $row['date_end'];      
-      # code...
-    $date = date("Y-m-d H:i:s");
-
-    }
-
-    while ($row = mysqli_fetch_assoc($audit_res) ) {
-
-    $name = $row['full_name'];
-    // $date_end = $row['date_end'];      
-    //   # code...
-    // $date = date("Y-m-d H:i:s");
-
-    }
-
-
-    // echo $date_end;
-
         $fp = fopen($fileFullName, 'w');
-        $dd = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-            "http://www.w3.org/TR/html4/loose.dtd">
-            <html>
-            <head>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
-            <script type="text/javascript" src="tableExport.js"></script>
-            <script type="text/javascript" src="jquery.base64.js"></script>
-            <script type="text/javascript" src="html2canvas.js"></script>
-            <script type="text/javascript" src="jspdf/libs/sprintf.js"></script>
-            <script type="text/javascript" src="jspdf/jspdf.js"></script>
-            <script type="text/javascript" src="jspdf/libs/base64.js"></script>
-            <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
-            <title>Payroll Report - UTB</title>
-            <meta charset="utf-8">
-            <title>Client Project Timesheet</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content="">
-            <meta name="author" content="">
-            <link href="{{BASE_URL}}themecss/AdminLTE.css" rel="stylesheet">
-            <link href="{{BASE_URL}}themecss/bootstrap.min.css" rel="stylesheet">
-            <link href="{{BASE_URL}}themecss/font-awesome.min.css" rel="stylesheet">
-            <link href="{{BASE_URL}}themecss/ionicons.min.css" rel="stylesheet">
-            <script src="{{BASE_URL}}themejs/bootstrap.js"></script>
-            </head>
-            <body>
-
-
-            <h1 align="center"> UNION TRUST BANK LIMITED </h1><br/>
-            <h2 align="center"> GENERAL PAYROLL REPORT </h2>
-
-            <h4 align="left">Period:  <b>'.$date_start.'</b> to <b>'.$date_end.'</b> </h4>
-            <h4 align="left">Generated On: <b>'.$date.'</b> </h4>
-            <h4 align="left">Generated By: <b>'.$name.'</b> </h4>
-
-            
-            
-            <table id="employees" class="table table-striped">';
 
         foreach ($data as $fields) {
-            $dd .= '<thread>';
-            $dd .= '<tr class="warning">'; 
-             foreach ($fields as $field) {
-                    $dd .= '<td>';
-                    $dd .= $field;
-                    $dd .= '</td>';
-             }           
-           
-            $dd .= '</tr>';
-            $dd .= '</thread>';
+            fputcsv($fp, $fields);
         }
- 
-        $dd.='</table></body></html>';
-// </div>
-        fputs($fp,$dd);
+
         fclose($fp);
-
-
-LogManager::getInstance()->info("=========".implode($data)."========");
-/*
-        $fp = fopen($fileFullName, 'w');
-        while (($data = fgetcsv($fp, 0, ",")) !== false) {
-            $num = count($data);
-            if ($row == 0) {
-                # code...
-                for ($c=0; $c < $num; $c++) { 
-                    # code...
-                   foreach ($data as $fields){ 
-                    $dd .= '<table>';
-                    $dd .= '<tr>';
-                    $dd .= '<td>';
-                    $dd .= $fields[$c];
-                    $dd .= '</td>';
-                    $dd .= '</tr>';
-                    $dd .= '</table>';
-                    }
-                }
-            }
-            else {
-                $data[0];
-
-                for ($c=0; $c < $num; $c++) { 
-                    # code...
-                    $data[$c];
-                }
-                $row++;
-}       
-}
-fclose($f);
-*/
-
-        try {
-            $fileFullNamePdf = CLIENT_BASE_PATH.'data/'.$fileFirstPart.".pdf";
-
-
-            //Try generating the pdf
-            LogManager::getInstance()->debug(
-                "wkhtmltopdf 1:".print_r(WK_HTML_PATH." ".$fileFullName." ".$fileFullNamePdf, true)
-            );
-            exec(WK_HTML_PATH." "."-O landscape"." ".$fileFullName." ".$fileFullNamePdf, $output, $ret);
-            
-
-            LogManager::getInstance()->debug("wkhtmltopdf 2:".print_r($output, true));
-            LogManager::getInstance()->debug("wkhtmltopdf 3:".print_r($ret, true));
-
-            if (file_exists($fileFullNamePdf)) {
-                $fileName = $fileFirstPart.".pdf";
-                $fileFullName = $fileFullNamePdf;
-            }
-        } catch (\Exception $exp) {
-        }
         return array($fileFirstPart, $fileName, $fileFullName);
     }
-
 
     public function saveFile($fileFirstPart, $file, $fileFullName)
     {

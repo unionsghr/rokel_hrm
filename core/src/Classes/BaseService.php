@@ -277,7 +277,7 @@ class BaseService
         $this->checkSecureAccess("get", $obj, $table, $_REQUEST);
         $query = "";
         $queryData = array();
-        if (!empty($filterStr)) {
+        if (!empty($filterStr)) { 
             $filter = json_decode($filterStr);
             if (!empty($filter)) {
                 LogManager::getInstance()->debug("Building filter query");

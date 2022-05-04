@@ -59,7 +59,7 @@ $logoFileUrl = \Classes\UIManager::getInstance()->getCompanyLogoUrl();
 
 $companyName = \Classes\SettingsManager::getInstance()->getSetting('Company: Name');
 
-if(empty($companyName) || $companyName == "Sample Company Pvt Ltd"){
+if(empty($companyName) || $companyName == "Sample Company Ltd"){
     $companyName = APP_NAME;
 }
 
@@ -123,16 +123,20 @@ $chatUserProfile = \Classes\UIManager::getInstance()->getCurrentProfile();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </a>
-        <div class="logo logoResponsive">
-            <?=$companyName?>
+        <div style ="text-align:right" class="logo logoResponsive">
+            <?=$companyName?>   <?php echo "    [".date("D M j, Y")."]";?>
+            
         </div>
+        <!-- <div style = "text-color:white"> <?php echo date("D M j, Y");?> </div> -->
         <div class="navbar-right">
+       
             <ul class="nav navbar-nav">
                 <?=\Classes\UIManager::getInstance()->getMenuItemsHTML();?>
             </ul>
         </div>
     </nav>
 </header>
+
 <?php if(\Classes\UIManager::getInstance()->getCurrentLanguageCode() === 'ar') {?>
     <link href="<?=BASE_URL?>css/rtl.css" rel="stylesheet">
 <?php } ?>
@@ -250,17 +254,7 @@ $chatUserProfile = \Classes\UIManager::getInstance()->getCurrentProfile();
     <!-- Right side column. Contains the navbar and content of the page -->
     <aside class="right-side">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                <?=\Classes\LanguageManager::tran($meta['label'])?>
-                <small>
-                    <?=\Classes\LanguageManager::tran($meta['menu'])?>&nbsp;&nbsp
-                </small>
-            </h1>
-            <a href="#" class="helpLink" target="_blank"
-               style="display:none;color:#f4f4f4;font-size: 2.3rem;float: right;margin-top: -30px;text-shadow: 1px 1px 2px black, 0 0 25px  #800080, 0 0 5px    #800080;">
-                <i class="fa fa-question-circle"></i></a>
-        </section>
+        
 
         <!-- Main content -->
         <section class="content">

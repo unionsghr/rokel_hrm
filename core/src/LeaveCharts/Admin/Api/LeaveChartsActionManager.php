@@ -54,7 +54,7 @@ class LeaveChartsActionManager extends SubActionManager
         }
 
         return [
-            'employee' => $employee->first_name . ' ' . $employee->last_name,
+            'employee' => $employee->first_name . ' ' . $employee->middle_name . ' ' . $employee->last_name,
             'start' => $employeeLeave->date_start.'T00:00:00',
             'image' => $employee->image,
             'details' => $period,

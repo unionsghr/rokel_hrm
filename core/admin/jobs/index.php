@@ -31,8 +31,8 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
 		<li class="active"><a id="tabJobTitles" href="#tabPageJobTitles"><?=t('Job Titles')?></a></li>
 		<li><a id="tabEmploymentStatus" href="#tabPageEmploymentStatus"><?=t('Employment Status')?></a></li>
 		<li><a id="tabPayGrades" href="#tabPagePayGrades"><?=t('Pay Grades')?></a></li>
-		<li><a id="tabNotches" href="#tabPageNotches"><?=t('Notch Setup')?></a></li>
-		<li><a id="tabAnnualRent" href="#tabPageAnnualRent"><?=t('Annual Rent')?></a></li>
+		<!-- <li><a id="tabNotches" href="#tabPageNotches"><?=t('Notch Setup')?></a></li> -->
+		<li><a id="tabAnnualRent" href="#tabPageAnnualRent"><?=t('Designation')?></a></li>
 		<!-- <li><a id="tabEmployeeSeverance" href="#tabPageEmployeeSeverance"><?=t('Severance Setup')?></a></li>
 		<li><a id="tabStaffSeverance" href="#tabPageStaffSeverance"><?=t('Staff Severance')?></a></li>
 		<li><a id="tabStaffInfraction" href="#tabPageStaffInfraction"><?=t('Infraction Letters')?></a></li>
@@ -58,14 +58,14 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
 			</div>
 		</div>
 
-		<div class="tab-pane" id="tabPageNotches">
+		<!-- <div class="tab-pane" id="tabPageNotches">
 			<div id="Notches" class="reviewBlock" data-content="List" style="padding-left:5px;">
 
 			</div>
 			<div id="NotchesForm" class="reviewBlock" data-content="Form" style="padding-left:5px;display:none;">
 
 			</div>
-		</div>
+		</div> -->
 
 		<div class="tab-pane" id="tabPageEmploymentStatus">
 			<div id="EmploymentStatus" class="reviewBlock" data-content="List" style="padding-left:5px;">
@@ -123,7 +123,7 @@ var modJsList = new Array();
 modJsList['tabJobTitles'] = new JobTitleAdapter('JobTitle');
 modJsList['tabPayGrades'] = new PayGradeAdapter('PayGrade');
 modJsList['tabEmploymentStatus'] = new EmploymentStatusAdapter('EmploymentStatus');
-modJsList['tabNotches'] = new NotchesAdapter('Notches');
+// modJsList['tabNotches'] = new NotchesAdapter('Notches');
 
 // modJsList['tabEmployeeSeverance'] = new EmployeeSeveranceAdapter('EmployeeSeverance');
 // modJsList['tabStaffSeverance'] = new StaffSeveranceAdapter('StaffSeverance');

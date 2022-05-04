@@ -136,7 +136,7 @@
                             sTitle: "ID",
                             bVisible: !1
                         }, {
-                            sTitle: "Code"
+                            sTitle: "Serial Number"
                         }, {
                             sTitle: "Type"
                         }, {
@@ -154,7 +154,7 @@
                                 type: "hidden"
                             }],
                             ["code", {
-                                label: "Code",
+                                label: "Serial Number",
                                 type: "text"
                             }],
                             ["type", {

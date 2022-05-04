@@ -35,11 +35,12 @@ if(!empty($profileSwitched)){
 	$activeProfile = $profileCurrent;
 }
 
-
-//read field templates
+  
+//read field templates 
 $fieldTemplates = array();
 $fieldTemplates['hidden'] = file_get_contents(CLIENT_PATH.'/templates/fields/hidden.html');
 $fieldTemplates['text'] = file_get_contents(CLIENT_PATH.'/templates/fields/text.html');
+$fieldTemplates['disabled'] = file_get_contents(CLIENT_PATH.'/templates/fields/disabled.html');
 $fieldTemplates['textarea'] = file_get_contents(CLIENT_PATH.'/templates/fields/textarea.html');
 $fieldTemplates['select'] = file_get_contents(CLIENT_PATH.'/templates/fields/select.html');
 $fieldTemplates['select2'] = file_get_contents(CLIENT_PATH.'/templates/fields/select2.html');
@@ -69,6 +70,9 @@ if(file_exists(MODULE_PATH.'/templates/fields/hidden.html')){
 }
 if(file_exists(MODULE_PATH.'/templates/fields/text.html')){
 	$fieldTemplates['text'] = file_get_contents(MODULE_PATH.'/templates/fields/text.html');
+}
+if(file_exists(MODULE_PATH.'/templates/fields/disabled.html')){
+	$fieldTemplates['disabled'] = file_get_contents(MODULE_PATH.'/templates/fields/disabled.html');
 }
 if(file_exists(MODULE_PATH.'/templates/fields/textarea.html')){
 	$fieldTemplates['textarea'] = file_get_contents(MODULE_PATH.'/templates/fields/textarea.html');

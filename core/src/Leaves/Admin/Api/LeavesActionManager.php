@@ -25,7 +25,6 @@ use Utils\LogManager;
 
 class LeavesActionManager extends SubActionManager
 {
-
     const FULLDAY = 1;
     const HALFDAY = 0;
     const NOTWORKINGDAY = 2;
@@ -35,6 +34,7 @@ class LeavesActionManager extends SubActionManager
 
     private function isLeaveNotificationsEnabled($leaveTypeId)
     {
+       
         $leaveType = new LeaveType();
         $leaveType->Load("id = ?", array($leaveTypeId));
         if (!empty($leaveType->id) && $leaveType->send_notification_emails == "No") {
@@ -60,6 +60,7 @@ class LeavesActionManager extends SubActionManager
 
     public function getLeaveDaysReadonly($req)
     {
+        
         $leaveId = $req->leave_id;
         $leaveLogs = array();
 
@@ -110,11 +111,12 @@ class LeavesActionManager extends SubActionManager
             if (!empty($empLeaveLog->user_id)) {
                 $lgUser = new User();
                 $lgUser->Load("id = ?", array($empLeaveLog->user_id));
+                // LogManager::getInstance()->info("=====lgadmin====>".$lgUser);
                 if ($lgUser->id == $empLeaveLog->user_id) {
                     if (!empty($lgUser->employee)) {
                         $lgEmployee = new Employee();
                         $lgEmployee->Load("id = ?", array($lgUser->employee));
-                        $userName = $lgEmployee->first_name." ".$lgEmployee->last_name;
+                        $userName = $lgEmployee->first_name." ".$lgEmployee->middle_name." ".$lgEmployee->last_name;
                     } else {
                         $userName = $lgUser->userName;
                     }
@@ -238,7 +240,6 @@ class LeavesActionManager extends SubActionManager
 
         //$employee = $this->baseService->getElement('Employee',$this->getCurrentProfileId());
 
-
         $employeeLeave = new EmployeeLeave();
         $employeeLeave->Load("id = ?", array($req->id));
         if ($employeeLeave->id != $req->id) {
@@ -256,7 +257,7 @@ class LeavesActionManager extends SubActionManager
             LogManager::getInstance()->info($employeeLeave->ErrorMsg());
             return new IceResponse(
                 IceResponse::ERROR,
-                "Error occured while saving leave infomation. Please contact admin"
+                "Error occured while saving leave information. Please contact admin"
             );
         }
 
@@ -292,7 +293,7 @@ class LeavesActionManager extends SubActionManager
 
             if ($employeeLeave->status != "Pending") {
                 $notificationMsg
-                    = "Your leave has been $employeeLeave->status by ".$employee->first_name." ".$employee->last_name;
+                    = "Your leave status has been changed to $employeeLeave->status by ".$employee->first_name." ".$employee->middle_name." ".$employee->last_name;
                 if (!empty($req->reason)) {
                     $notificationMsg.=" (Note:".$req->reason.")";
                 }
@@ -315,7 +316,7 @@ class LeavesActionManager extends SubActionManager
         $emp = $this->getEmployeeById($leave->employee);
 
         $params = array();
-        $params['name'] = $emp->first_name." ".$emp->middle_name." ".$emp->last_name;
+        $params['name'] = $emp->first_name." ".$emp->middle_name." ".$emp->middle_name." ".$emp->last_name;
         $params['startdate'] = $leave->date_start;
         $params['enddate'] = $leave->date_end;
         $params['status'] = $leave->status;

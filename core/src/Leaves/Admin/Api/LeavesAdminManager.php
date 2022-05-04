@@ -47,6 +47,7 @@ class LeavesAdminManager extends AbstractModuleManager
         $this->addModelClass('WorkDay');
         $this->addModelClass('HoliDay');
         $this->addModelClass('LeaveRule');
+        $this->addModelClass('LeaveAllowance');
         $this->addModelClass('LeaveGroup');
         $this->addModelClass('LeaveGroupEmployee');
         $this->addModelClass('LeaveStartingBalance');

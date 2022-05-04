@@ -43,6 +43,7 @@ class LeavesActionManager extends SubActionManager
 
     public function createLeaveEmailSender()
     {
+        // LogManager::getInstance()->info("=====lgUser====>");
         return new LeavesEmailSender(
             $this->emailSender,
             $this,
@@ -521,6 +522,8 @@ class LeavesActionManager extends SubActionManager
             if (!empty($empLeaveLog->user_id)) {
                 $lgUser = new User();
                 $lgUser->Load("id = ?", array($empLeaveLog->user_id));
+
+                LogManager::getInstance()->info("=====lgUser====>".$lgUser);
                 if ($lgUser->id == $empLeaveLog->user_id) {
                     if (!empty($lgUser->employee)) {
                         $lgEmployee = new Employee();
@@ -1281,9 +1284,13 @@ class LeavesActionManager extends SubActionManager
         }
 
         //Check if this needs to be multi-approved
+        //ajax
+        $employee_id = $req -> id;
         $apStatus = 0;
         if ($req->status == "Approved") {
             $apStatus = 1;
+            LogManager::getInstance()->info("====>Check for first Approvals ".$employee_id."<====");
+            EmployeeLeave::apileaveapproval($employee_id);
         }
 
         if ($req->status == "Approved" || $req->status == "Rejected") {
@@ -1304,6 +1311,8 @@ class LeavesActionManager extends SubActionManager
                     LogManager::getInstance()->debug($employeeLeave->id."|No multi level approvals|");
                     if ($req->status == "Approved") {
                         $req->status = "Approved";
+                        LogManager::getInstance()->info("====>NO MULTI-LEVEL APPROVALS ".$employee_id."<====");
+                        EmployeeLeave::apileaveapproval($employee_id);
                     }
                 } elseif (empty($currentAp) && !empty($nextAp)) {
                     //Approval process is defined, but this person is a supervisor
@@ -1321,8 +1330,11 @@ class LeavesActionManager extends SubActionManager
                     );
                     if ($req->status == "Approved") {
                         $req->status = "Approved";
+                        LogManager::getInstance()->info("====>ALL MULTI-LEVEL APPROVALS COMPLETED ".$employee_id."<====");
+                        EmployeeLeave::apileaveapproval($employee_id);
                     }
-                } else {
+                } else { 
+                    //
                     //Current employee is an approver and we have another approval level left
                     LogManager::getInstance()->debug(
                         $employeeLeave->id."|Current employee is an approver and we have another approval level left|"
@@ -1380,7 +1392,7 @@ class LeavesActionManager extends SubActionManager
 
         if ($employeeLeave->status != "Pending") {
             $notificationMsg = "Your leave status has been changed to $employeeLeave->status by "
-                .$employee->first_name." ".$employee->last_name;
+                .$employee->first_name." ".$employee->middle_name." ".$employee->last_name;
             if (!empty($req->reason)) {
                 $notificationMsg.=" (Note:".$req->reason.")";
             }
@@ -1402,7 +1414,7 @@ class LeavesActionManager extends SubActionManager
             );
 
             $notificationMsg = "You have been assigned ".$employeeLeave->getDisplayName()
-                ." for approval by ".$employee->first_name." ".$employee->last_name;
+                ." for approval by ".$employee->first_name." ".$employee->middle_name." ".$employee->last_name;
 
             $this->baseService->notificationManager->addNotification(
                 $sendApprovalEmailto,

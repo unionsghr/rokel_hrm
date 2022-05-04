@@ -23,7 +23,7 @@ $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
 echo \Classes\UIManager::getInstance()->renderModule($moduleBuilder);
 
 
-$itemName = 'OvertimeRequest';
+$itemName = 'Overtime Request';
 $moduleName = 'Time Management';
 $itemNameLower = strtolower($itemName);
 

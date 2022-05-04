@@ -25,7 +25,7 @@
     1: [function(e, t, a) {
         "use strict";
         var l = e("./lib");
-        window.SalaryComponentTypeAdapter = l.SalaryComponentTypeAdapter, window.SalaryComponentAdapter = l.SalaryComponentAdapter, window.EmployeeSalaryAdapter = l.EmployeeSalaryAdapter,window.SalariesAdapter = l.SalariesAdapter,window.ContractAdapter = l.ContractAdapter
+        window.SalaryComponentTypeAdapter = l.SalaryComponentTypeAdapter, window.SalaryComponentAdapter = l.SalaryComponentAdapter, window.EmployeeSalaryAdapter = l.EmployeeSalaryAdapter, window.NotchesAdapter = l.NotchesAdapter, window.PaymentTypeAdapter = l.PaymentTypeAdapter, window.SalariesAdapter = l.SalariesAdapter,window.BenefitsAdapter = l.BenefitsAdapter
     }, {
         "./lib": 2
     }],
@@ -117,7 +117,7 @@
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "name", "salarycomp_gl", "branch", "componentType", "details"]
+                        return ["id", "name", "details"]
                     }
                 }, {
                     key: "getHeaders",
@@ -128,15 +128,12 @@
                         }, {
                             sTitle: "Name"
                         },
-                        {
-                            sTitle: "General Ledger"
-                        },
-                        {
-                            sTitle: "Processing Code"
-                        },
-                        {
-                            sTitle: "Salary Component Type"
-                        }, 
+                        // {
+                        //     sTitle: "Posting Type"
+                        // },
+                        // {
+                        //     sTitle: "Salary Component Type"
+                        // }, 
                         {
                             sTitle: "Details"
                         }]
@@ -154,34 +151,29 @@
                                 type: "text",
                                 validation: ""
                             }],
-                            ["salarycomp_gl", {
-                                label: "General Ledger",
-                                type: "text",
-                                validation: ""
-                            }],
-                            ["branch", {
-                                label: "Processing Type",
-                                type: "select",
-                                "allow-null": true,
-                                source:[ 
-                                ["Head Office", "Head Office"],
-                                ["Not Head Office", "Not Head Office"]
-                            ]
-                            }],
-                            ["summary", {
-                                label: "Summary",
-                                type: "select",
-                                // "allow-null": true,
-                                source:[ 
-                                ["Yes", "Yes"],
-                                ["No", "No"]
-                            ]
-                            }],
-                            ["componentType", {
-                                label: "Salary Component Type",
-                                type: "select2",
-                                "remote-source": ["SalaryComponentType", "id", "name"]
-                            }],
+                            // ["branch", {
+                            //     label: "Posting Type",
+                            //     type: "select",
+                            //     "allow-null": false,
+                            //     source:[ 
+                            //     ["Head Office", "Head Office"],
+                            //     ["Branch", "Branch"]
+                            // ]
+                            // }],
+                            // ["summary", {
+                            //     label: "Summary",
+                            //     type: "select",
+                            //     // "allow-null": true,
+                            //     source:[ 
+                            //     ["Yes", "Yes"],
+                            //     ["No", "No"]
+                            // ]
+                            // }],
+                            // ["componentType", {
+                            //     label: "Salary Component Type",
+                            //     type: "select2",
+                            //     "remote-source": ["SalaryComponentType", "id", "name"]
+                            // }],
                             ["details", {
                                 label: "Details",
                                 type: "textarea",
@@ -198,7 +190,7 @@
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "employee", "component", "notch", "working_days", "amount", "annual_rent", "ann_date"]
+                        return ["id", "employee", "component"]
                          
                     }
                 }, {
@@ -211,18 +203,23 @@
                             sTitle: "Employee"
                         }, {
                             sTitle: "Salary Component"
-                        }, {
-                            sTitle: "Notch"
-                        }, {
-                            sTitle: "No. of Worked Days"
-                        }, {
-                            sTitle: "Value"
-                        }, {
-                            sTitle: "Annual Rent (SLL)"
-                        },
-                        {
-                            sTitle: "Anniversary Date"
-                        }]
+                        }, 
+                        // {
+                        //     sTitle: "Notch"
+                        // }, 
+                        // {
+                        //     sTitle: "No. of Days Worked"
+                        // }, 
+                        // {
+                        //     sTitle: "Amount"
+                        // } 
+                        // {
+                        //     sTitle: "Annual Rent (SLL)"
+                        // },
+                        // {
+                        //     sTitle: "Anniversary Date"
+                        // }
+                    ]
                     }
                 }, {
                     key: "getFormFields",
@@ -242,23 +239,25 @@
                                 type: "select2",
                                 "remote-source": ["SalaryComponent", "id", "name"]
                             }],
-                            ["notch", {
-                                "label": "Notch",
-                                "type": "select2",
-                                "allow-null": true,
-                                "remote-source": ["Notches", "id", "name"]
-                            }],
+                            // ["notch", {
+                            //     "label": "Notch",
+                            //     "type": "select2",
+                            //     "allow-null": true,
+                            //     "remote-source": ["Notches", "id", "name"]
+                            // }],
                             ["working_days", {
-                                label: "No. of Worked Days",
+                                label: "No. of Working Days",
                                 type: "text",
+                                help: "**Applicable to ONLY Basic Salary",
                                 validation: "none"
                             }],
                             ["amount", {
-                                label: "Value",
+                                label: "Amount",
                                 type: "text",
+                                help: "**Applicable to all non-calculated components (E.g Medical Excess, Union Dues etc.), Not Applicable to Basic Salary",
                                 // validation: "none"
                                 validation: "none"
-                            }],
+                            }]
                             // ["details", {
                             //     label: "Details",
                             //     type: "textarea",
@@ -279,15 +278,15 @@
                     }
                 }]), t
             }(),
-            j = function(e) {
+            f = function(e) {
                 function t() {
                     return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
                 }
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "employee", "emp_id", "pay_grade", "notch", "branch_code", "account_no","basic_salary", "car_allowance", "honorarium", "transport","lunch","monthly_rent","gross_salary","nassit","employer_nassit","medical_excess","union_dues","paye","total_deduction","net_salary"]
-                        // "pay_grade" = ["Paygrades", "id", "name"]
+                        return ["id", "name", "paygrade", "currency", "amount"]
+                         
                     }
                 }, {
                     key: "getHeaders",
@@ -296,74 +295,188 @@
                             sTitle: "ID",
                             bVisible: !1
                         }, {
-                            sTitle: "Employee"
+                            sTitle: "Name"
+                        }, {
+                            "sTitle": "Pay Grade"
                         },{
-                            sTitle: "Employee ID"
-                        },{
-                            sTitle: "Pay Grade"
-                        },{
-                            sTitle: "Notch"
+                            "sTitle": "Currency"
+                        }, {
+                            "sTitle": "Amount"
                         }, 
-                        {
-                            sTitle: "Branch Code"
-                        },
-                        {
-                            sTitle: "A/C No."
-                        },{
-                            sTitle: "Basic Salary"
+                        // {
+                        //     "sTitle": "Monthly Basic"
+                        // }, {
+                        //     "sTitle": "Transport Allowance"
+                        // }, {
+                        //     "sTitle": "Lunch Allowance"
+                        // }, {
+                        //     "sTitle": "Rent Allowance"
+                        // }, {
+                        //     "sTitle": "Car Allowance"
+                        // },
+                        //  {
+                        //     "sTitle": "Honorarium"
+                        // }
+                    ]
+                    }
+                }, {
+                    key: "getFormFields",
+                    value: function() {
+                        return [
+                            ["id", {
+                                label: "ID",
+                                type: "hidden"
+                            }],
+                            ["name", {
+                                "label": "Notch Name",
+                                "type": "text"
+                            }],
+                            ["paygrade", {
+                                "label": "Pay Grade",
+                                "type": "select2",
+                                "allow-null": true,
+                                "null-value": "Select",
+                                "remote-source": ["PayGrade", "id", "name"]
+                            }],
+                            ["currency", {
+                                "label": "Currency",
+                                "type": "select2",
+                                "allow-null": true,
+                                "null-value": "Select",
+                                "remote-source": ["CurrencyType", "code", "code"]
+                            }],
+                            ["amount", {
+                                "label": "Amount",
+                                "type": "text",
+                                "validation": ""
+                            }],
+                            // ["transport_rate", {
+                            //     "label": "Transport Allowance Rate (%)",
+                            //     "type": "text",
+                            //     "validation": ""
+                            // }],
+                            // ["lunch_rate", {
+                            //     "label": "Lunch Allowance Rate (%)",
+                            //     "type": "text",
+                            //     "validation": ""
+                            // }],
+                            // ["rent_rate", {
+                            //     "label": "Rent Allowance Rate (%)",
+                            //     "type": "text",
+                            //     "validation": ""
+                            // }],
+                            // ["car_rate", {
+                            //     "label": "Car Allowance",
+                            //     "type": "text",
+                            //     "validation": ""
+                            // }],
+                            // ["honorarium", {
+                            //     "label": "Honorarium",
+                            //     "type": "text",
+                            //     "validation": ""
+                            // }]
+                            // ["medical", {
+                            //     "label": "Medical Excess",
+                            //     "type": "text",
+                            //     "validation": ""
+                            // }],
+                            // ["union_dues", {
+                            //     "label": "Union Dues",
+                            //     "type": "text",
+                            //     "validation": ""
+                            // }]
+                        ]
+                    }
+                }, 
+                // {
+                //     key: "getFilters",
+                //     value: function() {
+                //         return [
+                //             ["employee", {
+                //                 label: "Employee",
+                //                 type: "select2",
+                //                 "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
+                //             }]
+                //         ]
+                //     }
+                // }
+            ]), t
+            }(),
+            k = function(e) {
+                function t() {
+                    return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
+                }
+                return u(t, n.default), i(t, [{
+                    key: "getDataMapping",
+                    value: function() {
+                        return ["id", "name", "description"]
+                         
+                    }
+                }, {
+                    key: "getHeaders",
+                    value: function() {
+                        return [{
+                            sTitle: "ID",
+                            bVisible: !1
                         }, {
-                            sTitle: "Car All."
+                            sTitle: "Payment Type"
                         }, {
-                            sTitle: "Honorarium"
-                        },{
-                            sTitle: "Transport"
-                        },
-                        {
-                            sTitle: "Lunch"
-                        },
-                        // {
-                        //     sTitle: "Rent Witheld"
-                        // },
-                        {
-                            sTitle: "Rent"
-                        },
-                        {
-                            sTitle: "Gross Salary"
-                        },
-                        {
-                            sTitle: "Employee NASSIT"
-                        },
-                        {
-                            sTitle: "Employer NASSIT (10%)"
-                        },
-                        {
-                            sTitle: "Medical Excess"
-                        },
-                        {
-                            sTitle: "Union Dues"
-                        },
-                        // {
-                        //     sTitle: "Basic After Nassit"
-                        // },
-                        // {
-                        //     sTitle: "Total Allowance"
-                        // },
+                            "sTitle": "Description"
+                        }]
+                    }
+                }, {
+                    key: "getFormFields",
+                    value: function() {
+                        return [
+                            ["id", {
+                                label: "ID",
+                                type: "hidden"
+                            }],
+                            ["name", {
+                                "label": "Payment Type",
+                                "type": "text"
+                            }],
+                            ["description", {
+                                "label": "Description",
+                                "type": "text",
+                                "validation": "none"
+                            }]
+                        ]
+                    }
+                }, 
+               
+            ]), t
+            }(),
+            j = function(e) {
+                function t() {
+                    return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
+                }
+                return u(t, n.default), i(t, [{
+                    key: "getDataMapping",
+                    value: function() {
+                        // $(".basic_salary").text('$' + parseFloat(total, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+                        // alert();
+
+                        return ["id", "component", "state", "percentage_change","date"]
                         
-                        // {
-                        //     sTitle: "Taxable Inc."
-                        // },
-                        {
-                            sTitle: "PAYE"
+                    }
+                }, {
+                    key: "getHeaders",
+                    value: function() {
+                        return [{
+                            sTitle: "ID",
+                            bVisible: !1
+                        }, {
+                            sTitle: "Component/Notch"
+                        },{
+                            sTitle: "Increment/Decrement"
+                        },{
+                            sTitle: "% Change"
                         },
-                        // {
-                        //     sTitle: "Taxable All."
-                        // },
                         {
-                            sTitle: "Total Deduction"
-                        },
-                        {
-                            sTitle: "Net Salary"
-                        }
+                            sTitle: "Date"
+                        } 
+                        
                     ]
                     }
                 }, 
@@ -376,57 +489,32 @@
                                 label: "ID",
                                 type: "hidden"
                             }],
-                            ["employee", {
-                                label: "Employee",
-                                type: "select2",
-                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
-                            }],
-                            // ["component", {
-                            //     label: "Salary Component",
-                            //     type: "select2",
-                            //     "remote-source": ["SalaryComponent", "id", "name"]
-                            // }],
-                            ["notch", {
+                            ["component", {
                                 "label": "Notch",
                                 "type": "select2",
                                 "allow-null": true,
+                                "null-label": "All Notches",
                                 "remote-source": ["Notches", "id", "name"]
                             }],
-                            ["working_days", {
-                                label: "No. of Worked Days",
-                                type: "text",
-                                validation: "none"
-                            }],
-                            ["monthly", {
-                                label: "Monthly Rent?",
-                               "type": "select2",
-                                "remote-source": ["Salaries1", "id", "name"]
-                                
-                            }],
-                            ["honorarium", {
-                                label: "Honorarium(SLL)",
-                                type: "text",
-                                validation: "none"
-                            }],
-                            ["medical_excess", {
-                                label: "Medical Excess (SLL)",
-                                type: "text",
-                                validation: "none"
-                            }],
-                            ["union_dues", {
-                                label: "Union Dues (SLL)",
-                                type: "text",
-                                validation: "none"
-                            }],
-                            ["summary", {
-                                label: "Summary",
+                            
+                            ["state", {
+                                label: "Increment/Decrement",
                                 type: "select",
                                 validation: "none",
                                 source:[ 
-                                    ["Yes", "Yes"],
-                                    ["No", "No"]
-                                ]
-                            }]
+                                    ["Increment", "Increment"],
+                                    ["Decrement", "Decrement"]
+                                ],
+                                default: "111"
+                            }],
+                            
+                            ["percentage_change", {
+                                label: "% Change",
+                                type: "text",
+                                help: "Input the percentage change you want to apply to the selected notch. Eg. 5, 10, 15 etc",
+                                validation: "none"
+                            }],
+                                         
                             
                         ]
                     }
@@ -435,14 +523,32 @@
                     key: "getFilters",
                     value: function() {
                         return [
-                            ["employee", {
-                                label: "Employee",
-                                type: "select2",
-                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
+                            ["component", {
+                                "label": "Notch",
+                                "type": "select2",
+                                "allow-null": true,
+                                "remote-source": ["Notches", "id", "name"]
+                            }],
+                            ["state", {
+                                label: "Increment/Decrement",
+                                type: "select",
+                                validation: "none",
+                                source:[ 
+                                    ["Increment", "Increment"],
+                                    ["Decrement", "Decrement"]
+                                ]
                             }]
                         ]
                     }
-                }]), t
+                },
+                {
+                    key: "getActionButtonsHtml",
+                    value: function(e, t) {
+                        var a = '<div style="width:1px;"> </div>';
+                        return a = this.showAddNew ? a.replace("_view_", '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View Process Status" onclick="modJs.view(_id_);return false;"></img>') : a.replace("_view_", ""), a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_process_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = (a = (a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace("_process_", '<img class="tableActionButton" src="_BASE_images/run.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Process" onclick="modJs.process(_id_,\'_status_\');return false;"></img>')).replace(/_id_/g, e)).replace(/_status_/g, t[6])).replace(/_BASE_/g, this.baseUrl)
+                    }
+                }, 
+            ]), t
             }(),
             g = function(e) {
                 function t() {
@@ -451,7 +557,7 @@
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "employee", "account_no", "nassit_no","basic_salary", "car_allowance", "honorarium", "transport","lunch","monthly_rent","nassit","medical_excess","union_dues","gross_salary","taxable_income","paye","total_deduction","net_salary"]
+                        return ["id", "name", "description", "notch","general_ledger","min_yrs_of_service","max_yrs_of_service", "benefits_rate","amount","posting_date"]
                     }
                 }, {
                     key: "getHeaders",
@@ -460,66 +566,25 @@
                             sTitle: "ID",
                             bVisible: !1
                         }, {
-                            sTitle: "Employee"
+                            sTitle: "Name"
                         }, {
-                            sTitle: "A/C No."
+                            sTitle: "Description"
                         }, {
-                            sTitle: "NASSIT No."
-                        },
-                        // {
-                        //     sTitle: "Notch"
-                        // },
-                        {
-                            sTitle: "Basic Salary"
-                        }, {
-                            sTitle: "Car All."
-                        }, {
-                            sTitle: "Honorarium"
+                            sTitle: "Notch"
                         },{
-                            sTitle: "Transport All."
-                        },
-                        {
-                            sTitle: "Lunch All."
-                        },
-                        // {
-                        //     sTitle: "Rent Witheld"
-                        // },
-                        {
-                            sTitle: "Monthly Rent"
-                        },
-                        {
-                            sTitle: "Employee NASSIT"
-                        },
-                        {
-                            sTitle: "Medical Excess"
-                        },
-                        {
-                            sTitle: "Union Dues"
-                        },
-                        // {
-                        //     sTitle: "Basic After Nassit"
-                        // },
-                        // {
-                        //     sTitle: "Total Allowance"
-                        // },
-                        {
-                            sTitle: "Gross Salary"
-                        },
-                        {
-                            sTitle: "Taxable Inc."
-                        },
-                        {
-                            sTitle: "PAYE"
-                        },
-                        // {
-                        //     sTitle: "Taxable All."
-                        // },
-                        {
-                            sTitle: "Total Deduction"
-                        },
-                        {
-                            sTitle: "Net Salary"
+                            sTitle: "General Ledger"
+                        }, {
+                            sTitle: "Min Yrs of Service"
+                        },{
+                            sTitle: "Max Yrs of Service"
+                        }, {
+                            sTitle: "Benefits Rate"
+                        },{
+                            sTitle: "Amount"
+                        }, {
+                            sTitle: "Posting Date"
                         }
+                    
                     ]
                     }
                 }, 
@@ -532,44 +597,51 @@
                                 label: "ID",
                                 type: "hidden"
                             }],
-                            ["employee", {
-                                label: "Employee",
-                                type: "select2",
-                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
-                            }],
-                            // ["component", {
-                            //     label: "Salary Component",
-                            //     type: "select2",
-                            //     "remote-source": ["SalaryComponent", "id", "name"]
-                            // }],
-                            ["basic_salary", {
-                                label: "Basic Salary",
+                            ["name", {
+                                label: "Name",
                                 type: "text",
                                 validation: ""
                             }],
-                            ["working_days", {
-                                label: "No. of Worked Days",
-                                type: "text",
+                            ["description", {
+                                label: "Description",
+                                type: "textarea",
                                 validation: "none"
                             }],
-                            ["monthly", {
-                                label: "Monthly Rent?",
-                                type: "select",
-                                source: [
-                                    ["Yes", "Yes"],
-                                    ["No", "No"]                                    
-                                ]
-                            }],
-                            ["medical_excess", {
-                                label: "Medical Excess (SLL)",
+                            ["general_ledger", {
+                                label: "General Ledger",
                                 type: "text",
-                                validation: "none"
+                                validation: ""
                             }],
-                            ["union_dues", {
-                                label: "Union Dues (SLL)",
+                            [
+                                "notch",
+                                {
+                                  label: "Notch",
+                                  type: "select2",
+                                  "allow-null": false,
+                                  "remote-source": ["Notches", "id", "name"],
+                                },
+                              ],
+                              ["min_yrs_of_service", {
+                                label: "Minimum Years of Service",
                                 type: "text",
-                                validation: "none"
+                                validation: ""
+                            }],
+                            ["max_yrs_of_service", {
+                                label: "Maximum Years of Service",
+                                type: "text",
+                                validation: ""
+                            }],
+                            ["benefits_rate", {
+                                label: "Benefits Rate (%)",
+                                type: "text",
+                                validation: ""
                             }]
+                            // ["amount", {
+                            //     label: "Amount",
+                            //     type: "text",
+                            //     validation: "none"
+                            // }]
+                           
                         ]
                     }
                 }, 
@@ -577,21 +649,44 @@
                     key: "getFilters",
                     value: function() {
                         return [
-                            ["employee", {
-                                label: "Employee",
-                                type: "select2",
-                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
-                            }]
+                            [
+                                "notches",
+                                {
+                                  label: "Notch",
+                                  type: "select2",
+                                  "allow-null": true,
+                                  "remote-source": ["Notches", "id", "name"],
+                                },
+                              ]
                         ]
                     }
-                }]), t
+                },
+                {
+                    key: "doCustomValidation",
+                    value: function (e) {
+                      try {
+                        if (e.min_yrs_of_service > e.max_yrs_of_service) {
+                          
+                          // var t = new Date(e.start_date);
+                        //   if (new Date(e.recruitment_date) < t)
+                            return "Minimum Years of Service cannot exceed Maximum Years of Service";
+                        //   else if (new Date(e.start_date) < t)
+                        //     return "Date of Birth should be earlier than Start Date";
+                        }
+                      } catch (e) {}
+                      return null;
+                    },
+                  }
+            ]), t
             }();
         t.exports = {
             SalaryComponentTypeAdapter: c,
             SalaryComponentAdapter: d,
             EmployeeSalaryAdapter: h,
+            NotchesAdapter: f,
+            PaymentTypeAdapter: k,
             SalariesAdapter:j,
-            ContractAdapter:g
+            BenefitsAdapter:g
         }
     }, {
         "../../../api/AdapterBase": 4
@@ -1838,6 +1933,58 @@
                     });
                     for (var c = 0; c < i.length; c++) "datagroup" === i[c][1].type && s.find("#" + i[c][0]).data("field", i[c]);
                     if (!1 === this.showSave ? s.find(".saveBtn").remove() : (s.find(".saveBtn").off(), s.find(".saveBtn").data("modJs", this), s.find(".saveBtn").on("click", function() {
+                        // alert('here');
+                        let comp = $('#component').val();
+                        let stat = $('#state').val();
+                        let change = $('#percentage_change').val();
+                        
+                        // alert(comp);
+                        // alert(stat);
+                        // alert(change);
+
+                        $.ajax({
+                            url: '../../../../rokel_hrm/core/salary_increments.php',
+                            type: 'post',
+                            contentType: 'application/json',
+                            dataType: "json",
+                            data: JSON.stringify({
+                                component: comp,
+                                status: stat,
+                                percentage_change: change 
+                                // category: category 
+                            }),
+                            success: function(data, textStatus, jQxhr) {
+                                // console.log(data);
+                                // alert(data);
+                                
+                                var cal_local_currency = data;
+
+                                $('#local_equivalent').val(cal_local_currency.data);   
+                            }   
+                        });
+/*
+                        $.ajax({
+                            url: '../../../../rokel_hrmm/core/salary_decrement.php',
+                            type: 'post',
+                            contentType: 'application/json',
+                            dataType: "json",
+                            data: JSON.stringify({
+                                component: comp,
+                                status: stat,
+                                percentage_change: change 
+                                // category: category 
+                            }),
+                            success: function(data, textStatus, jQxhr) {
+                                // console.log(data);
+                                // alert(data);
+                                
+                                var cal_local_currency = data;
+
+                                $('#local_equivalent').val(cal_local_currency.data);   
+                            }   
+                        });
+*/
+
                             return null != $(this).data("modJs").saveSuccessItemCallback && void 0 !== $(this).data("modJs").saveSuccessItemCallback ? $(this).data("modJs").save($(this).data("modJs").retriveItemsAfterSave(), $(this).data("modJs").saveSuccessItemCallback) : $(this).data("modJs").save(), !1
                         })), !1 === this.showCancel ? s.find(".cancelBtn").remove() : (s.find(".cancelBtn").off(), s.find(".cancelBtn").data("modJs", this), s.find(".cancelBtn").on("click", function() {
                             return $(this).data("modJs").cancel(), !1
@@ -2285,13 +2432,15 @@
                 value: function(e) {
                     return modJs.getActionButtonsHtml(e.aData[0], e.aData)
                 }
-            }, {
+            }, 
+            {
                 key: "getActionButtonsHtml",
                 value: function(e, t) {
                     var a = '<div style="width:80px;">_edit__delete__clone_</div>';
                     return a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_clone_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(/_BASE_/g, this.baseUrl)
                 }
-            }, {
+            },
+             {
                 key: "generateRandom",
                 value: function(e) {
                     for (var t = new Date, a = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", l = "", i = e; i > 0; --i) l += a[Math.round(Math.random() * (a.length - 1))];

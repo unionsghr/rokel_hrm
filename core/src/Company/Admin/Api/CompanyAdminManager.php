@@ -39,6 +39,10 @@ class CompanyAdminManager extends AbstractModuleManager
     {
         $this->addModelClass('CompanyStructure');
         $this->addModelClass('Timezone');
+        $this->addModelClass('Vw_branches');
+        $this->addModelClass('Vw_departments');
+        $this->addModelClass('Vw_units');
+        $this->addModelClass('Vw_outlets');
     }
     public function getDashboardItemData()
     {

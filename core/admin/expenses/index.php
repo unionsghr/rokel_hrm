@@ -21,6 +21,10 @@ $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
 	'ExpensesPaymentMethod','ExpensesPaymentMethod','Payment Methods','ExpensesPaymentMethodAdapter','','',false
 ));
 $moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
+	'ExpensesBusinessPurpose','ExpensesBusinessPurpose','Business Purpose','ExpensesBusinessPurposeAdapter','','',false
+));
+
+$moduleBuilder->addModuleOrGroup(new \Classes\ModuleBuilder\ModuleTab(
 	'EmployeeExpense','EmployeeExpense','Employee Expenses','EmployeeExpenseAdminAdapter','','',false,$options
 ));
 echo \Classes\UIManager::getInstance()->renderModule($moduleBuilder);

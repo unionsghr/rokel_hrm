@@ -116,7 +116,7 @@
                                 label: "Coordinator",
                                 type: "select2",
                                 "allow-null": !1,
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }],
                             ["trainer", {
                                 label: "Trainer",
@@ -170,7 +170,7 @@
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "name", "course", "scheduled", "status", "deliveryMethod", "deliveryLocation", "attendanceType", "requireProof"]
+                        return ["id", "name", "course", "link", "scheduled", "deliveryMethod", "deliveryLocation", "attendanceType", "requireProof", "status"]
                     }
                 }, {
                     key: "getHeaders",
@@ -183,10 +183,10 @@
                         }, {
                             sTitle: "Course"
                         }, {
+                            sTitle: "Link"
+                        }, {
                             sTitle: "Scheduled Time"
-                        }, {
-                            sTitle: "Status"
-                        }, {
+                        },  {
                             sTitle: "Delivery Method"
                         }, {
                             sTitle: "Delivery Location"
@@ -194,6 +194,8 @@
                             sTitle: "Attendance Type"
                         }, {
                             sTitle: "Training Certificate Required"
+                        }, {
+                            sTitle: "Status"
                         }]
                     }
                 }, {
@@ -213,6 +215,11 @@
                                 label: "Course",
                                 type: "select2",
                                 "remote-source": ["Course", "id", "name+code"]
+                            }],
+                            ["link", {
+                                label: "Session Link (URL)",
+                                type: "text",
+                                validation: "none"
                             }],
                             ["description", {
                                 label: "Details",
@@ -263,6 +270,11 @@
                                     ["Yes", "Yes"],
                                     ["No", "No"]
                                 ]
+                            }],
+                            ["cost_of_training", {
+                                label: "Cost of Training (SLL)",
+                                type: "text",
+                                validation: "None"
                             }]
                         ]
                     }
@@ -356,12 +368,21 @@
                     value: function(e) {
                         return void 0 !== e.status && null !== e.status && "" !== e.status || (e.status = "Scheduled"), e
                     }
-                }, {
-                    key: "getHelpLink",
-                    value: function() {
-                        return "https://icehrm.gitbook.io/icehrm/training-and-reviews/training#subscribing-to-a-training-session"
+                },
+                {
+                    key: "getActionButtonsHtml",
+                    value: function(e, t) {
+                        var a = '<div style="width:120px;">_edit__delete__clone__download_</div>';
+                        return a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_clone_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = this.showDelete ? a.replace("_download_", '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View Certificate" onclick="modJs.downloadRow(_id_);return false;"></img>') : a.replace("_download_", ""), a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(/_BASE_/g, this.baseUrl)
                     }
-                }]), t
+                },  
+                // {
+                //     key: "getHelpLink",
+                //     value: function() {
+                //         return "https://icehrm.gitbook.io/icehrm/training-and-reviews/training#subscribing-to-a-training-session"
+                //     }
+                // }
+            ]), t
             }();
         t.exports = {
             CourseAdapter: c,
@@ -1343,7 +1364,77 @@
                 value: function(e) {
                     this.getElement(e, [], !0)
                 }
-            }, {
+                
+            },{
+                key: "downloadRow",
+                value: function(e) {
+                    // alert(e); return false
+                    $('#employee_Id').val(e);
+
+                    this.renderModel(""), $("#certification").modal("show"),$("#employee_Id").val
+
+                    let id_ = e;
+
+                    $.ajax({
+                        url: '../../../../rokel_hrm/core/employeeTrainingCertification.php',
+                        type: 'post',
+                        contentType: 'application/json',
+                        dataType: "json",
+                        async: false,
+                        data: JSON.stringify({
+                            id: id_ 
+                        }), 
+                        success: function(data, textStatus, jQxhr) {
+                           
+                            if(data.responseCode == '000'){
+                                // alert("here"); return false;
+
+                                let payroll_summary = data.data
+                                // alert(JSON.stringify(payroll_summary)); 
+                                var theDiv = document.getElementById("certificateModelBody");
+                                theDiv.innerHTML = `
+                                <html>
+                                <head> 
+                                <link rel="stylesheet" type="text/css" href="../../../../rokel_hrm/core/certificate.css">
+                                </head>
+                                <body>
+                                <div class="border-pattern">
+                                 <div class="content">
+                                  <div class="inner-content">
+                                   <h1>Certificate</h1>
+                                   <h2>of Completion</h2>
+                                   <h3>This Is To Certify That</h3>
+                                   <p>${payroll_summary.first_name} ${payroll_summary.middle_name} ${payroll_summary.last_name}</p>
+                                   <h3> Successfully Completed</h3>
+                                   <p>${payroll_summary.course}</p>
+                                   <h3>On</h3>
+                                   <p>${payroll_summary.date}</p>
+                                   <div class="badge">
+                                   </div>
+                                  </div>
+                                 </div>
+                                </div>
+                                </body>
+                                </html>
+                                `;
+
+                            }else{
+                                alert('Unavailable Data...')
+                            }                                          
+                        }
+                        
+                    });
+                }
+                
+            }, 
+            {
+                key: "closeDialog",
+                value: function() {
+                    $("#certification").modal("hide")
+                    
+                }
+            },     
+            {
                 key: "renderModel",
                 value: function(e, t, a) {
                     $("#" + e + "ModelBody").html(""), void 0 !== a && null != a || (a = ""), $("#" + e + "ModelLabel").html(t), $("#" + e + "ModelBody").html(a)
@@ -2063,10 +2154,11 @@
             }, {
                 key: "getActionButtonsHtml",
                 value: function(e, t) {
-                    var a = '<div style="width:80px;">_edit__delete__clone_</div>';
-                    return a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_clone_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(/_BASE_/g, this.baseUrl)
+                    var a = '<div style="width:120px;">_edit__delete__clone_</div>';
+                    return a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_clone_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = this.showDelete ? a.replace("_download_", '<img class="tableActionButton" src="_BASE_images/download.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Download Certificate" onclick="modJs.downloadRow(_id_);return false;"></img>') : a.replace("_download_", ""), a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(/_BASE_/g, this.baseUrl)
                 }
-            }, {
+            }, 
+            {
                 key: "generateRandom",
                 value: function(e) {
                     for (var t = new Date, a = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", l = "", i = e; i > 0; --i) l += a[Math.round(Math.random() * (a.length - 1))];

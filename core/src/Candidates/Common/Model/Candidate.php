@@ -105,7 +105,7 @@ class Candidate extends BaseModel
 
     public function createCandidateHash($obj)
     {
-        $h1 = md5($obj->id."-".$obj->first_name."-".$obj->last_name."-".time()."-".rand());
+        $h1 = md5($obj->id."-".$obj->first_name."-".$obj->middle_name."-".$obj->last_name."-".time()."-".rand());
         $h2 = md5($obj->id."-".$obj->cv_title."-".time());
         return $h1.$h2;
     }

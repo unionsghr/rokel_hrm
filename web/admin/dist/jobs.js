@@ -1,6 +1,6 @@
 ! function() {
     return function e(t, a, l) {
-        function i(n, s) {
+        function i(n, s) { 
             if (!a[n]) {
                 if (!t[n]) {
                     var o = "function" == typeof require && require;
@@ -25,7 +25,7 @@
     1: [function(e, t, a) {
         "use strict";
         var l = e("./lib");
-        window.JobTitleAdapter = l.JobTitleAdapter, window.PayGradeAdapter = l.PayGradeAdapter, window.EmploymentStatusAdapter = l.EmploymentStatusAdapter, window.NotchesAdapter = l.NotchesAdapter, window.AnnualRentAdapter = l.AnnualRentAdapter
+        window.JobTitleAdapter = l.JobTitleAdapter, window.PayGradeAdapter = l.PayGradeAdapter, window.EmploymentStatusAdapter = l.EmploymentStatusAdapter, window.AnnualRentAdapter = l.AnnualRentAdapter
     }, {
         "./lib": 2
     }],
@@ -147,14 +147,113 @@
                     }
                 }]), t
             }(),
-            f = function(e) {
+            // f = function(e) {
+            //     function t() {
+            //         return s(this, t), o(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
+            //     }
+            //     return u(t, n.default), i(t, [{
+            //         key: "getDataMapping",
+            //         value: function() {
+            //             return ["id", "name", "paygrade", "amount", "monthly_basic", "transport", "lunch", "rent", "car"]
+            //         }
+            //     }, {
+            //         key: "getHeaders",
+            //         value: function() {
+            //             return [{
+            //                 sTitle: "ID"
+            //             }, {
+            //                 sTitle: "Name"
+            //             }, {
+            //                 "sTitle": "Pay Grade"
+            //             }, {
+            //                 "sTitle": "Annual Basic"
+            //             }, {
+            //                 "sTitle": "Monthly Basic"
+            //             }, {
+            //                 "sTitle": "Transport Allowance"
+            //             }, {
+            //                 "sTitle": "Lunch Allowance"
+            //             }, {
+            //                 "sTitle": "Rent Allowance"
+            //             }, {
+            //                 "sTitle": "Car Allowance"
+            //             },
+            //             //  {
+            //             //     "sTitle": "Honorarium"
+            //             // }
+            //         ]
+            //         }
+            //     }, {
+            //         key: "getFormFields",
+            //         value: function() {
+            //             return [
+            //                 ["id", {
+            //                     label: "ID",
+            //                     type: "hidden"
+            //                 }],
+            //                 ["name", {
+            //                     "label": "Notch Name",
+            //                     "type": "text"
+            //                 }],
+            //                 ["paygrade", {
+            //                     "label": "Pay Grade",
+            //                     "type": "select2",
+            //                     "allow-null": true,
+            //                     "null-value": "Select",
+            //                     "remote-source": ["PayGrade", "id", "name"]
+            //                 }],
+            //                 ["amount", {
+            //                     "label": "Amount (Annual)",
+            //                     "type": "text",
+            //                     "validation": ""
+            //                 }],
+            //                 ["transport_rate", {
+            //                     "label": "Transport Allowance Rate (%)",
+            //                     "type": "text",
+            //                     "validation": ""
+            //                 }],
+            //                 ["lunch_rate", {
+            //                     "label": "Lunch Allowance Rate (%)",
+            //                     "type": "text",
+            //                     "validation": ""
+            //                 }],
+            //                 ["rent_rate", {
+            //                     "label": "Rent Allowance Rate (%)",
+            //                     "type": "text",
+            //                     "validation": ""
+            //                 }],
+            //                 ["car_rate", {
+            //                     "label": "Car Allowance",
+            //                     "type": "text",
+            //                     "validation": ""
+            //                 }],
+            //                 ["honorarium", {
+            //                     "label": "Honorarium",
+            //                     "type": "text",
+            //                     "validation": ""
+            //                 }]
+            //                 // ["medical", {
+            //                 //     "label": "Medical Excess",
+            //                 //     "type": "text",
+            //                 //     "validation": ""
+            //                 // }],
+            //                 // ["union_dues", {
+            //                 //     "label": "Union Dues",
+            //                 //     "type": "text",
+            //                 //     "validation": ""
+            //                 // }]
+            //             ]
+            //         }
+            //     }]), t
+            // }(),
+            g = function(e) {
                 function t() {
                     return s(this, t), o(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
                 }
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "name", "paygrade", "amount", "monthly_basic", "transport", "lunch", "rent", "car", "honorarium"]
+                        return ["id", "name"]
                     }
                 }, {
                     key: "getHeaders",
@@ -163,23 +262,17 @@
                             sTitle: "ID"
                         }, {
                             sTitle: "Name"
-                        }, {
-                            "sTitle": "Pay Grade"
-                        }, {
-                            "sTitle": "Annual Basic"
-                        }, {
-                            "sTitle": "Monthly Basic"
-                        }, {
-                            "sTitle": "Transport Allowance"
-                        }, {
-                            "sTitle": "Lunch Allowance"
-                        }, {
-                            "sTitle": "Rent Allowance"
-                        }, {
-                            "sTitle": "Car Allowance"
-                        }, {
-                            "sTitle": "Honorarium"
-                        }]
+                        } 
+                        // {
+                        //     "sTitle": "Pay Grade"
+                        // }, {
+                        //     "sTitle": "Annual Rent ($)"
+                        // }, {
+                        //     "sTitle": "Exchange Rate (SLL)"
+                        // }, {
+                        //     "sTitle": "Net Rent (SLL)"
+                        // }
+                    ]
                     }
                 }, {
                     key: "getFormFields",
@@ -190,119 +283,27 @@
                                 type: "hidden"
                             }],
                             ["name", {
-                                "label": "Notch Name",
-                                "type": "text"
-                            }],
-                            ["paygrade", {
-                                "label": "Pay Grade",
-                                "type": "select2",
-                                "allow-null": true,
-                                "null-value": "Select",
-                                "remote-source": ["PayGrade", "id", "name"]
-                            }],
-                            ["amount", {
-                                "label": "Amount (Annual)",
+                                "label": "Name",
                                 "type": "text",
-                                "validation": ""
-                            }],
-                            ["transport_rate", {
-                                "label": "Transport Allowance Rate (%)",
-                                "type": "text",
-                                "validation": ""
-                            }],
-                            ["lunch_rate", {
-                                "label": "Lunch Allowance Rate (%)",
-                                "type": "text",
-                                "validation": ""
-                            }],
-                            ["rent_rate", {
-                                "label": "Rent Allowance Rate (%)",
-                                "type": "text",
-                                "validation": ""
-                            }],
-                            ["car_rate", {
-                                "label": "Car Allowance",
-                                "type": "text",
-                                "validation": ""
-                            }],
-                            ["honorarium", {
-                                "label": "Honorarium",
-                                "type": "text",
-                                "validation": ""
+                                "validation":"none"
                             }]
-                            // ["medical", {
-                            //     "label": "Medical Excess",
+                            // ["paygrade", {
+                            //     "label": "Pay Grade",
+                            //     "type": "select2",
+                            //     "allow-null": true,
+                            //     "null-value": "Select",
+                            //     "remote-source": ["PayGrade", "id", "name"]
+                            // }],
+                            // ["annual_rent", {
+                            //     "label": "Rent Amount($)",
                             //     "type": "text",
                             //     "validation": ""
                             // }],
-                            // ["union_dues", {
-                            //     "label": "Union Dues",
+                            // ["exchange_rate", {
+                            //     "label": "Exchange Rate",
                             //     "type": "text",
-                            //     "validation": ""
+                            //     "validation": "none"
                             // }]
-                        ]
-                    }
-                }]), t
-            }(),
-            g = function(e) {
-                function t() {
-                    return s(this, t), o(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
-                }
-                return u(t, n.default), i(t, [{
-                    key: "getDataMapping",
-                    value: function() {
-                        return ["id", "notch", "paygrade", "annual_rent", "exchange_rate", "net_rent"]
-                    }
-                }, {
-                    key: "getHeaders",
-                    value: function() {
-                        return [{
-                            sTitle: "ID"
-                        }, {
-                            sTitle: "Notch"
-                        }, {
-                            "sTitle": "Pay Grade"
-                        }, {
-                            "sTitle": "Annual Rent ($)"
-                        }, {
-                            "sTitle": "Exchange Rate (SLL)"
-                        }, {
-                            "sTitle": "Net Rent (SLL)"
-                        }]
-                    }
-                }, {
-                    key: "getFormFields",
-                    value: function() {
-                        return [
-                            ["id", {
-                                label: "ID",
-                                type: "hidden"
-                            }],
-                            ["notch", {
-                                "label": "Notch",
-                                "type": "select2",
-                                "allow-null": true,
-                                "null-value": "Select",
-                                "remote-source": ["Notches", "id", "name"]
-
-                            }],
-                            ["paygrade", {
-                                "label": "Pay Grade",
-                                "type": "select2",
-                                "allow-null": true,
-                                "null-value": "Select",
-                                "remote-source": ["PayGrade", "id", "name"]
-                            }],
-                            ["annual_rent", {
-                                "label": "Rent Amount($)",
-                                "type": "text",
-                                "validation": ""
-                            }],
-                            ["exchange_rate", {
-                                "label": "Exchange Rate",
-                                "type": "text",
-                                "validation": "none"
-                            }]
                         ]
                     }
                 }]), t
@@ -416,7 +417,7 @@
             JobTitleAdapter: c,
             PayGradeAdapter: d,
             EmploymentStatusAdapter: h,
-            NotchesAdapter: f,
+            // NotchesAdapter: f,
             AnnualRentAdapter: g
             
         }

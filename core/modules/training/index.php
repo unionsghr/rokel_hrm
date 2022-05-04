@@ -15,9 +15,7 @@ include APP_BASE_PATH.'modulejslibs.inc.php';
 		<li class="active"><a id="tabEmployeeTrainingSession" href="#tabPageEmployeeTrainingSession"><?=t('My Training Sessions')?></a></li>
 		<li class=""><a id="tabTrainingSession" href="#tabPageTrainingSession"><?=t('All Training Sessions')?></a></li>
         <li class=""><a id="tabSubEmployeeTraining" href="#tabPageSubEmployeeTraining"><?=t('Training Sessions of Direct Reports')?></a></li>
-        <li class=""><a id="tabCoordinatedTrainingSession" href="#tabPageCoordinatedTrainingSession"><?=t('Training Sessions of Coordinated by Me')?></a></li>
-
-
+        <li class=""><a id="tabCoordinatedTrainingSession" href="#tabPageCoordinatedTrainingSession"><?=t('Training Sessions Coordinated by Me')?></a></li>
 	</ul>
 
 	<div class="tab-content">

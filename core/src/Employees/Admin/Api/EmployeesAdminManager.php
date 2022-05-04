@@ -72,6 +72,7 @@ class EmployeesAdminManager extends AbstractModuleManager
         $this->addModelClass('EmploymentStatus');
         $this->addModelClass('EmployeeApproval');
         $this->addModelClass('ArchivedEmployee');
+        $this->addModelClass('EmployeeBankDetails');
     }
 
     public function getDashboardItemData()

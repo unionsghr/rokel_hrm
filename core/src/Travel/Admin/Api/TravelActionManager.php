@@ -20,12 +20,12 @@ class TravelActionManager extends ApproveAdminActionManager
 
     public function getItemName()
     {
-        return "TravelRequest";
+        return "Imprest Request";
     }
 
     public function getModuleName()
     {
-        return "Travel Management";
+        return "Imprest Management";
     }
 
     public function getModuleTabUrl()

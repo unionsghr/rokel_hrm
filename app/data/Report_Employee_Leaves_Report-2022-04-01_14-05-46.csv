@@ -1,0 +1,7 @@
+Employee,"Leave Type","Leave Period","Start Date","End Date",Reason,"Leave Status","Full Day Count","Half Day (Morning) Count","Half Day (Afternoon) Count"
+"ALFRED JUXON-SMITH","Annual leave","Period 2021-01-01 to 2021-12-31",2021-05-19,2021-05-19,,Processing,1,0,0
+"ALFRED JUXON-SMITH","Annual leave","Period 2021-01-01 to 2021-12-31",2021-05-20,2021-05-25,,Processing,4,0,0
+"ALFRED JUXON-SMITH","Annual leave","Period 2021-01-01 to 2021-12-31",2021-07-20,2021-07-20,dsfghg,Approved,1,0,0
+"ALFRED JUXON-SMITH","Annual leave","Period 2021-01-01 to 2021-12-31",2021-09-07,2021-09-07,Test,Approved,1,0,0
+"HELEN MORGAN","Annual leave","Period 2021-01-01 to 2021-12-31",2021-11-22,2021-12-17,"Annual Leave",Pending,20,0,0
+"OKIKI COLE","Annual leave","Period 2021-01-01 to 2021-12-31",2021-11-04,2021-11-22,"Annual Leave",Approved,13,0,0

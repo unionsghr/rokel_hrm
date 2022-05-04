@@ -75,7 +75,7 @@ class PayrollActionManager extends SubActionManager
         $payRollEmp->Load("id = ?", array($payrollEmployeeId));
 
         //Salary
-        LogManager::getInstance()->info("salary components row:".$col->salary_components);
+        LogManager::getInstance()->info("salary components row=====:".$col->salary_components);
 
         if (!empty($col->salary_components) &&
             !empty(json_decode($col->salary_components, true))) {
@@ -333,13 +333,26 @@ class PayrollActionManager extends SubActionManager
         $save = $req->save;
 
 
-         LogManager::getInstance()->info("=================>".$valueTable);
+        //  LogManager::getInstance()->info("=================>".$valueTable);
 
         //Only select employees matching pay frequency
 
         $payroll = new Payroll();
         $payroll->Load("id = ?", array($req->payrollId));
         $columnList = json_decode($payroll->columns, true);
+
+        // $currentEmpId = $this->getCurrentProfileId();
+        // if (!empty($currentEmpId)) {
+        //     $employee = $this->baseService->getElement('Employee', $this->getCurrentProfileId(), null, true);
+        //     $department = $this->baseService->getElement('CompanyStructure', $this->getCurrentProfileId(), null, true);
+        //     // $audit->full_name = $employee->first_name." ".$employee->middle_name." ".$employee->last_name." [EmpId = ".$employee->employee_id."]";
+        //     // // $audit->employee = $employee->first_name." ".$employee->middle_name." ".$employee->last_name;
+
+        //     // $audit->employee = $employee->first_name; 
+
+        //     // $audit->department = $department->title;
+        //     LogManager::getInstance()->info("==================Audit Employee=>".$employee);
+        // }
 
 
         //Get Child company structures

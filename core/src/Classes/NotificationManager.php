@@ -64,7 +64,7 @@ class NotificationManager
         if ($fromSystem) {
             $noti->fromUser = 0;
             $noti->fromEmployee = 0;
-            $noti->image = BASE_URL."images/icehrm.png";
+            $noti->image = BASE_URL."images/logo.png";
         } else {
             $user = $this->baseService->getCurrentUser();
             $noti->fromUser = $user->id;
@@ -91,7 +91,7 @@ class NotificationManager
         }
 
         if (empty($noti->image) && !empty($employee)) {
-            if ($employee->gender == 'Male') {
+            if ($employee->gender == 'M') {
                 $noti->image = BASE_URL."images/user_male.png";
             } else {
                 $noti->image = BASE_URL."images/user_female.png";
@@ -158,7 +158,7 @@ class NotificationManager
                     $noti->image = $employee->image;
 
                     if (empty($noti->image)) {
-                        if ($employee->gender == 'Male') {
+                        if ($employee->gender == 'M') {
                             $noti->image = BASE_URL."images/user_male.png";
                         } else {
                             $noti->image = BASE_URL."images/user_female.png";

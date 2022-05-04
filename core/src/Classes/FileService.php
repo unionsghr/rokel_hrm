@@ -144,7 +144,7 @@ class FileService
                     $profile->image = $expireUrl;
                 } catch (\Exception $e) {
                     LogManager::getInstance()->error("Error generating profile image: ".$e->getMessage());
-                    if ($profile->gender == 'Female') {
+                    if ($profile->gender == 'F') {
                         $profile->image = BASE_URL."images/user_female.png";
                     } else {
                         $profile->image = BASE_URL."images/user_male.png";
@@ -156,7 +156,7 @@ class FileService
                 $profile->image = CLIENT_BASE_URL.'data/'.$file->filename;
             }
         } else {
-            if ($profile->gender == 'Female') {
+            if ($profile->gender == 'F') {
                 $profile->image = BASE_URL."images/user_female.png";
             } else {
                 $profile->image = BASE_URL."images/user_male.png";
@@ -197,7 +197,7 @@ class FileService
                 $profile->image = CLIENT_BASE_URL.'data/'.$file->filename;
             }
         } else {
-            if ($profile->gender == 'Female') {
+            if ($profile->gender == 'F') {
                 $profile->image = BASE_URL."images/user_female.png";
             } else {
                 $profile->image = BASE_URL."images/user_male.png";

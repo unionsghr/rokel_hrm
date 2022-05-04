@@ -30,8 +30,10 @@ class ExpensesAdminManager extends AbstractModuleManager
 
         $this->addModelClass('ExpensesCategory');
         $this->addModelClass('ExpensesPaymentMethod');
+        $this->addModelClass('ExpensesBusinessPurpose');        
         $this->addModelClass('EmployeeExpense');
         $this->addModelClass('EmployeeExpenseApproval');
+        $this->addModelClass('Vw_EmployeeImprest');
     }
 
     public function initCalculationHooks()
@@ -65,7 +67,7 @@ class ExpensesAdminManager extends AbstractModuleManager
             $restEndPoint = new ExpensesRestEndPoint();
             $restEndPoint->process('getExpensePaymentMethods', $pathParams);
         });
-
+    
         \Classes\Macaw::post(REST_API_PATH.'expenses/file-upload', function () {
             $restEndPoint = new ExpensesRestEndPoint();
             $restEndPoint->process('uploadFile', []);

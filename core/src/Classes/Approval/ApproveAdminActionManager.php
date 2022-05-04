@@ -1,16 +1,19 @@
 <?php
 
 namespace Classes\Approval;
-
 use Classes\BaseService;
 use Classes\IceConstants;
 use Classes\IceResponse;
 use Classes\StatusChangeLogManager;
 use Model\BaseModel;
 use Utils\LogManager;
+use Expenses\Common\Model\EmployeeExpense;
+use Travel\Common\Model\EmployeeTravelRecord;
 
 abstract class ApproveAdminActionManager extends ApproveCommonActionManager
 {
+
+    // LogManager::getInstance()->info("|All multi level approvals completed, now we can approve|");
 
     abstract public function getModelClass();
     abstract public function getItemName();
@@ -21,6 +24,20 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
 
     public function changeStatus($req)
     {
+
+        $test = $req->status;
+        $amount = $req->amount;
+        $employee_id = $req->employee_Id;
+
+        $travel_employee_id = $req->emp_Id;
+
+        //     $user = $this->baseService->getCurrentUser();           
+        //     $noti= $user->username;
+        // LogManager::getInstance()->info("====> ".$noti." <====Testing employee trainig session");
+
+
+        // LogManager::getInstance()->info( "------ TRAVEL APPROVAL ----------");
+
 
         $class = $this->getModelClass();
         $itemName = $this->getItemName();
@@ -33,16 +50,20 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
             return new IceResponse(IceResponse::ERROR, "$itemName not found");
         }
 
-        /*
-        if($this->user->user_level != 'Admin' && $this->user->user_level != 'Manager'){
-            return new IceResponse(IceResponse::ERROR,"Only an admin or manager can do this");
-        }*/
-
+        
         //Check if this needs to be multi-approved
         $apStatus = 0;
+
+        // $status = $req->employee;
+        // $employee = $req->employee;
+
+        // LogManager::getInstance()->info("===STATUS===>".$status."<==>".$employee."<==EMPLOYEE===");
+
         if ($req->status == "Approved") {
             $apStatus = 1;
         }
+
+         
 
         if ($req->status == "Approved" || $req->status == "Rejected") {
             $approvalResp = ApprovalStatus::getInstance()->updateApprovalStatus(
@@ -62,7 +83,16 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
                     LogManager::getInstance()->debug($obj->id."|No multi level approvals|");
                     if ($req->status == "Approved") {
                         $req->status = "Approved";
+
+            LogManager::getInstance()->info( "----- Testing Before API -----");
+
+                        EmployeeExpense::apiexpensedata($employee_id);
+                        EmployeeTravelRecord::apitraveldata($travel_employee_id);
+
+            LogManager::getInstance()->info("==== After API No MultiApprove ====");
+ 
                     }
+                    
                 } elseif (empty($currentAp) && !empty($nextAp)) {
                     //Approval process is defined, but this person is a supervisor
                     LogManager::getInstance()->debug(
@@ -70,7 +100,12 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
                     );
                     $sendApprovalEmailto = $nextAp->approver;
                     if ($req->status == "Approved") {
-                        $req->status = "Processing";
+
+                    LogManager::getInstance()->info("--- PROCESSING ---");
+      
+                        // EmployeeExpense::apiexpensedata();
+
+                        $req->status = "Approved";
                     }
                 } elseif (!empty($currentAp) && empty($nextAp)) {
                     //All multi level approvals completed, now we can approve
@@ -78,7 +113,11 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
                         $obj->id."|All multi level approvals completed, now we can approve|"
                     );
                     if ($req->status == "Approved") {
+
+                    LogManager::getInstance()->info("================ All multiApprove EMPLOYEE EXPENSE API ===============-");
                         $req->status = "Approved";
+                        EmployeeExpense::apiexpensedata($employee_id);
+                        EmployeeTravelRecord::apitraveldata($travel_employee_id);
                     }
                 } else {
                     //Current employee is an approver and we have another approval level left
@@ -87,7 +126,11 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
                     );
                     $sendApprovalEmailto = $nextAp->approver;
                     if ($req->status == "Approved") {
+
+                    LogManager::getInstance()->info("===== PROCESSING 2 ======");
+      
                         $req->status = "Processing";
+                        // EmployeeExpense::apiexpensedata();
                     }
                 }
             } else {
@@ -104,7 +147,7 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
 
         $ok = $obj->Save();
 
-        if (!$ok) {
+        if (!$ok) { 
             LogManager::getInstance()->info($obj->ErrorMsg());
             return new IceResponse(
                 IceResponse::ERROR,
@@ -119,7 +162,7 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
             $oldStatus,
             $req->status,
             ""
-        );
+        ); 
 
         $this->baseService->audit(
             IceConstants::AUDIT_ACTION,
@@ -128,11 +171,18 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
 
         $currentEmpId = $this->getCurrentProfileId();
 
+        LogManager::getInstance()->info("===>".$currentEmpId."<==currentEmpId==");
+
+
+
         if (!empty($currentEmpId)) {
             $employee = $this->baseService->getElement('Employee', $currentEmpId, null, true);
 
             $notificationMsg
                 = "Your $itemName has been $obj->status by ".$employee->first_name." ".$employee->middle_name." ".$employee->last_name;
+                
+                LogManager::getInstance()->info("===>".$notificationMsg."<==testttt==");
+
             if (!empty($req->reason)) {
                 $notificationMsg.=" (Note:".$req->reason.")";
             }
@@ -156,9 +206,13 @@ abstract class ApproveAdminActionManager extends ApproveCommonActionManager
                 true
             );
 
+            LogManager::getInstance()->info("===EMPLOYEE===>".$employee."====EMPLOYEE===");
+
             $notificationMsg
                 = "You have been assigned ".$itemName." for approval by ".
-                    $employee->first_name." ".$employee->last_name;
+                    $employee->first_name." ".$employee->middle_name." ".$employee->last_name;
+
+        LogManager::getInstance()->info("===>".$notificationMsg."<==2==");
 
             $this->baseService->notificationManager->addNotification(
                 $sendApprovalEmailto,

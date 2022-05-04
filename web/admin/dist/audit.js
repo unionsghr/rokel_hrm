@@ -1008,6 +1008,7 @@
             }, {
                 key: "showView",
                 value: function(e) {
+                    // alert(e);
                     null != this.currentView && (this.previousView = this.currentView, $("#" + this.currentView).hide()), $("#" + e).show(), this.currentView = e, this.moveToTop()
                 }
             }, {
@@ -1144,6 +1145,7 @@
             }, {
                 key: "edit",
                 value: function(e) {
+                    // alert(e);
                     this.currentId = e, this.getElement(e, [])
                 }
             }, {

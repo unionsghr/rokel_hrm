@@ -19,6 +19,7 @@ use Payroll\Common\Model\PayrollCalculations;
 use Payroll\Common\Model\PayrollColumn;
 use Payroll\Common\Model\PayrollData;
 use Salary\Common\Model\EmployeeSalary;
+use Salary\Common\Model\Vw_EmployeeSalary;
 use Salary\Common\Model\PayrollEmployee;
 use Salary\Common\Model\SalaryComponent;
 use Utils\LogManager;
@@ -52,19 +53,24 @@ class PayrollActionManager extends SubActionManager
         $payrollEmployeeId,
         $noColumnCalculations = false
     ) {
-    
+        // $currentEmpId = $this->getCurrentProfileId();
+        // LogManager::getInstance()->info("=========Payroll=========currentEmpId=>".$currentEmpId);
+
         $val = $this->getFromCalculationCache($col->id."-".$payroll->id."-".$employeeId);
         if (!empty($val)) {
             return $val;
-        }
-
+        } 
+ 
         if (!empty($col->calculation_hook)) {
             $sum = BaseService::getInstance()->executeCalculationHook(
                 array($employeeId, $payroll->date_start, $payroll->date_end),
                 $col->calculation_hook,
                 $col->calculation_function
             );
-            $val = number_format(round($sum, 2), 2, '.', '');           
+            
+            // $val = number_format(round($sum, 2), 2, '.', '');  
+            $val = number_format($sum, 2);         
+            // LogManager::getInstance()->info("===============salary :".$val);
             $this->addToCalculationCache($col->id."-".$payroll->id."-".$employeeId, $val);
             return $val;
         }
@@ -75,7 +81,7 @@ class PayrollActionManager extends SubActionManager
         $payRollEmp->Load("id = ?", array($payrollEmployeeId));
 
         //Salary
-        LogManager::getInstance()->info("salary components row:".$col->salary_components);
+        LogManager::getInstance()->info("salary components row:-----1".$col->salary_components);
         if (!empty($col->salary_components) &&
             !empty(json_decode($col->salary_components, true))) {
             $salaryComponent = new SalaryComponent();
@@ -83,14 +89,14 @@ class PayrollActionManager extends SubActionManager
                 "id in (".implode(",", json_decode($col->salary_components, true)).")",
                 array()
             );
-            LogManager::getInstance()->info("salary components:".$salaryComponents);
+            LogManager::getInstance()->info("salary components:-----2".$salaryComponents);
             foreach ($salaryComponents as $salaryComponent) {
                 $sum += $this->getTotalForEmployeeSalaryByComponent($employeeId, $salaryComponent->id);
             }
         }
 
         //Deductions
-        // $deductions = array();
+        $deductions = array();
         if (!empty($col->deductions) &&
             !empty(json_decode($col->deductions, true))) {
             $deduction = new Deduction();
@@ -185,8 +191,10 @@ class PayrollActionManager extends SubActionManager
 
         // return $sum;
         $val = number_format(round($sum, 2), 2, '.', '');
+
+        // $val = number_format($sum, 2);
         
-        $val = round($sum, 2);
+        // $val = round($sum, 2);
         $this->addToCalculationCache($col->id."-".$payroll->id."-".$employeeId, $val);
         return $val;
     }
@@ -287,7 +295,7 @@ class PayrollActionManager extends SubActionManager
 
     private function getTotalForEmployeeSalaryByComponent($employeeId, $salaryComponentId)
     {
-        $empSalary = new EmployeeSalary();
+        $empSalary = new Vw_EmployeeSalary();
         $list = $empSalary->Find("employee = ? and component =?", array($employeeId, $salaryComponentId));
         $sum = 0;
         foreach ($list as $empSalary) {
@@ -348,6 +356,20 @@ class PayrollActionManager extends SubActionManager
         $payroll = new Payroll();
         $payroll->Load("id = ?", array($req->payrollId));
         $columnList = json_decode($payroll->columns, true);
+
+        // $currentEmpId = $this->getCurrentProfileId();
+        // if (!empty($currentEmpId)) {
+        //     $employee = $this->baseService->getElement('Employee', $this->getCurrentProfileId(), null, true);
+        //     $department = $this->baseService->getElement('CompanyStructure', $this->getCurrentProfileId(), null, true);
+        //     // $audit->full_name = $employee->first_name." ".$employee->middle_name." ".$employee->last_name." [EmpId = ".$employee->employee_id."]";
+        //     // // $audit->employee = $employee->first_name." ".$employee->middle_name." ".$employee->last_name;
+
+        //     // $audit->employee = $employee->first_name; 
+
+        //     // $audit->department = $department->title;
+        //     LogManager::getInstance()->info("==================Audit Employee=>".$employee);
+        // }
+
 
         //Get Child company structures
         $cssResp = CompanyStructure::getAllChildCompanyStructures($payroll->department);

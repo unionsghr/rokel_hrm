@@ -193,7 +193,7 @@ class ApprovalStatus
         $emp = new Employee();
         $emp->Load("id = ?", array($employeeId));
         $approver = null;
-        $alevel = "approver".$level;
+        $alevel = "approver".$level; 
         return $emp->$alevel;
     }
 }

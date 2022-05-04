@@ -29,6 +29,7 @@ class Employee extends BaseModel
         "employment_status"=>"employment_status_Name",
         "job_title"=>"job_title_Name",
         "pay_grade"=>"pay_grade_Name",
+        "notches"=>"notches",
         "work_station_id"=>"work_station_id",
         "address1"=>"address1",
         "address2"=>"address2",
@@ -186,7 +187,7 @@ class Employee extends BaseModel
     }
 
     public function getActiveEmployees()
-    {
+    { 
         $employee = new Employee();
         $list = $employee->Find("status = ?", array('Active'));
         return $list;

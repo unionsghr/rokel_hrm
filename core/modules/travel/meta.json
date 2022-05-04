@@ -1,6 +1,6 @@
 {
-    "label": "Travel",
-    "menu": "Travel Management",
+    "label": "Imprest",
+    "menu": "Imprest Management",
     "order": "1",
     "icon": "fa-plane",
     "user_levels": [

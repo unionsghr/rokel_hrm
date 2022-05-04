@@ -42,7 +42,7 @@ class UsersEmailSender
         if (!empty($emailTo)) {
             if (!empty($this->emailSender)) {
                 LogManager::getInstance()->info("[sendWelcomeUserEmail] sending email to $emailTo : ".$email);
-                return $this->emailSender->sendEmail("Your HRM account is ready", $emailTo, $email, $params);
+                return $this->emailSender->sendEmail("Your XHRM account is ready", $emailTo, $email, $params);
             }
         } else {
             LogManager::getInstance()->info("[sendWelcomeUserEmail] email is empty");

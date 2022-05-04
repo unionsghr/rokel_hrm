@@ -1,0 +1,74 @@
+DROP VIEW BANKOWNER.VW_GATEWAY_SUMMARY;
+
+/* Formatted on 9/24/2020 12:47:39 PM (QP5 v5.163.1008.3004) */
+CREATE OR REPLACE FORCE VIEW BANKOWNER.VW_GATEWAY_SUMMARY
+(
+   SALARY_TYPE,
+   BRANCH_CODE,
+   AMOUNT,
+   REFERENCE_NO
+)
+AS
+     SELECT 'Basic',
+            get_branchdesc (branch_code) branch,
+            SUM (NVL (DR_AMT, 0)) amt,
+            REF_NO
+       FROM TB_GATEWAY
+      WHERE DR_ACCT = '143000000001'
+   GROUP BY branch_code, REF_NO
+   UNION ALL
+     SELECT 'Total_Allowance',
+            get_branchdesc (branch_code) branch,
+            SUM (NVL (DR_AMT, 0)) amt,
+            REF_NO
+       FROM TB_GATEWAY
+      WHERE DR_ACCT = '143000000002'
+   GROUP BY branch_code, REF_NO
+   UNION ALL
+     SELECT 'Employee NASSIT',
+            get_branchdesc (branch_code) branch,
+            SUM (NVL (CR_AMT, 0)) amt,
+            REF_NO
+       FROM TB_GATEWAY
+      WHERE CR_ACCT = '123620000021'
+   GROUP BY branch_code, REF_NO
+   UNION ALL
+SELECT 'Witholding TAX',
+            get_branchdesc (branch_code) branch,
+            SUM (NVL (CR_AMT, 0)) amt,
+            REF_NO
+       FROM TB_GATEWAY
+      WHERE CR_ACCT = '123620000005'
+   GROUP BY branch_code, REF_NO
+   UNION ALL
+     SELECT 'PAYE',
+            get_branchdesc (branch_code) branch,
+            SUM (NVL (CR_AMT, 0)) amt,
+            REF_NO
+       FROM TB_GATEWAY
+      WHERE CR_ACCT = '123620000010'
+   GROUP BY branch_code, REF_NO
+   UNION ALL
+     SELECT 'Medical_Excess',
+            get_branchdesc (branch_code) branch,
+            SUM (NVL (CR_AMT, 0)) amt,
+            REF_NO
+       FROM TB_GATEWAY
+      WHERE CR_ACCT = '143000000003'
+   GROUP BY branch_code, REF_NO
+   UNION ALL
+     SELECT 'Union_Dues',
+            get_branchdesc (branch_code) branch,
+            SUM (NVL (CR_AMT, 0)) amt,
+            REF_NO
+       FROM TB_GATEWAY
+      WHERE CR_ACCT = '123440000003'
+   GROUP BY branch_code, REF_NO
+   UNION ALL
+     SELECT 'Net Pay',
+            get_branchdesc (branch_code) branch,
+            SUM (NVL (CR_AMT, 0)) amt,
+            REF_NO
+       FROM TB_GATEWAY
+      WHERE DR_NARRATION = 'Net Salary'
+   GROUP BY branch_code, REF_NO;

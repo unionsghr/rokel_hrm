@@ -33,6 +33,7 @@ class EmployeeDetailsReport extends ClassBasedReportBuilder implements ReportBui
             "immigration_status" => ["ImmigrationStatus","id","name"],
             "employment_status" => ["EmploymentStatus","id","name"],
             "pay_grade" => ["PayGrade","id","name"],
+            "notches" => ["Notches","id","name"],
             "country" => ["Country","code","name"],
             "province" => ["Province","id","name"],
             "department" => ["CompanyStructure","id","title"],
@@ -63,6 +64,8 @@ class EmployeeDetailsReport extends ClassBasedReportBuilder implements ReportBui
             ['label' => 'Employment Status', 'column' => 'employment_status'],
             ['label' => 'Job Title', 'column' => 'job_title'],
             ['label' => 'Pay Grade', 'column' => 'pay_grade'],
+            ['label' => 'Account Number', 'column' => 'bank_acc_no'],
+            ['label' => 'Notch', 'column' => 'notches'],
             ['label' => 'Work Station Id', 'column' => 'work_station_id'],
             ['label' => 'Address Line 1', 'column' => 'address1'],
             ['label' => 'Address Line 2', 'column' => 'address2'],
@@ -85,6 +88,8 @@ class EmployeeDetailsReport extends ClassBasedReportBuilder implements ReportBui
             ['label' => 'First Level Approver', 'column' => 'approver1'],
             ['label' => 'Second Level Approver', 'column' => 'approver2'],
             ['label' => 'Third Level Approver', 'column' => 'approver3'],
+            ['label' => 'Employment Status', 'column' => 'status'],
+
 
            
         ];

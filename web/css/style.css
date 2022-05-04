@@ -389,7 +389,7 @@ table.dataTable{
 .iceLabel{
     font-size: 12px !important;
     font-weight: bold;
-    color:  #800080;
+    color:  #003C5F;
 }
 
 .nav-tabs>li>a{
@@ -615,7 +615,7 @@ table.dataTable{
 /* Full Cal */
 .fc-head{
     height: 40px;
-    background-color:  #800080;
+    background-color:  #003C5F;
     font-size: 14px;
     color: #FFF;
 }
@@ -669,7 +669,7 @@ table.dataTable{
 }
 
 .logoResponsive{
-    background:   #800080 !important;
+    background:   #003C5F !important;
     text-align: left !important;
     width:50% !important;
 }
@@ -718,7 +718,7 @@ table.dataTable{
 
 .help-info{
     font-size: 25px;
-    color:  #800080;
+    color:  #003C5F;
     padding-top: 4px;
     cursor: pointer;
 }

@@ -11,6 +11,7 @@ namespace Payroll\Common\Model;
 use Attendance\Common\Model\Attendance;
 use Model\BaseModel;
 use Salary\Common\Model\EmployeeSalary;
+use Salary\Common\Model\Vw_EmployeeSalary;
 use TimeSheets\Common\Model\EmployeeTimeSheet;
 
 class PayrollCalculations extends BaseModel
@@ -26,7 +27,7 @@ class PayrollCalculations extends BaseModel
             $amount = round($amount, 2);
         } else {
             //Find all pay period salary
-            $employeeSalary = new EmployeeSalary();
+            $employeeSalary = new Vw_EmployeeSalary();
             $list = $employeeSalary->Find(
                 "employee = ? and pay_frequency = ?",
                 array($employeeId, $payroll->pay_period)

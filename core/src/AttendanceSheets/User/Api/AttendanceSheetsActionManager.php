@@ -60,7 +60,7 @@ class AttendanceSheetsActionManager extends SubActionManager
         //Auto approve admin timesheets
         if ($req->status == 'Submitted' && BaseService::getInstance()->getCurrentUser()->user_level == "Admin") {
             $timeSheet->status = 'Approved';
-        }
+        } 
 
         if ($oldStatus == $req->status) {
             return new IceResponse(IceResponse::SUCCESS, "");
@@ -81,7 +81,7 @@ class AttendanceSheetsActionManager extends SubActionManager
         );
 
         if ($timeSheet->status == "Submitted" && $employee->id == $timeSheet->employee) {
-            $notificationMsg = $employee->first_name." ".$employee->last_name
+            $notificationMsg = $employee->first_name." ".$employee->middle_name." ".$employee->last_name
                 ." submitted attendance sheet from "
                 .date("M d, Y (l)", strtotime($timeSheet->date_start))
                 ." to ".date("M d, Y (l)", strtotime($timeSheet->date_end));
@@ -93,7 +93,7 @@ class AttendanceSheetsActionManager extends SubActionManager
                 IceConstants::NOTIFICATION_TIMESHEET
             );
         } elseif ($timeSheet->status == "Approved" || $timeSheet->status == "Rejected") {
-            $notificationMsg = $employee->first_name." ".$employee->last_name." ".$timeSheet->status
+            $notificationMsg = $employee->first_name." ".$employee->middle_name." ".$employee->last_name." ".$timeSheet->status
                 ." attendance sheet from ".date("M d, Y (l)", strtotime($timeSheet->date_start))
                 ." to ".date("M d, Y (l)", strtotime($timeSheet->date_end));
             $this->baseService->notificationManager->addNotification(

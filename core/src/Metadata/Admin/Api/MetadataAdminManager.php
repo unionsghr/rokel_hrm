@@ -10,6 +10,7 @@ namespace Metadata\Admin\Api;
 
 use Classes\AbstractModuleManager;
 use Metadata\Rest\MetadataRestEndPoint;
+use Utils\LogManager;
 
 class MetadataAdminManager extends AbstractModuleManager
 {
@@ -33,6 +34,9 @@ class MetadataAdminManager extends AbstractModuleManager
         $this->addModelClass('CurrencyType');
         $this->addModelClass('Nationality');
         $this->addModelClass('ImmigrationStatus');
+        $this->addModelClass('CodeCreation');
+        $this->addModelClass('CodeDetails');
+        $this->addModelClass('BusinessPurpose');
         $this->addModelClass('Ethnicity');
         $this->addModelClass('CalculationHook');
         $this->addModelClass('SupportedLanguage');

@@ -65,7 +65,7 @@ class EmployeeRestEndPoint extends RestEndPoint
             "country" => ["Country","code","name"],
             "province" => ["Province","id","name"],
             "department" => ["CompanyStructure","id","title"],
-            "supervisor" => [self::ELEMENT_NAME,"id","first_name+last_name"],
+            "supervisor" => [self::ELEMENT_NAME,"id","first_name+middle_name+last_name"],
         ];
 
         $emp = BaseService::getInstance()->getElement(

@@ -42,7 +42,7 @@ class ConversationsActionManager extends SubActionManager
             $employee = new Employee();
             $employee->Load('id = ?', array($conversation->employee));
 
-            $notificationMsg = $employee->first_name." ".$employee->last_name
+            $notificationMsg = $employee->first_name." ".$employee->middle_name." ".$employee->last_name
                 ." posted a new Announcement on "
                 .date("F j, Y, g:i a", strtotime($conversation->created));
             $this->baseService->notificationManager->addNotificationToAll(

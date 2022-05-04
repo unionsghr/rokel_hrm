@@ -9,7 +9,7 @@
 namespace Salary\Common\Model;
 
 use Model\BaseModel;
-
+ 
 class Salaries extends BaseModel
 {
     public $table = 'salaries';

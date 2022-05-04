@@ -45,7 +45,7 @@ class DocumentExpiryNotificationTask extends EmailIceTask
         }
 
         $this->getExpireDocumentHTMLByEmployee();
-        $this->sendEmployeeEmails($this->employeeEmails, "IceHrm Employee Document Expiry Reminder");
+        $this->sendEmployeeEmails($this->employeeEmails, "XHRM Employee Document Expiry Reminder");
     }
 
     private function expiryDayNotification($day, $param)

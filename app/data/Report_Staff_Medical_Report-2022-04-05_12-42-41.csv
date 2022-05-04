@@ -1,0 +1,14 @@
+EMPLOYEE,"DATE ATTENDED","DATE DISCHARGED","ADMISSION TYPE",ILLNESS,MEDICATION,HOSPITAL,PHYSICIAN,COST,STATUS,"APPROVED DATE","APPROVED BY","POSTING REFERENCE"
+"VICTOR SARTY KANU",2012-07-20,2021-11-05,In-Patient,Test,safsga,"Ridge Hospital","Dr Raymond",12000,Approved,2021-09-14,1,9t1631618744
+"OZOBIA SAMUEL DAVIES ",2013-07-20,,In-Patient,rest,sleep,"Ridge Hospital","Dr Raymond",78000,Approved,2021-09-08,393,yo1631110430
+"ABDUL SYDNEY KAMARA",2013-07-20,,Out-Patient,sdwdfc,sdfac,"Ridge Hospital","Dr Sakey",8000,Approved,2021-09-16,1,jc1631804155
+"TAMBA JAY MOMORIE",2021-08-18,2021-08-18,In-Patient,Malaria,Malafan,"Ridge Hospital","Dr Sakey",1520000,Approved,2021-09-16,1,xp1631789148
+"VICTOR SARTY KANU",2021-08-19,2021-08-19,Out-Patient,dshjkf,safsga,"Korle Bu","Dr Raymond",12000,Approved,2021-09-10,1,d71631263969
+"TAMBA JAY MOMORIE",2021-08-19,2021-08-19,In-Patient,Cough,"Cough syrup",Legon,"Dr Raymond",15200,Approved,2021-08-19,,ee1629384980
+"OZOBIA SAMUEL DAVIES ",2021-08-19,2021-08-19,In-Patient,Cold,"Some tonic",Legon,"Dr Sakey",152000,Approved,2021-08-19,,5g1629386441
+"TAMBA JAY MOMORIE",2021-08-19,2021-08-19,Out-Patient,Cold,Bread,Legon,"Dr Owusu",15200,Approved,2021-08-19,,vp1629386752
+"VICTOR SARTY KANU",2021-08-19,2021-08-19,In-Patient,Cold,Malafan,"Ridge Hospital","Dr Owusu",30000,Approved,2021-09-13,1,961631527097
+"COLUMBUS CORDEL COKER",2022-01-12,2022-01-12,Out-Patient,Test,Bread,Clinic,"Dr Raymond",1250000,Approved,2022-01-12,1,jy1642010821
+"AMADU   JALLOH",2022-03-09,2022-03-09,In-Patient,Malaria,Bread,"Korle Bu","Dr Raymond",483000,Pending,,,
+"ABDUL SYDNEY KAMARA",2022-03-21,2022-03-21,In-Patient,Malaria,Bread,"Korle Bu","Dr Raymond",1250000,Pending,,,
+"HELEN WINSTONA MORGAN",2022-03-21,2022-03-21,Out-Patient,Cough,"Cough syrup",Legon,"Dr Sakey",1250000,Approved,2022-04-04,1,701649065852

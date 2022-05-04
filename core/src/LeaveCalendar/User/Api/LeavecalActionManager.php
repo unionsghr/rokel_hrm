@@ -31,7 +31,7 @@ class LeavecalActionManager extends SubActionManager
         $shareCalendar = $this->baseService->settingsManager->getSetting("Leave: Share Calendar to Whole Company");
 
         $map = json_decode(
-            '{"employee":["Employee","id","first_name+last_name"],"leave_type":["LeaveType","id","name"]}'
+            '{"employee":["Employee","id","first_name+middle_name+last_name"],"leave_type":["LeaveType","id","name"]}'
         );
 
         $employee = $this->baseService->getElement('Employee', $this->getCurrentProfileId(), null, true);
@@ -202,7 +202,7 @@ class LeavecalActionManager extends SubActionManager
         $event['start'] = $holiday->dateh;
         $event['end'] = $holiday->dateh;
 
-        $eventBackgroundColor = "#3c8dbc";
+        $eventBackgroundColor = "#003C5F";
 
         $event['color'] = $eventBackgroundColor;
         $event['backgroundColor'] = $eventBackgroundColor;

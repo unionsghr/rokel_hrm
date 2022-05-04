@@ -68,7 +68,7 @@ class BaseModel extends \ADOdb_Active_Record
     {
         return "employee";
     }
-
+ 
     public function validateSave($obj)
     {
         return new IceResponse(IceResponse::SUCCESS, "");

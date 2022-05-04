@@ -5,7 +5,7 @@ use Classes\BaseService;
 use Reports\Admin\Api\ClassBasedReportBuilder;
 use Reports\Admin\Api\ReportBuilderInterface;
 
-class PayrollReport extends ClassBasedReportBuilder implements ReportBuilderInterface
+class AssetUsageReport extends ClassBasedReportBuilder implements ReportBuilderInterface
 {
 
     public function getData($report, $request)
@@ -20,47 +20,23 @@ class PayrollReport extends ClassBasedReportBuilder implements ReportBuilderInte
             $filters['type'] = $request['type'];
         }
 
+
         $mapping = [
             "department" => ["CompanyStructure","id","title"],
-            "employee" => ["Employee","id","first_name+middle_name+last_name"],
+            "employee" => ["Employee","id","first_name+last_name"],
             "type" => ["AssetType","id","name"],
-            "notch" => ["Notches", "id", "name"],
         ];
+
 
         $reportColumns = [
-            // ['label' => 'Code', 'column' => 'code'],
-            // ['label' => 'Type', 'column' => 'type'],
-            // ['label' => 'Assigned Employee', 'column' => 'employee'],
-            // ['label' => 'Assigned Department', 'column' => 'department'],
-            // ['label' => 'Description', 'column' => 'description'],
-
-            ['label' => 'Employee', 'column' => 'employee'],
-            ['label' => 'Account Number', 'column' => 'account_no'],
-            ['label' => 'NASSIT Number', 'column' => 'nassit_no'],
-            ['label' => 'Notch', 'column' => 'notch'],
-            ['label' => 'Working Days', 'column' => 'working_days'],
-            ['label' => 'Basic Salary', 'column' => 'basic_salary'],
-            ['label' => 'Car Allowance', 'column' => 'car_allowance'],
-            ['label' => 'Honorarium', 'column' => 'honorarium'],
-            ['label' => 'Transport', 'column' => 'transport'],
-            ['label' => 'Lunch', 'column' => 'lunch'],
-            ['label' => 'Rent Witheld', 'column' => 'rent_witheld'],
-            ['label' => 'Monthly Rent', 'column' => 'monthly_rent'],
-            ['label' => 'Employee NASSIT', 'column' => 'nassit'],
-            ['label' => 'Medical Excess', 'column' => 'medical_excess'],
-            ['label' => 'Union Dues', 'column' => 'union_dues'],
-            ['label' => 'Basic After Nassit', 'column' => 'basic_after_nassit'],
-            ['label' => 'Total Allowance', 'column' => 'total_allowance'],
-            ['label' => 'Gross Salary', 'column' => 'gross_salary'],
-            ['label' => 'Taxable Basic', 'column' => 'taxable_basic'],
-            ['label' => 'Taxable Income', 'column' => 'taxable_income'],
-            ['label' => 'PAYE', 'column' => 'paye'],
-            ['label' => 'Taxable Allowance', 'column' => 'taxable_allowance'],
-            ['label' => 'Total Deduction', 'column' => 'total_deduction'],
-            ['label' => 'Net Salary', 'column' => 'net_salary'],
+            ['label' => 'Code', 'column' => 'code'],
+            ['label' => 'Type', 'column' => 'type'],
+            ['label' => 'Assigned Employee', 'column' => 'employee'],
+            ['label' => 'Assigned Department', 'column' => 'department'],
+            ['label' => 'Description', 'column' => 'description'],
         ];
 
-        $customFieldsList = BaseService::getInstance()->getCustomFields('Salaries');
+        $customFieldsList = BaseService::getInstance()->getCustomFields('CompanyAsset');
 
         foreach ($customFieldsList as $customField) {
             $reportColumns[] = [
@@ -69,11 +45,11 @@ class PayrollReport extends ClassBasedReportBuilder implements ReportBuilderInte
             ];
         }
 
-        $entries = BaseService::getInstance()->get('Salaries', null, $filters);
+        $entries = BaseService::getInstance()->get('CompanyAsset', null, $filters);
         $data = [];
         foreach ($entries as $item) {
             $item =  BaseService::getInstance()->enrichObjectMappings($mapping, $item);
-            $item =  BaseService::getInstance()->enrichObjectCustomFields('Salaries', $item);
+            $item =  BaseService::getInstance()->enrichObjectCustomFields('CompanyAsset', $item);
             $data[] = $item;
         }
 

@@ -104,6 +104,12 @@
                                 type: "hidden",
                                 validation: ""
                             }],
+                            ["employee", {
+                                label: "Employee",
+                                type: "select2",
+                                "allow-null": !0,
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
+                            }],
                             ["username", {
                                 label: "User Name",
                                 type: "text",
@@ -113,13 +119,7 @@
                                 label: "Email",
                                 type: "text",
                                 validation: "email"
-                            }],
-                            ["employee", {
-                                label: "Employee",
-                                type: "select2",
-                                "allow-null": !0,
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
-                            }],
+                            }],                            
                             ["user_level", {
                                 label: "User Level",
                                 type: "select",
@@ -129,13 +129,13 @@
                                     ["Employee", "Employee"],
                                     ["Other", "Other"]
                                 ]
-                            }],
-                            ["lang", {
-                                label: "Language",
-                                type: "select2",
-                                "allow-null": !0,
-                                "remote-source": ["SupportedLanguage", "id", "description"]
                             }]
+                            // ["lang", {
+                            //     label: "Language",
+                            //     type: "select2",
+                            //     "allow-null": !0,
+                            //     "remote-source": ["SupportedLanguage", "id", "description"]
+                            // }]
                         ]
                     }
                 }, {

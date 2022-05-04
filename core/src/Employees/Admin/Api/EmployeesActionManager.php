@@ -22,16 +22,21 @@ use Qualifications\Common\Model\EmployeeCertification;
 use Qualifications\Common\Model\EmployeeEducation;
 use Qualifications\Common\Model\EmployeeLanguage;
 use Qualifications\Common\Model\EmployeeSkill;
-use Salary\Common\Model\EmployeeSalary;
+use Salary\Common\Model\Vw_EmployeeSalary;
 use TimeSheets\Common\Model\EmployeeTimeEntry;
 use TimeSheets\Common\Model\EmployeeTimeSheet;
 use Travel\Common\Model\EmployeeTravelRecord;
+use Utils\LogManager;
 
 class EmployeesActionManager extends SubActionManager
 {
 
     public function terminateEmployee($req)
     {
+        $user = $this->baseService->getCurrentUser();
+        $noti = $user->username;
+        LogManager::getInstance()->info("====> " . $noti . " <====Testing employee trainig session");
+
         $employee = new Employee();
 
         $this->baseService->checkSecureAccess('delete', $employee, 'Employee', $_POST);
@@ -87,6 +92,7 @@ class EmployeesActionManager extends SubActionManager
         $archived->ref_id = $employee->id;
         $archived->employee_id = $employee->employee_id;
         $archived->first_name = $employee->first_name;
+        $archived->middle_name = $employee->middle_name;
         $archived->last_name = $employee->last_name;
         $archived->gender = $employee->gender;
         $archived->ssn_num = $employee->ssn_num;
@@ -101,10 +107,10 @@ class EmployeesActionManager extends SubActionManager
         $archived->notes = $employee->notes;
 
         $mapping = '{"nationality":["Nationality","id","name"],'
-            .'"employment_status":["EmploymentStatus","id","name"],"job_title":["JobTitle","id","name"],'
-            .'"pay_grade":["PayGrade","id","name"],"country":["Country","code","name"],'
-            .'"province":["Province","id","name"],"department":["CompanyStructure","id","title"],'
-            .'"supervisor":["Employee","id","first_name+last_name"]}';
+            . '"employment_status":["EmploymentStatus","id","name"],"job_title":["JobTitle","id","name"],'
+            . '"pay_grade":["PayGrade","id","name"],"country":["Country","code","name"],'
+            . '"province":["Province","id","name"],"department":["CompanyStructure","id","title"],'
+            . '"supervisor":["Employee","id","first_name+middle_name+last_name"]}';
 
         $employeeEnriched = BaseService::getInstance()->getElement('Employee', $employee->id, $mapping, true);
         $employeeEnriched = BaseService::getInstance()->cleanUpAdoDB($employeeEnriched);
@@ -121,7 +127,7 @@ class EmployeesActionManager extends SubActionManager
         $data->qualificationEducation = $this->getEmployeeData($employee->id, new EmployeeEducation());
         $data->qualificationCertifications = $this->getEmployeeData($employee->id, new EmployeeCertification());
         $data->qualificationLanguages = $this->getEmployeeData($employee->id, new EmployeeLanguage());
-        $data->salary = $this->getEmployeeData($employee->id, new EmployeeSalary());
+        $data->salary = $this->getEmployeeData($employee->id, new Vw_EmployeeSalary());
         $data->dependants = $this->getEmployeeData($employee->id, new EmployeeDependent());
         $data->emergencyContacts = $this->getEmployeeData($employee->id, new EmergencyContact());
         $data->projects = $this->getEmployeeData($employee->id, new EmployeeProject());
@@ -133,7 +139,6 @@ class EmployeesActionManager extends SubActionManager
             return new IceResponse(IceResponse::ERROR, "Error occurred while archiving employee");
         }
 
-
         $ok = $employee->Delete();
         if (!$ok) {
             return new IceResponse(IceResponse::ERROR, "Error occurred while deleting employee");
@@ -144,7 +149,6 @@ class EmployeesActionManager extends SubActionManager
 
     public function downloadArchivedEmployee($req)
     {
-
 
         if ($this->baseService->currentUser->user_level != 'Admin') {
             echo "Error: Permission denied";
@@ -164,23 +168,24 @@ class EmployeesActionManager extends SubActionManager
         $str = json_encode($employee, JSON_PRETTY_PRINT);
 
         $filename = uniqid();
-        $file = fopen("/tmp/".$filename, "w");
+        $file = fopen("/tmp/" . $filename, "w");
         fwrite($file, $str);
         fclose($file);
 
-        $downloadFileName = "employee_".$employee->id."_"
-            .str_replace(" ", "_", $employee->first_name)."_"
-            .str_replace(" ", "_", $employee->last_name).".txt";
+        $downloadFileName = "employee_" . $employee->id . "_"
+        . str_replace(" ", "_", $employee->first_name) . "_"
+        . str_replace(" ", "_", $employee->middle_name) . "_"
+        . str_replace(" ", "_", $employee->last_name) . ".txt";
 
         header("Pragma: public"); // required
         header("Expires: 0");
         header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
         header("Content-Description: File Transfer");
         header("Content-Type: image/jpg");
-        header('Content-Disposition: attachment; filename="'.$downloadFileName.'"');
+        header('Content-Disposition: attachment; filename="' . $downloadFileName . '"');
         header("Content-Transfer-Encoding: binary");
-        header("Content-Length: ".filesize("/tmp/".$filename));
-        readfile("/tmp/".$filename);
+        header("Content-Length: " . filesize("/tmp/" . $filename));
+        readfile("/tmp/" . $filename);
         exit();
     }
 

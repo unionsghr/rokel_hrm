@@ -149,8 +149,8 @@ msgstr "Manage Permissions"
 msgid "Upgrade"
 msgstr "Upgrade"
 
-msgid "Manage Metadata"
-msgstr "Manage Metadata"
+msgid "Manage Parameters"
+msgstr "Manage Parameters"
 
 msgid "Field Names Setup"
 msgstr "Field Names Setup"
@@ -227,8 +227,8 @@ msgstr "Staff Directory"
 msgid "Training"
 msgstr "Training"
 
-msgid "Travel Management"
-msgstr "Travel Management"
+msgid "Imprest Management"
+msgstr "Imprest Management"
 
 msgid "Travel"
 msgstr "Travel"

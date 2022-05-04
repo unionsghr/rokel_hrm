@@ -20,16 +20,19 @@ class AuditActionManager extends SubActionManager
         $audit->details = $data;
 
         $currentEmpId = $this->getCurrentProfileId();
+        LogManager::getInstance()->info("=========Payroll=========currentEmpId=>".$currentEmpId);
+
+        $currentEmpId = $this->getCurrentProfileId();
         if (!empty($currentEmpId)) {
             $employee = $this->baseService->getElement('Employee', $this->getCurrentProfileId(), null, true);
             $department = $this->baseService->getElement('CompanyStructure', $this->getCurrentProfileId(), null, true);
             $audit->full_name = $employee->first_name." ".$employee->middle_name." ".$employee->last_name." [EmpId = ".$employee->employee_id."]";
             // $audit->employee = $employee->first_name." ".$employee->middle_name." ".$employee->last_name;
 
-            $audit->employee = $employee->first_name;
+            $audit->employee = $employee->first_name; 
 
             $audit->department = $department->title;
-
+            // LogManager::getInstance()->info("Audit Employee=>".$employee);
         }
 
         $ok = $audit->Save();

@@ -39,7 +39,7 @@ class CandidatesActionManager extends SubActionManager
         if (!empty($candidate->profileImage)) {
             $candidate->profileImage = $fileService->getFileUrl($candidate->profileImage);
         } else {
-            if ($candidate->gender == 'Female') {
+            if ($candidate->gender == 'F') {
                 $candidate->profileImage = BASE_URL."images/user_female.png";
             } else {
                 $candidate->profileImage = BASE_URL."images/user_male.png";

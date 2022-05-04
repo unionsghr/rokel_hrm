@@ -74,7 +74,7 @@
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
                     value: function() {
-                        return ["id", "title", "type", "comp_code", "address", "country", "nassit", "tin", "timezone", "parent"]
+                        return ["id", "title", "type", "comp_code", "address","heads",  "parent", "approval_status"]
                     }
                 }, {
                     key: "getHeaders",
@@ -83,10 +83,12 @@
                             sTitle: "ID",
                             bVisible: !1
                         }, {
-                            sTitle: "Name"
+                            sTitle: "Name",
+                            bSortable: !1
                         }, 
                         {
-                            sTitle: "Type"
+                            sTitle: "Type",
+                            bSortable: !1
                         }, 
                         {
                             sTitle: "Code"
@@ -97,22 +99,31 @@
                             bSortable: !1
                         }, 
                         {
-                            sTitle: "Country",
-                            sClass: "center"
+                            sTitle: "Head",
+                            bSortable: !1
                         }, 
+                        // {
+                        //     sTitle: "Country",
+                        //     sClass: "center"
+                        // }, 
+                        // {
+                        //     sTitle: "NASSIT",
+                        //     sClass: "center"
+                        // }, 
+                        // {
+                        //     sTitle: "TIN",
+                        //     sClass: "center"
+                        // }, 
+                        // {
+                        //     sTitle: "Time Zone"
+                        // }, 
                         {
-                            sTitle: "NASSIT",
-                            sClass: "center"
-                        }, 
+                            sTitle: "Parent"
+                        },
                         {
-                            sTitle: "TIN",
-                            sClass: "center"
-                        }, 
-                        {
-                            sTitle: "Time Zone"
-                        }, {
-                            sTitle: "Parent Structure"
-                        }]
+                            sTitle: "App Status"
+                        }
+                    ]
                     }
                 }, {
                     key: "getFormFields",
@@ -150,6 +161,11 @@
                                     ["Other", "Other"]
                                 ]
                             }],
+                            ["comp_code", {
+                                label: "Code",
+                                type: "text",
+                                validation: "none"
+                            }],
                             ["country", {
                                 label: "Country",
                                 type: "select2",
@@ -168,11 +184,12 @@
                                 "remote-source": ["CompanyStructure", "id", "title"]
                             }],
                             ["heads", {
-                                label: "Heads",
-                                type: "select2multi",
+                                label: "Head",
+                                type: "select",
                                 "allow-null": !0,
-                                "remote-source": ["Employee", "id", "first_name+last_name"]
+                                "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
                             }],
+                           
                             ["nassit", {
                                 label: "Nassit",
                                 type: "text",
@@ -185,12 +202,14 @@
                             }]
                         ]
                     }
-                }, {
+                },
+                 {
                     key: "postRenderForm",
                     value: function(e, t) {
-                        null != e && null !== e.id && void 0 !== e.id && "" !== e.id || t.find("#field_heads").hide()
+                        null != e && null !== e.id && void 0 !== e.id && "" !== e.id || t.find("#field_heads").show()
                     }
-                }, {
+                },
+                 {
                     key: "getHelpLink",
                     value: function() {
                         return "https://icehrm.gitbook.io/icehrm/employees/employee-information-setup"
@@ -1254,7 +1273,8 @@
                         }).remove(), $(".tableActionButton").tooltip()
                     }
                 }
-            }, {
+            }, 
+            {
                 key: "createTableServer",
                 value: function(e) {
                     var t = this.getHeaders();
@@ -1289,7 +1309,8 @@
                         return 3 === this.nodeType
                     }).remove(), $(".tableActionButton").tooltip()
                 }
-            }, {
+            }, 
+            {
                 key: "getHeaders",
                 value: function() {}
             }, {

@@ -473,7 +473,7 @@
                 "pink": "#ffc0cb",
                 "plum": "#dda0dd",
                 "powderblue": "#b0e0e6",
-                "purple": "#800080",
+                "purple": "#003C5F",
                 "red": "#ff0000",
                 "rosybrown": "#bc8f8f",
                 "royalblue": "#4169e1",

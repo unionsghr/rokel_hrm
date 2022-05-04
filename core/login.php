@@ -105,7 +105,7 @@ if (empty($user) || empty($user->email)) {
             } else {
 				if ($user->user_level == "Admin") {
 					if (\Utils\SessionUtils::getSessionObject('account_locked') == "1") {
-						header("Location:".CLIENT_BASE_URL."?g=admin&n=billing&m=admin_System");
+						header("Location:".CLIENT_BASE_URL."?g=admin&n=billing&m=admin_System"); 
                         exit();
 					} else {
 						header("Location:".HOME_LINK_ADMIN);
@@ -192,23 +192,26 @@ $csrfToken = sha1(rand(4500, 100000) . time(). CLIENT_BASE_URL);
 	<style type="text/css">
 		/* Override some defaults */
 		html, body {
-			/* background-color: #000; */
-			background-image: url("img5.png");
-		}
+			background-color: #FFF;
+			opacity: 0.9;
+			background-image: url("login_img8.jpg");
+		} 
 		body {
-			padding-top: 100px;
-			padding-left: 560px;
+			/* padding-top: 35px; */
+			/* padding-left: 560px; */
+			/* padding-left: 100px; */
 
 		}
 		.container {
-			width: 500px;
+			/* width: 400px; */
+			width: 300px;
 		}
 
 		/* The white background content wrapper */
 		.container > .content {
 			min-height: 0px !important;
 			background-color: #f0f5f5;
-			padding: 70px;
+			padding: 25px;
 			margin: 0 -100px;
 			-webkit-border-radius:0px;
 			-moz-border-radius:0px;
@@ -227,7 +230,7 @@ $csrfToken = sha1(rand(4500, 100000) . time(). CLIENT_BASE_URL);
       		right: -5%;
       		left: -5%; */
       		/* background: inherit; */
-      		border-radius: 5%;
+      		/* border-radius: 5%; */
 		}
 
 		.login-form {
@@ -376,20 +379,21 @@ $csrfToken = sha1(rand(4500, 100000) . time(). CLIENT_BASE_URL);
                         <input type="hidden" id="csrf" name="csrf" value="<?=$csrfToken?>"/>
 						<fieldset>
 							<div class="clearfix">
-								<div class="input-prepend" style="margin-top:30px;">
+								<div class="input-prepend" style="margin-top:25px;">
 									<!-- <span class="add-on"><i class="icon-user" ></i></span> -->
-									<input class="span2" style="width:80%;font-size:20px;" type="text" id="username" name="username" placeholder="Username">
+									<input class="span2" style="width:80%;font-size:20px; height:50%;" type="text" id="username" name="username" placeholder="Username">
 								</div>
 							</div>
 							<div class="clearfix" style="margin-top:30px;">
 								<div class="input-prepend">
 									<!-- <span class="add-on"><i class="icon-lock"></i></span> -->
-									<input class="span2" style="width:80%;font-size:20px;" type="password" id="password" name="password" placeholder="Password">
+									<input class="span2" style="width:80%;font-size:20px; height:50%;" type="password" id="password" name="password" placeholder="Password">
 								</div>
 							</div>
+							
 							<div class="clearfix" style="margin-top:20px;">
 								<div class="checkbox">
-									<label><input id="remember" name="remember" type="checkbox" value="remember">Remember me</label>
+									<label><input id="remember" name="remember" type="checkbox" value="remember">Remember me</label> 
 								</div>
 							</div>
 							<?php if (isset($_REQUEST['f'])) {?>
@@ -406,10 +410,10 @@ $csrfToken = sha1(rand(4500, 100000) . time(). CLIENT_BASE_URL);
 								</div>
 							<?php } ?>
 							<!-- <button class="btn" style="margin-top: 10px; font-size: 20px; color: blue; text-align: center; margin-left: 70px; border-radius: 10%; padding-right: 20%;" type="button" onclick="submitLogin();return false;"> Sign in &nbsp;&nbsp;<span class="icon-arrow-right"></span></button> -->
-							<button class="btn" style="margin-top: 10px; font-size: 20px; background-color: green; text-align: center; margin-left: 70px; border-radius: 10%; padding-right: 20%;" type="button" onclick="submitLogin();return false;"> Log in </span></button>
+							<button class="btn" style="margin-top: 10px; font-size: 20px; background-color: #FFF; text-align: right; border-radius: 10%; padding-right: 15%;" type="button" onclick="submitLogin();return false;"> Login </span></button>
 						</fieldset>
 						<div class="clearfix">
-							<a href="" onclick="showForgotPassword();return false;" style="float:left;margin-top: 20px;">Forgot password</a>
+							<a href="" onclick="showForgotPassword();return false;" style="float:left;margin-top: 20px;">Forgot password?</a>
 						</div>
 					</form>
 					<form id="requestPasswordChangeForm" style="display:none;" action="">

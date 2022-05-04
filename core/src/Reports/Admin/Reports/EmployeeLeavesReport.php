@@ -5,7 +5,7 @@ use Employees\Common\Model\Employee;
 use Reports\Admin\Api\CSVReportBuilder;
 use Reports\Admin\Api\CSVReportBuilderInterface;
 // use Reports\Admin\Api\CSVReportBuilderInterface;
-use Utils\LogManager;
+use Utils\LogManager; 
 
 class EmployeeLeavesReport extends CSVReportBuilder implements CSVReportBuilderInterface
 {
@@ -13,21 +13,24 @@ class EmployeeLeavesReport extends CSVReportBuilder implements CSVReportBuilderI
     public function getMainQuery()
     {
         $query = "SELECT 
-(SELECT concat(`first_name`, ' ', `last_name`) from Employees where id = employee) 
-as 'Employee',
-(SELECT name from LeaveTypes where id = leave_type) as 'Leave Type',
-(SELECT name from LeavePeriods where id = leave_period) as 'Leave Period',
-date_start as 'Start Date',
-date_end as 'End Date',
-details as 'Reason',
-status as 'Leave Status',
-(select count(*) from EmployeeLeaveDays d where d.employee_leave = lv.id 
-and leave_type = 'Full Day') as 'Full Day Count',
-(select count(*) from EmployeeLeaveDays d where d.employee_leave = lv.id 
-and leave_type = 'Half Day - Morning') as 'Half Day (Morning) Count',
-(select count(*) from EmployeeLeaveDays d where d.employee_leave = lv.id 
-and leave_type = 'Half Day - Afternoon') as 'Half Day (Afternoon) Count'
-from EmployeeLeaves lv";
+        (SELECT concat(`first_name`, ' ', `middle_name`, ' ', `last_name`) from Employees where id = employee) 
+        as 'Employee',
+        (SELECT name from LeaveTypes where id = leave_type) as 'Leave Type',
+        (SELECT name from LeavePeriods where id = leave_period) as 'Leave Period',
+        date_start as 'Start Date',
+        date_end as 'End Date',
+        details as 'Reason',
+        lv.status as 'Leave Status',
+        (select count(*) from EmployeeLeaveDays d where d.employee_leave = lv.id 
+        and leave_type = 'Full Day') as 'Full Day Count',
+        (select count(*) from EmployeeLeaveDays d where d.employee_leave = lv.id 
+        and leave_type = 'Half Day - Morning') as 'Half Day (Morning) Count',
+        (select count(*) from EmployeeLeaveDays d where d.employee_leave = lv.id 
+        and leave_type = 'Half Day - Afternoon') as 'Half Day (Afternoon) Count',
+        (SELECT name FROM paygrades where id = c.pay_grade) as 'Staff Grade',
+        (SELECT concat(first_name, ' ', middle_name, ' ', last_name) from employees where id = c.supervisor LIMIT 1) as 'Duty Reliever'
+        from EmployeeLeaves lv INNER JOIN employees c 
+            ON c.id = lv.employee";
 
         return $query;
     }

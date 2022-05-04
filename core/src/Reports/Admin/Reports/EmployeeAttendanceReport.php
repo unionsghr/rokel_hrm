@@ -26,6 +26,14 @@ class EmployeeAttendanceReport extends ClassBasedReportBuilder implements Report
             $filters['department'] = $request['department'];
         }
 
+        if (empty($request['in_time']) || $request['in_time'] == "NULL") {
+            $request['in_time'] = date("Y-m-d 00:00:00");
+        }
+        
+        if (empty($request['out_time']) || $request['out_time'] == "NULL") {
+            $request['out_time'] = date("Y-m-d 23:59:59");
+        }
+
         
         $mapping = [
             "employee" => ["Employee","id","first_name+middle_name+last_name"],
@@ -38,7 +46,7 @@ class EmployeeAttendanceReport extends ClassBasedReportBuilder implements Report
         $reportColumns = [
             // ['label' => 'ID', 'column' => 'code'],
             ['label' => 'Employee', 'column' => 'employee'],
-            ['label' => 'Department', 'column' => 'department'],
+            ['label' => 'Department', 'column' => 'department'], 
             ['label' => 'Time - IN', 'column' => 'in_time'],
             ['label' => 'Time - OUT', 'column' => 'out_time'],
         ];

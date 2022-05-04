@@ -10,7 +10,7 @@ use Reports\Admin\Api\CSVReportBuilderInterface;
 class ExpenseReport extends CSVReportBuilder implements CSVReportBuilderInterface
 {
 
-    public function getMainQuery()
+    public function getMainQuery() 
     {
         $query = "SELECT
     (SELECT concat(`first_name`, ' ', `last_name`) 
