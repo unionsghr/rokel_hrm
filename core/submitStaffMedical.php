@@ -70,8 +70,6 @@ Dear ". $supervisor_name . ",
 You have medical expense from your subordinate pending your approval. <br/><br/>
 
 <b>Details:</b><br/><br/>
-
-
  
 "
 ;
@@ -84,10 +82,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <paulgyidana@gmail.com>' . "\r\n";
 // $headers .= 'Cc: pygeorge@st.ug.edu.gh' . "\r\n";
 
-mail($to,$subject,$message,$headers);
-    
-
-
+mail($to,$subject,$message,$headers);  
 
 
 

@@ -283,6 +283,20 @@
                         },
                       ],
                       [
+                        "status",
+                        {
+                          label: "Status",
+                          type: "select",
+                          validation: "",
+                          "allow-null": false,
+                          "null-label": "Select",
+                          source: [
+                            ["Draft", "Draft"],
+                            ["Submitted", "Submit"],
+                          ],
+                        },
+                      ],
+                      [
                         "attachment1",
                         {
                           label: "Attach Document",
@@ -3240,81 +3254,43 @@
                 key: "save",
                 value: function (e, t) {
 
-                  if (
-                    confirm(
-                      "Do you want to submit for approval now?"
-                    )
-                  ){
-                  // {alert('great'); return false;}
-
-                  $("#id").val(e);
-
-                  // alert(e); return false;
-                  var profile = this.getCurrentProfile();
-
-                  let currentprofile = JSON.stringify(profile.id);
-
-                  //    alert(currentprofile);
-
-                  $("#employee_Id").val(e);
-                  //  alert(e);
-                  //  $("#" + this.itemNameLower + "medical").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), $("#" + this.itemNameLower + "_employee_Id").val(e), this.statusChangeId = e
-                  // alert(e);
-
-                  this.renderModel(""),
-                    $("#staffmedical").modal("show"),
-                    $("#employee_Id").val;
-
-                  let id_ = e;
-
-                  $.ajax({
-                    url: "../../../../rokel_hrm/core/viewStaffMedical.php",
-                    type: "post",
-                    contentType: "application/json",
-                    dataType: "json",
-                    async: false,
-                    data: JSON.stringify({
-                      id: id_,
-                      currentUser: currentprofile,
-                    }),
-                    success: function (data, textStatus, jQxhr) {
-                     
-
-                      if (data.responseCode == "000") {
-                        // alert("here"); return false;
-
-                        let medical_summary = data.data;
-
-                        // alert(JSON.stringify(medical_summary)); return false;
-                        // <h5><b>Payroll: &nbsp;</b> ${payroll_summary.payroll}</h5>
-
-                        var theDiv =
-                          document.getElementById("medicalModelBody");
-                        theDiv.innerHTML = `
-                        <head>
-                        <style>
-                        table, th, td {
-                        border: 1px solid black;
-                        border-collapse: collapse;
-                        }
-                        tr:nth-child(even) {
-                            background-color: #dddddd;
-                          }
-                        th, td {
-                        padding: 5px;
-                        text-align: left;    
-                        }
-                        </style
-                        </head>
-                       
-                        `;
-                        // theDiv.appendChild(content);
-                      } else {
-                        alert("Unavailable Data...");
-                      }
-                    },
-                  });
-                }
+                //   if (
+                //     confirm(
+                //       "Do you want to submit for approval now?"
+                //     )
+                //   ){
+                //     var e = $("#employee_Id").val();
+                //     // alert("Approval...."); return false;
+                //     // var approval;
+                //     var profile = this.getCurrentProfile();
+                //     let currentProfile = profile.id;
+                //     // alert(currentProfile);
+                //     let id_ = e;
+                //     $.ajax({
+                //       url: "../../../../rokel_hrm/core/submit_StaffMedical.php",
+                //       type: "post",
+                //       contentType: "application/json",
+                //       dataType: "json",
+                //       async: false,
+                //       data: JSON.stringify({
+                //         id: id_,
+                //         currentUser: currentProfile,
+                //       }),
+                //       success: function (data, textStatus, jQxhr) {
+                //         if (data.responseCode == "000") {
+                //           // alert("here"); return false;
+                //           let response = data.data;
+  
+                //           alert(JSON.stringify(response));
+                //         } else {
+                //           alert("Data not found");
+                //         }
+                //       },
+                //     });
+                //     alert("Successfully Submitted");
+                //     this.renderModel(""), $("#staffmedical").modal("hide");
+                //     location.reload();
+                // }
                   
                   var a = new n.default(this.getTableName() + "_submit", !0, {
                     ShowPopup: !1,
