@@ -1,0 +1,11 @@
+{
+    "label": "Transfer Employees",
+    "menu": "Employees",
+    "order": "88",
+    "icon": "fa fa-users",
+    "user_levels": "Admin",
+    "dashboardPosition": 21,
+    "permissions": [],
+    "model_namespace": "\\EmployeeTransfers\\Common\\Model",
+    "manager": "\\EmployeeTransfers\\Admin\\Api\\EmployeeTransferAdminManager"
+}

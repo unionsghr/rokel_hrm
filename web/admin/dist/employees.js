@@ -72,19 +72,19 @@
       function (e, t, l) {
         "use strict";
         var a = (function () {
-            function e(e, t) {
-              for (var l = 0; l < t.length; l++) {
-                var a = t[l];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
-              }
+          function e(e, t) {
+            for (var l = 0; l < t.length; l++) {
+              var a = t[l];
+              (a.enumerable = a.enumerable || !1),
+                (a.configurable = !0),
+                "value" in a && (a.writable = !0),
+                Object.defineProperty(e, a.key, a);
             }
-            return function (t, l, a) {
-              return l && e(t.prototype, l), a && e(t, a), t;
-            };
-          })(),
+          }
+          return function (t, l, a) {
+            return l && e(t.prototype, l), a && e(t, a), t;
+          };
+        })(),
           i = n(e("../../../api/AdapterBase")),
           o = n(e("../../../api/SubAdapterBase"));
 
@@ -92,8 +92,8 @@
           return e && e.__esModule
             ? e
             : {
-                default: e,
-              };
+              default: e,
+            };
         }
 
         function s(e, t) {
@@ -113,7 +113,7 @@
           if ("function" != typeof t && null !== t)
             throw new TypeError(
               "Super expression must either be null or a function, not " +
-                typeof t
+              typeof t
             );
           (e.prototype = Object.create(t && t.prototype, {
             constructor: {
@@ -124,125 +124,125 @@
             },
           })),
             t &&
-              (Object.setPrototypeOf
-                ? Object.setPrototypeOf(e, t)
-                : (e.__proto__ = t));
+            (Object.setPrototypeOf
+              ? Object.setPrototypeOf(e, t)
+              : (e.__proto__ = t));
         }
         var d = (function (e) {
-            function t() {
-              return (
-                s(this, t),
-                r(
-                  this,
-                  (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                    this,
-                    arguments
-                  )
-                )
-              );
-            }
+          function t() {
             return (
-              u(t, o.default),
-              a(t, [
-                {
-                  key: "getDataMapping",
-                  value: function () {
-                    return ["id", "employee", "skill_id", "details"];
-                  },
-                },
-                {
-                  key: "getHeaders",
-                  value: function () {
-                    return [
-                      {
-                        sTitle: "ID",
-                        bVisible: !1,
-                      },
-                      {
-                        sTitle: "Employee",
-                      },
-                      {
-                        sTitle: "Skill",
-                      },
-                      {
-                        sTitle: "Details",
-                      },
-                    ];
-                  },
-                },
-                {
-                  key: "getFormFields",
-                  value: function () {
-                    return [
-                      [
-                        "id",
-                        {
-                          label: "ID",
-                          type: "hidden",
-                        },
-                      ],
-                      [
-                        "employee",
-                        {
-                          label: "Employee",
-                          type: "hidden",
-                        },
-                      ],
-                      [
-                        "skill_id",
-                        {
-                          label: "Skill",
-                          type: "select2",
-                          "allow-null": !0,
-                          "remote-source": ["Skill", "id", "name"],
-                        },
-                      ],
-                      [
-                        "details",
-                        {
-                          label: "Details",
-                          type: "textarea",
-                          validation: "",
-                        },
-                      ],
-                    ];
-                  },
-                },
-                {
-                  key: "forceInjectValuesBeforeSave",
-                  value: function (e) {
-                    return (e.employee = this.parent.currentId), e;
-                  },
-                },
-                {
-                  key: "getSubHeaderTitle",
-                  value: function () {
-                    return (
-                      '<button class="btn btn-small btn-success" onclick="modJs.subModJsList[\'tab' +
-                      this.tab +
-                      '\'].renderForm();" style="margin-right:10px;"><i class="fa fa-plus"></i></button>' +
-                      this.gt("Skills")
-                    );
-                  },
-                },
-                {
-                  key: "getSubItemHtml",
-                  value: function (e, t, l) {
-                    return $(
-                      '<div class="list-group-item sub-tab-item"><h5 class="list-group-item-heading" style="font-weight:bold;">' +
-                        e[2] +
-                        t +
-                        l +
-                        '</h5><p class="list-group-item-text">' +
-                        nl2br(e[3]) +
-                        "</p></div>"
-                    );
-                  },
-                },
-              ]),
-              t
+              s(this, t),
+              r(
+                this,
+                (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                  this,
+                  arguments
+                )
+              )
             );
-          })(),
+          }
+          return (
+            u(t, o.default),
+            a(t, [
+              {
+                key: "getDataMapping",
+                value: function () {
+                  return ["id", "employee", "skill_id", "details"];
+                },
+              },
+              {
+                key: "getHeaders",
+                value: function () {
+                  return [
+                    {
+                      sTitle: "ID",
+                      bVisible: !1,
+                    },
+                    {
+                      sTitle: "Employee",
+                    },
+                    {
+                      sTitle: "Skill",
+                    },
+                    {
+                      sTitle: "Details",
+                    },
+                  ];
+                },
+              },
+              {
+                key: "getFormFields",
+                value: function () {
+                  return [
+                    [
+                      "id",
+                      {
+                        label: "ID",
+                        type: "hidden",
+                      },
+                    ],
+                    [
+                      "employee",
+                      {
+                        label: "Employee",
+                        type: "hidden",
+                      },
+                    ],
+                    [
+                      "skill_id",
+                      {
+                        label: "Skill",
+                        type: "select2",
+                        "allow-null": !0,
+                        "remote-source": ["Skill", "id", "name"],
+                      },
+                    ],
+                    [
+                      "details",
+                      {
+                        label: "Details",
+                        type: "textarea",
+                        validation: "",
+                      },
+                    ],
+                  ];
+                },
+              },
+              {
+                key: "forceInjectValuesBeforeSave",
+                value: function (e) {
+                  return (e.employee = this.parent.currentId), e;
+                },
+              },
+              {
+                key: "getSubHeaderTitle",
+                value: function () {
+                  return (
+                    '<button class="btn btn-small btn-success" onclick="modJs.subModJsList[\'tab' +
+                    this.tab +
+                    '\'].renderForm();" style="margin-right:10px;"><i class="fa fa-plus"></i></button>' +
+                    this.gt("Skills")
+                  );
+                },
+              },
+              {
+                key: "getSubItemHtml",
+                value: function (e, t, l) {
+                  return $(
+                    '<div class="list-group-item sub-tab-item"><h5 class="list-group-item-heading" style="font-weight:bold;">' +
+                    e[2] +
+                    t +
+                    l +
+                    '</h5><p class="list-group-item-text">' +
+                    nl2br(e[3]) +
+                    "</p></div>"
+                  );
+                },
+              },
+            ]),
+            t
+          );
+        })(),
           c = (function (e) {
             function t() {
               return (
@@ -386,16 +386,16 @@
                     }
                     return $(
                       '<div class="list-group-item sub-tab-item"><h5 class="list-group-item-heading" style="font-weight:bold;">' +
-                        e[2] +
-                        t +
-                        l +
-                        '</h5><p class="list-group-item-text"><i class="fa fa-calendar"></i> Start: <b>' +
-                        a +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-calendar"></i> Completed: <b>' +
-                        i +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-building-o"></i> Institute: <b>' +
-                        e[3] +
-                        "</b></p></div>"
+                      e[2] +
+                      t +
+                      l +
+                      '</h5><p class="list-group-item-text"><i class="fa fa-calendar"></i> Start: <b>' +
+                      a +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-calendar"></i> Completed: <b>' +
+                      i +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-building-o"></i> Institute: <b>' +
+                      e[3] +
+                      "</b></p></div>"
                     );
                   },
                 },
@@ -546,16 +546,16 @@
                     }
                     return $(
                       '<div class="list-group-item sub-tab-item"><h5 class="list-group-item-heading" style="font-weight:bold;">' +
-                        e[2] +
-                        t +
-                        l +
-                        '</h5><p class="list-group-item-text"><i class="fa fa-calendar"></i> Granted On: <b>' +
-                        a +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-calendar"></i> Valid Thru: <b>' +
-                        i +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-building-o"></i> Institute: <b>' +
-                        e[3] +
-                        "</b></p></div>"
+                      e[2] +
+                      t +
+                      l +
+                      '</h5><p class="list-group-item-text"><i class="fa fa-calendar"></i> Granted On: <b>' +
+                      a +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-calendar"></i> Valid Thru: <b>' +
+                      i +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-building-o"></i> Institute: <b>' +
+                      e[3] +
+                      "</b></p></div>"
                     );
                   },
                 },
@@ -725,18 +725,18 @@
                   value: function (e, t, l) {
                     return $(
                       '<div class="list-group-item sub-tab-item"><h5 class="list-group-item-heading" style="font-weight:bold;">' +
-                        e[2] +
-                        t +
-                        l +
-                        '</h5><p class="list-group-item-text"><i class="fa fa-asterisk"></i> Reading: <b>' +
-                        e[3] +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-asterisk"></i> Speaking: <b>' +
-                        e[4] +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-asterisk"></i> Writing: <b>' +
-                        e[5] +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-asterisk"></i> Understanding: <b>' +
-                        e[6] +
-                        "</b></p></div>"
+                      e[2] +
+                      t +
+                      l +
+                      '</h5><p class="list-group-item-text"><i class="fa fa-asterisk"></i> Reading: <b>' +
+                      e[3] +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-asterisk"></i> Speaking: <b>' +
+                      e[4] +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-asterisk"></i> Writing: <b>' +
+                      e[5] +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-asterisk"></i> Understanding: <b>' +
+                      e[6] +
+                      "</b></p></div>"
                     );
                   },
                 },
@@ -885,14 +885,14 @@
                   value: function (e, t, l) {
                     return $(
                       '<div class="list-group-item sub-tab-item"><h5 class="list-group-item-heading" style="font-weight:bold;">' +
-                        e[2] +
-                        t +
-                        l +
-                        '</h5><p class="list-group-item-text"><i class="fa fa-users"></i> Relationship: <b>' +
-                        e[3] +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-user"></i> Name: <b>' +
-                        e[2] +
-                        "</b></p></div>"
+                      e[2] +
+                      t +
+                      l +
+                      '</h5><p class="list-group-item-text"><i class="fa fa-users"></i> Relationship: <b>' +
+                      e[3] +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-user"></i> Name: <b>' +
+                      e[2] +
+                      "</b></p></div>"
                     );
                   },
                 },
@@ -927,7 +927,6 @@
                       "home_phone",
                       "work_phone",
                       "mobile_phone",
-                      "approval_status",
                     ];
                   },
                 },
@@ -956,9 +955,6 @@
                       },
                       {
                         sTitle: "Mobile Phone (Preferred)",
-                      },
-                      {
-                        sTitle: "App Status",
                       },
                     ];
                   },
@@ -1046,18 +1042,18 @@
                   value: function (e, t, l) {
                     return $(
                       '<div class="list-group-item sub-tab-item"><h5 class="list-group-item-heading" style="font-weight:bold;">' +
-                        e[2] +
-                        t +
-                        l +
-                        '</h5><p class="list-group-item-text"><i class="fa fa-users"></i> Relationship: <b>' +
-                        e[3] +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-user"></i> Name: <b>' +
-                        e[2] +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-phone"></i> Home Phone: <b>' +
-                        e[4] +
-                        '</b></p><p class="list-group-item-text"><i class="fa fa-phone"></i> Mobile Phone: <b>' +
-                        e[6] +
-                        "</b></p></div>"
+                      e[2] +
+                      t +
+                      l +
+                      '</h5><p class="list-group-item-text"><i class="fa fa-users"></i> Relationship: <b>' +
+                      e[3] +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-user"></i> Name: <b>' +
+                      e[2] +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-phone"></i> Home Phone: <b>' +
+                      e[4] +
+                      '</b></p><p class="list-group-item-text"><i class="fa fa-phone"></i> Mobile Phone: <b>' +
+                      e[6] +
+                      "</b></p></div>"
                     );
                   },
                 },
@@ -1231,15 +1227,15 @@
                       '\');return false;" type="button" style="position: absolute;bottom: 5px;right: 70px;font-size: 13px;" tooltip="Download"><li class="fa fa-cloud-download"></li></button>';
                     return $(
                       '<div class="list-group-item sub-tab-item"><h5 class="list-group-item-heading" style="font-weight:bold;">' +
-                        e[2] +
-                        i +
-                        t +
-                        l +
-                        '</h5><p class="list-group-item-text">' +
-                        nl2br(e[3]) +
-                        '</p><p class="list-group-item-text"><i class="fa fa-calendar"></i> Expire On: <b>' +
-                        a +
-                        "</b></p></div>"
+                      e[2] +
+                      i +
+                      t +
+                      l +
+                      '</h5><p class="list-group-item-text">' +
+                      nl2br(e[3]) +
+                      '</p><p class="list-group-item-text"><i class="fa fa-calendar"></i> Expire On: <b>' +
+                      a +
+                      "</b></p></div>"
                     );
                   },
                 },
@@ -1307,8 +1303,8 @@
                           ? (this.hiddenFields[t.name] = t)
                           : "Table and Form" === t.display ||
                             "Form" === t.display
-                          ? (this.tableFields[t.name] = t)
-                          : (this.formOnlyFields[t.name] = t);
+                            ? (this.tableFields[t.name] = t)
+                            : (this.formOnlyFields[t.name] = t);
                   },
                 },
                 {
@@ -1361,7 +1357,7 @@
                       "middle_name",
                       "last_name",
                       "mobile_phone",
-                      // "department",
+                      "department",
                       "gender",
                       "supervisor",
                       // "approval_status",                      
@@ -1389,18 +1385,18 @@
                   value: function () {
                     for (
                       var e = this.getTableFields(),
-                        t = [
-                          {
-                            sTitle: "ID",
-                            bVisible: !1,
-                          },
-                          {
-                            sTitle: "",
-                            bSortable: !1,
-                          },
-                        ],
-                        l = "",
-                        a = 0;
+                      t = [
+                        {
+                          sTitle: "ID",
+                          bVisible: !1,
+                        },
+                        {
+                          sTitle: "",
+                          bSortable: !1,
+                        },
+                      ],
+                      l = "",
+                      a = 0;
                       a < e.length;
                       a++
                     )
@@ -1411,16 +1407,16 @@
                         (void 0 !== this.fieldNameMap[e[a]] &&
                           null !== this.fieldNameMap[e[a]] &&
                           (null == (l = this.fieldNameMap[e[a]].textMapped) ||
-                          "" === l
+                            "" === l
                             ? t.push({
-                                sTitle: l,
-                              })
+                              sTitle: l,
+                            })
                             : "gender" === e[a]
-                            ? t.push({
+                              ? t.push({
                                 sTitle: l,
                                 translate: !0,
                               })
-                            : t.push({
+                              : t.push({
                                 sTitle: l,
                               })));
                     return t;
@@ -1431,767 +1427,749 @@
                   value: function () {
                     for (
                       var e = [],
-                        t = void 0,
-                        l = void 0,
-                        a = [
-                          [
-                            "id",
-                            {
-                              label: "ID",
-                              type: "hidden",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "employee_id",
-                            {
-                              label: "Employee Number",
-                              type: "hidden",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "title",
-                            {
-                              label: "Title",
-                              type: "select2",
-                              "remote-source": ["AnnualRent", "id", "name"],
-                            },
-                          ],
-                          [
-                            "first_name",
-                            {
-                              label: "First Name",
-                              type: "text",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "middle_name",
-                            {
-                              label: "Middle Name",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "last_name",
-                            {
-                              label: "Last Name",
-                              type: "text",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "initials",
-                            {
-                              label: "Initials",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nationality",
-                            {
-                              label: "Nationality",
-                              type: "select2",
-                              "remote-source": ["Country", "id", "namecap"],
-                            },
-                          ],
-                          [
-                            "birthday",
-                            {
-                              label: "Date of Birth",
-                              type: "date",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "gender",
-                            {
-                              label: "Gender",
-                              type: "select",
-                              source: [
-                                ["M", "Male"],
-                                ["F", "Female"],
-                              ],
-                            },
-                          ],
-                          [
-                            "profile_image",
-                            {
-                              label:
-                                "Profile Image (.jpg, jpeg or png files only)",
-                              type: "fileupload",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "signature",
-                            {
-                              label: "Signature (.jpg, jpeg or png files only)",
-                              type: "fileupload",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "marital_status",
-                            {
-                              label: "Marital Status",
-                              type: "select",
-                              source: [
-                                ["Married", "Married"],
-                                ["Single", "Single"],
-                                ["Divorced", "Divorced"],
-                                ["Widowed", "Widowed"],
-                                ["Other", "Other"],
-                              ],
-                            },
-                          ],
-                          [
-                            "religion",
-                            {
-                              label: "Religion",
-                              type: "select",
-                              source: [
-                                ["Christian", "Christian"],
-                                ["Muslim", "Muslim"],
-                                ["Other", "Other"],
-                              ],
-                            },
-                          ],
-                          [
-                            "spouse_name",
-                            {
-                              label: "Spouse Name",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "father_name",
-                            {
-                              label: "Father's Name",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "mother_name",
-                            {
-                              label: "Mother's Name",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "place_of_birth",
-                            {
-                              label: "Place of Birth",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          // [
-                          //   "country",
-                          //   {
-                          //     label: "Country of Residence",
-                          //     type: "select2",
-                          //     validation: "",
-                          //     "remote-source": ["Country", "code", "name"],
-                          //   },
-                          // ],
-                          [
-                            "nxt_kin_fname",
-                            {
-                              label: "Next Of Kin's Name",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nxt_kin_mname",
-                            {
-                              label: "Next Of Kin's Middle Name",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nxt_kin_lname",
-                            {
-                              label: "Next Of Kin's Last Name",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nxt_kin_email",
-                            {
-                              label: "Next Of Kin's Email",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nxt_kin_phone",
-                            {
-                              label: "Next Of Kin's Phone No.",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nxt_kin_address",
-                            {
-                              label: "Next Of Kin's Address",
-                              type: "textarea",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "work_station_id",
-                            {
-                              label: "Work Station ID",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "bank_name",
-                            {
-                              label: "Name of Bank",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "bank_acc_no",
-                            {
-                              label: "Bank Account No.",
-                              type: "hidden",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "tin_no",
-                            {
-                              label: "TIN",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "staff_level",
-                            {
-                              label: "Staff Level",
-                              type: "select",
-                              source: [
-                                ["Non-Management", "Non-Management"],
-                                ["Management", "Management"],
-                                ["Senior Management", "Senior Management"],
-                              ],
-                            },
-                          ],
-                          [
-                            "staff_role",
-                            {
-                              label: "Staff Role",
-                              type: "select",
-                              source: [
-                                ["Managerial", "Managerial"],
-                                ["Clerical", "Clerical"],
-                                ["Non-Clerical", "Non-Clerical"],
-                              ],
-                            },
-                          ],
-                          [
-                            "ethnicity",
-                            {
-                              label: "Ethnicity",
-                              type: "select2",
-                              "allow-null": !0,
-                              "remote-source": ["Ethnicity", "id", "name"],
-                            },
-                          ],
-                          [
-                            "immigration_status",
-                            {
-                              label: "Immigration Status",
-                              type: "select2",
-                              "allow-null": !0,
-                              "remote-source": [
-                                "ImmigrationStatus",
-                                "id",
-                                "name",
-                              ],
-                            },
-                          ],
-                          [
-                            "ssn_num",
-                            {
-                              label: "Social Security No.",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nassit_num",
-                            {
-                              label: "NASSIT No.",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nic_num",
-                            {
-                              label: "NIN",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nin_issue_date",
-                            {
-                              label: "NIN Issue Date",
-                              type: "date",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "nin_expiry_date",
-                            {
-                              label: "NIN Expiry Date",
-                              type: "date",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "labour_card_num",
-                            {
-                              label: "Labour Card No.",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "fit_and_proper",
-                            {
-                              label: "Fit & Proper Attachment",
-                              type: "fileupload",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "policeClearance",
-                            {
-                              label: "Police Clearance Report",
-                              type: "fileupload",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "medicalClearance",
-                            {
-                              label: "Medical Clearance Report",
-                              type: "fileupload",
-                              validation: "none",
-                            },
-                          ],
-                          // [
-                          //   "other_id",
-                          //   {
-                          //     label: "Other ID",
-                          //     type: "text",
-                          //     validation: "none",
-                          //   },
-                          // ],
-                          [
-                            "driving_license",
-                            {
-                              label: "Driving License No",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "employment_status",
-                            {
-                              label: "Employment Status",
-                              type: "select2",
-                              "remote-source": [
-                                "EmploymentStatus",
-                                "id",
-                                "name",
-                              ],
-                            },
-                          ],
-                          [
-                            "job_title",
-                            {
-                              label: "Job Title",
-                              type: "select2",
-                              "remote-source": ["JobTitle", "id", "name"],
-                            },
-                          ],
-                          [
-                            "pay_grade",
-                            {
-                              label: "Pay Grade",
-                              type: "select2",
-                              "allow-null": !0,
-                              "remote-source": ["PayGrade", "id", "name"],
-                            },
-                          ],
-                          [
-                            "notches",
-                            {
-                              label: "Notch",
-                              type: "select2",
-                              "allow-null": true,
-                              "remote-source": ["Notches", "id", "name"],
-                            },
-                          ],
-                          [
-                            "work_station_id",
-                            {
-                              label: "Work Station Id",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "recruitment_date",
-                            {
-                              label: "Recruitment Date",
-                              type: "date",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "probation_period",
-                            {
-                              label: "Probation Period (Days)",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "confirmation_date",
-                            {
-                              label: "Confirmation Date",
-                              type: "date",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "start_date",
-                            {
-                              label: "Start Date",
-                              type: "date",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "address1",
-                            {
-                              label: "Address Line 1",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "address2",
-                            {
-                              label: "Address Line 2",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "city",
-                            {
-                              label: "City",
-                              type: "text",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "country",
-                            {
-                              label: "Country",
-                              type: "select2",
-                              "remote-source": ["Country", "code", "name"],
-                            },
-                          ],
-                          [
-                            "province",
-                            {
-                              label: "State",
-                              type: "select2",
-                              "allow-null": !0,
-                              "remote-source": ["Province", "id", "name"],
-                            },
-                          ],
-                          [
-                            "postal_code",
-                            {
-                              label: "Postal/Zip Code",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "home_phone",
-                            {
-                              label: "Home Phone",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "mobile_phone",
-                            {
-                              label: "Mobile (Preferred)",
-                              type: "text",
-                              validation: "",
-                            },
-                          ],
-                          [
-                            "phone_country",
-                            {
-                              label: "Phone Country",
-                              type: "select2",
-                              "remote-source": ["Country", "iso3", "name"],
-                              validation: "none"
-                            },
-                          ],
-                          [
-                            "work_phone",
-                            {
-                              label: "Work Phone",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "work_email",
-                            {
-                              label: "Email (Preferred)",
-                              type: "text",
-                              validation: "",
-                            },
-                          ],
-                          // ["private_email", {
-                          //     label: "Private Email",
-                          //     type: "text",
-                          //     validation: "emailOrEmpty"
-                          // }],
-                          [
-                            "confirmation_date",
-                            {
-                              label: "Confirmation Date",
-                              type: "date",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "termination_date",
-                            {
-                              label: "Termination Date",
-                              type: "date",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "branch",
-                            {
-                              label: "Branch",
-                              type: "select2",
-                              "remote-source": ["Vw_branches", "comp_code", "title"],
-                            },
-                          ],
-                          [
-                            "department",
-                            {
-                              label: "Department",
-                              type: "select2",
-                              validation: 'none',
-                              "remote-source": [
-                                "CompanyStructure", "id", "title"
-                                
-                              ],
-                              
-                            },
-                          ],
-                          [
-                            "unit",
-                            {
-                              label: "Unit",
-                              type: "select2",
-                              validation: "none",
-                              "allow-null": !0,
-                              "remote-source": ["Vw_units", "id", "title"],
-                            },
-                          ],
-                          [
-                            "outlet",
-                            {
-                              label: "Outlet",
-                              type: "select2",
-                              "allow-null": !0,
-                              "remote-source": ["Vw_outlets", "id", "title"],
-                            },
-                          ],
-                          [
-                            "supervisor",
-                            {
-                              label: "Direct Supervisor",
-                              type: "select2",
-                              "allow-null": !0,
-                              "remote-source": [
-                                "Employee",
-                                "id",
-                                "first_name+middle_name+last_name",
-                              ],
-                            },
-                          ],
-                          [
-                            "indirect_supervisors",
-                            {
-                              label: "Indirect Supervisors",
-                              type: "select2multi",
-                              "allow-null": !0,
-                              "remote-source": [
-                                "Employee",
-                                "id",
-                                "first_name+middle_name+last_name",
-                              ],
-                            },
-                          ],
-                          [
-                            "previous_work_name",
-                            {
-                              label: "Previous Place of Engagement",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "previous_work_address",
-                            {
-                              label: "Address of Previous Place",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "previous_work_tel",
-                            {
-                              label: "Tel No. of Previous Place",
-                              type: "text",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "prev_wk_start_date",
-                            {
-                              label: "Period From",
-                              type: "date",
-                              validation: "none",
-                            },
-                          ],
-                          [
-                            "prev_wk_end_date",
-                            {
-                              label: "Period To",
-                              type: "date",
-                              validation: "none",
-                            },
-                          ],
-
-                          [
-                            "approver1",
-                            {
-                              label: "First Level Approver",
-                              type: "select2",
-                              "allow-null": !0,
-                              "null-label": "None",
-                              "remote-source": [
-                                "Employee",
-                                "id",
-                                "first_name+middle_name+last_name",
-                              ],
-                            },
-                          ],
-                          [
-                            "approver2",
-                            {
-                              label: "Second Level Approver",
-                              type: "select2",
-                              "allow-null": !0,
-                              "null-label": "None",
-                              "remote-source": [
-                                "Employee",
-                                "id",
-                                "first_name+middle_name+last_name",
-                              ],
-                            },
-                          ],
-                          [
-                            "approver3",
-                            {
-                              label: "Third Level Approver",
-                              type: "select2",
-                              "allow-null": !0,
-                              "null-label": "None",
-                              "remote-source": [
-                                "Employee",
-                                "id",
-                                "first_name+middle_name+last_name",
-                              ],
-                            },
-                          ],
-                          [
-                            "notes",
-                            {
-                              label: "Notes",
-                              type: "datagroup",
-                              form: [
-                                [
-                                  "note",
-                                  {
-                                    label: "Note",
-                                    type: "textarea",
-                                    validation: "",
-                                  },
-                                ],
-                              ],
-                              html: '<div id="#_id_#" class="panel panel-default"><div class="panel-body">#_delete_##_edit_#<span style="color:#999;font-size:13px;font-weight:bold">Date: #_date_#</span><hr/>#_note_#</div></div>',
-                              validation: "none",
-                              "sort-function": function (e, t) {
-                                return (
-                                  Date.parse(e.date).getTime() <
-                                  Date.parse(t.date).getTime()
-                                );
-                              },
-                              "custom-validate-function": function (e) {
-                                var t = {
-                                  valid: !0,
-                                };
-                                return (
-                                  (e.date = new Date().toString(
-                                    "d-MMM-yyyy hh:mm tt"
-                                  )),
-                                  (t.params = e),
-                                  t
-                                );
-                              },
-                            },
-                          ],
+                      t = void 0,
+                      l = void 0,
+                      a = [
+                        [
+                          "id",
+                          {
+                            label: "ID",
+                            type: "hidden",
+                            validation: "",
+                          },
                         ],
-                        i = 0;
+                        [
+                          "employee_id",
+                          {
+                            label: "Employee Number",
+                            type: "hidden",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "title",
+                          {
+                            label: "Title",
+                            type: "select2",
+                            "remote-source": ["AnnualRent", "id", "name"],
+                          },
+                        ],
+                        [
+                          "first_name",
+                          {
+                            label: "First Name",
+                            type: "text",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "middle_name",
+                          {
+                            label: "Middle Name",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "last_name",
+                          {
+                            label: "Last Name",
+                            type: "text",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "initials",
+                          {
+                            label: "Initials",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "nationality",
+                          {
+                            label: "Nationality",
+                            type: "select2",
+                            "remote-source": ["Nationality", "id", "name"],
+                          },
+                        ],
+                        [
+                          "birthday",
+                          {
+                            label: "Date of Birth",
+                            type: "date",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "gender",
+                          {
+                            label: "Gender",
+                            type: "select",
+                            source: [
+                              ["M", "Male"],
+                              ["F", "Female"],
+                            ],
+                          },
+                        ],
+                        [
+                          "profile_image",
+                          {
+                            label:
+                              "Profile Image (.jpg, jpeg or png files only)",
+                            type: "fileupload",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "signature",
+                          {
+                            label: "Signature (.jpg, jpeg or png files only)",
+                            type: "fileupload",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "marital_status",
+                          {
+                            label: "Marital Status",
+                            type: "select",
+                            source: [
+                              ["Married", "Married"],
+                              ["Single", "Single"],
+                              ["Divorced", "Divorced"],
+                              ["Widowed", "Widowed"],
+                              ["Other", "Other"],
+                            ],
+                          },
+                        ],
+                        [
+                          "religion",
+                          {
+                            label: "Religion",
+                            type: "select",
+                            source: [
+                              ["Christian", "Christian"],
+                              ["Muslim", "Muslim"],
+                              ["Other", "Other"],
+                            ],
+                          },
+                        ],
+                        [
+                          "spouse_name",
+                          {
+                            label: "Spouse Name",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "father_name",
+                          {
+                            label: "Father's Name",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "mother_name",
+                          {
+                            label: "Mother's Name",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "place_of_birth",
+                          {
+                            label: "Place of Birth",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        // [
+                        //   "country",
+                        //   {
+                        //     label: "Country of Residence",
+                        //     type: "select2",
+                        //     validation: "",
+                        //     "remote-source": ["Country", "code", "name"],
+                        //   },
+                        // ],
+                        [
+                          "nxt_kin_fname",
+                          {
+                            label: "Next Of Kin's Name",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "nxt_kin_mname",
+                          {
+                            label: "Next Of Kin's Middle Name",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "nxt_kin_lname",
+                          {
+                            label: "Next Of Kin's Last Name",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "nxt_kin_email",
+                          {
+                            label: "Next Of Kin's Email",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "nxt_kin_phone",
+                          {
+                            label: "Next Of Kin's Phone No.",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "nxt_kin_address",
+                          {
+                            label: "Next Of Kin's Address",
+                            type: "textarea",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "work_station_id",
+                          {
+                            label: "Work Station ID",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "bank_name",
+                          {
+                            label: "Name of Bank",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "bank_acc_no",
+                          {
+                            label: "Bank Account No.",
+                            type: "hidden",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "tin_no",
+                          {
+                            label: "TIN",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "staff_level",
+                          {
+                            label: "Staff Level",
+                            type: "select",
+                            source: [
+                              ["Non-Management", "Non-Management"],
+                              ["Management", "Management"],
+                              ["Senior Management", "Senior Management"],
+                            ],
+                          },
+                        ],
+                        [
+                          "staff_role",
+                          {
+                            label: "Staff Role",
+                            type: "select",
+                            source: [
+                              ["Managerial", "Managerial"],
+                              ["Clerical", "Clerical"],
+                              ["Non-Clerical", "Non-Clerical"],
+                            ],
+                          },
+                        ],
+                        // [
+                        //   "ethnicity",
+                        //   {
+                        //     label: "Ethnicity",
+                        //     type: "select2",
+                        //     "allow-null": !0,
+                        //     "remote-source": ["Ethnicity", "id", "name"],
+                        //   },
+                        // ],
+                        [
+                          "immigration_status",
+                          {
+                            label: "Immigration Status",
+                            type: "select2",
+                            "allow-null": !0,
+                            "remote-source": [
+                              "ImmigrationStatus",
+                              "id",
+                              "name",
+                            ],
+                          },
+                        ],
+                        // [
+                        //   "ssn_num",
+                        //   {
+                        //     label: "Social Security No.",
+                        //     type: "text",
+                        //     validation: "none",
+                        //   },
+                        // ],
+                        [
+                          "nassit_num",
+                          {
+                            label: "NASSIT No.",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "nic_num",
+                          {
+                            label: "NIN",
+                            type: "text",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "nin_issue_date",
+                          {
+                            label: "NIN Issue Date",
+                            type: "date",
+                            validation: " ",
+                          },
+                        ],
+                        [
+                          "nin_expiry_date",
+                          {
+                            label: "NIN Expiry Date",
+                            type: "date",
+                            validation: " ",
+                          },
+                        ],
+                        [
+                          "labour_card_num",
+                          {
+                            label: "Labour Card No.",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "fit_and_proper",
+                          {
+                            label: "Fit & Proper Attachment",
+                            type: "fileupload",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "other_id",
+                          {
+                            label: "Other ID",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "driving_license",
+                          {
+                            label: "Driving License No",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "employment_status",
+                          {
+                            label: "Employment Status",
+                            type: "select2",
+                            "remote-source": [
+                              "EmploymentStatus",
+                              "id",
+                              "name",
+                            ],
+                          },
+                        ],
+                        [
+                          "job_title",
+                          {
+                            label: "Job Title",
+                            type: "select2",
+                            // "remote-source": ["JobTitle", "id", "name"],
+                          },
+                        ],
+                        [
+                          "pay_grade",
+                          {
+                            label: "Pay Grade",
+                            type: "select2",
+                            "allow-null": 0,
+                            "remote-source": ["PayGrade", "id", "name"],
+                          },
+                        ],
+                        [
+                          "notches",
+                          {
+                            label: "Notch",
+                            type: "select2",
+                            "allow-null": false,
+                            // "remote-source": ["Notches", "id", "name"],
+                          },
+                        ],
+                        [
+                          "work_station_id",
+                          {
+                            label: "Work Station Id",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "recruitment_date",
+                          {
+                            label: "Recruitment Date",
+                            type: "date",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "probation_period",
+                          {
+                            label: "Probation Period (Days)",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "confirmation_date",
+                          {
+                            label: "Confirmation Date",
+                            type: "date",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "start_date",
+                          {
+                            label: "Start Date",
+                            type: "date",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "address1",
+                          {
+                            label: "Address Line 1",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "address2",
+                          {
+                            label: "Address Line 2",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "city",
+                          {
+                            label: "City",
+                            type: "text",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "country",
+                          {
+                            label: "Country",
+                            type: "select2",
+                            "remote-source": ["Country", "code", "name"],
+                          },
+                        ],
+                        [
+                          "province",
+                          {
+                            label: "State",
+                            type: "select2",
+                            "allow-null": !0,
+                            "remote-source": ["Province", "id", "name"],
+                          },
+                        ],
+                        [
+                          "postal_code",
+                          {
+                            label: "Postal/Zip Code",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "home_phone",
+                          {
+                            label: "Home Phone",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "mobile_phone",
+                          {
+                            label: "Mobile (Preferred)",
+                            type: "text",
+                            validation: "",
+                          },
+                        ],
+                        [
+                          "phone_country",
+                          {
+                            label: "Phone Country",
+                            type: "select2",
+                            "remote-source": ["Country", "iso3", "name"],
+                          },
+                        ],
+                        [
+                          "work_phone",
+                          {
+                            label: "Work Phone",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "work_email",
+                          {
+                            label: "Email (Preferred)",
+                            type: "text",
+                            validation: "",
+                          },
+                        ],
+                        // ["private_email", {
+                        //     label: "Private Email",
+                        //     type: "text",
+                        //     validation: "emailOrEmpty"
+                        // }],
+                        [
+                          "confirmation_date",
+                          {
+                            label: "Confirmation Date",
+                            type: "date",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "termination_date",
+                          {
+                            label: "Termination Date",
+                            type: "date",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "branch",
+                          {
+                            label: "Branch",
+                            type: "select2",
+                            "remote-source": ["Vw_branches", "comp_code", "title"],
+                          },
+                        ],
+                        [
+                          "department",
+                          {
+                            label: "Department",
+                            type: "select2",
+                            "allow-null": !0,
+                            "remote-source": [
+                              "Vw_departments",
+                              "id",
+                              "title",
+                            ],
+                          },
+                        ],
+                        [
+                          "unit",
+                          {
+                            label: "Unit",
+                            type: "select2",
+                            "allow-null": !0,
+                            "remote-source": ["Vw_units", "id", "title"],
+                          },
+                        ],
+                        [
+                          "outlet",
+                          {
+                            label: "Outlet",
+                            type: "select2",
+                            "allow-null": !0,
+                            "remote-source": ["Vw_outlets", "id", "title"],
+                          },
+                        ],
+                        [
+                          "supervisor",
+                          {
+                            label: "Direct Supervisor",
+                            type: "select2",
+                            "allow-null": !0,
+                            "remote-source": [
+                              "Employee",
+                              "id",
+                              "first_name+middle_name+last_name",
+                            ],
+                          },
+                        ],
+                        [
+                          "indirect_supervisors",
+                          {
+                            label: "Indirect Supervisors",
+                            type: "select2multi",
+                            "allow-null": !0,
+                            "remote-source": [
+                              "Employee",
+                              "id",
+                              "first_name+middle_name+last_name",
+                            ],
+                          },
+                        ],
+                        [
+                          "previous_work_name",
+                          {
+                            label: "Previous Place of Engagement",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "previous_work_address",
+                          {
+                            label: "Address of Previous Place",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "previous_work_tel",
+                          {
+                            label: "Tel No. of Previous Place",
+                            type: "text",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "prev_wk_start_date",
+                          {
+                            label: "Period From",
+                            type: "date",
+                            validation: "none",
+                          },
+                        ],
+                        [
+                          "prev_wk_end_date",
+                          {
+                            label: "Period To",
+                            type: "date",
+                            validation: "none",
+                          },
+                        ],
+
+                        [
+                          "approver1",
+                          {
+                            label: "First Level Approver",
+                            type: "select2",
+                            "allow-null": !0,
+                            "null-label": "None",
+                            "remote-source": [
+                              "Employee",
+                              "id",
+                              "first_name+middle_name+last_name",
+                            ],
+                          },
+                        ],
+                        [
+                          "approver2",
+                          {
+                            label: "Second Level Approver",
+                            type: "select2",
+                            "allow-null": !0,
+                            "null-label": "None",
+                            "remote-source": [
+                              "Employee",
+                              "id",
+                              "first_name+middle_name+last_name",
+                            ],
+                          },
+                        ],
+                        [
+                          "approver3",
+                          {
+                            label: "Third Level Approver",
+                            type: "select2",
+                            "allow-null": !0,
+                            "null-label": "None",
+                            "remote-source": [
+                              "Employee",
+                              "id",
+                              "first_name+middle_name+last_name",
+                            ],
+                          },
+                        ],
+                        [
+                          "notes",
+                          {
+                            label: "Notes",
+                            type: "datagroup",
+                            form: [
+                              [
+                                "note",
+                                {
+                                  label: "Note",
+                                  type: "textarea",
+                                  validation: "",
+                                },
+                              ],
+                            ],
+                            html: '<div id="#_id_#" class="panel panel-default"><div class="panel-body">#_delete_##_edit_#<span style="color:#999;font-size:13px;font-weight:bold">Date: #_date_#</span><hr/>#_note_#</div></div>',
+                            validation: "none",
+                            "sort-function": function (e, t) {
+                              return (
+                                Date.parse(e.date).getTime() <
+                                Date.parse(t.date).getTime()
+                              );
+                            },
+                            "custom-validate-function": function (e) {
+                              var t = {
+                                valid: !0,
+                              };
+                              return (
+                                (e.date = new Date().toString(
+                                  "d-MMM-yyyy hh:mm tt"
+                                )),
+                                (t.params = e),
+                                t
+                              );
+                            },
+                          },
+                        ],
+                      ],
+                      i = 0;
                       i < this.customFields.length;
                       i++
                     )
@@ -2200,9 +2178,9 @@
                       (t = a[o]),
                         (void 0 !== this.hiddenFields[t[0]] &&
                           null !== this.hiddenFields[t[0]]) ||
-                          (void 0 !== this.fieldNameMap[t[0]] &&
-                            null !== this.fieldNameMap[t[0]] &&
-                            ((l = this.fieldNameMap[t[0]].textMapped),
+                        (void 0 !== this.fieldNameMap[t[0]] &&
+                          null !== this.fieldNameMap[t[0]] &&
+                          ((l = this.fieldNameMap[t[0]].textMapped),
                             (t[1].label = l)),
                           e.push(t));
                     return e;
@@ -2223,37 +2201,6 @@
                         },
                       ],
                       [
-                        "pay_grade",
-                        {
-                          label: "Pay Grade",
-                          type: "select2",
-                          "allow-null": !0,
-                          "remote-source": ["PayGrade", "id", "name"],
-                        },
-                      ],
-                      [
-                        "staff_level",
-                        {
-                          label: "Staff Level",
-                          type: "select",
-                          source: [
-                            ["Non-Management", "Non-Management"],
-                            ["Management", "Management"],
-                            ["Senior Management", "Senior Management"],
-                          ],
-                          validation: "none"
-                        },
-                      ],
-                      [
-                        "notches",
-                        {
-                          label: "Notch",
-                          type: "select2",
-                          "allow-null": true,
-                          "remote-source": ["Notches", "id", "name"],
-                        },
-                      ],
-                      [
                         "department",
                         {
                           label: "Department",
@@ -2261,14 +2208,6 @@
                           "allow-null": !0,
                           "null-label": "All Departments",
                           "remote-source": ["CompanyStructure", "id", "title"],
-                        },
-                      ],
-                      [
-                        "recruitment_date",
-                        {
-                          label: "Recruitment Date",
-                          type: "date",
-                          validation: "none",
                         },
                       ],
                       [
@@ -2285,7 +2224,6 @@
                           ],
                         },
                       ],
-                      
                     ];
                   },
                 },
@@ -2318,11 +2256,11 @@
                       p = $("#" + this.itemNameLower + "_employee_Id").val();
                     if (null != e && null != e && "" != e) {
                       var a = {
-                          id: this.statusChangeId,
-                          status: e,
-                          reason: t,
-                          employee_Id: p,
-                        },
+                        id: this.statusChangeId,
+                        status: e,
+                        reason: t,
+                        employee_Id: p,
+                      },
                         l = JSON.stringify(a),
                         i = [];
                       (i.callBackData = []),
@@ -2359,8 +2297,8 @@
                     this.showMessage(
                       "Error",
                       "Error occurred while changing " +
-                        this.itemName +
-                        " request status"
+                      this.itemName +
+                      " request status"
                     );
                   },
                 },
@@ -2368,7 +2306,7 @@
                   key: "getActionButtonsHtml",
                   value: function (e) {
                     var t =
-                      '<img class="tableActionButton" src="_BASE_images/connect-no.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Terminate Employee Contract" onclick="modJs.viewEmployee(_id_);return false;"></img>';
+                      '<img class="tableActionButton" src="_BASE_images/connect-no.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Terminate Employee" onclick="modJs.viewEmployee(_id_);return false;"></img>';
                     !1 === this.showDelete && (t = "");
                     var l =
                       '<div style="width:110px;"><img class="tableActionButton" src="_BASE_images/view.png" style="cursor:pointer;margin-left:15px;" rel="tooltip" title="View" onclick="modJs.view(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;margin-left:15px;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/edit.png" style="display:none;cursor:pointer;margin-left:15px;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>' +
@@ -2386,15 +2324,15 @@
                     var t = {};
                     return (
                       "Approved" == e ||
-                        ("Pending" == e
-                          ? ((t.Approved = "Approved"),
-                            (t.Rejected = "Rejected"))
-                          : "Rejected" == e ||
-                            "Cancelled" == e ||
-                            "Processing" == e ||
-                            ((t["Cancellation Requested"] =
-                              "Cancellation Requested"),
-                            (t.Cancelled = "Cancelled"))),
+                      ("Pending" == e
+                        ? ((t.Approved = "Approved"),
+                          (t.Rejected = "Rejected"))
+                        : "Rejected" == e ||
+                        "Cancelled" == e ||
+                        "Processing" == e ||
+                        ((t["Cancellation Requested"] =
+                          "Cancellation Requested"),
+                          (t.Cancelled = "Cancelled"))),
                       t
                     );
                   },
@@ -2416,9 +2354,33 @@
                   value: function (e) {
                     (this.lastSavedEmployee = e),
                       null === this.currentId &&
-                        $("#createUserModel").modal("show");
+                      $("#createUserModel").modal("show");
+
+                    //add salary components for this employee
+                    $.ajax({
+                      url: "../../../../rokel_hrm_mine/core/add_salarycomponents.php",
+                      type: "post",
+                      contentType: "application/json",
+                      dataType: "json",
+                      data: JSON.stringify({
+                        employee_id: this.lastSavedEmployee.id,
+                      }),
+                      success: function (data, textStatus, jQxhr) {
+                        console.log("success");
+                      },
+                    });
+
                   },
                 },
+                // {
+                //   key: "notchInput",
+                //   value: function () {
+                //     document.addEventListener("DOMContentLoaded", function (event) {
+                //      let holder = document.getElementById('notches');
+                //   console.log(holder);
+                //     });
+                //   },
+                // },
                 {
                   key: "closeCreateUser",
                   value: function () {
@@ -2436,7 +2398,7 @@
                         this.lastSavedEmployee.work_email.split("@")[0]),
                       (top.location.href = this.getCustomUrl(
                         "?g=admin&n=users&m=admin_Admin&action=new&object=" +
-                          Base64.encodeURI(JSON.stringify(e))
+                        Base64.encodeURI(JSON.stringify(e))
                       ));
                   },
                 },
@@ -2458,9 +2420,15 @@
                       p = $("#_end_date").val();
                     k = $("#_employee_salary").val();
                     let emp = $("#_employee_id").val();
-
+                    // alert(emp);
+                    // alert(s);
+                    // alert(t);
+                    // alert(p);
+                    // alert(k);
+                    // return false
+                    // alert(k); return false;
                     $.ajax({
-                      url: "../../../../rokel_hrm/core/suspend_employee.php",
+                      url: "../../../../rokel_hrm_mine/core/suspend_employee.php",
                       type: "post",
                       contentType: "application/json",
                       dataType: "json",
@@ -2486,7 +2454,9 @@
                     );
                     this.closeEmployeeSuspension();
                     window.location.reload();
-
+                    //     (this.leaveStatusChangeId = null);
+                    // } else
+                    // this.showMessage("Error", "Please select leave status");
                   },
                 },
                 {
@@ -2541,34 +2511,10 @@
                   key: "viewEmployee",
                   value: function (e) {
                     // alert(e); return false;
-                    this.currentId = e;
-                    var profile = this.getCurrentProfile();
-                    let currentProfile = profile.id;
-                    // alert(currentProfile); return false;
-
-                    let id = e;
-
-                    $.ajax({
-                      url: "../../../../rokel_hrm/core/hideTerminationButtons.php",
-                      type: "post",
-                      contentType: "application/json",
-                      dataType: "json",
-                      data: JSON.stringify({
-                        id_: id,
-                        currentProfile_: currentProfile,
-
-                        // category: category
-                      }),
-                      success: function (data, textStatus, jQxhr) {
-                        // console.log(data);
-                        // alert(data);
-                      },
-                    });
-
                     var t = {
-                        id: e,
-                        map: JSON.stringify(this.getSourceMapping()),
-                      },
+                      id: e,
+                      map: JSON.stringify(this.getSourceMapping()),
+                    },
                       l = JSON.stringify(t),
                       a = [];
                     (a.callBackData = []),
@@ -2582,63 +2528,93 @@
                 {
                   key: "terminateEmployee",
                   value: function (e) {
-                    $("#_employee_id").val(e);
-                    // alert(e);
- 
-                  },
-                },
-                {
-                  key: "saveTermination",
-                  value: function () {
-                  //  alert("Saving Termination"); return false;
+                    // alert(e); return false;
+                    //   var t = {
+                    //     id: e,
+                    //     map: JSON.stringify(this.getSourceMapping()),
+                    //   },
+                    //   l = JSON.stringify(t),
+                    //   a = [];
+                    // (a.callBackData = []),
+                    //   (a.callBackSuccess = "renderEmployee_"),
+                    //   (a.callBackFail = "viewFailCallBack"),
+                    //   this.customAction("get", "modules=employees", l, a);
+                    // return false;
+
+                    // $("#leaveStatusModel").modal("show"), $("#leave_status").html(this.getLeaveOptions(t)), $("#leave_status").val(t), (this.leaveStatusChangeId = e);
                     if (
                       confirm(
                         "This Employee will be paid End of Service Benefits in full when this is Approved. You will still be able to access all details of this employee also. Are you sure you want to terminate this employee's contract?"
                       )
                     ) {
-                      var s = $("#termination_reason").val(),
-                      t = $("#_date").val();                 
-                      
-                    let emp = $("#_employee_id").val();
-                    // alert(s);
-                    // alert(t);
-                    // alert(emp); 
+                      location.reload();
+                      // return false;
+                      // alert(e);
+                      // let id = e;
+                      // // alert(emp);
+                      // $.ajax({
+                      //   url: "../../../../rokel_hrm_mine/core/end_of_service.php",
+                      //   type: "post",
+                      //   contentType: "application/json",
+                      //   dataType: "json",
+                      //   data: JSON.stringify({
+                      //     employee_id: id,
+                      //   }),
+                      //   success: function (data, textStatus, jQxhr) {
+                      //     // console.log(data);
+                      //     var response = data;
+                      //     console.log(response);
+                      //     // $("#amount").val(cal_amount.data);
+                      //   },
+                      // });
 
-                    $.ajax({
-                      url: "../../../../rokel_hrm/core/saveStaffTermination.php",
-                      type: "post",
-                      contentType: "application/json",
-                      dataType: "json",
-                      data: JSON.stringify({
-                        employee_id: emp,
-                        reason: s,
-                        date: t,                        
-                      }),
-                      success: function (data, textStatus, jQxhr) {
-                        console.log(data);                       
-                       
-                      },
-                    });
-
-                    this.showMessage(
-                      "Successful",
-                      "Staff Termination Successfully Saved, Pending Approval"
-                    );
-                    this.closeEmployeeTermination();                   
-                      
-                    window.location.reload();
-                      
+                      // // return false;
+                      // var t = {};
+                      // t.id = e;
+                      // var l = JSON.stringify(t),
+                      //   a = [];
+                      // (a.callBackData = []),
+                      //   (a.callBackSuccess =
+                      //     "terminateEmployeeSuccessCallback"),
+                      //   (a.callBackFail = "terminateEmployeeFailCallback"),
+                      //   this.customAction(
+                      //     "terminateEmployee",
+                      //     "admin=employees",
+                      //     l,
+                      //     a
+                      //   );
                     }
-                   
                   },
                 },
+
                 {
                   key: "approveTermEmployee",
                   value: function (e) {
+                    // alert(e); return false;
+                    //   var t = {
+                    //     id: e,
+                    //     map: JSON.stringify(this.getSourceMapping()),
+                    //   },
+                    //   l = JSON.stringify(t),
+                    //   a = [];
+                    // (a.callBackData = []),
+                    //   (a.callBackSuccess = "renderEmployee_"),
+                    //   (a.callBackFail = "viewFailCallBack"),
+                    //   this.customAction("get", "modules=employees", l, a);
+                    // return false;
+
+                    // $("#leaveStatusModel").modal("show"), $("#leave_status").html(this.getLeaveOptions(t)), $("#leave_status").val(t), (this.leaveStatusChangeId = e);
+                    // if (
+                    //   confirm(
+                    //     "This Employee will be paid End of Service Benefits in full when this is Approved. You will still be able to access all details of this employee also. Are you sure you want to terminate this employee's contract?"
+                    //   )
+
+                    // ) {
+                    // alert(e); return false;
                     let id = e;
-                    // alert(emp);
+
                     $.ajax({
-                      url: "../../../../rokel_hrm/core/end_of_service.php",
+                      url: "../../../../rokel_hrm_mine/core/end_of_service.php",
                       type: "post",
                       contentType: "application/json",
                       dataType: "json",
@@ -2649,9 +2625,28 @@
                         // console.log(data);
                         var response = data;
                         console.log(response);
-                        // $("#amount").val(cal_amount.data);
+                        $.ajax({
+                          url: "../../../../rokel_hrm/core/send_employee_email.php",
+                          type: "post",
+                          contentType: "application/json",
+                          dataType: "json",
+                          data: JSON.stringify({
+                            employee_id: id,
+                          }),
+                          success: function (data, textStatus, jQxhr) {
+                            // console.log(data);
+                            var response = data;
+                            console.log(response);
+                            // alert("Termination email has been sent to the employee");
+                            this.showMessage(
+                              "Success",
+                              "Termination email has been sent to the employee."
+                            );
+                          },
+                        });
                       },
                     });
+
                     // return false;
                     var t = {};
                     t.id = e;
@@ -2668,14 +2663,8 @@
                       );
                     // }
                   },
-                },               
-                
-                {
-                  key: "closeEmployeeTermination",
-                  value: function () {
-                    $("#employeeTerminationModel").modal("hide");
-                  },
                 },
+
                 {
                   key: "renderEmployee_",
                   value: function (e) {
@@ -2691,7 +2680,7 @@
                       void 0 !== this.fieldNameMap[l[i][0]] &&
                         null !== this.fieldNameMap[l[i][0]] &&
                         ((t = this.gt(this.fieldNameMap[l[i][0]].textMapped)),
-                        (a = a.replace("#_label_" + l[i][0] + "_#", t)));
+                          (a = a.replace("#_label_" + l[i][0] + "_#", t)));
                     (a = (a = a.replace(/#_.+_#/gi, "")).replace(
                       /_id_/g,
                       e.id
@@ -2709,24 +2698,24 @@
                         null !== e.subordinates[s].first_name &&
                         (n += e.subordinates[s].first_name + " "),
                         void 0 !== e.subordinates[s].middle_name &&
-                          null !== e.subordinates[s].middle_name &&
-                          "" !== e.subordinates[s].middle_name &&
-                          (n += e.subordinates[s].middle_name + " "),
+                        null !== e.subordinates[s].middle_name &&
+                        "" !== e.subordinates[s].middle_name &&
+                        (n += e.subordinates[s].middle_name + " "),
                         void 0 !== e.subordinates[s].last_name &&
-                          null !== e.subordinates[s].last_name &&
-                          "" !== e.subordinates[s].last_name &&
-                          (n += e.subordinates[s].last_name),
+                        null !== e.subordinates[s].last_name &&
+                        "" !== e.subordinates[s].last_name &&
+                        (n += e.subordinates[s].last_name),
                         (n += "<br/>");
                     if (
                       ($("#" + this.getTableName() + " #subordinates").html(n),
-                      $("#" + this.getTableName() + " #name").html(
-                        e.first_name + " " + e.last_name
-                      ),
-                      (this.currentUserId = e.id),
-                      $(
-                        "#" + this.getTableName() + " #profile_image_" + e.id
-                      ).attr("src", e.image),
-                      void 0 !== e.customFields &&
+                        $("#" + this.getTableName() + " #name").html(
+                          e.first_name + " " + e.last_name
+                        ),
+                        (this.currentUserId = e.id),
+                        $(
+                          "#" + this.getTableName() + " #profile_image_" + e.id
+                        ).attr("src", e.image),
+                        void 0 !== e.customFields &&
                         null !== e.customFields &&
                         Object.keys(e.customFields).length > 0)
                     ) {
@@ -2737,7 +2726,7 @@
                         var b = e.customFields[u][1].toLocaleLowerCase();
                         if (
                           ((b = b.replace(" ", "_")),
-                          $("#cont_" + b).length <= 0)
+                            $("#cont_" + b).length <= 0)
                         ) {
                           var v =
                             '<div class="panel panel-default" style="width:97.5%;"><div class="panel-heading"><h4>#_section.name_#</h4></div> <div class="panel-body"  id="cont_#_section_#"> </div></div>';
@@ -2749,92 +2738,92 @@
                         }
                         (r = (r =
                           '<div class="col-xs-6 col-md-3" style="font-size:16px;"><label class="control-label col-xs-12" style="font-size:13px;">#_label_#</label><label class="control-label col-xs-12 iceLabel" style="font-size:13px;font-weight: bold;">#_value_#</label></div>').replace(
-                          "#_label_#",
-                          u
-                        )),
+                            "#_label_#",
+                            u
+                          )),
                           (r =
                             "fileupload" === e.customFields[u][2]
                               ? r.replace(
-                                  "#_value_#",
-                                  "<button onclick=\"download('" +
-                                    e.customFields[u][0] +
-                                    '\');return false;" class="btn btn-mini btn-inverse" type="button">View: ' +
-                                    u +
-                                    "</button>"
-                                )
+                                "#_value_#",
+                                "<button onclick=\"download('" +
+                                e.customFields[u][0] +
+                                '\');return false;" class="btn btn-mini btn-inverse" type="button">View: ' +
+                                u +
+                                "</button>"
+                              )
                               : r.replace("#_value_#", e.customFields[u][0])),
                           $("#cont_" + b).append($(r));
                       }
                     } else $("#customFieldsCont").remove();
                     for (var g in (this.cancel(),
-                    this.isModuleInstalled("admin", "documents") ||
+                      this.isModuleInstalled("admin", "documents") ||
                       $("#tabDocuments").remove(),
-                    (window.modJs = this),
-                    (modJs.subModJsList = []),
-                    (modJs.subModJsList.tabEmployeeSkillSubTab = new d(
-                      "EmployeeSkill",
-                      "EmployeeSkillSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeSkillSubTab.parent = this),
-                    (modJs.subModJsList.tabEmployeeEducationSubTab = new c(
-                      "EmployeeEducation",
-                      "EmployeeEducationSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeEducationSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeBankDetailsSubTab = new j(
-                      "EmployeeBankDetails",
-                      "EmployeeBankDetailsSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeBankDetailsSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeCertificationSubTab = new p(
-                      "EmployeeCertification",
-                      "EmployeeCertificationSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeCertificationSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeLanguageSubTab = new m(
-                      "EmployeeLanguage",
-                      "EmployeeLanguageSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeLanguageSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeDependentSubTab = new h(
-                      "EmployeeDependent",
-                      "EmployeeDependentSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeDependentSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeEmergencyContactSubTab =
-                      new f(
-                        "EmergencyContact",
-                        "EmployeeEmergencyContactSubTab",
+                      (window.modJs = this),
+                      (modJs.subModJsList = []),
+                      (modJs.subModJsList.tabEmployeeSkillSubTab = new d(
+                        "EmployeeSkill",
+                        "EmployeeSkillSubTab",
                         {
                           employee: e.id,
                         }
                       )),
-                    (modJs.subModJsList.tabEmployeeEmergencyContactSubTab.parent =
-                      this),
-                    this.isModuleInstalled("admin", "documents") &&
+                      (modJs.subModJsList.tabEmployeeSkillSubTab.parent = this),
+                      (modJs.subModJsList.tabEmployeeEducationSubTab = new c(
+                        "EmployeeEducation",
+                        "EmployeeEducationSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeEducationSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeBankDetailsSubTab = new j(
+                        "EmployeeBankDetails",
+                        "EmployeeBankDetailsSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeBankDetailsSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeCertificationSubTab = new p(
+                        "EmployeeCertification",
+                        "EmployeeCertificationSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeCertificationSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeLanguageSubTab = new m(
+                        "EmployeeLanguage",
+                        "EmployeeLanguageSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeLanguageSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeDependentSubTab = new h(
+                        "EmployeeDependent",
+                        "EmployeeDependentSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeDependentSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeEmergencyContactSubTab =
+                        new f(
+                          "EmergencyContact",
+                          "EmployeeEmergencyContactSubTab",
+                          {
+                            employee: e.id,
+                          }
+                        )),
+                      (modJs.subModJsList.tabEmployeeEmergencyContactSubTab.parent =
+                        this),
+                      this.isModuleInstalled("admin", "documents") &&
                       ((modJs.subModJsList.tabEmployeeDocumentSubTab = new y(
                         "EmployeeDocument",
                         "EmployeeDocumentSubTab",
@@ -2842,35 +2831,35 @@
                           employee: e.id,
                         }
                       )),
-                      (modJs.subModJsList.tabEmployeeDocumentSubTab.parent =
-                        this)),
-                    modJs.subModJsList))
+                        (modJs.subModJsList.tabEmployeeDocumentSubTab.parent =
+                          this)),
+                      modJs.subModJsList))
                       modJs.subModJsList.hasOwnProperty(g) &&
                         (modJs.subModJsList[g].setTranslationsSubModules(
                           this.translations
                         ),
-                        modJs.subModJsList[g].setPermissions(this.permissions),
-                        modJs.subModJsList[g].setFieldTemplates(
-                          this.fieldTemplates
-                        ),
-                        modJs.subModJsList[g].setTemplates(this.templates),
-                        modJs.subModJsList[g].setCustomTemplates(
-                          this.customTemplates
-                        ),
-                        modJs.subModJsList[g].setEmailTemplates(
-                          this.emailTemplates
-                        ),
-                        modJs.subModJsList[g].setUser(this.user),
-                        modJs.subModJsList[g].initFieldMasterData(),
-                        modJs.subModJsList[g].setBaseUrl(this.baseUrl),
-                        modJs.subModJsList[g].setCurrentProfile(
-                          this.currentProfile
-                        ),
-                        modJs.subModJsList[g].setInstanceId(this.instanceId),
-                        modJs.subModJsList[g].setGoogleAnalytics(ga),
-                        modJs.subModJsList[g].setNoJSONRequests(
-                          this.noJSONRequests
-                        ));
+                          modJs.subModJsList[g].setPermissions(this.permissions),
+                          modJs.subModJsList[g].setFieldTemplates(
+                            this.fieldTemplates
+                          ),
+                          modJs.subModJsList[g].setTemplates(this.templates),
+                          modJs.subModJsList[g].setCustomTemplates(
+                            this.customTemplates
+                          ),
+                          modJs.subModJsList[g].setEmailTemplates(
+                            this.emailTemplates
+                          ),
+                          modJs.subModJsList[g].setUser(this.user),
+                          modJs.subModJsList[g].initFieldMasterData(),
+                          modJs.subModJsList[g].setBaseUrl(this.baseUrl),
+                          modJs.subModJsList[g].setCurrentProfile(
+                            this.currentProfile
+                          ),
+                          modJs.subModJsList[g].setInstanceId(this.instanceId),
+                          modJs.subModJsList[g].setGoogleAnalytics(ga),
+                          modJs.subModJsList[g].setNoJSONRequests(
+                            this.noJSONRequests
+                          ));
                     modJs.subModJsList.tabEmployeeSkillSubTab.setShowFormOnPopup(
                       !0
                     ),
@@ -2934,9 +2923,9 @@
                         []
                       ),
                       this.isModuleInstalled("admin", "documents") &&
-                        (modJs.subModJsList.tabEmployeeDocumentSubTab.setShowFormOnPopup(
-                          !0
-                        ),
+                      (modJs.subModJsList.tabEmployeeDocumentSubTab.setShowFormOnPopup(
+                        !0
+                      ),
                         modJs.subModJsList.tabEmployeeDocumentSubTab.setShowAddNew(
                           !1
                         ),
@@ -2958,7 +2947,11 @@
                       "Success",
                       "Employee contract terminated. You can find terminated employee information under Temporarily Deactivated Employees Tab."
                     ),
+
                       this.get([]);
+
+                    //once the employee termination is successful send an email to the employee
+
                   },
                 },
                 {
@@ -2981,7 +2974,7 @@
                       let emp = e;
                       // alert(emp);
                       $.ajax({
-                        url: "../../../../rokel_hrm/core/reinstate_employee.php",
+                        url: "../../../../rokel_hrm_mine/core/reinstate_employee.php",
                         type: "post",
                         contentType: "application/json",
                         dataType: "json",
@@ -3013,7 +3006,7 @@
                         );
                     }
                   },
-                },                
+                },
                 {
                   key: "activateEmployeeSuccessCallback",
                   value: function (e) {
@@ -3053,7 +3046,7 @@
                       //   else if (new Date(e.start_date) < t)
                       //     return "Date of Issue should be earlier than Expiry Date";
                       // }
-                    } catch (e) {}
+                    } catch (e) { }
                     return null;
                   },
                 },
@@ -3066,7 +3059,7 @@
                         if (new Date(e.nin_expiry_date) < t)
                           return "NIN Issue date should be earlier than expiry date";
                       }
-                    } catch (e) {}
+                    } catch (e) { }
                     return null;
                   },
                 },
@@ -3082,7 +3075,7 @@
                     let id = e;
 
                     $.ajax({
-                      url: "../../../../rokel_hrm/core/hide_buttons.php",
+                      url: "../../../../rokel_hrm_mine/core/hide_buttons.php",
                       type: "post",
                       contentType: "application/json",
                       dataType: "json",
@@ -3099,9 +3092,9 @@
                     });
 
                     var t = {
-                        id: e,
-                        map: JSON.stringify(this.getSourceMapping()),
-                      },
+                      id: e,
+                      map: JSON.stringify(this.getSourceMapping()),
+                    },
                       l = JSON.stringify(t),
                       a = [];
                     (a.callBackData = []),
@@ -3136,7 +3129,7 @@
                       void 0 !== this.fieldNameMap[l[i][0]] &&
                         null !== this.fieldNameMap[l[i][0]] &&
                         ((t = this.gt(this.fieldNameMap[l[i][0]].textMapped)),
-                        (a = a.replace("#_label_" + l[i][0] + "_#", t)));
+                          (a = a.replace("#_label_" + l[i][0] + "_#", t)));
                     (a = (a = a.replace(/#_.+_#/gi, "")).replace(
                       /_id_/g,
                       e.id
@@ -3154,24 +3147,24 @@
                         null !== e.subordinates[s].first_name &&
                         (n += e.subordinates[s].first_name + " "),
                         void 0 !== e.subordinates[s].middle_name &&
-                          null !== e.subordinates[s].middle_name &&
-                          "" !== e.subordinates[s].middle_name &&
-                          (n += e.subordinates[s].middle_name + " "),
+                        null !== e.subordinates[s].middle_name &&
+                        "" !== e.subordinates[s].middle_name &&
+                        (n += e.subordinates[s].middle_name + " "),
                         void 0 !== e.subordinates[s].last_name &&
-                          null !== e.subordinates[s].last_name &&
-                          "" !== e.subordinates[s].last_name &&
-                          (n += e.subordinates[s].last_name),
+                        null !== e.subordinates[s].last_name &&
+                        "" !== e.subordinates[s].last_name &&
+                        (n += e.subordinates[s].last_name),
                         (n += "<br/>");
                     if (
                       ($("#" + this.getTableName() + " #subordinates").html(n),
-                      $("#" + this.getTableName() + " #name").html(
-                        e.first_name + " " + e.last_name
-                      ),
-                      (this.currentUserId = e.id),
-                      $(
-                        "#" + this.getTableName() + " #profile_image_" + e.id
-                      ).attr("src", e.image),
-                      void 0 !== e.customFields &&
+                        $("#" + this.getTableName() + " #name").html(
+                          e.first_name + " " + e.last_name
+                        ),
+                        (this.currentUserId = e.id),
+                        $(
+                          "#" + this.getTableName() + " #profile_image_" + e.id
+                        ).attr("src", e.image),
+                        void 0 !== e.customFields &&
                         null !== e.customFields &&
                         Object.keys(e.customFields).length > 0)
                     ) {
@@ -3182,7 +3175,7 @@
                         var b = e.customFields[u][1].toLocaleLowerCase();
                         if (
                           ((b = b.replace(" ", "_")),
-                          $("#cont_" + b).length <= 0)
+                            $("#cont_" + b).length <= 0)
                         ) {
                           var v =
                             '<div class="panel panel-default" style="width:97.5%;"><div class="panel-heading"><h4>#_section.name_#</h4></div> <div class="panel-body"  id="cont_#_section_#"> </div></div>';
@@ -3194,92 +3187,92 @@
                         }
                         (r = (r =
                           '<div class="col-xs-6 col-md-3" style="font-size:16px;"><label class="control-label col-xs-12" style="font-size:13px;">#_label_#</label><label class="control-label col-xs-12 iceLabel" style="font-size:13px;font-weight: bold;">#_value_#</label></div>').replace(
-                          "#_label_#",
-                          u
-                        )),
+                            "#_label_#",
+                            u
+                          )),
                           (r =
                             "fileupload" === e.customFields[u][2]
                               ? r.replace(
-                                  "#_value_#",
-                                  "<button onclick=\"download('" +
-                                    e.customFields[u][0] +
-                                    '\');return false;" class="btn btn-mini btn-inverse" type="button">View: ' +
-                                    u +
-                                    "</button>"
-                                )
+                                "#_value_#",
+                                "<button onclick=\"download('" +
+                                e.customFields[u][0] +
+                                '\');return false;" class="btn btn-mini btn-inverse" type="button">View: ' +
+                                u +
+                                "</button>"
+                              )
                               : r.replace("#_value_#", e.customFields[u][0])),
                           $("#cont_" + b).append($(r));
                       }
                     } else $("#customFieldsCont").remove();
                     for (var g in (this.cancel(),
-                    this.isModuleInstalled("admin", "documents") ||
+                      this.isModuleInstalled("admin", "documents") ||
                       $("#tabDocuments").remove(),
-                    (window.modJs = this),
-                    (modJs.subModJsList = []),
-                    (modJs.subModJsList.tabEmployeeSkillSubTab = new d(
-                      "EmployeeSkill",
-                      "EmployeeSkillSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeSkillSubTab.parent = this),
-                    (modJs.subModJsList.tabEmployeeEducationSubTab = new c(
-                      "EmployeeEducation",
-                      "EmployeeEducationSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeEducationSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeBankDetailsSubTab = new j(
-                      "EmployeeBankDetails",
-                      "EmployeeBankDetailsSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeBankDetailsSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeCertificationSubTab = new p(
-                      "EmployeeCertification",
-                      "EmployeeCertificationSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeCertificationSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeLanguageSubTab = new m(
-                      "EmployeeLanguage",
-                      "EmployeeLanguageSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeLanguageSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeDependentSubTab = new h(
-                      "EmployeeDependent",
-                      "EmployeeDependentSubTab",
-                      {
-                        employee: e.id,
-                      }
-                    )),
-                    (modJs.subModJsList.tabEmployeeDependentSubTab.parent =
-                      this),
-                    (modJs.subModJsList.tabEmployeeEmergencyContactSubTab =
-                      new f(
-                        "EmergencyContact",
-                        "EmployeeEmergencyContactSubTab",
+                      (window.modJs = this),
+                      (modJs.subModJsList = []),
+                      (modJs.subModJsList.tabEmployeeSkillSubTab = new d(
+                        "EmployeeSkill",
+                        "EmployeeSkillSubTab",
                         {
                           employee: e.id,
                         }
                       )),
-                    (modJs.subModJsList.tabEmployeeEmergencyContactSubTab.parent =
-                      this),
-                    this.isModuleInstalled("admin", "documents") &&
+                      (modJs.subModJsList.tabEmployeeSkillSubTab.parent = this),
+                      (modJs.subModJsList.tabEmployeeEducationSubTab = new c(
+                        "EmployeeEducation",
+                        "EmployeeEducationSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeEducationSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeBankDetailsSubTab = new j(
+                        "EmployeeBankDetails",
+                        "EmployeeBankDetailsSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeBankDetailsSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeCertificationSubTab = new p(
+                        "EmployeeCertification",
+                        "EmployeeCertificationSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeCertificationSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeLanguageSubTab = new m(
+                        "EmployeeLanguage",
+                        "EmployeeLanguageSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeLanguageSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeDependentSubTab = new h(
+                        "EmployeeDependent",
+                        "EmployeeDependentSubTab",
+                        {
+                          employee: e.id,
+                        }
+                      )),
+                      (modJs.subModJsList.tabEmployeeDependentSubTab.parent =
+                        this),
+                      (modJs.subModJsList.tabEmployeeEmergencyContactSubTab =
+                        new f(
+                          "EmergencyContact",
+                          "EmployeeEmergencyContactSubTab",
+                          {
+                            employee: e.id,
+                          }
+                        )),
+                      (modJs.subModJsList.tabEmployeeEmergencyContactSubTab.parent =
+                        this),
+                      this.isModuleInstalled("admin", "documents") &&
                       ((modJs.subModJsList.tabEmployeeDocumentSubTab = new y(
                         "EmployeeDocument",
                         "EmployeeDocumentSubTab",
@@ -3287,35 +3280,35 @@
                           employee: e.id,
                         }
                       )),
-                      (modJs.subModJsList.tabEmployeeDocumentSubTab.parent =
-                        this)),
-                    modJs.subModJsList))
+                        (modJs.subModJsList.tabEmployeeDocumentSubTab.parent =
+                          this)),
+                      modJs.subModJsList))
                       modJs.subModJsList.hasOwnProperty(g) &&
                         (modJs.subModJsList[g].setTranslationsSubModules(
                           this.translations
                         ),
-                        modJs.subModJsList[g].setPermissions(this.permissions),
-                        modJs.subModJsList[g].setFieldTemplates(
-                          this.fieldTemplates
-                        ),
-                        modJs.subModJsList[g].setTemplates(this.templates),
-                        modJs.subModJsList[g].setCustomTemplates(
-                          this.customTemplates
-                        ),
-                        modJs.subModJsList[g].setEmailTemplates(
-                          this.emailTemplates
-                        ),
-                        modJs.subModJsList[g].setUser(this.user),
-                        modJs.subModJsList[g].initFieldMasterData(),
-                        modJs.subModJsList[g].setBaseUrl(this.baseUrl),
-                        modJs.subModJsList[g].setCurrentProfile(
-                          this.currentProfile
-                        ),
-                        modJs.subModJsList[g].setInstanceId(this.instanceId),
-                        modJs.subModJsList[g].setGoogleAnalytics(ga),
-                        modJs.subModJsList[g].setNoJSONRequests(
-                          this.noJSONRequests
-                        ));
+                          modJs.subModJsList[g].setPermissions(this.permissions),
+                          modJs.subModJsList[g].setFieldTemplates(
+                            this.fieldTemplates
+                          ),
+                          modJs.subModJsList[g].setTemplates(this.templates),
+                          modJs.subModJsList[g].setCustomTemplates(
+                            this.customTemplates
+                          ),
+                          modJs.subModJsList[g].setEmailTemplates(
+                            this.emailTemplates
+                          ),
+                          modJs.subModJsList[g].setUser(this.user),
+                          modJs.subModJsList[g].initFieldMasterData(),
+                          modJs.subModJsList[g].setBaseUrl(this.baseUrl),
+                          modJs.subModJsList[g].setCurrentProfile(
+                            this.currentProfile
+                          ),
+                          modJs.subModJsList[g].setInstanceId(this.instanceId),
+                          modJs.subModJsList[g].setGoogleAnalytics(ga),
+                          modJs.subModJsList[g].setNoJSONRequests(
+                            this.noJSONRequests
+                          ));
                     modJs.subModJsList.tabEmployeeSkillSubTab.setShowFormOnPopup(
                       !0
                     ),
@@ -3379,9 +3372,9 @@
                         []
                       ),
                       this.isModuleInstalled("admin", "documents") &&
-                        (modJs.subModJsList.tabEmployeeDocumentSubTab.setShowFormOnPopup(
-                          !0
-                        ),
+                      (modJs.subModJsList.tabEmployeeDocumentSubTab.setShowFormOnPopup(
+                        !0
+                      ),
                         modJs.subModJsList.tabEmployeeDocumentSubTab.setShowAddNew(
                           !1
                         ),
@@ -3402,8 +3395,8 @@
                     //   alert("here");
                     //   return false;
                     var t = {
-                        id: e,
-                      },
+                      id: e,
+                    },
                       l = JSON.stringify(t),
                       a = [];
                     (a.callBackData = []),
@@ -3504,12 +3497,11 @@
                 },
                 {
                   key: "modEmployeeDeleteProfileImageCallBack",
-                  value: function (e) {},
+                  value: function (e) { },
                 },
               ]),
               t
             );
-
           })(),
           g = (function (e) {
             function t() {
@@ -3635,7 +3627,7 @@
                         {
                           label: "Nationality",
                           type: "select2",
-                          "remote-source": ["Country", "id", "namecap"],
+                          "remote-source": ["Nationality", "id", "name"],
                         },
                       ],
                       [
@@ -4009,7 +4001,6 @@
                       "department",
                       "gender",
                       "supervisor",
-                      "approval_status"
                     ];
                   },
                 },
@@ -4040,9 +4031,6 @@
                       },
                       {
                         sTitle: "Supervisor",
-                      },
-                      {
-                        sTitle: "App Status",
                       },
                     ];
                   },
@@ -4200,73 +4188,10 @@
                   },
                 },
                 {
-                  key: "restoreEmployee",
-                  value: function (e) {
-                    if (
-                      confirm(
-                        "Are you sure you want to re-activate this employee contract?"
-                      )
-                    ) {
-                      let emp = e;
-                      // alert(emp); return false;
-                      $.ajax({
-                        url: "../../../../rokel_hrm/core/reinstate_employee.php",
-                        type: "post",
-                        contentType: "application/json",
-                        dataType: "json",
-                        data: JSON.stringify({
-                          employee_id: emp,
-                        }),
-                        success: function (data, textStatus, jQxhr) {
-                          // console.log(data);
-                          var cal_amount = data;
-                          // alert(cal_amount.data);
-                          // alert(data);
-                          $("#amount").val(cal_amount.data);
-                        },
-                      });
-
-                      // return false;
-                      var t = {};
-                      t.id = e;
-                      var l = JSON.stringify(t),
-                        a = [];
-                      (a.callBackData = []),
-                        (a.callBackSuccess = "restoreEmployeeSuccessCallback"),
-                        (a.callBackFail = "restoreEmployeeFailCallback"),
-                        this.customAction(
-                          "activateEmployee",
-                          "admin=employees",
-                          l,
-                          a
-                        );
-                    }
-                  },
-                },
-                {
-                  key: "restoreEmployeeSuccessCallback",
-                  value: function (e) {
-                    this.showMessage(
-                      "Success",
-                      "Employee contract re-activated."
-                    ),
-                      this.get([]);
-                  },
-                },
-                {
-                  key: "restoreEmployeeFailCallback",
-                  value: function (e) {
-                    this.showMessage(
-                      "Error occurred while activating Employee",
-                      e
-                    );
-                  },
-                },
-                {
                   key: "getActionButtonsHtml",
                   value: function (e) {
                     var t =
-                      '<div style="width:110px;"><img class="tableActionButton" src="_BASE_images/download.png" style="cursor:pointer;" rel="tooltip" title="Download Archived Data" onclick="modJs.download(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Remove Archived Data" onclick="modJs.deleteRow(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/redo.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Reinstate Employee" onclick="modJs.restoreEmployee(_id_);return false;"></img></div>';
+                      '<div style="width:110px;"><img class="tableActionButton" src="_BASE_images/download.png" style="cursor:pointer;" rel="tooltip" title="Download Archived Data" onclick="modJs.download(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Remove Archived Data" onclick="modJs.deleteRow(_id_);return false;"></img></div>';
                     return (t = (t = t.replace(/_id_/g, e)).replace(
                       /_BASE_/g,
                       this.baseUrl
@@ -5145,10 +5070,9 @@
                       "id",
                       "employee",
                       "name",
-                      "gender",
                       "relationship",
                       "dob",
-                      // "id_number",
+                      "id_number",
                     ];
                   },
                 },
@@ -5167,17 +5091,14 @@
                         sTitle: "Name",
                       },
                       {
-                        sTitle: "Gender",
-                      },
-                      {
                         sTitle: "Relationship",
                       },
                       {
                         sTitle: "Date of Birth",
                       },
-                      // {
-                      //   sTitle: "Id Number",
-                      // },
+                      {
+                        sTitle: "Id Number",
+                      },
                     ];
                   },
                 },
@@ -5216,33 +5137,6 @@
                         },
                       ],
                       [
-                        "gender",
-                        {
-                          label: "Gender",
-                          type: "select",
-                          source: [
-                            ["M", "Male"],
-                            ["F", "Female"]],
-                          
-                        },
-                      ],
-                      [
-                        "dob",
-                        {
-                          label: "Date of Birth",
-                          type: "date",
-                          validation: "",
-                        },
-                      ],
-                      [
-                        "place_of_birth",
-                        {
-                          label: "Place of Birth",
-                          type: "text",
-                          validation: "none",
-                        },
-                      ],
-                      [
                         "relationship",
                         {
                           label: "Relationship",
@@ -5254,23 +5148,23 @@
                             ["Other", "Other"],
                           ],
                         },
-                      ],                      
+                      ],
                       [
-                        "address",
+                        "dob",
                         {
-                          label: "Address",
-                          type: "textarea",
+                          label: "Date of Birth",
+                          type: "date",
+                          validation: "",
+                        },
+                      ],
+                      [
+                        "id_number",
+                        {
+                          label: "Id Number",
+                          type: "text",
                           validation: "none",
                         },
                       ],
-                      // [
-                      //   "id_number",
-                      //   {
-                      //     label: "Id Number",
-                      //     type: "text",
-                      //     validation: "none",
-                      //   },
-                      // ],
                     ];
                   },
                 },
@@ -5428,22 +5322,6 @@
                         {
                           label: "Mobile Phone (Preferred)",
                           type: "text",
-                          validation: "none",
-                        },
-                      ],
-                      [
-                        "email",
-                        {
-                          label: "Email",
-                          type: "text",
-                          validation: "none",
-                        },
-                      ],
-                      [
-                        "address",
-                        {
-                          label: "Residential Address",
-                          type: "textarea",
                           validation: "none",
                         },
                       ],
@@ -5920,8 +5798,8 @@
                       : void 0 !== t.status &&
                         null != t.status &&
                         "SUCCESS" !== t.status
-                      ? null
-                      : t
+                        ? null
+                        : t
                     : null;
                 },
               },
@@ -5954,19 +5832,19 @@
           value: !0,
         });
         var a = (function () {
-            function e(e, t) {
-              for (var l = 0; l < t.length; l++) {
-                var a = t[l];
-                (a.enumerable = a.enumerable || !1),
-                  (a.configurable = !0),
-                  "value" in a && (a.writable = !0),
-                  Object.defineProperty(e, a.key, a);
-              }
+          function e(e, t) {
+            for (var l = 0; l < t.length; l++) {
+              var a = t[l];
+              (a.enumerable = a.enumerable || !1),
+                (a.configurable = !0),
+                "value" in a && (a.writable = !0),
+                Object.defineProperty(e, a.key, a);
             }
-            return function (t, l, a) {
-              return l && e(t.prototype, l), a && e(t, a), t;
-            };
-          })(),
+          }
+          return function (t, l, a) {
+            return l && e(t.prototype, l), a && e(t, a), t;
+          };
+        })(),
           i = n(e("./ModuleBase")),
           o = n(e("../api-common/RequestCache"));
 
@@ -5974,8 +5852,8 @@
           return e && e.__esModule
             ? e
             : {
-                default: e,
-              };
+              default: e,
+            };
         }
         var s = (function (e) {
           function t(e, l, a, i) {
@@ -6009,7 +5887,7 @@
               if ("function" != typeof t && null !== t)
                 throw new TypeError(
                   "Super expression must either be null or a function, not " +
-                    typeof t
+                  typeof t
                 );
               (e.prototype = Object.create(t && t.prototype, {
                 constructor: {
@@ -6020,9 +5898,9 @@
                 },
               })),
                 t &&
-                  (Object.setPrototypeOf
-                    ? Object.setPrototypeOf(e, t)
-                    : (e.__proto__ = t));
+                (Object.setPrototypeOf
+                  ? Object.setPrototypeOf(e, t)
+                  : (e.__proto__ = t));
             })(t, i.default),
             a(t, [
               {
@@ -6056,7 +5934,7 @@
                   var t = e;
                   null == t && (t = this.initialFilter),
                     null != t &&
-                      (this.setFilter(t),
+                    (this.setFilter(t),
                       (this.filtersAlreadySet = !0),
                       $("#" + this.getTableName() + "_resetFilters").show(),
                       (this.currentFilterString = this.getFilterString(t)));
@@ -6118,7 +5996,7 @@
                 value: function (e, t) {
                   try {
                     this.closePlainMessage();
-                  } catch (e) {}
+                  } catch (e) { }
                   this.showMessage("Error saving", t),
                     this.trackEvent("addFailed", this.tab, this.table);
                 },
@@ -6232,7 +6110,7 @@
                       i),
                     this.isSubProfileTable() && (o += "&type=sub"),
                     this.remoteTableSkipProfileRestriction() &&
-                      (o += "&skip=1"),
+                    (o += "&skip=1"),
                     o
                   );
                 },
@@ -6269,9 +6147,9 @@
                   }
                   (this.sourceData = t),
                     void 0 !== e.callBack &&
-                      null !== e.callBack &&
-                      ((void 0 !== e.callBackData && null !== e.callBackData) ||
-                        (e.callBackData = []),
+                    null !== e.callBack &&
+                    ((void 0 !== e.callBackData && null !== e.callBackData) ||
+                      (e.callBackData = []),
                       e.callBackData.push(t),
                       e.callBackData.push(l),
                       this.callFunction(e.callBack, e.callBackData)),
@@ -6279,14 +6157,14 @@
                     (void 0 !== e.noRender &&
                       null !== e.noRender &&
                       !0 === e.noRender) ||
-                      (this.createTable(this.getTableName()),
+                    (this.createTable(this.getTableName()),
                       $("#" + this.getTableName() + "Form").hide(),
                       $("#" + this.getTableName()).show());
                 },
               },
               {
                 key: "getFailCallBack",
-                value: function (e, t) {},
+                value: function (e, t) { },
               },
               {
                 key: "getElement",
@@ -6324,18 +6202,18 @@
                     null !== e.callBack &&
                     ((void 0 !== e.callBackData && null !== e.callBackData) ||
                       (e.callBackData = []),
-                    e.callBackData.push(t),
-                    this.callFunction(e.callBack, e.callBackData, this)),
+                      e.callBackData.push(t),
+                      this.callFunction(e.callBack, e.callBackData, this)),
                     (this.currentElement = t),
                     (void 0 !== e.noRender &&
                       null !== e.noRender &&
                       !0 === e.noRender) ||
-                      this.renderForm(t);
+                    this.renderForm(t);
                 },
               },
               {
                 key: "getElementFailCallBack",
-                value: function (e, t) {},
+                value: function (e, t) { },
               },
               {
                 key: "getTableData",
@@ -6357,24 +6235,24 @@
                     i = "";
                   void 0 !== e[3] && null !== e[3] && (a = e[3]),
                     void 0 !== e[4] &&
-                      null !== e[4] &&
-                      (i = JSON.stringify(e[4]));
+                    null !== e[4] &&
+                    (i = JSON.stringify(e[4]));
                   var o = this.requestCache.getKey(this.moduleRelativeURL, {
-                      t: e[0],
-                      key: e[1],
-                      value: e[2],
-                      method: a,
-                      methodParams: i,
-                      a: "getFieldValues",
-                    }),
+                    t: e[0],
+                    key: e[1],
+                    value: e[2],
+                    method: a,
+                    methodParams: i,
+                    a: "getFieldValues",
+                  }),
                     n = this.requestCache.getData(o);
                   null != n &&
                     "SUCCESS" === n.status &&
                     (t.callBackData.push(n.data),
-                    null !== t.callBackSuccess &&
+                      null !== t.callBackSuccess &&
                       void 0 !== t.callBackSuccess &&
                       t.callBackData.push(t.callBackSuccess),
-                    l.callFunction(t.callBack, t.callBackData));
+                      l.callFunction(t.callBack, t.callBackData));
                   var s = function e(a) {
                     if ("SUCCESS" === a.status) {
                       l.requestCache.setData(this.success.key, a);
@@ -6382,8 +6260,8 @@
                       (i.callBackData = [t.callBackData[0]]),
                         i.callBackData.push(a.data),
                         null !== i.callBackSuccess &&
-                          void 0 !== i.callBackSuccess &&
-                          i.callBackData.push(t.callBackSuccess),
+                        void 0 !== i.callBackSuccess &&
+                        i.callBackData.push(t.callBackSuccess),
                         l.callFunction(i.callBack, i.callBackData);
                     } else
                       "Access violation" === a.message &&
@@ -6411,7 +6289,7 @@
                 value: function (e) {
                   try {
                     localStorage.clear();
-                  } catch (e) {}
+                  } catch (e) { }
                   $.post(
                     this.moduleRelativeURL,
                     {
@@ -6432,46 +6310,46 @@
                   (l = this.fixJSON(l)),
                     i
                       ? $.post(
-                          this.moduleRelativeURL,
-                          {
-                            t: this.table,
-                            a: "ca",
-                            sa: e,
-                            mod: t,
-                            req: l,
-                          },
-                          function (e) {
-                            "SUCCESS" === e.status
-                              ? (a.callBackData.push(e.data),
-                                o.callFunction(
-                                  a.callBackSuccess,
-                                  a.callBackData
-                                ))
-                              : (a.callBackData.push(e.data),
-                                o.callFunction(a.callBackFail, a.callBackData));
-                          },
-                          "json"
-                        )
+                        this.moduleRelativeURL,
+                        {
+                          t: this.table,
+                          a: "ca",
+                          sa: e,
+                          mod: t,
+                          req: l,
+                        },
+                        function (e) {
+                          "SUCCESS" === e.status
+                            ? (a.callBackData.push(e.data),
+                              o.callFunction(
+                                a.callBackSuccess,
+                                a.callBackData
+                              ))
+                            : (a.callBackData.push(e.data),
+                              o.callFunction(a.callBackFail, a.callBackData));
+                        },
+                        "json"
+                      )
                       : $.getJSON(
-                          this.moduleRelativeURL,
-                          {
-                            t: this.table,
-                            a: "ca",
-                            sa: e,
-                            mod: t,
-                            req: l,
-                          },
-                          function (e) {
-                            "SUCCESS" === e.status
-                              ? (a.callBackData.push(e.data),
-                                o.callFunction(
-                                  a.callBackSuccess,
-                                  a.callBackData
-                                ))
-                              : (a.callBackData.push(e.data),
-                                o.callFunction(a.callBackFail, a.callBackData));
-                          }
-                        );
+                        this.moduleRelativeURL,
+                        {
+                          t: this.table,
+                          a: "ca",
+                          sa: e,
+                          mod: t,
+                          req: l,
+                        },
+                        function (e) {
+                          "SUCCESS" === e.status
+                            ? (a.callBackData.push(e.data),
+                              o.callFunction(
+                                a.callBackSuccess,
+                                a.callBackData
+                              ))
+                            : (a.callBackData.push(e.data),
+                              o.callFunction(a.callBackFail, a.callBackData));
+                        }
+                      );
                 },
               },
               {
@@ -6545,40 +6423,40 @@
           };
         })();
         var i = {
-            float: function (e) {
-              return !(null == e || !e.match(/^[-+]?[0-9]+(\.[0-9]+)?$/));
-            },
-            number: function (e) {
-              return !(null == e || !e.match(/^[0-9]+$/));
-            },
-            numberOrEmpty: function (e) {
-              if ("" === e) return !0;
-              return !(null == e || !e.match(/^[0-9]+$/));
-            },
-            email: function (e) {
-              return (
-                null != e &&
-                /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(
-                  e
-                )
-              );
-            },
-            emailOrEmpty: function (e) {
-              if ("" === e) return !0;
-              return (
-                null != e &&
-                /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(
-                  e
-                )
-              );
-            },
-            username: function (e) {
-              return null != e && /^[a-zA-Z0-9.-]+$/.test(e);
-            },
-            input: function (e) {
-              return null != e && e.length > 0;
-            },
+          float: function (e) {
+            return !(null == e || !e.match(/^[-+]?[0-9]+(\.[0-9]+)?$/));
           },
+          number: function (e) {
+            return !(null == e || !e.match(/^[0-9]+$/));
+          },
+          numberOrEmpty: function (e) {
+            if ("" === e) return !0;
+            return !(null == e || !e.match(/^[0-9]+$/));
+          },
+          email: function (e) {
+            return (
+              null != e &&
+              /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(
+                e
+              )
+            );
+          },
+          emailOrEmpty: function (e) {
+            if ("" === e) return !0;
+            return (
+              null != e &&
+              /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(
+                e
+              )
+            );
+          },
+          username: function (e) {
+            return null != e && /^[a-zA-Z0-9.-]+$/.test(e);
+          },
+          input: function (e) {
+            return null != e && e.length > 0;
+          },
+        },
           o = (function () {
             function e(t, l, a) {
               !(function (e, t) {
@@ -6642,20 +6520,20 @@
                         void 0 === i || null == i || "" === i
                           ? $("#" + this.formId + " #help_err_" + l).html(i)
                           : void 0 === a || null == a || "" === a
-                          ? $("#" + this.formId + " #help_err_" + l).html(
+                            ? $("#" + this.formId + " #help_err_" + l).html(
                               "Required"
                             )
-                          : "float" === a || "number" === a
-                          ? $("#" + this.formId + " #help_err_" + l).html(
-                              "Number required"
-                            )
-                          : "email" === a
-                          ? $("#" + this.formId + " #help_err_" + l).html(
-                              "Email required"
-                            )
-                          : $("#" + this.formId + " #help_err_" + l).html(
-                              "Required"
-                            );
+                            : "float" === a || "number" === a
+                              ? $("#" + this.formId + " #help_err_" + l).html(
+                                "Number required"
+                              )
+                              : "email" === a
+                                ? $("#" + this.formId + " #help_err_" + l).html(
+                                  "Email required"
+                                )
+                                : $("#" + this.formId + " #help_err_" + l).html(
+                                  "Required"
+                                );
                     },
                   },
                   {
@@ -6663,21 +6541,21 @@
                     value: function () {
                       this.formError &&
                         (void 0 !== this.settings.thirdPartyPopup &&
-                        null != this.settings.thirdPartyPopup
+                          null != this.settings.thirdPartyPopup
                           ? this.settings.thirdPartyPopup.alert()
                           : !0 === this.settings.ShowPopup &&
-                            (void 0 !== this.tempOptions.popupTop &&
+                          (void 0 !== this.tempOptions.popupTop &&
                             null != this.tempOptions.popupTop
-                              ? this.alert(
-                                  "Errors Found",
-                                  this.errorMessages,
-                                  this.tempOptions.popupTop
-                                )
-                              : this.alert(
-                                  "Errors Found",
-                                  this.errorMessages,
-                                  -1
-                                )));
+                            ? this.alert(
+                              "Errors Found",
+                              this.errorMessages,
+                              this.tempOptions.popupTop
+                            )
+                            : this.alert(
+                              "Errors Found",
+                              this.errorMessages,
+                              -1
+                            )));
                     },
                   },
                   {
@@ -6689,86 +6567,86 @@
                         (this.errorMessages = ""),
                         (this.formObject = {});
                       var l = function (e) {
-                          var l = null,
-                            a = e.attr("name");
-                          !1 !== t.settings.LabelErrorClass &&
-                            $("label[for='" + a + "']").removeClass(
-                              t.settings.LabelErrorClass
-                            );
-                          var i = e.attr("id"),
-                            o = e.attr("type");
-                          if (
-                            e.hasClass("select2-focusser") ||
-                            e.hasClass("select2-input")
-                          )
-                            return !0;
-                          if (jQuery.inArray(o, t.inputTypes) >= 0) {
-                            if (e.hasClass("uploadInput")) l = e.attr("val");
-                            else if ("radio" === o || "checkbox" === o)
-                              l = $("input[name='" + a + "']:checked").val();
-                            else if (e.hasClass("select2Field"))
-                              l =
-                                null !=
-                                  $("#" + t.formId + " #" + i).select2(
-                                    "data"
-                                  ) &&
-                                void 0 !==
-                                  $("#" + t.formId + " #" + i).select2("data")
-                                  ? $("#" + t.formId + " #" + i).select2("data")
-                                      .id
-                                  : "";
-                            else if (e.hasClass("select2Multi"))
-                              if (
-                                null !=
-                                  $("#" + t.formId + " #" + i).select2(
-                                    "data"
-                                  ) &&
-                                void 0 !==
-                                  $("#" + t.formId + " #" + i).select2("data")
-                              ) {
-                                var n = $("#" + t.formId + " #" + i).select2(
+                        var l = null,
+                          a = e.attr("name");
+                        !1 !== t.settings.LabelErrorClass &&
+                          $("label[for='" + a + "']").removeClass(
+                            t.settings.LabelErrorClass
+                          );
+                        var i = e.attr("id"),
+                          o = e.attr("type");
+                        if (
+                          e.hasClass("select2-focusser") ||
+                          e.hasClass("select2-input")
+                        )
+                          return !0;
+                        if (jQuery.inArray(o, t.inputTypes) >= 0) {
+                          if (e.hasClass("uploadInput")) l = e.attr("val");
+                          else if ("radio" === o || "checkbox" === o)
+                            l = $("input[name='" + a + "']:checked").val();
+                          else if (e.hasClass("select2Field"))
+                            l =
+                              null !=
+                                $("#" + t.formId + " #" + i).select2(
                                   "data"
-                                );
-                                l = [];
-                                for (var s = 0; s < n.length; s++)
-                                  l.push(n[s].id);
-                                l = JSON.stringify(l);
-                              } else l = "";
-                            else
-                              l = e.hasClass("signatureField")
+                                ) &&
+                                void 0 !==
+                                $("#" + t.formId + " #" + i).select2("data")
+                                ? $("#" + t.formId + " #" + i).select2("data")
+                                  .id
+                                : "";
+                          else if (e.hasClass("select2Multi"))
+                            if (
+                              null !=
+                              $("#" + t.formId + " #" + i).select2(
+                                "data"
+                              ) &&
+                              void 0 !==
+                              $("#" + t.formId + " #" + i).select2("data")
+                            ) {
+                              var n = $("#" + t.formId + " #" + i).select2(
+                                "data"
+                              );
+                              l = [];
+                              for (var s = 0; s < n.length; s++)
+                                l.push(n[s].id);
+                              l = JSON.stringify(l);
+                            } else l = "";
+                          else
+                            l = e.hasClass("signatureField")
+                              ? $("#" + t.formId + " #" + i)
+                                .data("signaturePad")
+                                .isEmpty()
+                                ? ""
+                                : $("#" + i)
+                                  .data("signaturePad")
+                                  .toDataURL()
+                              : e.hasClass("simplemde")
                                 ? $("#" + t.formId + " #" + i)
-                                    .data("signaturePad")
-                                    .isEmpty()
-                                  ? ""
-                                  : $("#" + i)
-                                      .data("signaturePad")
-                                      .toDataURL()
-                                : e.hasClass("simplemde")
-                                ? $("#" + t.formId + " #" + i)
-                                    .data("simplemde")
-                                    .value()
+                                  .data("simplemde")
+                                  .value()
                                 : e.hasClass("tinymce")
-                                ? tinyMCE.get(i).getContent({
+                                  ? tinyMCE.get(i).getContent({
                                     format: "raw",
                                   })
-                                : e.val();
-                            var r = e.attr("validation"),
-                              u = !1;
-                            void 0 !== r &&
+                                  : e.val();
+                          var r = e.attr("validation"),
+                            u = !1;
+                          void 0 !== r &&
                             null != r &&
                             void 0 !== t.validator[r] &&
                             null != t.validator[r]
-                              ? (u = t.validator[r](l))
-                              : ((u =
-                                  !t.validateAll ||
-                                  (void 0 !== r && null != r && "none" === r) ||
-                                  t.validator.input(l)),
-                                (t.formObject[i] = l)),
-                              u
-                                ? (t.clearError(e, null), (t.formObject[i] = l))
-                                : t.addError(e, null);
-                          }
-                        },
+                            ? (u = t.validator[r](l))
+                            : ((u =
+                              !t.validateAll ||
+                              (void 0 !== r && null != r && "none" === r) ||
+                              t.validator.input(l)),
+                              (t.formObject[i] = l)),
+                            u
+                              ? (t.clearError(e, null), (t.formObject[i] = l))
+                              : t.addError(e, null);
+                        }
+                      },
                         a = $("#" + this.formId + " :input");
                       return (
                         a.each(function () {
@@ -6850,8 +6728,8 @@
             (a = o) && a.__esModule
               ? a
               : {
-                  default: a,
-                };
+                default: a,
+              };
         var s = (function () {
           function e() {
             !(function (e, t) {
@@ -6893,7 +6771,7 @@
             i(e, [
               {
                 key: "init",
-                value: function (e, t, l, a) {},
+                value: function (e, t, l, a) { },
               },
               {
                 key: "setNoJSONRequests",
@@ -7034,7 +6912,7 @@
                     }
                   void 0 === this.translations[e] &&
                     ((t[e] = e),
-                    localStorage.setItem("terms", JSON.stringify(t)));
+                      localStorage.setItem("terms", JSON.stringify(t)));
                 },
               },
               {
@@ -7050,9 +6928,9 @@
                     void 0 === t || null == t
                       ? this.ga.push(["_trackEvent", this.instanceId, e])
                       : void 0 === l || null == l
-                      ? this.ga.push(["_trackEvent", this.instanceId, e, t])
-                      : this.ga.push(["_trackEvent", this.instanceId, e, t, l]);
-                  } catch (e) {}
+                        ? this.ga.push(["_trackEvent", this.instanceId, e, t])
+                        : this.ga.push(["_trackEvent", this.instanceId, e, t, l]);
+                  } catch (e) { }
                 },
               },
               {
@@ -7179,17 +7057,17 @@
                     (this.fieldMasterDataKeys[e] = !0),
                     null != l && l(),
                     null !== this.fieldMasterDataCallback &&
-                    void 0 !== this.fieldMasterDataCallback &&
-                    this.isAllLoaded(this.fieldMasterDataKeys) &&
-                    null !== this.fieldMasterDataCallbackData &&
-                    void 0 !== this.fieldMasterDataCallbackData
+                      void 0 !== this.fieldMasterDataCallback &&
+                      this.isAllLoaded(this.fieldMasterDataKeys) &&
+                      null !== this.fieldMasterDataCallbackData &&
+                      void 0 !== this.fieldMasterDataCallbackData
                       ? this.fieldMasterDataCallback(
-                          this.fieldMasterDataCallbackData
-                        )
+                        this.fieldMasterDataCallbackData
+                      )
                       : null !== this.fieldMasterDataCallback &&
-                        void 0 !== this.fieldMasterDataCallback &&
-                        this.isAllLoaded(this.fieldMasterDataKeys) &&
-                        this.fieldMasterDataCallback();
+                      void 0 !== this.fieldMasterDataCallback &&
+                      this.isAllLoaded(this.fieldMasterDataKeys) &&
+                      this.fieldMasterDataCallback();
                 },
               },
               {
@@ -7318,7 +7196,7 @@
                 key: "getClientMessage",
                 value: function (e) {
 
-                  
+
                   return this.getWSProperty(this.msgList, e);
                 },
               },
@@ -7339,7 +7217,7 @@
                 value: function (e) {
                   null != this.currentView &&
                     ((this.previousView = this.currentView),
-                    $("#" + this.currentView).hide()),
+                      $("#" + this.currentView).hide()),
                     $("#" + e).show(),
                     (this.currentView = e),
                     this.moveToTop();
@@ -7353,7 +7231,7 @@
               },
               {
                 key: "moveToTop",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "callFunction",
@@ -7376,17 +7254,91 @@
                 },
               },
               {
+                //this function adds button on top of all datatables
                 key: "getTableTopButtonHtml",
                 value: function () {
+
+                  //variable declaration
                   var e = "";
+
                   return (
                     this.getShowAddNew() &&
-                      (e =
-                        '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
-                        this.gt(this.getAddNewLabel()) +
-                        ' <i class="fa fa-plus"></i></button>'),
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt(this.getAddNewLabel()) +
+                      ' <i class="fa fa-plus"></i></button>'),
                     null != this.getFilters() &&
-                      ("" !== e && (e += "&nbsp;&nbsp;"),
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter1") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                    (e +=
+                      '<button onclick="modJs.downloadEmployees();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(Excel)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadEmployeesPdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                key: "downloadEmployees",
+                value: function (e) {
+                  // alert("Download Employees");
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/employeeData.php";
+                },
+              },
+              {
+                //this function downloads employee data from a table to pdf
+                key: "downloadEmployeesPdf",
+                value: function (e) {
+                  // alert("Download Employees");
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/employeeDatapdf.php";
+                },
+              },
+              {
+                //this function adds button on top of the suspended employees datatables
+                key: "getTableTopButtonForSuspendedHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Contact") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
                       (e +=
                         '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
                         this.gt("Filter") +
@@ -7394,34 +7346,624 @@
                       (e += "&nbsp;&nbsp;"),
                       this.filtersAlreadySet
                         ? (e +=
-                            '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
                         : (e +=
-                            '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
                     (e +=
-                      '<button onclick="modJs.downloadEmployees();return false;" class="btn btn-small btn-primary">' +
-                      this.gt("Download(Excel)") +
+                      '<button onclick="modJs.downloadSuspendedEmployeeExcel();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download (Excel)") +
                       ' <i class="fa fa-download"></i></button>'),
-                    // (e += "&nbsp;&nbsp;"),
-                    // (e +=
-                    //   '<button onclick="modJs.downloadEmployees();return false;" class="btn btn-small btn-primary">' +
-                    //   this.gt("Download(pdf)") +
-                    //   ' <i class="fa fa-download"></i></button>'),
-                    (e = e.replace(/__id__/g, this.getTableName())), 
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadSuspendedEmployeePdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
                     "" !==
-                      (e =
-                        "" !== this.currentFilterString &&
+                    (e =
+                      "" !== this.currentFilterString &&
                         null != this.currentFilterString
-                          ? e.replace(
-                              /__filterString__/g,
-                              this.currentFilterString
-                            )
-                          : e.replace(/__filterString__/g, "Reset Filters")) &&
-                      (e =
-                        '<div class="row"><div class="col-xs-12">' +
-                        e +
-                        "</div></div>"),
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
                     e
                   );
+                },
+              },
+              {
+                // this function handles downloading of terminated employee document (excel)
+                key: "downloadSuspendedEmployeeExcel",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/suspendedEmployeeDataExcel.php";
+                },
+              },
+              {
+                // this function handles downloading of terminated employee document (excel)
+                key: "downloadSuspendedEmployeePdf",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/suspendedEmployeeDataPdf.php";
+                },
+              },
+              {
+                //this function adds button on top of the terminated employees datatables
+                key: "getTableTopButtonForTerminatedHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Contact") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                    (e +=
+                      '<button onclick="modJs.downloadTerminatedEmployeeExcel();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download (Excel)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadTerminatedEmployeePdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                // this function handles downloading of terminated employee document (excel)
+                key: "downloadTerminatedEmployeeExcel",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/terminatedEmployeeDataExcel.php";
+                },
+              },
+              {
+                // this function handles downloading of terminated employee document (excel)
+                key: "downloadTerminatedEmployeePdf",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/terminatedEmployeeDataPdf.php";
+                },
+              },
+              {
+                //this function adds button on top of the emergency contacts datatables
+                key: "getTableTopButtonForDocumentHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Document") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                //this function adds button on top of the bank account datatables
+                key: "getTableTopButtonForBankHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Account Details") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+
+
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                //this function adds button on top of the emergency contacts datatables
+                key: "getTableTopButtonForEmergencyContactHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Contact") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                    (e +=
+                      '<button onclick="modJs.downloadContactExcel();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(Excel)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadContactPdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                // this function handles downloading of emergency contact document (excel)
+                key: "downloadContactExcel",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/emergencycontactDataExcel.php";
+                },
+              },
+              {
+                // this function handles downloading of emergency contact document (excel)
+                key: "downloadContactPdf",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/emergencycontactDataPdf.php";
+                },
+              },
+              {
+                //this function adds button on top of the dependent datatables
+                key: "getTableTopButtonForDependentHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Dependent") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                    (e +=
+                      '<button onclick="modJs.downloadDependentExcel();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(Excel)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadDependentPdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                // this function handles downloading of dependent document (excel)
+                key: "downloadDependentExcel",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/dependentDataExcel.php";
+                },
+              },
+              {
+                // this function handles downloading of dependent document (excel)
+                key: "downloadDependentPdf",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/dependentDataPdf.php";
+                },
+              },
+              {
+                //this function adds button on top of the language datatables
+                key: "getTableTopButtonForLanguageHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Language") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                    (e +=
+                      '<button onclick="modJs.downloadLanguageExcel();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(Excel)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadLanguagePdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                // this function handles downloading of language document (excel)
+                key: "downloadLanguageExcel",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/languageDataExcel.php";
+                },
+              },
+              {
+                // this function handles downloading of language document (excel)
+                key: "downloadLanguagePdf",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/languageDataPdf.php";
+                },
+              },
+              {
+                //this function adds button on top of the certificate datatables
+                key: "getTableTopButtonForCertificateHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Certificate") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                    (e +=
+                      '<button onclick="modJs.downloadCertificateExcel();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(Excel)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadCertificatePdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                // this function handles downloading of certificate document (excel)
+                key: "downloadCertificateExcel",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/certificateDataExcel.php";
+                },
+              },
+              {
+                // this function handles downloading of certificate document (excel)
+                key: "downloadCertificatePdf",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/certificateDataPdf1.php";
+                },
+              },
+              {
+                //this function adds button on top of the certificate datatables
+                key: "getTableTopButtonForEducationHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add Education") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                    (e +=
+                      '<button onclick="modJs.downloadEducationExcel();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(Excel)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadEducationPdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                // this function handles downloading of education document (excel)
+                key: "downloadEducationExcel",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/educationDataExcel.php";
+                },
+              },
+              {
+                // this function handles downloading of excel document (pdf)
+                key: "downloadEducationPdf",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/educationDatapdf.php";
+                },
+              },
+              {
+                //this function adds button on top of the skills datatables
+                key: "getTableTopButtonForSkillsHtml",
+                value: function () {
+
+                  //variable declaration
+                  var e = "";
+
+                  return (
+                    this.getShowAddNew() &&
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Add skills") +
+                      ' <i class="fa fa-plus"></i></button>'),
+                    null != this.getFilters() &&
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
+                      (e +=
+                        '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
+                        this.gt("Filter") +
+                        ' <i class="fa fa-filter"></i></button>'),
+                      (e += "&nbsp;&nbsp;"),
+                      this.filtersAlreadySet
+                        ? (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                        : (e +=
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                    (e +=
+                      '<button onclick="modJs.downloadSkillsExcel();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(Excel)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e += "&nbsp;&nbsp;"),
+                    (e +=
+                      '<button onclick="modJs.downloadSkillsPdf();return false;" class="btn btn-small btn-primary">' +
+                      this.gt("Download(pdf)") +
+                      ' <i class="fa fa-download"></i></button>'),
+                    (e = e.replace(/__id__/g, this.getTableName())),
+                    "" !==
+                    (e =
+                      "" !== this.currentFilterString &&
+                        null != this.currentFilterString
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
+                    e
+                  );
+                },
+              },
+              {
+                // this function handles downloading of skills document
+                key: "downloadSkillsPdf",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/skillsDatapdf.php";
+                },
+              },
+              {
+                // this function handles downloading of skills document
+                key: "downloadSkillsExcel",
+                value: function (e) {
+                  window.location.href =
+                    "../../../../rokel_hrm/core/appDownloads/skillsDataExcel.php";
                 },
               },
               {
@@ -7448,6 +7990,7 @@
               {
                 key: "createTable",
                 value: function (e) {
+                  // alert(e);
                   if (this.getRemoteTable()) this.createTableServer(e);
                   else {
                     var t = this.getHeaders();
@@ -7456,32 +7999,36 @@
                     if (
                       (this.showActionButtons() &&
                         t.push(this.getActionButtonHeader()),
-                      this.showActionButtons())
+                        this.showActionButtons())
                     )
                       for (var i = 0; i < a.length; i++)
                         a[i].push(this.getActionButtonsHtml(a[i][0], a[i]));
                     var o;
-                    o =
-                      this.getTableTopButtonHtml() +
-                      this.getTableHTMLTemplate();
+
+                    if (e == 'EmployeeDocument') {
+                      o = this.getTableTopButtonForDocumentHtml() + this.getTableHTMLTemplate();
+                    } else {
+                      o =
+                        this.getTableTopButtonHtml() + this.getTableHTMLTemplate();
+                    }
                     var n = $(
-                        "#" + e + " .dataTables_paginate .active a"
-                      ).html(),
+                      "#" + e + " .dataTables_paginate .active a"
+                    ).html(),
                       s = 0;
                     void 0 !== n &&
                       null != n &&
                       (s = 15 * parseInt(n, 10) - 15),
                       $("#" + e).html(o);
                     var r = {
-                        oLanguage: {
-                          sLengthMenu: "_MENU_ records per page",
-                        },
-                        aaData: a,
-                        aoColumns: t,
-                        bSort: this.isSortable(),
-                        iDisplayLength: 15,
-                        iDisplayStart: s,
+                      oLanguage: {
+                        sLengthMenu: "_MENU_ records per page",
                       },
+                      aaData: a,
+                      aoColumns: t,
+                      bSort: this.isSortable(),
+                      iDisplayLength: 15,
+                      iDisplayStart: s,
+                    },
                       u = this.getCustomTableParams();
                     $.extend(r, u),
                       $("#" + e + " #grid").dataTable(r),
@@ -7505,16 +8052,38 @@
               {
                 key: "createTableServer",
                 value: function (e) {
+                  // alert(e);
                   var t = this.getHeaders();
                   for (var l in (t.push({
                     sTitle: "",
                     sClass: "center",
                   }),
-                  t))
+                    t))
                     t[l].sTitle = this.gt(t[l].sTitle);
                   var a;
-                  a =
-                    this.getTableTopButtonHtml() + this.getTableHTMLTemplate();
+
+                  if (e == 'EmployeeSkill') {
+                    a = this.getTableTopButtonForSkillsHtml() + this.getTableHTMLTemplate();
+                  } else if (e == 'EmployeeEducation') {
+                    a = this.getTableTopButtonForEducationHtml() + this.getTableHTMLTemplate();
+                  } else if (e == 'EmployeeCertification') {
+                    a = this.getTableTopButtonForCertificateHtml() + this.getTableHTMLTemplate();
+                  } else if (e == 'EmployeeLanguage') {
+                    a = this.getTableTopButtonForLanguageHtml() + this.getTableHTMLTemplate();
+                  } else if (e == 'EmployeeDependent') {
+                    a = this.getTableTopButtonForDependentHtml() + this.getTableHTMLTemplate();
+                  } else if (e == 'EmployeeBankDetails') {
+                    a = this.getTableTopButtonForBankHtml() + this.getTableHTMLTemplate();
+                  } else if (e == 'EmergencyContact') {
+                    a = this.getTableTopButtonForEmergencyContactHtml() + this.getTableHTMLTemplate();
+                  } else if (e == 'TerminatedEmployee') {
+                    a = this.getTableTopButtonForSuspendedHtml() + this.getTableHTMLTemplate();
+                  } else if (e == 'ArchivedEmployee') {
+                    a = this.getTableTopButtonForTerminatedHtml() + this.getTableHTMLTemplate();
+                  } else {
+                    a = this.getTableTopButtonHtml() + this.getTableHTMLTemplate();
+                  }
+
                   var i = $("#" + e + " .dataTables_paginate .active a").html(),
                     o = 0;
                   void 0 !== i && null != i && (o = 15 * parseInt(i, 10) - 15),
@@ -7557,19 +8126,19 @@
               },
               {
                 key: "getHeaders",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "getDataMapping",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "getFormFields",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "getTableData",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "getFilters",
@@ -7646,9 +8215,9 @@
                 key: "showMessage",
                 value: function (e, t) {
                   var l =
-                      arguments.length > 2 && void 0 !== arguments[2]
-                        ? arguments[2]
-                        : null,
+                    arguments.length > 2 && void 0 !== arguments[2]
+                      ? arguments[2]
+                      : null,
                     a =
                       arguments.length > 3 && void 0 !== arguments[3]
                         ? arguments[3]
@@ -7666,14 +8235,14 @@
                       : this.renderModel("message", e, t),
                     null != l
                       ? ($(n).modal({
-                          show: !0,
-                        }),
+                        show: !0,
+                      }),
                         $(n).on("hidden.bs.modal", function () {
                           l.apply(o, a), $(".modal-backdrop").remove();
                         }))
                       : $(n).modal({
-                          backdrop: "static",
-                        });
+                        backdrop: "static",
+                      });
                 },
               },
               {
@@ -7688,14 +8257,14 @@
                       : this.renderModelFromDom("message", e, t),
                     null != l
                       ? ($(n).modal({
-                          show: !0,
-                        }),
+                        show: !0,
+                      }),
                         $(n).on("hidden.bs.modal", function () {
                           l.apply(o, a), $(".modal-backdrop").remove();
                         }))
                       : $(n).modal({
-                          backdrop: "static",
-                        });
+                        backdrop: "static",
+                      });
                 },
               },
               {
@@ -7742,7 +8311,7 @@
               {
                 key: "save",
                 value: function (e, t) {
-                  // alert("Saving..."); return false;
+                  //  return false;
                   var l = new n.default(this.getTableName() + "_submit", !0, {
                     ShowPopup: !1,
                     LabelErrorClass: "error",
@@ -7762,11 +8331,19 @@
                       null != o && void 0 !== o && "" !== o && (a.id = o),
                         (a = this.makeEmptyDateFieldsNull(a)),
                         this.add(a, [], e, t);
+                      alert('updating');
                     } else
                       $("#" + this.getTableName() + "Form .label").html(i),
                         $("#" + this.getTableName() + "Form .label").show(),
                         this.scrollToTop();
                   }
+                },
+              }, {
+                key: "paygradeselect",
+                value: function () {
+                  alert("sorting..."); return false;
+
+
                 },
               },
               {
@@ -7801,7 +8378,7 @@
                       if (new Date(e.date_end) < t)
                         return "Start date should be earlier than end date of the leave period";
                     }
-                  } catch (e) {}
+                  } catch (e) { }
                   return null;
                 },
               },
@@ -7842,8 +8419,8 @@
                     if (e.hasOwnProperty(u)) {
                       if (
                         ((n = ""),
-                        (s = null),
-                        "select" === (i = this.getMetaFieldValues(u, r)).type ||
+                          (s = null),
+                          "select" === (i = this.getMetaFieldValues(u, r)).type ||
                           "select2" === i.type)
                       ) {
                         if (
@@ -7853,18 +8430,18 @@
                           (l = i["remote-source"]),
                             "NULL" === e[u]
                               ? (n =
-                                  void 0 !== i["null-label"] &&
+                                void 0 !== i["null-label"] &&
                                   null != i["null-label"]
-                                    ? i["null-label"]
-                                    : "Not Selected")
+                                  ? i["null-label"]
+                                  : "Not Selected")
                               : (s = n =
-                                  this.fieldMasterData[
-                                    l[0] + "_" + l[1] + "_" + l[2]
-                                  ][e[u]]);
+                                this.fieldMasterData[
+                                l[0] + "_" + l[1] + "_" + l[2]
+                                ][e[u]]);
                         else if (((a = i.source[0]), "NULL" === e[u]))
                           n =
                             void 0 !== i["null-label"] &&
-                            null != i["null-label"]
+                              null != i["null-label"]
                               ? i["null-label"]
                               : "Not Selected";
                         else
@@ -7877,7 +8454,7 @@
                         o = [];
                         try {
                           o = JSON.parse(e[u]);
-                        } catch (e) {}
+                        } catch (e) { }
                         "" !== (n = o.join(",")) && (s = n);
                       } else "" !== (n = e[u]) && (s = n);
                       null != s &&
@@ -7915,9 +8492,9 @@
                 value: function (e) {
                   for (
                     var t = this.templates.filterTemplate,
-                      l = "",
-                      a = this.getFilters(),
-                      i = 0;
+                    l = "",
+                    a = this.getFilters(),
+                    i = 0;
                     i < a.length;
                     i++
                   ) {
@@ -7982,34 +8559,35 @@
                       e.preventDefault(), e.stopPropagation();
                       try {
                         modJs.filterQuery();
-                      } catch (e) {}
+                      } catch (e) { }
                       return !1;
                     }),
                     void 0 !== this.filter &&
-                      null != this.filter &&
-                      "" !== this.filter &&
-                      this.fillForm(
-                        this.filter,
-                        "#" + this.getTableName() + "_filter",
-                        this.getFilters()
-                      );
+                    null != this.filter &&
+                    "" !== this.filter &&
+                    this.fillForm(
+                      this.filter,
+                      "#" + this.getTableName() + "_filter",
+                      this.getFilters()
+                    );
                 },
               },
               {
                 key: "preRenderForm",
-                value: function (e) {},
+                value: function (e) { },
               },
               {
                 key: "renderForm",
                 value: function (e) {
+
                   var t = [];
                   (null != e && void 0 !== e) || (this.currentId = null),
                     this.preRenderForm(e);
                   for (
                     var l = this.templates.formTemplate,
-                      a = "",
-                      i = this.getFormFields(),
-                      o = 0;
+                    a = "",
+                    i = this.getFormFields(),
+                    o = 0;
                     o < i.length;
                     o++
                   ) {
@@ -8031,8 +8609,8 @@
                     u = this.generateRandom(14);
                   this.showFormOnPopup
                     ? (r = $(
-                        '<div class="reviewBlock popupForm" data-content="Form"></div>'
-                      )).attr("id", u)
+                      '<div class="reviewBlock popupForm" data-content="Form"></div>'
+                    )).attr("id", u)
                     : (r = $("#" + this.getTableName() + "Form")),
                     r.html(l),
                     r.find(".datefield").datepicker({
@@ -8085,50 +8663,50 @@
                           return (
                             null !=
                               $(this).data("modJs").saveSuccessItemCallback &&
-                            void 0 !==
+                              void 0 !==
                               $(this).data("modJs").saveSuccessItemCallback
                               ? $(this)
-                                  .data("modJs")
-                                  .save(
-                                    $(this)
-                                      .data("modJs")
-                                      .retriveItemsAfterSave(),
-                                    $(this).data("modJs")
-                                      .saveSuccessItemCallback
-                                  )
+                                .data("modJs")
+                                .save(
+                                  $(this)
+                                    .data("modJs")
+                                    .retriveItemsAfterSave(),
+                                  $(this).data("modJs")
+                                    .saveSuccessItemCallback
+                                )
                               : $(this).data("modJs").save(),
                             !1
                           );
                         })),
-                    !1 === this.showCancel
-                      ? r.find(".cancelBtn").remove()
-                      : (r.find(".cancelBtn").off(),
-                        r.find(".cancelBtn").data("modJs", this),
-                        r.find(".cancelBtn").on("click", function () {
-                          return $(this).data("modJs").cancel(), !1;
-                        })),
-                    r.find("[mask]").each(function () {
-                      $(this).inputmask($(this).attr("mask"));
-                    }),
-                    r.find("[datemask]").each(function () {
-                      $(this).inputmask({
-                        mask: "y-1-2",
-                        placeholder: "YYYY-MM-DD",
-                        leapday: "-02-29",
-                        separator: "-",
-                        alias: "yyyy/mm/dd",
-                      });
-                    }),
-                    r.find("[datetimemask]").each(function () {
-                      $(this).inputmask("datetime", {
-                        mask: "y-2-1 h:s:00",
-                        placeholder: "YYYY-MM-DD hh:mm:ss",
-                        leapday: "-02-29",
-                        separator: "-",
-                        alias: "yyyy/mm/dd",
-                      });
-                    }),
-                    this.showFormOnPopup)
+                      !1 === this.showCancel
+                        ? r.find(".cancelBtn").remove()
+                        : (r.find(".cancelBtn").off(),
+                          r.find(".cancelBtn").data("modJs", this),
+                          r.find(".cancelBtn").on("click", function () {
+                            return $(this).data("modJs").cancel(), !1;
+                          })),
+                      r.find("[mask]").each(function () {
+                        $(this).inputmask($(this).attr("mask"));
+                      }),
+                      r.find("[datemask]").each(function () {
+                        $(this).inputmask({
+                          mask: "y-1-2",
+                          placeholder: "YYYY-MM-DD",
+                          leapday: "-02-29",
+                          separator: "-",
+                          alias: "yyyy/mm/dd",
+                        });
+                      }),
+                      r.find("[datetimemask]").each(function () {
+                        $(this).inputmask("datetime", {
+                          mask: "y-2-1 h:s:00",
+                          placeholder: "YYYY-MM-DD hh:mm:ss",
+                          leapday: "-02-29",
+                          separator: "-",
+                          alias: "yyyy/mm/dd",
+                        });
+                      }),
+                      this.showFormOnPopup)
                   ) {
                     this.showMessage("Edit", "", null, null, !0),
                       $("#plainMessageModel .modal-body").html(""),
@@ -8155,6 +8733,193 @@
                       this.scrollToTop();
                   }
                   this.postRenderForm(e, r);
+
+                  /********************************************************/
+                  /* these actions are performed after the form has been rendered
+                  /*
+                  /*************************************************/
+
+
+                  //STAFF LEVEL ACTIONS
+
+                  //get the staff level element by id
+                  let staff_element = document.getElementById('staff_level');
+                  var staff_value = staff_element.value;
+
+                  //get the notch element by id and clear the old values
+                  var jobElement = document.getElementById('job_title');
+
+                  //immediately the form displays select the appropriate job titles
+                  $.ajax({
+                    url: "../../../../rokel_hrm_mine/core/get_jobtitles.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify({
+                      staff_value: staff_value,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+
+                      //get the response data
+                      var job_respone = data;
+
+                      //get the notch values
+                      var job_titles = job_respone.data;
+
+                      //for each notch value append to the notch select element
+                      job_titles.forEach(notchFunction);
+
+                      function notchFunction(item, index) {
+
+                        //create option tag, add the notch name and value the 
+                        //append to the notch select
+                        var option = document.createElement("option");
+                        option.text = item[1];
+                        option.value = item[0];
+                        jobElement.appendChild(option);
+                      }
+
+                    },
+                  });
+
+                  //when the value of the staff level changes get the new value and
+                  //query the job title table for all rows with the new staff level value
+                  staff_element.onchange = function () {
+                    var staff_value = staff_element.value;
+
+                    //get the job title element by id and clear the old values
+                    var oldJobTitles = document.getElementById('job_title');
+                    while (oldJobTitles.options.length > 0) {
+                      oldJobTitles.remove(0);
+                    }
+
+                    $.ajax({
+                      url: "../../../../rokel_hrm_mine/core/get_jobtitles.php",
+                      type: "post",
+                      contentType: "application/json",
+                      dataType: "json",
+                      data: JSON.stringify({
+                        staff_value: staff_value,
+                      }),
+                      success: function (data, textStatus, jQxhr) {
+
+                        //get the response data
+                        var job_respone = data;
+
+                        //get the notch values
+                        var job_titles = job_respone.data;
+
+                        //for each notch value append to the notch select element
+                        job_titles.forEach(notchFunction);
+
+                        function notchFunction(item, index) {
+
+                          //create option tag, add the notch name and value the 
+                          //append to the notch select
+                          var option = document.createElement("option");
+                          option.text = item[1];
+                          option.value = item[0];
+                          jobElement.appendChild(option);
+                        }
+
+                      },
+                    });
+
+                  }
+
+
+                  //PAYGRADE ACTIONS
+
+                  //get the pay grade element by id
+                  let holder = document.getElementById('pay_grade');
+                  var paygrade_value = holder.value;
+
+                  //get the notch element by id and clear the old values
+                  var notch2 = document.getElementById('notches');
+                  while (notch2.options.length > 0) {
+                    notch2.remove(0);
+                  }
+
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/get_notches.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify({
+                      paygrade_id: paygrade_value,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+
+                      //get the response data
+                      var pay_notch = data;
+
+                      //get the notch values
+                      var notches = pay_notch.data;
+
+                      //for each notch value append to the notch select element
+                      notches.forEach(notchFunction);
+
+                      function notchFunction(item, index) {
+
+                        //create option tag, add the notch name and value the 
+                        //append to the notch select
+                        var option = document.createElement("option");
+                        option.text = item[1];
+                        option.value = item[0];
+                        notch2.appendChild(option);
+                      }
+
+                    },
+                  });
+
+                  //when the value of the pay grage changes get the new value and 
+                  //query the notches table for all rows with the new pay grade value
+                  holder.onchange = function () {
+
+                    //get the new value
+                    var paygrade = holder.value;
+
+                    //get the notch element by id and clear the old values
+                    var notch1 = document.getElementById('notches');
+                    while (notch1.options.length > 0) {
+                      notch1.remove(0);
+                    }
+
+                    //post data for new notch values
+                    $.ajax({
+                      url: "../../../../rokel_hrm/core/get_notches.php",
+                      type: "post",
+                      contentType: "application/json",
+                      dataType: "json",
+                      data: JSON.stringify({
+                        paygrade_id: paygrade,
+                      }),
+                      success: function (data, textStatus, jQxhr) {
+
+                        //get the response data
+                        var pay_notch = data;
+
+                        //get the notch values
+                        var notches = pay_notch.data;
+
+                        //for each notch value append to the notch select element
+                        notches.forEach(notchFunction);
+
+                        function notchFunction(item, index) {
+
+                          //create option tag, add the notch name and value the 
+                          //append to the notch select
+                          var option = document.createElement("option");
+                          option.text = item[1];
+                          option.value = item[0];
+                          notch1.appendChild(option);
+                        }
+
+                      },
+                    });
+
+                  };
+
                 },
               },
               {
@@ -8162,7 +8927,7 @@
                 value: function (e, t) {
                   (null != t && void 0 !== t) || (t = this.getFormFields()),
                     (null != e && void 0 !== e && "" !== e) ||
-                      (e = "#" + this.getTableName() + "Form");
+                    (e = "#" + this.getTableName() + "Form");
                   for (var l = 0; l < t.length; l++)
                     ("text" !== t[l][1].type && "textarea" !== t[l][1].type) ||
                       (void 0 !== t[l][1].default &&
@@ -8178,7 +8943,7 @@
               },
               {
                 key: "postRenderForm",
-                value: function (e, t) {},
+                value: function (e, t) { },
               },
               {
                 key: "dataGroupToHtml",
@@ -8200,17 +8965,17 @@
                     u++
                   ) {
                     for (var d in ((i = l[u]),
-                    void 0 !== t[1]["pre-format-function"] &&
+                      void 0 !== t[1]["pre-format-function"] &&
                       null != t[1]["pre-format-function"] &&
                       (i = t[1]["pre-format-function"].apply(this, [i])),
-                    (a = (a = (a = (a = s).replace(
-                      "#_delete_#",
-                      '<a id="#_id_#_delete" onclick="modJs.deleteDataGroupItem(\'#_id_#\');return false;" type="button" style="float:right;margin-right:3px;" tooltip="Delete"><li class="fa fa-times"></li></a>'
-                    )).replace(
-                      "#_edit_#",
-                      '<a id="#_id_#_edit" onclick="modJs.editDataGroupItem(\'#_id_#\');return false;" type="button" style="float:right;margin-right:5px;" tooltip="Edit"><li class="fa fa-edit"></li></a>'
-                    )).replace(/#_id_#/g, i.id)),
-                    i))
+                      (a = (a = (a = (a = s).replace(
+                        "#_delete_#",
+                        '<a id="#_id_#_delete" onclick="modJs.deleteDataGroupItem(\'#_id_#\');return false;" type="button" style="float:right;margin-right:3px;" tooltip="Delete"><li class="fa fa-times"></li></a>'
+                      )).replace(
+                        "#_edit_#",
+                        '<a id="#_id_#_edit" onclick="modJs.editDataGroupItem(\'#_id_#\');return false;" type="button" style="float:right;margin-right:5px;" tooltip="Edit"><li class="fa fa-edit"></li></a>'
+                      )).replace(/#_id_#/g, i.id)),
+                      i))
                       void 0 !== (n = i[d]) &&
                         null != n &&
                         "string" == typeof n &&
@@ -8282,6 +9047,7 @@
                       $(this)
                         .select2()
                         .on("change", function (e) {
+
                           var t = $(this).parents(".row"),
                             l = t.find(".select2-choices").height();
                           t.height(parseInt(l, 10));
@@ -8291,38 +9057,38 @@
                     this.showDomElement("Add " + e[1].label, s, null, null, !0),
                     void 0 !== t && null != t
                       ? this.fillForm(
-                          t,
-                          "#" + this.getTableName() + "_field_" + e[0],
-                          e[1].form
-                        )
+                        t,
+                        "#" + this.getTableName() + "_field_" + e[0],
+                        e[1].form
+                      )
                       : this.setDefaultValues(
-                          "#" + this.getTableName() + "_field_" + e[0],
-                          e[1].form
-                        ),
+                        "#" + this.getTableName() + "_field_" + e[0],
+                        e[1].form
+                      ),
                     $(".groupAddBtn").off(),
                     void 0 !== t && null != t && void 0 !== t.id
                       ? $(".groupAddBtn").on("click", function (e) {
-                          e.preventDefault(), e.stopPropagation();
-                          try {
-                            modJs.editDataGroup();
-                          } catch (e) {
-                            console.log(
-                              "Error editing data group: " + e.message
-                            );
-                          }
-                          return !1;
-                        })
+                        e.preventDefault(), e.stopPropagation();
+                        try {
+                          modJs.editDataGroup();
+                        } catch (e) {
+                          console.log(
+                            "Error editing data group: " + e.message
+                          );
+                        }
+                        return !1;
+                      })
                       : $(".groupAddBtn").on("click", function (e) {
-                          e.preventDefault(), e.stopPropagation();
-                          try {
-                            modJs.addDataGroup();
-                          } catch (e) {
-                            console.log(
-                              "Error adding data group: " + e.message
-                            );
-                          }
-                          return !1;
-                        });
+                        e.preventDefault(), e.stopPropagation();
+                        try {
+                          modJs.addDataGroup();
+                        } catch (e) {
+                          console.log(
+                            "Error adding data group: " + e.message
+                          );
+                        }
+                        return !1;
+                      });
                 },
               },
               {
@@ -8357,17 +9123,17 @@
                         return (
                           $(
                             "#" +
-                              this.getTableName() +
-                              "_field_" +
-                              e[0] +
-                              "_error"
+                            this.getTableName() +
+                            "_field_" +
+                            e[0] +
+                            "_error"
                           ).html(t.message),
                           $(
                             "#" +
-                              this.getTableName() +
-                              "_field_" +
-                              e[0] +
-                              "_error"
+                            this.getTableName() +
+                            "_field_" +
+                            e[0] +
+                            "_error"
                           ).show(),
                           !1
                         );
@@ -8380,8 +9146,8 @@
                       e[0] + "_" + this.dataGroupGetNextAutoIncrementId(o)),
                       o.push(a),
                       void 0 !== e[1]["sort-function"] &&
-                        null != e[1]["sort-function"] &&
-                        o.sort(e[1]["sort-function"]),
+                      null != e[1]["sort-function"] &&
+                      o.sort(e[1]["sort-function"]),
                       (i = JSON.stringify(o));
                     var s = this.dataGroupToHtml(i, e);
                     $("#" + e[0] + "_div").html(""),
@@ -8410,7 +9176,7 @@
                       (i += a[o].length + 1) > t
                         ? ((l += a[o] + "<br/>"), (i = 0))
                         : (l += a[o] + " ");
-                  } catch (e) {}
+                  } catch (e) { }
                   return l;
                 },
               },
@@ -8498,17 +9264,17 @@
                         return (
                           $(
                             "#" +
-                              this.getTableName() +
-                              "_field_" +
-                              e[0] +
-                              "_error"
+                            this.getTableName() +
+                            "_field_" +
+                            e[0] +
+                            "_error"
                           ).html(i.message),
                           $(
                             "#" +
-                              this.getTableName() +
-                              "_field_" +
-                              e[0] +
-                              "_error"
+                            this.getTableName() +
+                            "_field_" +
+                            e[0] +
+                            "_error"
                           ).show(),
                           !1
                         );
@@ -8528,8 +9294,8 @@
                       (a.id = r.id),
                         (d[u] = a),
                         void 0 !== e[1]["sort-function"] &&
-                          null != e[1]["sort-function"] &&
-                          d.sort(e[1]["sort-function"]),
+                        null != e[1]["sort-function"] &&
+                        d.sort(e[1]["sort-function"]),
                         (o = JSON.stringify(d)),
                         $("#" + e[0]).val(o);
                       var m = this.dataGroupToHtml(o, e);
@@ -8555,10 +9321,10 @@
                 value: function (e) {
                   for (
                     var t = e.substring(0, e.lastIndexOf("_")),
-                      l = $("#" + t).val(),
-                      a = JSON.parse(l),
-                      i = {},
-                      o = 0;
+                    l = $("#" + t).val(),
+                    a = JSON.parse(l),
+                    i = {},
+                    o = 0;
                     o < a.length;
                     o++
                   ) {
@@ -8587,10 +9353,10 @@
                 value: function (e) {
                   for (
                     var t = e.substring(0, e.lastIndexOf("_")),
-                      l = $("#" + t).val(),
-                      a = JSON.parse(l),
-                      i = [],
-                      o = 0;
+                    l = $("#" + t).val(),
+                    a = JSON.parse(l),
+                    i = [],
+                    o = 0;
                     o < a.length;
                     o++
                   ) {
@@ -8611,7 +9377,7 @@
                   var a = void 0;
                   (null != l && void 0 !== l) || (l = this.getFormFields()),
                     (null != t && void 0 !== t && "" !== t) ||
-                      (t = "#" + this.getTableName() + "Form");
+                    (t = "#" + this.getTableName() + "Form");
                   for (var i = 0; i < l.length; i++)
                     if ("date" === l[i][1].type)
                       "0000-00-00" !== e[l[i][0]] &&
@@ -8629,7 +9395,7 @@
                           "setValue",
                           e[l[i][0]]
                         ),
-                        $(t + " #" + l[i][0]).val(e[l[i][0]]));
+                          $(t + " #" + l[i][0]).val(e[l[i][0]]));
                     else if (
                       "datetime" === l[i][1].type ||
                       "time" === l[i][1].type
@@ -8675,7 +9441,7 @@
                       else
                         try {
                           a = a.replace(/(?:\r\n|\r|\n)/g, "<br />");
-                        } catch (e) {}
+                        } catch (e) { }
                       if (
                         void 0 !== l[i][1].formatter &&
                         l[i][1].formatter &&
@@ -8683,19 +9449,19 @@
                       )
                         try {
                           a = l[i][1].formatter(a);
-                        } catch (e) {}
+                        } catch (e) { }
                       $(t + " #" + l[i][0]).html(a);
                     } else if ("fileupload" === l[i][1].type)
                       null != e[l[i][0]] &&
                         void 0 !== e[l[i][0]] &&
                         "" !== e[l[i][0]] &&
                         ($(t + " #" + l[i][0]).html(e[l[i][0]]),
-                        $(t + " #" + l[i][0]).attr("val", e[l[i][0]]),
-                        $(t + " #" + l[i][0]).show(),
-                        $(t + " #" + l[i][0] + "_download").show(),
-                        $(t + " #" + l[i][0] + "_remove").show()),
+                          $(t + " #" + l[i][0]).attr("val", e[l[i][0]]),
+                          $(t + " #" + l[i][0]).show(),
+                          $(t + " #" + l[i][0] + "_download").show(),
+                          $(t + " #" + l[i][0] + "_remove").show()),
                         !0 === l[i][1].readonly &&
-                          $(t + " #" + l[i][0] + "_upload").remove();
+                        $(t + " #" + l[i][0] + "_upload").remove();
                     else if ("select" === l[i][1].type)
                       (void 0 !== e[l[i][0]] &&
                         null != e[l[i][0]] &&
@@ -8721,7 +9487,7 @@
                       )
                         try {
                           u = JSON.parse(e[l[i][0]]);
-                        } catch (e) {}
+                        } catch (e) { }
                       $(t + " #" + l[i][0]).select2("val", u);
                       var d = $(t + " #" + l[i][0])
                         .find(".select2-choices")
@@ -8740,20 +9506,20 @@
                             l[i],
                             $(t + " #" + l[i][0] + "_div_inner")
                           );
-                      } catch (e) {}
+                      } catch (e) { }
                     else
                       "signature" === l[i][1].type
                         ? ("" === e[l[i][0]] &&
-                            void 0 === e[l[i][0]] &&
-                            null == e[l[i][0]]) ||
-                          $(t + " #" + l[i][0])
-                            .data("signaturePad")
-                            .fromDataURL(e[l[i][0]])
+                          void 0 === e[l[i][0]] &&
+                          null == e[l[i][0]]) ||
+                        $(t + " #" + l[i][0])
+                          .data("signaturePad")
+                          .fromDataURL(e[l[i][0]])
                         : "simplemde" === l[i][1].type
-                        ? $(t + " #" + l[i][0])
+                          ? $(t + " #" + l[i][0])
                             .data("simplemde")
                             .value(e[l[i][0]])
-                        : $(t + " #" + l[i][0]).val(e[l[i][0]]);
+                          : $(t + " #" + l[i][0]).val(e[l[i][0]]);
                 },
               },
               {
@@ -8775,7 +9541,7 @@
                   var l = this.fieldTemplates[e[1].type];
                   if (
                     ((e[1].label = this.gt(e[1].label)),
-                    "none" !== e[1].validation &&
+                      "none" !== e[1].validation &&
                       "emailOrEmpty" !== e[1].validation &&
                       "numberOrEmpty" !== e[1].validation &&
                       "placeholder" !== e[1].type &&
@@ -8807,7 +9573,7 @@
                         /_label_/g,
                         e[1].label
                       )),
-                      void 0 !== e[1].source && null != e[1].source)
+                        void 0 !== e[1].source && null != e[1].source)
                     )
                       l = l.replace(
                         "_options_",
@@ -8869,21 +9635,21 @@
                         void 0 !== e[1].filetypes && null != e[1].filetypes
                           ? l.replace(/_filetypes_/g, e[1].filetypes)
                           : l.replace(/_filetypes_/g, "all")).replace(
-                        /_rand_/g,
-                        this.generateRandom(14)
-                      ));
+                            /_rand_/g,
+                            this.generateRandom(14)
+                          ));
                   } else
                     "datagroup" === e[1].type
                       ? (l = (l = l.replace(/_id_/g, e[0])).replace(
-                          /_label_/g,
-                          e[1].label
-                        ))
+                        /_label_/g,
+                        e[1].label
+                      ))
                       : "signature" === e[1].type
-                      ? (l = (l = l.replace(/_id_/g, e[0])).replace(
+                        ? (l = (l = l.replace(/_id_/g, e[0])).replace(
                           /_label_/g,
                           e[1].label
                         ))
-                      : ("tinymce" !== e[1].type &&
+                        : ("tinymce" !== e[1].type &&
                           "simplemde" !== e[1].type) ||
                         (l = (l = l.replace(/_id_/g, e[0])).replace(
                           /_label_/g,
@@ -8892,29 +9658,29 @@
                   return (
                     (l =
                       void 0 !== e[1].validation &&
-                      null != e[1].validation &&
-                      "" !== e[1].validation
+                        null != e[1].validation &&
+                        "" !== e[1].validation
                         ? l.replace(
-                            /_validation_/g,
-                            'validation="' + e[1].validation + '"'
-                          )
+                          /_validation_/g,
+                          'validation="' + e[1].validation + '"'
+                        )
                         : l.replace(/_validation_/g, "")),
                     (l =
                       void 0 !== e[1].help && null !== e[1].help
                         ? (l = l.replace(/_helpline_/g, e[1].help)).replace(
-                            /_hidden_class_help_/g,
-                            ""
-                          )
+                          /_hidden_class_help_/g,
+                          ""
+                        )
                         : (l = l.replace(/_helpline_/g, "")).replace(
-                            /_hidden_class_help_/g,
-                            "hide"
-                          )),
+                          /_hidden_class_help_/g,
+                          "hide"
+                        )),
                     (l =
                       void 0 !== e[1].placeholder && null !== e[1].placeholder
                         ? l.replace(
-                            /_placeholder_/g,
-                            'placeholder="' + e[1].placeholder + '"'
-                          )
+                          /_placeholder_/g,
+                          'placeholder="' + e[1].placeholder + '"'
+                        )
                         : l.replace(/_placeholder_/g, "")),
                     (l =
                       void 0 !== e[1].mask && null !== e[1].mask
@@ -8932,9 +9698,9 @@
                     !0 === t[1]["allow-null"] &&
                     (void 0 !== t[1]["null-label"] && null != t[1]["null-label"]
                       ? (l +=
-                          '<option value="NULL">' +
-                          this.gt(t[1]["null-label"]) +
-                          "</option>")
+                        '<option value="NULL">' +
+                        this.gt(t[1]["null-label"]) +
+                        "</option>")
                       : (l += '<option value="NULL">Select</option>'));
                   var a = [];
                   for (var i in e) a.push(e[i]);
@@ -8961,9 +9727,9 @@
                   !0 === t[1]["allow-null"] &&
                     (void 0 !== t[1]["null-label"] && null != t[1]["null-label"]
                       ? (l +=
-                          '<option value="NULL">' +
-                          this.gt(t[1]["null-label"]) +
-                          "</option>")
+                        '<option value="NULL">' +
+                        this.gt(t[1]["null-label"]) +
+                        "</option>")
                       : (l += '<option value="NULL">Select</option>'));
                   var a = [];
                   for (var i in e) a.push([i, e[i]]);
@@ -9087,25 +9853,25 @@
                   return (
                     (l = this.showAddNew
                       ? l.replace(
-                          "_clone_",
-                          '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
-                        )
+                        "_clone_",
+                        '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
+                      )
                       : l.replace("_clone_", "")),
                     (l = this.showDelete
                       ? l.replace(
-                          "_delete_",
-                          '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
-                        )
+                        "_delete_",
+                        '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
+                      )
                       : l.replace("_delete_", "")),
                     (l = (l = (l = this.showEdit
                       ? l.replace(
-                          "_edit_",
-                          '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
-                        )
+                        "_edit_",
+                        '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
+                      )
                       : l.replace("_edit_", "")).replace(/_id_/g, e)).replace(
-                      /_BASE_/g,
-                      this.baseUrl
-                    ))
+                        /_BASE_/g,
+                        this.baseUrl
+                      ))
                   );
                 },
               },
@@ -9114,10 +9880,10 @@
                 value: function (e) {
                   for (
                     var t = new Date(),
-                      l =
-                        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-                      a = "",
-                      i = e;
+                    l =
+                      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+                    a = "",
+                    i = e;
                     i > 0;
                     --i
                   )
@@ -9132,13 +9898,13 @@
                     a = "";
                   return (
                     l.value.lastIndexOf(".") > 0 &&
-                      (a = l.value.substring(
-                        l.value.lastIndexOf(".") + 1,
-                        l.value.length
-                      )),
+                    (a = l.value.substring(
+                      l.value.lastIndexOf(".") + 1,
+                      l.value.length
+                    )),
                     (a = a.toLowerCase()),
                     !(t.split(",").indexOf(a) < 0) ||
-                      ((l.value = ""),
+                    ((l.value = ""),
                       this.showMessage(
                         "File Type Error",
                         "Selected file type is not supported"
@@ -9234,7 +10000,7 @@
                         if (2 !== l.length) continue;
                         if (void 0 === l[1].type || null == l[1].type) continue;
                         this.customFields.push(l);
-                      } catch (e) {}
+                      } catch (e) { }
                 },
               },
               {
@@ -9281,8 +10047,8 @@
             (a = o) && a.__esModule
               ? a
               : {
-                  default: a,
-                };
+                default: a,
+              };
         var s = (function (e) {
           function t() {
             return (
@@ -9309,7 +10075,7 @@
               if ("function" != typeof t && null !== t)
                 throw new TypeError(
                   "Super expression must either be null or a function, not " +
-                    typeof t
+                  typeof t
                 );
               (e.prototype = Object.create(t && t.prototype, {
                 constructor: {
@@ -9320,9 +10086,9 @@
                 },
               })),
                 t &&
-                  (Object.setPrototypeOf
-                    ? Object.setPrototypeOf(e, t)
-                    : (e.__proto__ = t));
+                (Object.setPrototypeOf
+                  ? Object.setPrototypeOf(e, t)
+                  : (e.__proto__ = t));
             })(t, n.default),
             i(t, [
               {
@@ -9352,8 +10118,8 @@
                   if ((r.append(u), 0 === o.length))
                     r.append(
                       '<a href="#" class="list-group-item">' +
-                        this.getNoDataMessage() +
-                        "</a>"
+                      this.getNoDataMessage() +
+                      "</a>"
                     );
                   else
                     for (var d = 0; d < o.length; d++)
@@ -9378,8 +10144,8 @@
                 value: function () {
                   return $(
                     '<a href="#" onclick="return false;" class="list-group-item" style="background:#eee;"><h4 class="list-group-item-heading">' +
-                      this.getSubHeaderTitle() +
-                      "</h4></a>"
+                    this.getSubHeaderTitle() +
+                    "</h4></a>"
                   );
                 },
               },

@@ -1,4 +1,4 @@
-! function() {
+! function () {
     return function e(t, a, l) {
         function i(n, o) {
             if (!a[n]) {
@@ -12,7 +12,7 @@
                 var c = a[n] = {
                     exports: {}
                 };
-                t[n][0].call(c.exports, function(e) {
+                t[n][0].call(c.exports, function (e) {
                     return i(t[n][1][e] || e)
                 }, c, c.exports, e, t, a, l)
             }
@@ -22,26 +22,26 @@
         return i
     }
 }()({
-    1: [function(e, t, a) {
+    1: [function (e, t, a) {
         "use strict";
         var l = e("./lib");
-        window.SalaryComponentTypeAdapter = l.SalaryComponentTypeAdapter, window.SalaryComponentAdapter = l.SalaryComponentAdapter, window.EmployeeSalaryAdapter = l.EmployeeSalaryAdapter, window.NotchesAdapter = l.NotchesAdapter, window.PaymentTypeAdapter = l.PaymentTypeAdapter, window.SalariesAdapter = l.SalariesAdapter,window.BenefitsAdapter = l.BenefitsAdapter
+        window.SalaryComponentTypeAdapter = l.SalaryComponentTypeAdapter, window.SalaryComponentAdapter = l.SalaryComponentAdapter, window.EmployeeSalaryAdapter = l.EmployeeSalaryAdapter, window.NotchesAdapter = l.NotchesAdapter, window.PaymentTypeAdapter = l.PaymentTypeAdapter, window.SalariesAdapter = l.SalariesAdapter, window.BenefitsAdapter = l.BenefitsAdapter
     }, {
         "./lib": 2
     }],
-    2: [function(e, t, a) {
+    2: [function (e, t, a) {
         "use strict";
-        var l, i = function() {
-                function e(e, t) {
-                    for (var a = 0; a < t.length; a++) {
-                        var l = t[a];
-                        l.enumerable = l.enumerable || !1, l.configurable = !0, "value" in l && (l.writable = !0), Object.defineProperty(e, l.key, l)
-                    }
+        var l, i = function () {
+            function e(e, t) {
+                for (var a = 0; a < t.length; a++) {
+                    var l = t[a];
+                    l.enumerable = l.enumerable || !1, l.configurable = !0, "value" in l && (l.writable = !0), Object.defineProperty(e, l.key, l)
                 }
-                return function(t, a, l) {
-                    return a && e(t.prototype, a), l && e(t, l), t
-                }
-            }(),
+            }
+            return function (t, a, l) {
+                return a && e(t.prototype, a), l && e(t, l), t
+            }
+        }(),
             r = e("../../../api/AdapterBase"),
             n = (l = r) && l.__esModule ? l : {
                 default: l
@@ -67,61 +67,61 @@
                 }
             }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
         }
-        var c = function(e) {
-                function t() {
-                    return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
+        var c = function (e) {
+            function t() {
+                return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
+            }
+            return u(t, n.default), i(t, [{
+                key: "getDataMapping",
+                value: function () {
+                    return ["id", "code", "name"]
                 }
-                return u(t, n.default), i(t, [{
-                    key: "getDataMapping",
-                    value: function() {
-                        return ["id", "code", "name"]
-                    }
-                }, {
-                    key: "getHeaders",
-                    value: function() {
-                        return [{
-                            sTitle: "ID",
-                            bVisible: !1
-                        }, {
-                            sTitle: "Code"
-                        }, {
-                            sTitle: "Name"
+            }, {
+                key: "getHeaders",
+                value: function () {
+                    return [{
+                        sTitle: "ID",
+                        bVisible: !1
+                    }, {
+                        sTitle: "Code"
+                    }, {
+                        sTitle: "Name"
+                    }]
+                }
+            }, {
+                key: "getFormFields",
+                value: function () {
+                    return [
+                        ["id", {
+                            label: "ID",
+                            type: "hidden"
+                        }],
+                        ["code", {
+                            label: "Code",
+                            type: "text",
+                            validation: ""
+                        }],
+                        ["name", {
+                            label: "Name",
+                            type: "text",
+                            validation: ""
                         }]
-                    }
-                }, {
-                    key: "getFormFields",
-                    value: function() {
-                        return [
-                            ["id", {
-                                label: "ID",
-                                type: "hidden"
-                            }],
-                            ["code", {
-                                label: "Code",
-                                type: "text",
-                                validation: ""
-                            }],
-                            ["name", {
-                                label: "Name",
-                                type: "text",
-                                validation: ""
-                            }]
-                        ]
-                    }
-                }]), t
-            }(),
-            d = function(e) {
+                    ]
+                }
+            }]), t
+        }(),
+            d = function (e) {
                 function t() {
                     return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
                 }
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
-                    value: function() {
+                    value: function () {
                         return ["id", "name", "details"]
                     }
                 }, {
                     key: "getHeaders",
-                    value: function() {
+                    value: function () {
                         return [{
                             sTitle: "ID",
                             bVisible: !1
@@ -140,7 +140,7 @@
                     }
                 }, {
                     key: "getFormFields",
-                    value: function() {
+                    value: function () {
                         return [
                             ["id", {
                                 label: "ID",
@@ -183,19 +183,19 @@
                     }
                 }]), t
             }(),
-            h = function(e) {
+            h = function (e) {
                 function t() {
                     return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
                 }
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
-                    value: function() {
+                    value: function () {
                         return ["id", "employee", "component"]
-                         
+
                     }
                 }, {
                     key: "getHeaders",
-                    value: function() {
+                    value: function () {
                         return [{
                             sTitle: "ID",
                             bVisible: !1
@@ -203,27 +203,27 @@
                             sTitle: "Employee"
                         }, {
                             sTitle: "Salary Component"
-                        }, 
-                        // {
-                        //     sTitle: "Notch"
-                        // }, 
-                        // {
-                        //     sTitle: "No. of Days Worked"
-                        // }, 
-                        // {
-                        //     sTitle: "Amount"
-                        // } 
-                        // {
-                        //     sTitle: "Annual Rent (SLL)"
-                        // },
-                        // {
-                        //     sTitle: "Anniversary Date"
-                        // }
-                    ]
+                        },
+                            // {
+                            //     sTitle: "Notch"
+                            // }, 
+                            // {
+                            //     sTitle: "No. of Days Worked"
+                            // }, 
+                            // {
+                            //     sTitle: "Amount"
+                            // } 
+                            // {
+                            //     sTitle: "Annual Rent (SLL)"
+                            // },
+                            // {
+                            //     sTitle: "Anniversary Date"
+                            // }
+                        ]
                     }
                 }, {
                     key: "getFormFields",
-                    value: function() {
+                    value: function () {
                         return [
                             ["id", {
                                 label: "ID",
@@ -245,12 +245,12 @@
                             //     "allow-null": true,
                             //     "remote-source": ["Notches", "id", "name"]
                             // }],
-                            ["working_days", {
-                                label: "No. of Working Days",
-                                type: "text",
-                                help: "**Applicable to ONLY Basic Salary",
-                                validation: "none"
-                            }],
+                            // ["working_days", {
+                            //     label: "No. of Working Days",
+                            //     type: "text",
+                            //     help: "**Applicable to ONLY Basic Salary",
+                            //     validation: "none"
+                            // }],
                             ["amount", {
                                 label: "Amount",
                                 type: "text",
@@ -267,7 +267,7 @@
                     }
                 }, {
                     key: "getFilters",
-                    value: function() {
+                    value: function () {
                         return [
                             ["employee", {
                                 label: "Employee",
@@ -278,19 +278,19 @@
                     }
                 }]), t
             }(),
-            f = function(e) {
+            f = function (e) {
                 function t() {
                     return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
                 }
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
-                    value: function() {
+                    value: function () {
                         return ["id", "name", "paygrade", "currency", "amount"]
-                         
+
                     }
                 }, {
                     key: "getHeaders",
-                    value: function() {
+                    value: function () {
                         return [{
                             sTitle: "ID",
                             bVisible: !1
@@ -298,30 +298,30 @@
                             sTitle: "Name"
                         }, {
                             "sTitle": "Pay Grade"
-                        },{
+                        }, {
                             "sTitle": "Currency"
                         }, {
                             "sTitle": "Amount"
-                        }, 
-                        // {
-                        //     "sTitle": "Monthly Basic"
-                        // }, {
-                        //     "sTitle": "Transport Allowance"
-                        // }, {
-                        //     "sTitle": "Lunch Allowance"
-                        // }, {
-                        //     "sTitle": "Rent Allowance"
-                        // }, {
-                        //     "sTitle": "Car Allowance"
-                        // },
-                        //  {
-                        //     "sTitle": "Honorarium"
-                        // }
-                    ]
+                        },
+                            // {
+                            //     "sTitle": "Monthly Basic"
+                            // }, {
+                            //     "sTitle": "Transport Allowance"
+                            // }, {
+                            //     "sTitle": "Lunch Allowance"
+                            // }, {
+                            //     "sTitle": "Rent Allowance"
+                            // }, {
+                            //     "sTitle": "Car Allowance"
+                            // },
+                            //  {
+                            //     "sTitle": "Honorarium"
+                            // }
+                        ]
                     }
                 }, {
                     key: "getFormFields",
-                    value: function() {
+                    value: function () {
                         return [
                             ["id", {
                                 label: "ID",
@@ -350,6 +350,18 @@
                                 "type": "text",
                                 "validation": ""
                             }],
+                            [
+                                "salary_component",
+                                {
+                                    label: "Salary Components",
+                                    type: "select2multi",
+                                    "allow-null": !0,
+                                    "remote-source": [
+                                        "PayrollColumn",
+                                        "id", "name"
+                                    ],
+                                },
+                            ],
                             // ["transport_rate", {
                             //     "label": "Transport Allowance Rate (%)",
                             //     "type": "text",
@@ -387,34 +399,34 @@
                             // }]
                         ]
                     }
-                }, 
-                // {
-                //     key: "getFilters",
-                //     value: function() {
-                //         return [
-                //             ["employee", {
-                //                 label: "Employee",
-                //                 type: "select2",
-                //                 "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
-                //             }]
-                //         ]
-                //     }
-                // }
-            ]), t
+                },
+                    // {
+                    //     key: "getFilters",
+                    //     value: function() {
+                    //         return [
+                    //             ["employee", {
+                    //                 label: "Employee",
+                    //                 type: "select2",
+                    //                 "remote-source": ["Employee", "id", "first_name+middle_name+last_name"]
+                    //             }]
+                    //         ]
+                    //     }
+                    // }
+                ]), t
             }(),
-            k = function(e) {
+            k = function (e) {
                 function t() {
                     return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
                 }
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
-                    value: function() {
+                    value: function () {
                         return ["id", "name", "description"]
-                         
+
                     }
                 }, {
                     key: "getHeaders",
-                    value: function() {
+                    value: function () {
                         return [{
                             sTitle: "ID",
                             bVisible: !1
@@ -426,7 +438,7 @@
                     }
                 }, {
                     key: "getFormFields",
-                    value: function() {
+                    value: function () {
                         return [
                             ["id", {
                                 label: "ID",
@@ -443,47 +455,47 @@
                             }]
                         ]
                     }
-                }, 
-               
-            ]), t
+                },
+
+                ]), t
             }(),
-            j = function(e) {
+            j = function (e) {
                 function t() {
                     return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
                 }
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
-                    value: function() {
+                    value: function () {
                         // $(".basic_salary").text('$' + parseFloat(total, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
                         // alert();
 
-                        return ["id", "component", "state", "percentage_change","date"]
-                        
+                        return ["id", "component", "state", "percentage_change", "date"]
+
                     }
                 }, {
                     key: "getHeaders",
-                    value: function() {
+                    value: function () {
                         return [{
                             sTitle: "ID",
                             bVisible: !1
                         }, {
                             sTitle: "Component/Notch"
-                        },{
+                        }, {
                             sTitle: "Increment/Decrement"
-                        },{
+                        }, {
                             sTitle: "% Change"
                         },
                         {
                             sTitle: "Date"
-                        } 
-                        
-                    ]
+                        }
+
+                        ]
                     }
-                }, 
-                
+                },
+
                 {
                     key: "getFormFields",
-                    value: function() {
+                    value: function () {
                         return [
                             ["id", {
                                 label: "ID",
@@ -496,32 +508,32 @@
                                 "null-label": "All Notches",
                                 "remote-source": ["Notches", "id", "name"]
                             }],
-                            
+
                             ["state", {
                                 label: "Increment/Decrement",
                                 type: "select",
                                 validation: "none",
-                                source:[ 
+                                source: [
                                     ["Increment", "Increment"],
                                     ["Decrement", "Decrement"]
                                 ],
                                 default: "111"
                             }],
-                            
+
                             ["percentage_change", {
                                 label: "% Change",
                                 type: "text",
                                 help: "Input the percentage change you want to apply to the selected notch. Eg. 5, 10, 15 etc",
                                 validation: "none"
                             }],
-                                         
-                            
+
+
                         ]
                     }
-                }, 
+                },
                 {
                     key: "getFilters",
-                    value: function() {
+                    value: function () {
                         return [
                             ["component", {
                                 "label": "Notch",
@@ -533,7 +545,7 @@
                                 label: "Increment/Decrement",
                                 type: "select",
                                 validation: "none",
-                                source:[ 
+                                source: [
                                     ["Increment", "Increment"],
                                     ["Decrement", "Decrement"]
                                 ]
@@ -543,25 +555,25 @@
                 },
                 {
                     key: "getActionButtonsHtml",
-                    value: function(e, t) {
+                    value: function (e, t) {
                         var a = '<div style="width:1px;"> </div>';
                         return a = this.showAddNew ? a.replace("_view_", '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View Process Status" onclick="modJs.view(_id_);return false;"></img>') : a.replace("_view_", ""), a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_process_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = (a = (a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace("_process_", '<img class="tableActionButton" src="_BASE_images/run.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Process" onclick="modJs.process(_id_,\'_status_\');return false;"></img>')).replace(/_id_/g, e)).replace(/_status_/g, t[6])).replace(/_BASE_/g, this.baseUrl)
                     }
-                }, 
-            ]), t
+                },
+                ]), t
             }(),
-            g = function(e) {
+            g = function (e) {
                 function t() {
                     return o(this, t), s(this, (t.__proto__ || Object.getPrototypeOf(t)).apply(this, arguments))
                 }
                 return u(t, n.default), i(t, [{
                     key: "getDataMapping",
-                    value: function() {
-                        return ["id", "name", "description", "notch","general_ledger","min_yrs_of_service","max_yrs_of_service", "benefits_rate","amount","posting_date"]
+                    value: function () {
+                        return ["id", "name", "description", "notch", "general_ledger", "min_yrs_of_service", "max_yrs_of_service", "benefits_rate", "amount", "posting_date"]
                     }
                 }, {
                     key: "getHeaders",
-                    value: function() {
+                    value: function () {
                         return [{
                             sTitle: "ID",
                             bVisible: !1
@@ -571,27 +583,27 @@
                             sTitle: "Description"
                         }, {
                             sTitle: "Notch"
-                        },{
+                        }, {
                             sTitle: "General Ledger"
                         }, {
                             sTitle: "Min Yrs of Service"
-                        },{
+                        }, {
                             sTitle: "Max Yrs of Service"
                         }, {
                             sTitle: "Benefits Rate"
-                        },{
+                        }, {
                             sTitle: "Amount"
                         }, {
                             sTitle: "Posting Date"
                         }
-                    
-                    ]
+
+                        ]
                     }
-                }, 
-                
+                },
+
                 {
                     key: "getFormFields",
-                    value: function() {
+                    value: function () {
                         return [
                             ["id", {
                                 label: "ID",
@@ -615,13 +627,13 @@
                             [
                                 "notch",
                                 {
-                                  label: "Notch",
-                                  type: "select2",
-                                  "allow-null": false,
-                                  "remote-source": ["Notches", "id", "name"],
+                                    label: "Notch",
+                                    type: "select2",
+                                    "allow-null": false,
+                                    "remote-source": ["Notches", "id", "name"],
                                 },
-                              ],
-                              ["min_yrs_of_service", {
+                            ],
+                            ["min_yrs_of_service", {
                                 label: "Minimum Years of Service",
                                 type: "text",
                                 validation: ""
@@ -641,43 +653,43 @@
                             //     type: "text",
                             //     validation: "none"
                             // }]
-                           
+
                         ]
                     }
-                }, 
+                },
                 {
                     key: "getFilters",
-                    value: function() {
+                    value: function () {
                         return [
                             [
                                 "notches",
                                 {
-                                  label: "Notch",
-                                  type: "select2",
-                                  "allow-null": true,
-                                  "remote-source": ["Notches", "id", "name"],
+                                    label: "Notch",
+                                    type: "select2",
+                                    "allow-null": true,
+                                    "remote-source": ["Notches", "id", "name"],
                                 },
-                              ]
+                            ]
                         ]
                     }
                 },
                 {
                     key: "doCustomValidation",
                     value: function (e) {
-                      try {
-                        if (e.min_yrs_of_service > e.max_yrs_of_service) {
-                          
-                          // var t = new Date(e.start_date);
-                        //   if (new Date(e.recruitment_date) < t)
-                            return "Minimum Years of Service cannot exceed Maximum Years of Service";
-                        //   else if (new Date(e.start_date) < t)
-                        //     return "Date of Birth should be earlier than Start Date";
-                        }
-                      } catch (e) {}
-                      return null;
+                        try {
+                            if (e.min_yrs_of_service > e.max_yrs_of_service) {
+
+                                // var t = new Date(e.start_date);
+                                //   if (new Date(e.recruitment_date) < t)
+                                return "Minimum Years of Service cannot exceed Maximum Years of Service";
+                                //   else if (new Date(e.start_date) < t)
+                                //     return "Date of Birth should be earlier than Start Date";
+                            }
+                        } catch (e) { }
+                        return null;
                     },
-                  }
-            ]), t
+                }
+                ]), t
             }();
         t.exports = {
             SalaryComponentTypeAdapter: c,
@@ -685,49 +697,49 @@
             EmployeeSalaryAdapter: h,
             NotchesAdapter: f,
             PaymentTypeAdapter: k,
-            SalariesAdapter:j,
-            BenefitsAdapter:g
+            SalariesAdapter: j,
+            BenefitsAdapter: g
         }
     }, {
         "../../../api/AdapterBase": 4
     }],
-    3: [function(e, t, a) {
+    3: [function (e, t, a) {
         "use strict";
         Object.defineProperty(a, "__esModule", {
             value: !0
         });
-        var l = function() {
+        var l = function () {
             function e(e, t) {
                 for (var a = 0; a < t.length; a++) {
                     var l = t[a];
                     l.enumerable = l.enumerable || !1, l.configurable = !0, "value" in l && (l.writable = !0), Object.defineProperty(e, l.key, l)
                 }
             }
-            return function(t, a, l) {
+            return function (t, a, l) {
                 return a && e(t.prototype, a), l && e(t, l), t
             }
         }();
-        var i = function() {
+        var i = function () {
             function e() {
-                ! function(e, t) {
+                ! function (e, t) {
                     if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
                 }(this, e)
             }
             return l(e, [{
                 key: "getKey",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = e + "|";
                     for (var l in t) a += l + "=" + t[l] + "|";
                     return a
                 }
             }, {
                 key: "invalidateTable",
-                value: function(e) {
+                value: function (e) {
                     for (var t = void 0, a = 0; a < localStorage.length; a++)(t = localStorage.key(a)).indexOf("t=" + e) > 0 && localStorage.removeItem(t)
                 }
             }, {
                 key: "getData",
-                value: function(e) {
+                value: function (e) {
                     var t = void 0;
                     if ("undefined" == typeof Storage) return null;
                     var a = localStorage.getItem(e);
@@ -735,7 +747,7 @@
                 }
             }, {
                 key: "setData",
-                value: function(e, t) {
+                value: function (e, t) {
                     if ("undefined" == typeof Storage) return null;
                     if (void 0 !== t.status && null != t.status && "SUCCESS" !== t.status) return null;
                     var a = JSON.stringify(t);
@@ -745,22 +757,22 @@
         }();
         a.default = i
     }, {}],
-    4: [function(e, t, a) {
+    4: [function (e, t, a) {
         "use strict";
         Object.defineProperty(a, "__esModule", {
             value: !0
         });
-        var l = function() {
-                function e(e, t) {
-                    for (var a = 0; a < t.length; a++) {
-                        var l = t[a];
-                        l.enumerable = l.enumerable || !1, l.configurable = !0, "value" in l && (l.writable = !0), Object.defineProperty(e, l.key, l)
-                    }
+        var l = function () {
+            function e(e, t) {
+                for (var a = 0; a < t.length; a++) {
+                    var l = t[a];
+                    l.enumerable = l.enumerable || !1, l.configurable = !0, "value" in l && (l.writable = !0), Object.defineProperty(e, l.key, l)
                 }
-                return function(t, a, l) {
-                    return a && e(t.prototype, a), l && e(t, l), t
-                }
-            }(),
+            }
+            return function (t, a, l) {
+                return a && e(t.prototype, a), l && e(t, l), t
+            }
+        }(),
             i = n(e("./ModuleBase")),
             r = n(e("../api-common/RequestCache"));
 
@@ -769,18 +781,18 @@
                 default: e
             }
         }
-        var o = function(e) {
+        var o = function (e) {
             function t(e, a, l, i) {
-                ! function(e, t) {
+                ! function (e, t) {
                     if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
                 }(this, t);
-                var r = function(e, t) {
+                var r = function (e, t) {
                     if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
                     return !t || "object" != typeof t && "function" != typeof t ? e : t
                 }(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this));
                 return r.moduleRelativeURL = null, r.tableData = [], r.sourceData = [], r.filter = null, r.origFilter = null, r.orderBy = null, r.currentElement = null, r.initAdapter(e, a, l, i), r
             }
-            return function(e, t) {
+            return function (e, t) {
                 if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
                 e.prototype = Object.create(t && t.prototype, {
                     constructor: {
@@ -792,90 +804,90 @@
                 }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t)
             }(t, i.default), l(t, [{
                 key: "initAdapter",
-                value: function(e, t, a, l) {
+                value: function (e, t, a, l) {
                     this.moduleRelativeURL = baseUrl, this.table = e, this.tab = null == t ? e : t, this.filter = null == a ? null : a, this.origFilter = this.filter, this.orderBy = null == l ? null : l, this.trackEvent("initAdapter", t), this.requestCache = new r.default
                 }
             }, {
                 key: "setFilter",
-                value: function(e) {
+                value: function (e) {
                     this.filter = e
                 }
             }, {
                 key: "preSetFilterExternal",
-                value: function(e) {
+                value: function (e) {
                     this.initialFilter = e
                 }
             }, {
                 key: "setFilterExternal",
-                value: function(e) {
+                value: function (e) {
                     var t = e;
                     null == t && (t = this.initialFilter), null != t && (this.setFilter(t), this.filtersAlreadySet = !0, $("#" + this.getTableName() + "_resetFilters").show(), this.currentFilterString = this.getFilterString(t))
                 }
             }, {
                 key: "getFilter",
-                value: function() {
+                value: function () {
                     return this.filter
                 }
             }, {
                 key: "setOrderBy",
-                value: function(e) {
+                value: function (e) {
                     this.orderBy = e
                 }
             }, {
                 key: "getOrderBy",
-                value: function() {
+                value: function () {
                     return this.orderBy
                 }
             }, {
                 key: "add",
-                value: function(e, t, a, l) {
+                value: function (e, t, a, l) {
                     var i = this;
-                    null == a && (a = !0), $(e).attr("a", "add"), $(e).attr("t", this.table), i.showLoader(), this.requestCache.invalidateTable(this.table), $.post(this.moduleRelativeURL, e, function(e) {
+                    null == a && (a = !0), $(e).attr("a", "add"), $(e).attr("t", this.table), i.showLoader(), this.requestCache.invalidateTable(this.table), $.post(this.moduleRelativeURL, e, function (e) {
                         "SUCCESS" === e.status ? i.addSuccessCallBack(t, e.object, a, l, i) : i.addFailCallBack(t, e.object)
-                    }, "json").always(function() {
+                    }, "json").always(function () {
                         i.hideLoader()
                     }), this.trackEvent("add", this.tab, this.table)
                 }
             }, {
                 key: "addSuccessCallBack",
-                value: function(e, t, a, l, i) {
+                value: function (e, t, a, l, i) {
                     a && this.get(e), this.initFieldMasterData(), null != l && l.apply(i, [t]), this.trackEvent("addSuccess", this.tab, this.table)
                 }
             }, {
                 key: "addFailCallBack",
-                value: function(e, t) {
+                value: function (e, t) {
                     try {
                         this.closePlainMessage()
-                    } catch (e) {}
+                    } catch (e) { }
                     this.showMessage("Error saving", t), this.trackEvent("addFailed", this.tab, this.table)
                 }
             }, {
                 key: "deleteObj",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = this;
                     a.showLoader(), this.requestCache.invalidateTable(this.table), $.post(this.moduleRelativeURL, {
                         t: this.table,
                         a: "delete",
                         id: e
-                    }, function(e) {
+                    }, function (e) {
                         "SUCCESS" === e.status ? a.deleteSuccessCallBack(t, e.object) : a.deleteFailCallBack(t, e.object)
-                    }, "json").always(function() {
+                    }, "json").always(function () {
                         a.hideLoader()
                     }), this.trackEvent("delete", this.tab, this.table)
                 }
             }, {
                 key: "deleteSuccessCallBack",
-                value: function(e, t) {
+                value: function (e, t) {
                     this.get(e), this.clearDeleteParams()
                 }
             }, {
                 key: "deleteFailCallBack",
-                value: function(e, t) {
+                value: function (e, t) {
                     this.clearDeleteParams(), this.showMessage("Error Occurred while Deleting Item", t)
                 }
             }, {
                 key: "get",
-                value: function(e) {
+                value: function (e) {
                     var t = this;
                     if (this.getRemoteTable()) return this.createTableServer(this.getTableName()), $("#" + this.getTableName() + "Form").hide(), void $("#" + this.getTableName()).show();
                     var a = JSON.stringify(this.getSourceMapping()),
@@ -888,15 +900,15 @@
                         sm: a,
                         ft: l,
                         ob: i
-                    }, function(a) {
+                    }, function (a) {
                         "SUCCESS" === a.status ? t.getSuccessCallBack(e, a.object) : t.getFailCallBack(e, a.object)
-                    }, "json").always(function() {
+                    }, "json").always(function () {
                         t.hideLoader()
                     }), t.initFieldMasterData(), this.trackEvent("get", this.tab, this.table)
                 }
             }, {
                 key: "getDataUrl",
-                value: function(e) {
+                value: function (e) {
                     var t = JSON.stringify(this.getSourceMapping()),
                         a = JSON.stringify(e),
                         l = "";
@@ -908,22 +920,22 @@
                 }
             }, {
                 key: "isSubProfileTable",
-                value: function() {
+                value: function () {
                     return !1
                 }
             }, {
                 key: "remoteTableSkipProfileRestriction",
-                value: function() {
+                value: function () {
                     return !1
                 }
             }, {
                 key: "preProcessTableData",
-                value: function(e) {
+                value: function (e) {
                     return e
                 }
             }, {
                 key: "getSuccessCallBack",
-                value: function(e, t) {
+                value: function (e, t) {
                     for (var a = [], l = this.getDataMapping(), i = 0; i < t.length; i++) {
                         for (var r = [], n = 0; n < l.length; n++) r[n] = t[i][l[n]];
                         a.push(this.preProcessTableData(r))
@@ -932,10 +944,10 @@
                 }
             }, {
                 key: "getFailCallBack",
-                value: function(e, t) {}
+                value: function (e, t) { }
             }, {
                 key: "getElement",
-                value: function(e, t, a) {
+                value: function (e, t, a) {
                     var l = this,
                         i = JSON.stringify(this.getSourceMapping());
                     i = this.fixJSON(i), l.showLoader(), $.post(this.moduleRelativeURL, {
@@ -943,45 +955,45 @@
                         a: "getElement",
                         id: e,
                         sm: i
-                    }, function(e) {
+                    }, function (e) {
                         "SUCCESS" === e.status ? (a && delete e.object.id, this.currentElement = e.object, l.getElementSuccessCallBack.apply(l, [t, e.object])) : l.getElementFailCallBack.apply(l, [t, e.object])
-                    }, "json").always(function() {
+                    }, "json").always(function () {
                         l.hideLoader()
                     }), this.trackEvent("getElement", this.tab, this.table)
                 }
             }, {
                 key: "getElementSuccessCallBack",
-                value: function(e, t) {
+                value: function (e, t) {
                     void 0 !== e.callBack && null !== e.callBack && (void 0 !== e.callBackData && null !== e.callBackData || (e.callBackData = []), e.callBackData.push(t), this.callFunction(e.callBack, e.callBackData, this)), this.currentElement = t, void 0 !== e.noRender && null !== e.noRender && !0 === e.noRender || this.renderForm(t)
                 }
             }, {
                 key: "getElementFailCallBack",
-                value: function(e, t) {}
+                value: function (e, t) { }
             }, {
                 key: "getTableData",
-                value: function() {
+                value: function () {
                     return this.tableData
                 }
             }, {
                 key: "getTableName",
-                value: function() {
+                value: function () {
                     return this.tab
                 }
             }, {
                 key: "getFieldValues",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = this,
                         l = "",
                         i = "";
                     void 0 !== e[3] && null !== e[3] && (l = e[3]), void 0 !== e[4] && null !== e[4] && (i = JSON.stringify(e[4]));
                     var r = this.requestCache.getKey(this.moduleRelativeURL, {
-                            t: e[0],
-                            key: e[1],
-                            value: e[2],
-                            method: l,
-                            methodParams: i,
-                            a: "getFieldValues"
-                        }),
+                        t: e[0],
+                        key: e[1],
+                        value: e[2],
+                        method: l,
+                        methodParams: i,
+                        a: "getFieldValues"
+                    }),
                         n = this.requestCache.getData(r);
                     null != n && "SUCCESS" === n.status && (t.callBackData.push(n.data), null !== t.callBackSuccess && void 0 !== t.callBackSuccess && t.callBackData.push(t.callBackSuccess), a.callFunction(t.callBack, t.callBackData));
                     var o = function e(l) {
@@ -1002,20 +1014,20 @@
                 }
             }, {
                 key: "setAdminProfile",
-                value: function(e) {
+                value: function (e) {
                     try {
                         localStorage.clear()
-                    } catch (e) {}
+                    } catch (e) { }
                     $.post(this.moduleRelativeURL, {
                         a: "setAdminEmp",
                         empid: e
-                    }, function() {
+                    }, function () {
                         top.location.href = clientUrl
                     }, "json")
                 }
             }, {
                 key: "customAction",
-                value: function(e, t, a, l, i) {
+                value: function (e, t, a, l, i) {
                     var r = this;
                     a = this.fixJSON(a), i ? $.post(this.moduleRelativeURL, {
                         t: this.table,
@@ -1023,7 +1035,7 @@
                         sa: e,
                         mod: t,
                         req: a
-                    }, function(e) {
+                    }, function (e) {
                         "SUCCESS" === e.status ? (l.callBackData.push(e.data), r.callFunction(l.callBackSuccess, l.callBackData)) : (l.callBackData.push(e.data), r.callFunction(l.callBackFail, l.callBackData))
                     }, "json") : $.getJSON(this.moduleRelativeURL, {
                         t: this.table,
@@ -1031,20 +1043,20 @@
                         sa: e,
                         mod: t,
                         req: a
-                    }, function(e) {
+                    }, function (e) {
                         "SUCCESS" === e.status ? (l.callBackData.push(e.data), r.callFunction(l.callBackSuccess, l.callBackData)) : (l.callBackData.push(e.data), r.callFunction(l.callBackFail, l.callBackData))
                     })
                 }
             }, {
                 key: "sendCustomRequest",
-                value: function(e, t, a, l) {
-                    t.a = e, $.post(this.moduleRelativeURL, t, function(e) {
+                value: function (e, t, a, l) {
+                    t.a = e, $.post(this.moduleRelativeURL, t, function (e) {
                         "SUCCESS" === e.status ? a(e.data) : l(e.data)
                     }, "json")
                 }
             }, {
                 key: "getCustomActionUrl",
-                value: function(e, t) {
+                value: function (e, t) {
                     t.a = e;
                     var a = "";
                     for (var l in t) t.hasOwnProperty(l) && ("" !== a && (a += "&"), a += l + "=" + t[l]);
@@ -1052,12 +1064,12 @@
                 }
             }, {
                 key: "getClientDataUrl",
-                value: function() {
+                value: function () {
                     return this.moduleRelativeURL.replace("service.php", "") + "data/"
                 }
             }, {
                 key: "getCustomUrl",
-                value: function(e) {
+                value: function (e) {
                     return this.moduleRelativeURL.replace("service.php", e)
                 }
             }]), t
@@ -1067,50 +1079,50 @@
         "../api-common/RequestCache": 3,
         "./ModuleBase": 6
     }],
-    5: [function(e, t, a) {
+    5: [function (e, t, a) {
         "use strict";
         Object.defineProperty(a, "__esModule", {
             value: !0
         });
-        var l = function() {
+        var l = function () {
             function e(e, t) {
                 for (var a = 0; a < t.length; a++) {
                     var l = t[a];
                     l.enumerable = l.enumerable || !1, l.configurable = !0, "value" in l && (l.writable = !0), Object.defineProperty(e, l.key, l)
                 }
             }
-            return function(t, a, l) {
+            return function (t, a, l) {
                 return a && e(t.prototype, a), l && e(t, l), t
             }
         }();
         var i = {
-                float: function(e) {
-                    return !(null == e || !e.match(/^[-+]?[0-9]+(\.[0-9]+)?$/))
-                },
-                number: function(e) {
-                    return !(null == e || !e.match(/^[0-9]+$/))
-                },
-                numberOrEmpty: function(e) {
-                    if ("" === e) return !0;
-                    return !(null == e || !e.match(/^[0-9]+$/))
-                },
-                email: function(e) {
-                    return null != e && /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(e)
-                },
-                emailOrEmpty: function(e) {
-                    if ("" === e) return !0;
-                    return null != e && /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(e)
-                },
-                username: function(e) {
-                    return null != e && /^[a-zA-Z0-9.-]+$/.test(e)
-                },
-                input: function(e) {
-                    return null != e && e.length > 0
-                }
+            float: function (e) {
+                return !(null == e || !e.match(/^[-+]?[0-9]+(\.[0-9]+)?$/))
             },
-            r = function() {
+            number: function (e) {
+                return !(null == e || !e.match(/^[0-9]+$/))
+            },
+            numberOrEmpty: function (e) {
+                if ("" === e) return !0;
+                return !(null == e || !e.match(/^[0-9]+$/))
+            },
+            email: function (e) {
+                return null != e && /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(e)
+            },
+            emailOrEmpty: function (e) {
+                if ("" === e) return !0;
+                return null != e && /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(e)
+            },
+            username: function (e) {
+                return null != e && /^[a-zA-Z0-9.-]+$/.test(e)
+            },
+            input: function (e) {
+                return null != e && e.length > 0
+            }
+        },
+            r = function () {
                 function e(t, a, l) {
-                    ! function(e, t) {
+                    ! function (e, t) {
                         if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
                     }(this, e), this.tempOptions = {}, this.formId = t, this.formError = !1, this.formObject = null, this.errorMessages = "", this.popupDialog = null, this.validateAll = a, this.errorMap = [], this.settings = {
                         thirdPartyPopup: null,
@@ -1120,13 +1132,13 @@
                 }
                 return l(e, [{
                     key: "clearError",
-                    value: function(e, t) {
+                    value: function (e, t) {
                         var a = e.attr("id");
                         $("#" + this.formId + " #field_" + a).removeClass("error"), $("#" + this.formId + " #help_" + a).html("")
                     }
                 }, {
                     key: "addError",
-                    value: function(e, t) {
+                    value: function (e, t) {
                         this.formError = !0, null != e.attr("message") ? (this.errorMessages += e.attr("message") + "\n", this.errorMap[e.attr("name")] = e.attr("message")) : this.errorMap[e.attr("name")] = "";
                         var a = e.attr("id"),
                             l = e.attr("validation"),
@@ -1135,194 +1147,194 @@
                     }
                 }, {
                     key: "showErrors",
-                    value: function() {
+                    value: function () {
                         this.formError && (void 0 !== this.settings.thirdPartyPopup && null != this.settings.thirdPartyPopup ? this.settings.thirdPartyPopup.alert() : !0 === this.settings.ShowPopup && (void 0 !== this.tempOptions.popupTop && null != this.tempOptions.popupTop ? this.alert("Errors Found", this.errorMessages, this.tempOptions.popupTop) : this.alert("Errors Found", this.errorMessages, -1)))
                     }
                 }, {
                     key: "checkValues",
-                    value: function(e) {
+                    value: function (e) {
                         this.tempOptions = e;
                         var t = this;
                         this.formError = !1, this.errorMessages = "", this.formObject = {};
-                        var a = function(e) {
-                                var a = null,
-                                    l = e.attr("name");
-                                !1 !== t.settings.LabelErrorClass && $("label[for='" + l + "']").removeClass(t.settings.LabelErrorClass);
-                                var i = e.attr("id"),
-                                    r = e.attr("type");
-                                if (e.hasClass("select2-focusser") || e.hasClass("select2-input")) return !0;
-                                if (jQuery.inArray(r, t.inputTypes) >= 0) {
-                                    if (e.hasClass("uploadInput")) a = e.attr("val");
-                                    else if ("radio" === r || "checkbox" === r) a = $("input[name='" + l + "']:checked").val();
-                                    else if (e.hasClass("select2Field")) a = null != $("#" + t.formId + " #" + i).select2("data") && void 0 !== $("#" + t.formId + " #" + i).select2("data") ? $("#" + t.formId + " #" + i).select2("data").id : "";
-                                    else if (e.hasClass("select2Multi"))
-                                        if (null != $("#" + t.formId + " #" + i).select2("data") && void 0 !== $("#" + t.formId + " #" + i).select2("data")) {
-                                            var n = $("#" + t.formId + " #" + i).select2("data");
-                                            a = [];
-                                            for (var o = 0; o < n.length; o++) a.push(n[o].id);
-                                            a = JSON.stringify(a)
-                                        } else a = "";
-                                    else a = e.hasClass("signatureField") ? $("#" + t.formId + " #" + i).data("signaturePad").isEmpty() ? "" : $("#" + i).data("signaturePad").toDataURL() : e.hasClass("simplemde") ? $("#" + t.formId + " #" + i).data("simplemde").value() : e.hasClass("tinymce") ? tinyMCE.get(i).getContent({
-                                        format: "raw"
-                                    }) : e.val();
-                                    var s = e.attr("validation"),
-                                        u = !1;
-                                    void 0 !== s && null != s && void 0 !== t.validator[s] && null != t.validator[s] ? u = t.validator[s](a) : (u = !t.validateAll || (void 0 !== s && null != s && "none" === s || t.validator.input(a)), t.formObject[i] = a), u ? (t.clearError(e, null), t.formObject[i] = a) : t.addError(e, null)
-                                }
-                            },
+                        var a = function (e) {
+                            var a = null,
+                                l = e.attr("name");
+                            !1 !== t.settings.LabelErrorClass && $("label[for='" + l + "']").removeClass(t.settings.LabelErrorClass);
+                            var i = e.attr("id"),
+                                r = e.attr("type");
+                            if (e.hasClass("select2-focusser") || e.hasClass("select2-input")) return !0;
+                            if (jQuery.inArray(r, t.inputTypes) >= 0) {
+                                if (e.hasClass("uploadInput")) a = e.attr("val");
+                                else if ("radio" === r || "checkbox" === r) a = $("input[name='" + l + "']:checked").val();
+                                else if (e.hasClass("select2Field")) a = null != $("#" + t.formId + " #" + i).select2("data") && void 0 !== $("#" + t.formId + " #" + i).select2("data") ? $("#" + t.formId + " #" + i).select2("data").id : "";
+                                else if (e.hasClass("select2Multi"))
+                                    if (null != $("#" + t.formId + " #" + i).select2("data") && void 0 !== $("#" + t.formId + " #" + i).select2("data")) {
+                                        var n = $("#" + t.formId + " #" + i).select2("data");
+                                        a = [];
+                                        for (var o = 0; o < n.length; o++) a.push(n[o].id);
+                                        a = JSON.stringify(a)
+                                    } else a = "";
+                                else a = e.hasClass("signatureField") ? $("#" + t.formId + " #" + i).data("signaturePad").isEmpty() ? "" : $("#" + i).data("signaturePad").toDataURL() : e.hasClass("simplemde") ? $("#" + t.formId + " #" + i).data("simplemde").value() : e.hasClass("tinymce") ? tinyMCE.get(i).getContent({
+                                    format: "raw"
+                                }) : e.val();
+                                var s = e.attr("validation"),
+                                    u = !1;
+                                void 0 !== s && null != s && void 0 !== t.validator[s] && null != t.validator[s] ? u = t.validator[s](a) : (u = !t.validateAll || (void 0 !== s && null != s && "none" === s || t.validator.input(a)), t.formObject[i] = a), u ? (t.clearError(e, null), t.formObject[i] = a) : t.addError(e, null)
+                            }
+                        },
                             l = $("#" + this.formId + " :input");
-                        return l.each(function() {
+                        return l.each(function () {
                             a($(this))
-                        }), (l = $("#" + this.formId + " .uploadInput")).each(function() {
+                        }), (l = $("#" + this.formId + " .uploadInput")).each(function () {
                             a($(this))
                         }), this.showErrors(), this.tempOptions = {}, !this.formError
                     }
                 }, {
                     key: "getFormParameters",
-                    value: function() {
+                    value: function () {
                         return this.formObject
                     }
                 }, {
                     key: "alert",
-                    value: function(e) {
+                    value: function (e) {
                         function t(t, a) {
                             return e.apply(this, arguments)
                         }
-                        return t.toString = function() {
+                        return t.toString = function () {
                             return e.toString()
                         }, t
-                    }(function(e, t) {
+                    }(function (e, t) {
                         alert(t)
                     })
                 }], [{
                     key: "getValidationRules",
-                    value: function() {
+                    value: function () {
                         return i
                     }
                 }]), e
             }();
         a.default = r
     }, {}],
-    6: [function(e, t, a) {
+    6: [function (e, t, a) {
         "use strict";
         Object.defineProperty(a, "__esModule", {
             value: !0
         });
-        var l, i = function() {
-                function e(e, t) {
-                    for (var a = 0; a < t.length; a++) {
-                        var l = t[a];
-                        l.enumerable = l.enumerable || !1, l.configurable = !0, "value" in l && (l.writable = !0), Object.defineProperty(e, l.key, l)
-                    }
+        var l, i = function () {
+            function e(e, t) {
+                for (var a = 0; a < t.length; a++) {
+                    var l = t[a];
+                    l.enumerable = l.enumerable || !1, l.configurable = !0, "value" in l && (l.writable = !0), Object.defineProperty(e, l.key, l)
                 }
-                return function(t, a, l) {
-                    return a && e(t.prototype, a), l && e(t, l), t
-                }
-            }(),
+            }
+            return function (t, a, l) {
+                return a && e(t.prototype, a), l && e(t, l), t
+            }
+        }(),
             r = e("./FormValidation"),
             n = (l = r) && l.__esModule ? l : {
                 default: l
             };
-        var o = function() {
+        var o = function () {
             function e() {
-                ! function(e, t) {
+                ! function (e, t) {
                     if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
                 }(this, e), this.deleteParams = {}, this.createRemoteTable = !1, this.instanceId = "None", this.ga = [], this.showEdit = !0, this.showDelete = !0, this.showSave = !0, this.showCancel = !0, this.showFormOnPopup = !1, this.filtersAlreadySet = !1, this.currentFilterString = "", this.sorting = 0, this.settings = {}, this.translations = {}, this.customFields = [], this.csrfRequired = !1, this.fieldTemplates = null, this.templates = null, this.customTemplates = null, this.emailTemplates = null, this.fieldMasterData = null, this.fieldMasterDataKeys = null, this.fieldMasterDataCallback = null, this.sourceMapping = null, this.currentId = null, this.currentElement = null, this.user = null, this.currentProfile = null, this.permissions = {}, this.baseUrl = null
             }
             return i(e, [{
                 key: "init",
-                value: function(e, t, a, l) {}
+                value: function (e, t, a, l) { }
             }, {
                 key: "setNoJSONRequests",
-                value: function(e) {
+                value: function (e) {
                     this.noJSONRequests = e
                 }
             }, {
                 key: "setPermissions",
-                value: function(e) {
+                value: function (e) {
                     this.permissions = e
                 }
             }, {
                 key: "sortingStarted",
-                value: function(e) {
+                value: function (e) {
                     this.sorting = e
                 }
             }, {
                 key: "checkPermission",
-                value: function(e) {
+                value: function (e) {
                     return void 0 === this.permissions[e] || null == this.permissions[e] || "Yes" === this.permissions[e] ? "Yes" : this.permissions[e]
                 }
             }, {
                 key: "setBaseUrl",
-                value: function(e) {
+                value: function (e) {
                     this.baseUrl = e
                 }
             }, {
                 key: "setUser",
-                value: function(e) {
+                value: function (e) {
                     this.user = e
                 }
             }, {
                 key: "getUser",
-                value: function() {
+                value: function () {
                     return this.user
                 }
             }, {
                 key: "setInstanceId",
-                value: function(e) {
+                value: function (e) {
                     this.instanceId = e
                 }
             }, {
                 key: "setCSRFRequired",
-                value: function(e) {
+                value: function (e) {
                     this.csrfRequired = e
                 }
             }, {
                 key: "scrollToTop",
-                value: function() {
+                value: function () {
                     $("html, body").animate({
                         scrollTop: 0
                     }, "fast")
                 }
             }, {
                 key: "scrollToBottom",
-                value: function() {
+                value: function () {
                     $("html, body").animate({
                         scrollTop: $(document).height()
                     }, "slow")
                 }
             }, {
                 key: "scrollToElement",
-                value: function(e) {
+                value: function (e) {
                     $(window).height() <= e.offset().top && $("html, body").animate({
                         scrollTop: e.offset().top
                     }, "slow")
                 }
             }, {
                 key: "scrollToElementBottom",
-                value: function(e) {
+                value: function (e) {
                     $(window).height() <= e.offset().top + e.height() && $("html, body").animate({
                         scrollTop: e.offset().top + e.height()
                     }, "slow")
                 }
             }, {
                 key: "setTranslations",
-                value: function(e) {
+                value: function (e) {
                     this.translations = e.messages[""]
                 }
             }, {
                 key: "setTranslationsSubModules",
-                value: function(e) {
+                value: function (e) {
                     this.translations = e
                 }
             }, {
                 key: "gt",
-                value: function(e) {
+                value: function (e) {
                     return void 0 === this.translations[e] || null === this.translations[e] ? e : this.translations[e][0]
                 }
             }, {
                 key: "addToLangTerms",
-                value: function(e) {
+                value: function (e) {
                     var t = void 0,
                         a = localStorage.getItem("terms");
                     if (void 0 === a) t = {};
@@ -1335,29 +1347,29 @@
                 }
             }, {
                 key: "showActionButtons",
-                value: function() {
+                value: function () {
                     return !0
                 }
             }, {
                 key: "trackEvent",
-                value: function(e, t, a) {
+                value: function (e, t, a) {
                     try {
                         void 0 === t || null == t ? this.ga.push(["_trackEvent", this.instanceId, e]) : void 0 === a || null == a ? this.ga.push(["_trackEvent", this.instanceId, e, t]) : this.ga.push(["_trackEvent", this.instanceId, e, t, a])
-                    } catch (e) {}
+                    } catch (e) { }
                 }
             }, {
                 key: "setCurrentProfile",
-                value: function(e) {
+                value: function (e) {
                     this.currentProfile = e
                 }
             }, {
                 key: "getCurrentProfile",
-                value: function() {
+                value: function () {
                     return this.currentProfile
                 }
             }, {
                 key: "initFieldMasterData",
-                value: function(e, t, a) {
+                value: function (e, t, a) {
                     var l = void 0;
                     void 0 !== this.showAddNew && null != this.showAddNew || (this.showAddNew = !0), this.fieldMasterData = {}, this.fieldMasterDataKeys = {}, this.fieldMasterDataCallback = t, this.fieldMasterDataCallbackData = a, this.sourceMapping = {};
                     var i = this.getFormFields(),
@@ -1369,11 +1381,11 @@
                             var h = u[1]["remote-source"][0] + "_" + u[1]["remote-source"][1] + "_" + u[1]["remote-source"][2];
                             o.push(u), s.push(h)
                         } else if (void 0 !== u[1].form && null !== u[1].form)
-                        for (var f = 0; f < u[1].form.length; f++)
-                            if (void 0 !== (c = u[1].form[f])[1]["remote-source"] && null !== c[1]["remote-source"]) {
-                                var p = c[1]["remote-source"][0] + "_" + c[1]["remote-source"][1] + "_" + c[1]["remote-source"][2];
-                                s.indexOf(p) < 0 && (o.push(c), s.push(p))
-                            }
+                            for (var f = 0; f < u[1].form.length; f++)
+                                if (void 0 !== (c = u[1].form[f])[1]["remote-source"] && null !== c[1]["remote-source"]) {
+                                    var p = c[1]["remote-source"][0] + "_" + c[1]["remote-source"][1] + "_" + c[1]["remote-source"][2];
+                                    s.indexOf(p) < 0 && (o.push(c), s.push(p))
+                                }
                     for (var m = 0; m < o.length; m++) {
                         var v = o[m];
                         if (void 0 !== v[1]["remote-source"] && null != v[1]["remote-source"]) {
@@ -1388,57 +1400,57 @@
                 }
             }, {
                 key: "setShowFormOnPopup",
-                value: function(e) {
+                value: function (e) {
                     this.showFormOnPopup = e
                 }
             }, {
                 key: "setRemoteTable",
-                value: function(e) {
+                value: function (e) {
                     this.createRemoteTable = e
                 }
             }, {
                 key: "setSettings",
-                value: function(e) {
+                value: function (e) {
                     this.settings = e
                 }
             }, {
                 key: "getRemoteTable",
-                value: function() {
+                value: function () {
                     return this.createRemoteTable
                 }
             }, {
                 key: "isAllLoaded",
-                value: function(e) {
+                value: function (e) {
                     for (var t in e)
                         if (!1 === e[t]) return !1;
                     return !0
                 }
             }, {
                 key: "initFieldMasterDataResponse",
-                value: function(e, t, a, l) {
+                value: function (e, t, a, l) {
                     this.fieldMasterData[e] = t, this.fieldMasterDataKeys[e] = !0, null != a && a(), null !== this.fieldMasterDataCallback && void 0 !== this.fieldMasterDataCallback && this.isAllLoaded(this.fieldMasterDataKeys) && null !== this.fieldMasterDataCallbackData && void 0 !== this.fieldMasterDataCallbackData ? this.fieldMasterDataCallback(this.fieldMasterDataCallbackData) : null !== this.fieldMasterDataCallback && void 0 !== this.fieldMasterDataCallback && this.isAllLoaded(this.fieldMasterDataKeys) && this.fieldMasterDataCallback()
                 }
             }, {
                 key: "getMetaFieldValues",
-                value: function(e, t) {
+                value: function (e, t) {
                     for (var a = 0; a < t.length; a++)
                         if (e === t[a][0]) return t[a][1];
                     return null
                 }
             }, {
                 key: "getThemeColors",
-                value: function() {
+                value: function () {
                     return ["red", "yellow", "aqua", "blue", "light-blue", "green", "navy", "teal", "olive", "orange", "fuchsia", "purple"]
                 }
             }, {
                 key: "getColorByRandomString",
-                value: function(e) {
+                value: function (e) {
                     var t = this.getThemeColors();
                     return t[e.charCodeAt(0) % t.length]
                 }
             }, {
                 key: "getColorByFileType",
-                value: function(e) {
+                value: function (e) {
                     e = e.toLowerCase();
                     var t = {
                         pdf: "red",
@@ -1452,7 +1464,7 @@
                 }
             }, {
                 key: "getIconByFileType",
-                value: function(e) {
+                value: function (e) {
                     var t = {
                         pdf: "fa fa-file-pdf-o",
                         csv: "fa fa fa-file-code-o",
@@ -1474,65 +1486,65 @@
                 }
             }, {
                 key: "getSourceMapping",
-                value: function() {
+                value: function () {
                     return this.sourceMapping
                 }
             }, {
                 key: "setTesting",
-                value: function(e) {
+                value: function (e) {
                     this.testing = e
                 }
             }, {
                 key: "consoleLog",
-                value: function(e) {
+                value: function (e) {
                     this.testing && console.log(e)
                 }
             }, {
                 key: "setClientMessages",
-                value: function(e) {
+                value: function (e) {
                     this.msgList = e
                 }
             }, {
                 key: "setTemplates",
-                value: function(e) {
+                value: function (e) {
                     this.templates = e
                 }
             }, {
                 key: "getWSProperty",
-                value: function(e, t) {
+                value: function (e, t) {
                     return e.hasOwnProperty(t) ? e[t] : null
                 }
             }, {
                 key: "getClientMessage",
-                value: function(e) {
+                value: function (e) {
                     return this.getWSProperty(this.msgList, e)
                 }
             }, {
                 key: "getTemplate",
-                value: function(e) {
+                value: function (e) {
                     return this.getWSProperty(this.templates, e)
                 }
             }, {
                 key: "setGoogleAnalytics",
-                value: function(e) {
+                value: function (e) {
                     this.gaq = e
                 }
             }, {
                 key: "showView",
-                value: function(e) {
+                value: function (e) {
                     null != this.currentView && (this.previousView = this.currentView, $("#" + this.currentView).hide()), $("#" + e).show(), this.currentView = e, this.moveToTop()
                 }
             }, {
                 key: "showPreviousView",
-                value: function() {
+                value: function () {
                     this.showView(this.previousView)
                 }
             }, {
                 key: "moveToTop",
-                value: function() {}
+                value: function () { }
             }, {
                 key: "callFunction",
-                value: function(e, t, a) {
+                value: function (e, t, a) {
                     if ($.isFunction(e)) try {
                         null == a ? e.apply(document, t) : e.apply(a, t)
                     } catch (e) {
@@ -1546,35 +1558,218 @@
                         }
                     }
                 }
-            }, {
+            },
+            {
                 key: "getTableTopButtonHtml",
-                value: function() {
+                value: function () {
                     var e = "";
-                    return this.getShowAddNew() && (e = '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' + this.gt(this.getAddNewLabel()) + ' <i class="fa fa-plus"></i></button>'), null != this.getFilters() && ("" !== e && (e += "&nbsp;&nbsp;"), e += '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' + this.gt("Filter") + ' <i class="fa fa-filter"></i></button>', e += "&nbsp;&nbsp;", this.filtersAlreadySet ? e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>' : e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>'), e = e.replace(/__id__/g, this.getTableName()), "" !== (e = "" !== this.currentFilterString && null != this.currentFilterString ? e.replace(/__filterString__/g, this.currentFilterString) : e.replace(/__filterString__/g, "Reset Filters")) && (e = '<div class="row"><div class="col-xs-12">' + e + "</div></div>"), e
+                    return this.getShowAddNew() && (e = '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                        this.gt(this.getAddNewLabel()) + ' <i class="fa fa-plus"></i></button>'),
+                        null != this.getFilters() && ("" !== e && (e += "&nbsp;&nbsp;"),
+                            e += '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' + this.gt("Filter") + ' <i class="fa fa-filter"></i></button>', e += "&nbsp;&nbsp;", this.filtersAlreadySet ? e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>' : e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>'),
+                        e = e.replace(/__id__/g, this.getTableName()), "" !== (e = "" !== this.currentFilterString && null != this.currentFilterString ? e.replace(/__filterString__/g, this.currentFilterString) : e.replace(/__filterString__/g, "Reset Filters")) && (e = '<div class="row"><div class="col-xs-12">' + e + "</div></div>"), e
                 }
-            }, {
+            },
+            {
+                key: "getTableTopButtonForNotchHtml",
+                value: function () {
+                    var e = "";
+                    return this.getShowAddNew() && (e = '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                        this.gt(this.getAddNewLabel()) + ' <i class="fa fa-plus"></i></button>'),
+                        null != this.getFilters() && ("" !== e && (e += "&nbsp;&nbsp;"),
+                            e += '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' + this.gt("Filter") + ' <i class="fa fa-filter"></i></button>', e += "&nbsp;&nbsp;", this.filtersAlreadySet ? e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>' : e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>'),
+                        (e += "&nbsp;&nbsp;"),
+                        (e +=
+                            '<button onclick="modJs.downloadNotchExcel();return false;" class="btn btn-small btn-primary">' +
+                            this.gt("Download(Excel)") +
+                            ' <i class="fa fa-download"></i></button>'),
+                        (e += "&nbsp;&nbsp;"),
+                        (e +=
+                            '<button onclick="modJs.downloadNotchPdf();return false;" class="btn btn-small btn-primary">' +
+                            this.gt("Download(pdf)") +
+                            ' <i class="fa fa-download"></i></button>'),
+                        (e = e.replace(/__id__/g, this.getTableName())), "" !== (e = "" !== this.currentFilterString && null != this.currentFilterString ? e.replace(/__filterString__/g, this.currentFilterString) : e.replace(/__filterString__/g, "Reset Filters")) && (e = '<div class="row"><div class="col-xs-12">' + e + "</div></div>"), e
+                }
+            },
+            {
+                key: "getTableTopButtonForEmployeeSalaryHtml",
+                value: function () {
+                    var e = "";
+                    return this.getShowAddNew() && (e = '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                        this.gt(this.getAddNewLabel()) + ' <i class="fa fa-plus"></i></button>'),
+                        null != this.getFilters() && ("" !== e && (e += "&nbsp;&nbsp;"),
+                            e += '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' + this.gt("Filter") + ' <i class="fa fa-filter"></i></button>', e += "&nbsp;&nbsp;", this.filtersAlreadySet ? e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>' : e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>'),
+                        (e +=
+                            '<button onclick="modJs.downloadEmployeeSalaryExcel();return false;" class="btn btn-small btn-primary">' +
+                            this.gt("Download(Excel)") +
+                            ' <i class="fa fa-download"></i></button>'),
+                        (e += "&nbsp;&nbsp;"),
+                        (e +=
+                            '<button onclick="modJs.downloadEmployeeSalaryPdf();return false;" class="btn btn-small btn-primary">' +
+                            this.gt("Download(pdf)") +
+                            ' <i class="fa fa-download"></i></button>'),
+                        (e = e.replace(/__id__/g, this.getTableName())), "" !== (e = "" !== this.currentFilterString && null != this.currentFilterString ? e.replace(/__filterString__/g, this.currentFilterString) : e.replace(/__filterString__/g, "Reset Filters")) && (e = '<div class="row"><div class="col-xs-12">' + e + "</div></div>"), e
+                }
+            },
+            {
+                key: "getTableTopButtonForSalaryHtml",
+                value: function () {
+                    var e = "";
+                    return this.getShowAddNew() && (e = '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                        this.gt(this.getAddNewLabel()) + ' <i class="fa fa-plus"></i></button>'),
+                        null != this.getFilters() && ("" !== e && (e += "&nbsp;&nbsp;"),
+                            e += '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' + this.gt("Filter") + ' <i class="fa fa-filter"></i></button>', e += "&nbsp;&nbsp;", this.filtersAlreadySet ? e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>' : e += '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>'),
+                        (e +=
+                            '<button onclick="modJs.downloadSalaryExcel();return false;" class="btn btn-small btn-primary">' +
+                            this.gt("Download(Excel)") +
+                            ' <i class="fa fa-download"></i></button>'),
+                        (e += "&nbsp;&nbsp;"),
+                        (e +=
+                            '<button onclick="modJs.downloadSalaryPdf();return false;" class="btn btn-small btn-primary">' +
+                            this.gt("Download(pdf)") +
+                            ' <i class="fa fa-download"></i></button>'),
+                        (e = e.replace(/__id__/g, this.getTableName())), "" !== (e = "" !== this.currentFilterString && null != this.currentFilterString ? e.replace(/__filterString__/g, this.currentFilterString) : e.replace(/__filterString__/g, "Reset Filters")) && (e = '<div class="row"><div class="col-xs-12">' + e + "</div></div>"), e
+                }
+            },
+            {
+                key: "downloadEmployeeSalaryExcel",
+                value: function () {
+                    window.location.href =
+                        "../../../../rokel_hrm/core/appDownloads/employeeSalaryDataExcel.php";
+                }
+            },
+            {
+                key: "downloadEmployeeSalaryPdf",
+                value: function () {
+                    window.location.href =
+                        "../../../../rokel_hrm/core/appDownloads/employeeSalaryDataPdf.php";
+                }
+            },
+            {
+                key: "downloadSalaryExcel",
+                value: function () {
+                    window.location.href =
+                        "../../../../rokel_hrm/core/appDownloads/salaryDataExcel.php";
+                }
+            },
+            {
+                key: "downloadSalaryPdf",
+                value: function () {
+                    window.location.href =
+                        "../../../../rokel_hrm/core/appDownloads/salaryDataPdf.php";
+                }
+            },
+            {
+                key: "downloadNotchExcel",
+                value: function () {
+                    window.location.href =
+                        "../../../../rokel_hrm/core/appDownloads/notchDataExcel.php";
+                }
+            },
+            {
+                key: "downloadNotchPdf",
+                value: function () {
+                    window.location.href =
+                        "../../../../rokel_hrm/core/appDownloads/notchDataPdf.php";
+                }
+            },
+            {
                 key: "getActionButtonHeader",
-                value: function() {
+                value: function () {
                     return {
                         sTitle: "",
                         sClass: "center"
                     }
                 }
-            }, {
+            },
+            {
                 key: "getTableHTMLTemplate",
-                value: function() {
+                value: function () {
                     return '<div class="box-body table-responsive"><table cellpadding="0" cellspacing="0" border="0" class="table table-bordered table-striped" id="grid"></table></div>'
                 }
             }, {
                 key: "isSortable",
-                value: function() {
+                value: function () {
                     return !0
                 }
             }, {
                 key: "createTable",
-                value: function(e) {
-                    if (this.getRemoteTable()) this.createTableServer(e);
-                    else {
+                value: function (e) {
+                    // alert(e);
+
+                    //if the remote table is set to true, use the createtableserver
+                    if (this.getRemoteTable()) {
+                        this.createTableServer(e);
+                    }
+
+
+                    //if the notch tab is clicked this code will be executed
+                    if (e == 'Notches') {
+                        //handles the notch tab
+                        var t = this.getHeaders();
+                        for (var a in t.push({
+                            sTitle: "",
+                            sClass: "center"
+                        }), t) t[a].sTitle = this.gt(t[a].sTitle);
+                        var l;
+                        l = this.getTableTopButtonForNotchHtml() + this.getTableHTMLTemplate();
+                        var i = $("#" + e + " .dataTables_paginate .active a").html(),
+                            r = 0;
+                        void 0 !== i && null != i && (r = 15 * parseInt(i, 10) - 15), $("#" + e).html(l);
+                        var n = {
+                            oLanguage: {
+                                sLengthMenu: "_MENU_ records per page"
+                            },
+                            bProcessing: !0,
+                            bServerSide: !0,
+                            sAjaxSource: this.getDataUrl(this.getDataMapping()),
+                            aoColumns: t,
+                            bSort: this.isSortable(),
+                            parent: this,
+                            iDisplayLength: 15,
+                            iDisplayStart: r
+                        };
+                        this.showActionButtons() && (n.aoColumnDefs = [{
+                            fnRender: this.getActionButtons,
+                            aTargets: [this.getDataMapping().length]
+                        }]);
+                        var o = this.getCustomTableParams();
+                        $.extend(n, o), $("#" + e + " #grid").dataTable(n), $(".dataTables_paginate ul").addClass("pagination"), $(".dataTables_length").hide(), $(".dataTables_filter input").addClass("form-control"), $(".dataTables_filter input").attr("placeholder", "Search"), $(".dataTables_filter label").contents().filter(function () {
+                            return 3 === this.nodeType
+                        }).remove(), $(".tableActionButton").tooltip()
+                    } else if (e == 'Salaries') {
+                        var t = this.getHeaders();
+                        for (var a in t.push({
+                            sTitle: "",
+                            sClass: "center"
+                        }), t) t[a].sTitle = this.gt(t[a].sTitle);
+                        var l;
+                        l = this.getTableTopButtonForSalaryHtml() + this.getTableHTMLTemplate();
+                        var i = $("#" + e + " .dataTables_paginate .active a").html(),
+                            r = 0;
+                        void 0 !== i && null != i && (r = 15 * parseInt(i, 10) - 15), $("#" + e).html(l);
+                        var n = {
+                            oLanguage: {
+                                sLengthMenu: "_MENU_ records per page"
+                            },
+                            bProcessing: !0,
+                            bServerSide: !0,
+                            sAjaxSource: this.getDataUrl(this.getDataMapping()),
+                            aoColumns: t,
+                            bSort: this.isSortable(),
+                            parent: this,
+                            iDisplayLength: 15,
+                            iDisplayStart: r
+                        };
+                        this.showActionButtons() && (n.aoColumnDefs = [{
+                            fnRender: this.getActionButtons,
+                            aTargets: [this.getDataMapping().length]
+                        }]);
+                        var o = this.getCustomTableParams();
+                        $.extend(n, o), $("#" + e + " #grid").dataTable(n), $(".dataTables_paginate ul").addClass("pagination"), $(".dataTables_length").hide(), $(".dataTables_filter input").addClass("form-control"), $(".dataTables_filter input").attr("placeholder", "Search"), $(".dataTables_filter label").contents().filter(function () {
+                            return 3 === this.nodeType
+                        }).remove(), $(".tableActionButton").tooltip()
+                    } else {
                         var t = this.getHeaders();
                         for (var a in t) t[a].sTitle = this.gt(t[a].sTitle);
                         var l = this.getTableData();
@@ -1586,31 +1781,78 @@
                             o = 0;
                         void 0 !== n && null != n && (o = 15 * parseInt(n, 10) - 15), $("#" + e).html(r);
                         var s = {
-                                oLanguage: {
-                                    sLengthMenu: "_MENU_ records per page"
-                                },
-                                aaData: l,
-                                aoColumns: t,
-                                bSort: this.isSortable(),
-                                iDisplayLength: 15,
-                                iDisplayStart: o
+                            oLanguage: {
+                                sLengthMenu: "_MENU_ records per page"
                             },
+                            aaData: l,
+                            aoColumns: t,
+                            bSort: this.isSortable(),
+                            iDisplayLength: 15,
+                            iDisplayStart: o
+                        },
                             u = this.getCustomTableParams();
-                        $.extend(s, u), $("#" + e + " #grid").dataTable(s), $(".dataTables_paginate ul").addClass("pagination"), $(".dataTables_length").hide(), $(".dataTables_filter input").addClass("form-control"), $(".dataTables_filter input").attr("placeholder", "Search"), $(".dataTables_filter label").contents().filter(function() {
+                        $.extend(s, u), $("#" + e + " #grid").dataTable(s), $(".dataTables_paginate ul").addClass("pagination"), $(".dataTables_length").hide(), $(".dataTables_filter input").addClass("form-control"), $(".dataTables_filter input").attr("placeholder", "Search"), $(".dataTables_filter label").contents().filter(function () {
                             return 3 === this.nodeType
                         }).remove(), $(".tableActionButton").tooltip()
                     }
+
+
+
+                    // if (this.getRemoteTable()) this.createTableServer(e);
+                    // else {
+
+                    // }
                 }
             }, {
                 key: "createTableServer",
-                value: function(e) {
-                    var t = this.getHeaders();
-                    for (var a in t.push({
+                value: function (e) {
+
+
+
+                    //handles the employee salary tab
+                    if (e == 'EmployeeSalary') {
+                        //handle all other tabs
+                        var t = this.getHeaders();
+                        for (var a in t.push({
                             sTitle: "",
                             sClass: "center"
                         }), t) t[a].sTitle = this.gt(t[a].sTitle);
+                        var l;
+                        l = this.getTableTopButtonForEmployeeSalaryHtml() + this.getTableHTMLTemplate();
+                        var i = $("#" + e + " .dataTables_paginate .active a").html(),
+                            r = 0;
+                        void 0 !== i && null != i && (r = 15 * parseInt(i, 10) - 15), $("#" + e).html(l);
+                        var n = {
+                            oLanguage: {
+                                sLengthMenu: "_MENU_ records per page"
+                            },
+                            bProcessing: !0,
+                            bServerSide: !0,
+                            sAjaxSource: this.getDataUrl(this.getDataMapping()),
+                            aoColumns: t,
+                            bSort: this.isSortable(),
+                            parent: this,
+                            iDisplayLength: 15,
+                            iDisplayStart: r
+                        };
+                        this.showActionButtons() && (n.aoColumnDefs = [{
+                            fnRender: this.getActionButtons,
+                            aTargets: [this.getDataMapping().length]
+                        }]);
+                        var o = this.getCustomTableParams();
+                        $.extend(n, o), $("#" + e + " #grid").dataTable(n), $(".dataTables_paginate ul").addClass("pagination"), $(".dataTables_length").hide(), $(".dataTables_filter input").addClass("form-control"), $(".dataTables_filter input").attr("placeholder", "Search"), $(".dataTables_filter label").contents().filter(function () {
+                            return 3 === this.nodeType
+                        }).remove(), $(".tableActionButton").tooltip()
+                    }
+
+                    //handle all other tabs
+                    var t = this.getHeaders();
+                    for (var a in t.push({
+                        sTitle: "",
+                        sClass: "center"
+                    }), t) t[a].sTitle = this.gt(t[a].sTitle);
                     var l;
-                    l = this.getTableTopButtonHtml() + this.getTableHTMLTemplate();
+                    l = this.ForSalary() + this.getTableHTMLTemplate();
                     var i = $("#" + e + " .dataTables_paginate .active a").html(),
                         r = 0;
                     void 0 !== i && null != i && (r = 15 * parseInt(i, 10) - 15), $("#" + e).html(l);
@@ -1632,48 +1874,48 @@
                         aTargets: [this.getDataMapping().length]
                     }]);
                     var o = this.getCustomTableParams();
-                    $.extend(n, o), $("#" + e + " #grid").dataTable(n), $(".dataTables_paginate ul").addClass("pagination"), $(".dataTables_length").hide(), $(".dataTables_filter input").addClass("form-control"), $(".dataTables_filter input").attr("placeholder", "Search"), $(".dataTables_filter label").contents().filter(function() {
+                    $.extend(n, o), $("#" + e + " #grid").dataTable(n), $(".dataTables_paginate ul").addClass("pagination"), $(".dataTables_length").hide(), $(".dataTables_filter input").addClass("form-control"), $(".dataTables_filter input").attr("placeholder", "Search"), $(".dataTables_filter label").contents().filter(function () {
                         return 3 === this.nodeType
                     }).remove(), $(".tableActionButton").tooltip()
                 }
             }, {
                 key: "getHeaders",
-                value: function() {}
+                value: function () { }
             }, {
                 key: "getDataMapping",
-                value: function() {}
+                value: function () { }
             }, {
                 key: "getFormFields",
-                value: function() {}
+                value: function () { }
             }, {
                 key: "getTableData",
-                value: function() {}
+                value: function () { }
             }, {
                 key: "getFilters",
-                value: function() {
+                value: function () {
                     return null
                 }
             }, {
                 key: "edit",
-                value: function(e) {
+                value: function (e) {
                     this.currentId = e, this.getElement(e, [])
                 }
             }, {
                 key: "copyRow",
-                value: function(e) {
+                value: function (e) {
                     this.getElement(e, [], !0)
                 }
             }, {
                 key: "renderModel",
-                value: function(e, t, a) {
+                value: function (e, t, a) {
                     $("#" + e + "ModelBody").html(""), void 0 !== a && null != a || (a = ""), $("#" + e + "ModelLabel").html(t), $("#" + e + "ModelBody").html(a)
                 }
             }, {
                 key: "renderYesNoModel",
-                value: function(e, t, a, l, i, r) {
+                value: function (e, t, a, l, i, r) {
                     var n = this,
                         o = "#yesnoModel";
-                    void 0 !== t && null != t || (t = ""), $(o + "Label").html(e), $(o + "Body").html(t), null != a && $(o + "YesBtn").html(a), null != l && $(o + "NoBtn").html(l), $(o + "YesBtn").off().on("click", function() {
+                    void 0 !== t && null != t || (t = ""), $(o + "Label").html(e), $(o + "Body").html(t), null != a && $(o + "YesBtn").html(a), null != l && $(o + "NoBtn").html(l), $(o + "YesBtn").off().on("click", function () {
                         void 0 !== i && null != i && (i.apply(n, r), n.cancelYesno())
                     }), $(o).modal({
                         backdrop: "static"
@@ -1681,17 +1923,17 @@
                 }
             }, {
                 key: "renderModelFromDom",
-                value: function(e, t, a) {
+                value: function (e, t, a) {
                     $("#" + e + "ModelBody").html(""), void 0 !== a && null != a || (a = $("<div></div>")), $("#" + e + "ModelLabel").html(t), $("#" + e + "ModelBody").html(""), $("#" + e + "ModelBody").append(a)
                 }
             }, {
                 key: "deleteRow",
-                value: function(e) {
+                value: function (e) {
                     this.deleteParams.id = e, this.renderModel("delete", "Confirm Deletion", "Are you sure you want to delete this item ?"), $("#deleteModel").modal("show")
                 }
             }, {
                 key: "showMessage",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null,
                         l = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : null,
                         i = arguments.length > 4 && void 0 !== arguments[4] && arguments[4],
@@ -1699,7 +1941,7 @@
                         n = "";
                     n = i ? "#plainMessageModel" : "#messageModel", $(n).off(), i ? this.renderModel("plainMessage", e, t) : this.renderModel("message", e, t), null != a ? ($(n).modal({
                         show: !0
-                    }), $(n).on("hidden.bs.modal", function() {
+                    }), $(n).on("hidden.bs.modal", function () {
                         a.apply(r, l), $(".modal-backdrop").remove()
                     })) : $(n).modal({
                         backdrop: "static"
@@ -1707,12 +1949,12 @@
                 }
             }, {
                 key: "showDomElement",
-                value: function(e, t, a, l, i) {
+                value: function (e, t, a, l, i) {
                     var r = this,
                         n = "";
                     n = i ? "#dataMessageModel" : "#messageModel", $(n).unbind("hide"), i ? this.renderModelFromDom("dataMessage", e, t) : this.renderModelFromDom("message", e, t), null != a ? ($(n).modal({
                         show: !0
-                    }), $(n).on("hidden.bs.modal", function() {
+                    }), $(n).on("hidden.bs.modal", function () {
                         a.apply(r, l), $(".modal-backdrop").remove()
                     })) : $(n).modal({
                         backdrop: "static"
@@ -1720,37 +1962,37 @@
                 }
             }, {
                 key: "confirmDelete",
-                value: function() {
+                value: function () {
                     void 0 === this.deleteParams.id && null == this.deleteParams.id || this.deleteObj(this.deleteParams.id, []), $("#deleteModel").modal("hide")
                 }
             }, {
                 key: "cancelDelete",
-                value: function() {
+                value: function () {
                     $("#deleteModel").modal("hide"), this.deleteParams.id = null
                 }
             }, {
                 key: "closeMessage",
-                value: function() {
+                value: function () {
                     $("#messageModel").modal("hide")
                 }
             }, {
                 key: "cancelYesno",
-                value: function() {
+                value: function () {
                     $("#yesnoModel").modal("hide")
                 }
             }, {
                 key: "closePlainMessage",
-                value: function() {
+                value: function () {
                     $("#plainMessageModel").modal("hide"), $("#dataMessageModel").modal("hide")
                 }
             }, {
                 key: "closeDataMessage",
-                value: function() {
+                value: function () {
                     $("#dataMessageModel").modal("hide")
                 }
             }, {
                 key: "save",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = new n.default(this.getTableName() + "_submit", !0, {
                         ShowPopup: !1,
                         LabelErrorClass: "error"
@@ -1768,24 +2010,24 @@
                 }
             }, {
                 key: "makeEmptyDateFieldsNull",
-                value: function(e) {
-                    return this.getFormFields().forEach(function(t) {
+                value: function (e) {
+                    return this.getFormFields().forEach(function (t) {
                         "date" !== t[1].type && "datetime" !== t[1].type || "" !== e[t[0]] && "0000-00-00" !== e[t[0]] && "0000-00-00 00:00:00" !== e[t[0]] || ("none" === t[1].validation ? e[t[0]] = "NULL" : delete e[t[0]])
                     }), e
                 }
             }, {
                 key: "forceInjectValuesBeforeSave",
-                value: function(e) {
+                value: function (e) {
                     return e
                 }
             }, {
                 key: "doCustomValidation",
-                value: function(e) {
+                value: function (e) {
                     return null
                 }
             }, {
                 key: "filterQuery",
-                value: function() {
+                value: function () {
                     var e = new n.default(this.getTableName() + "_filter", !0, {
                         ShowPopup: !1,
                         LabelErrorClass: "error"
@@ -1800,7 +2042,7 @@
                 }
             }, {
                 key: "getFilterString",
-                value: function(e) {
+                value: function (e) {
                     var t = "",
                         a = void 0,
                         l = void 0,
@@ -1824,7 +2066,7 @@
                                 r = [];
                                 try {
                                     r = JSON.parse(e[u])
-                                } catch (e) {}
+                                } catch (e) { }
                                 "" !== (n = r.join(",")) && (o = n)
                             } else "" !== (n = e[u]) && (o = n);
                             null != o && ("" !== t && (t += " | "), t += i.label + " = " + n)
@@ -1833,17 +2075,17 @@
                 }
             }, {
                 key: "doCustomFilterValidation",
-                value: function(e) {
+                value: function (e) {
                     return !0
                 }
             }, {
                 key: "resetFilters",
-                value: function() {
+                value: function () {
                     this.filter = this.origFilter, this.filtersAlreadySet = !1, $("#" + this.getTableName() + "_resetFilters").hide(), this.currentFilterString = "", this.get([])
                 }
             }, {
                 key: "showFilters",
-                value: function(e) {
+                value: function (e) {
                     for (var t = this.templates.filterTemplate, a = "", l = this.getFilters(), i = 0; i < l.length; i++) {
                         var r = this.getMetaFieldForRendering(l[i][0]);
                         if ("" === r || void 0 === r) a += this.renderFormField(l[i]);
@@ -1865,33 +2107,33 @@
                     }), s.find(".colorpick").colorpicker(), tinymce.init({
                         selector: "#" + s.attr("id") + " .tinymce",
                         height: "400"
-                    }), s.find(".simplemde").each(function() {
+                    }), s.find(".simplemde").each(function () {
                         var e = new SimpleMDE({
                             element: $(this)[0]
                         });
                         $(this).data("simplemde", e)
-                    }), s.find(".select2Field").each(function() {
+                    }), s.find(".select2Field").each(function () {
                         $(this).select2().select2("val", $(this).find("option:eq(0)").val())
-                    }), s.find(".select2Multi").each(function() {
-                        $(this).select2().on("change", function(e) {
+                    }), s.find(".select2Multi").each(function () {
+                        $(this).select2().on("change", function (e) {
                             var t = $(this).parents(".row"),
                                 a = t.find(".select2-choices").height();
                             t.height(parseInt(a, 10))
                         })
-                    }), this.showDomElement("Edit", s, null, null, !0), $(".filterBtn").off(), $(".filterBtn").on("click", function(e) {
+                    }), this.showDomElement("Edit", s, null, null, !0), $(".filterBtn").off(), $(".filterBtn").on("click", function (e) {
                         e.preventDefault(), e.stopPropagation();
                         try {
                             modJs.filterQuery()
-                        } catch (e) {}
+                        } catch (e) { }
                         return !1
                     }), void 0 !== this.filter && null != this.filter && "" !== this.filter && this.fillForm(this.filter, "#" + this.getTableName() + "_filter", this.getFilters())
                 }
             }, {
                 key: "preRenderForm",
-                value: function(e) {}
+                value: function (e) { }
             }, {
                 key: "renderForm",
-                value: function(e) {
+                value: function (e) {
                     var t = [];
                     null != e && void 0 !== e || (this.currentId = null), this.preRenderForm(e);
                     for (var a = this.templates.formTemplate, l = "", i = this.getFormFields(), r = 0; r < i.length; r++) {
@@ -1915,98 +2157,98 @@
                     }), s.find(".colorpick").colorpicker(), tinymce.init({
                         selector: "#" + s.attr("id") + " .tinymce",
                         height: "400"
-                    }), s.find(".simplemde").each(function() {
+                    }), s.find(".simplemde").each(function () {
                         var e = new SimpleMDE({
                             element: $(this)[0]
                         });
                         $(this).data("simplemde", e)
-                    }), s.find(".select2Field").each(function() {
+                    }), s.find(".select2Field").each(function () {
                         $(this).select2().select2("val", $(this).find("option:eq(0)").val())
-                    }), s.find(".select2Multi").each(function() {
-                        $(this).select2().on("change", function(e) {
+                    }), s.find(".select2Multi").each(function () {
+                        $(this).select2().on("change", function (e) {
                             var t = $(this).parents(".row"),
                                 a = t.find(".select2-choices").height();
                             t.height(parseInt(a, 10))
                         })
-                    }), s.find(".signatureField").each(function() {
+                    }), s.find(".signatureField").each(function () {
                         t.push($(this).attr("id"))
                     });
                     for (var c = 0; c < i.length; c++) "datagroup" === i[c][1].type && s.find("#" + i[c][0]).data("field", i[c]);
-                    if (!1 === this.showSave ? s.find(".saveBtn").remove() : (s.find(".saveBtn").off(), s.find(".saveBtn").data("modJs", this), s.find(".saveBtn").on("click", function() {
+                    if (!1 === this.showSave ? s.find(".saveBtn").remove() : (s.find(".saveBtn").off(), s.find(".saveBtn").data("modJs", this), s.find(".saveBtn").on("click", function () {
                         // alert('here');
                         let comp = $('#component').val();
                         let stat = $('#state').val();
                         let change = $('#percentage_change').val();
-                        
+
                         // alert(comp);
                         // alert(stat);
                         // alert(change);
 
                         $.ajax({
-                            url: '../../../../rokel_hrm/core/salary_increments.php',
+                            url: '../../../../rokel_hrmm/core/salary_increments.php',
                             type: 'post',
                             contentType: 'application/json',
                             dataType: "json",
                             data: JSON.stringify({
                                 component: comp,
                                 status: stat,
-                                percentage_change: change 
+                                percentage_change: change
                                 // category: category 
                             }),
-                            success: function(data, textStatus, jQxhr) {
+                            success: function (data, textStatus, jQxhr) {
                                 // console.log(data);
                                 // alert(data);
-                                
+
                                 var cal_local_currency = data;
 
-                                $('#local_equivalent').val(cal_local_currency.data);   
-                            }   
+                                $('#local_equivalent').val(cal_local_currency.data);
+                            }
                         });
-/*
-                        $.ajax({
-                            url: '../../../../rokel_hrmm/core/salary_decrement.php',
-                            type: 'post',
-                            contentType: 'application/json',
-                            dataType: "json",
-                            data: JSON.stringify({
-                                component: comp,
-                                status: stat,
-                                percentage_change: change 
-                                // category: category 
-                            }),
-                            success: function(data, textStatus, jQxhr) {
-                                // console.log(data);
-                                // alert(data);
-                                
-                                var cal_local_currency = data;
+                        /*
+                                                $.ajax({
+                                                    url: '../../../../rokel_hrmm/core/salary_decrement.php',
+                                                    type: 'post',
+                                                    contentType: 'application/json',
+                                                    dataType: "json",
+                                                    data: JSON.stringify({
+                                                        component: comp,
+                                                        status: stat,
+                                                        percentage_change: change 
+                                                        // category: category 
+                                                    }),
+                                                    success: function(data, textStatus, jQxhr) {
+                                                        // console.log(data);
+                                                        // alert(data);
+                                                        
+                                                        var cal_local_currency = data;
+                        
+                                                        $('#local_equivalent').val(cal_local_currency.data);   
+                                                    }   
+                                                });
+                        */
 
-                                $('#local_equivalent').val(cal_local_currency.data);   
-                            }   
-                        });
-*/
-
-                            return null != $(this).data("modJs").saveSuccessItemCallback && void 0 !== $(this).data("modJs").saveSuccessItemCallback ? $(this).data("modJs").save($(this).data("modJs").retriveItemsAfterSave(), $(this).data("modJs").saveSuccessItemCallback) : $(this).data("modJs").save(), !1
-                        })), !1 === this.showCancel ? s.find(".cancelBtn").remove() : (s.find(".cancelBtn").off(), s.find(".cancelBtn").data("modJs", this), s.find(".cancelBtn").on("click", function() {
-                            return $(this).data("modJs").cancel(), !1
-                        })), s.find("[mask]").each(function() {
-                            $(this).inputmask($(this).attr("mask"))
-                        }), s.find("[datemask]").each(function() {
-                            $(this).inputmask({
-                                mask: "y-1-2",
-                                placeholder: "YYYY-MM-DD",
-                                leapday: "-02-29",
-                                separator: "-",
-                                alias: "yyyy/mm/dd"
-                            })
-                        }), s.find("[datetimemask]").each(function() {
-                            $(this).inputmask("datetime", {
-                                mask: "y-2-1 h:s:00",
-                                placeholder: "YYYY-MM-DD hh:mm:ss",
-                                leapday: "-02-29",
-                                separator: "-",
-                                alias: "yyyy/mm/dd"
-                            })
-                        }), this.showFormOnPopup) {
+                        return null != $(this).data("modJs").saveSuccessItemCallback && void 0 !== $(this).data("modJs").saveSuccessItemCallback ? $(this).data("modJs").save($(this).data("modJs").retriveItemsAfterSave(), $(this).data("modJs").saveSuccessItemCallback) : $(this).data("modJs").save(), !1
+                    })), !1 === this.showCancel ? s.find(".cancelBtn").remove() : (s.find(".cancelBtn").off(), s.find(".cancelBtn").data("modJs", this), s.find(".cancelBtn").on("click", function () {
+                        return $(this).data("modJs").cancel(), !1
+                    })), s.find("[mask]").each(function () {
+                        $(this).inputmask($(this).attr("mask"))
+                    }), s.find("[datemask]").each(function () {
+                        $(this).inputmask({
+                            mask: "y-1-2",
+                            placeholder: "YYYY-MM-DD",
+                            leapday: "-02-29",
+                            separator: "-",
+                            alias: "yyyy/mm/dd"
+                        })
+                    }), s.find("[datetimemask]").each(function () {
+                        $(this).inputmask("datetime", {
+                            mask: "y-2-1 h:s:00",
+                            placeholder: "YYYY-MM-DD hh:mm:ss",
+                            leapday: "-02-29",
+                            separator: "-",
+                            alias: "yyyy/mm/dd"
+                        })
+                    }), this.showFormOnPopup) {
                         this.showMessage("Edit", "", null, null, !0), $("#plainMessageModel .modal-body").html(""), $("#plainMessageModel .modal-body").append(s);
                         for (var d = 0; d < t.length; d++) $("#" + t[d]).data("signaturePad", new SignaturePad(document.getElementById(t[d])));
                         void 0 !== e && null != e ? this.fillForm(e, "#" + u) : this.setDefaultValues("#" + u)
@@ -2019,21 +2261,21 @@
                 }
             }, {
                 key: "setDefaultValues",
-                value: function(e, t) {
+                value: function (e, t) {
                     null != t && void 0 !== t || (t = this.getFormFields()), null != e && void 0 !== e && "" !== e || (e = "#" + this.getTableName() + "Form");
                     for (var a = 0; a < t.length; a++) "text" !== t[a][1].type && "textarea" !== t[a][1].type || void 0 !== t[a][1].default && null !== t[a][1].default && $(e + " #" + t[a][0]).val(t[a][1].default)
                 }
             }, {
                 key: "retriveItemsAfterSave",
-                value: function() {
+                value: function () {
                     return !0
                 }
             }, {
                 key: "postRenderForm",
-                value: function(e, t) {}
+                value: function (e, t) { }
             }, {
                 key: "dataGroupToHtml",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = JSON.parse(e),
                         l = void 0,
                         i = void 0,
@@ -2049,12 +2291,12 @@
                 }
             }, {
                 key: "resetDataGroup",
-                value: function(e) {
+                value: function (e) {
                     $("#" + e[0]).val(""), $("#" + e[0] + "_div").html("")
                 }
             }, {
                 key: "showDataGroup",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = this.templates.datagroupTemplate,
                         l = "",
                         i = e[1].form;
@@ -2073,20 +2315,20 @@
                     }), o.find(".colorpick").colorpicker(), tinymce.init({
                         selector: "#" + o.attr("id") + " .tinymce",
                         height: "400"
-                    }), o.find(".simplemde").each(function() {
+                    }), o.find(".simplemde").each(function () {
                         var e = new SimpleMDE({
                             element: $(this)[0]
                         });
                         $(this).data("simplemde", e)
-                    }), o.find(".select2Field").each(function() {
+                    }), o.find(".select2Field").each(function () {
                         $(this).select2().select2("val", $(this).find("option:eq(0)").val())
-                    }), o.find(".select2Multi").each(function() {
-                        $(this).select2().on("change", function(e) {
+                    }), o.find(".select2Multi").each(function () {
+                        $(this).select2().on("change", function (e) {
                             var t = $(this).parents(".row"),
                                 a = t.find(".select2-choices").height();
                             t.height(parseInt(a, 10))
                         })
-                    }), this.currentDataGroupField = e, this.showDomElement("Add " + e[1].label, o, null, null, !0), void 0 !== t && null != t ? this.fillForm(t, "#" + this.getTableName() + "_field_" + e[0], e[1].form) : this.setDefaultValues("#" + this.getTableName() + "_field_" + e[0], e[1].form), $(".groupAddBtn").off(), void 0 !== t && null != t && void 0 !== t.id ? $(".groupAddBtn").on("click", function(e) {
+                    }), this.currentDataGroupField = e, this.showDomElement("Add " + e[1].label, o, null, null, !0), void 0 !== t && null != t ? this.fillForm(t, "#" + this.getTableName() + "_field_" + e[0], e[1].form) : this.setDefaultValues("#" + this.getTableName() + "_field_" + e[0], e[1].form), $(".groupAddBtn").off(), void 0 !== t && null != t && void 0 !== t.id ? $(".groupAddBtn").on("click", function (e) {
                         e.preventDefault(), e.stopPropagation();
                         try {
                             modJs.editDataGroup()
@@ -2094,7 +2336,7 @@
                             console.log("Error editing data group: " + e.message)
                         }
                         return !1
-                    }) : $(".groupAddBtn").on("click", function(e) {
+                    }) : $(".groupAddBtn").on("click", function (e) {
                         e.preventDefault(), e.stopPropagation();
                         try {
                             modJs.addDataGroup()
@@ -2106,7 +2348,7 @@
                 }
             }, {
                 key: "addDataGroup",
-                value: function() {
+                value: function () {
                     var e = this.currentDataGroupField,
                         t = void 0;
                     $("#" + this.getTableName() + "_field_" + e[0] + "_error").html(""), $("#" + this.getTableName() + "_field_" + e[0] + "_error").hide();
@@ -2131,24 +2373,24 @@
                 }
             }, {
                 key: "nl2br",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = "";
                     try {
                         for (var l = e.split(" "), i = 0, r = 0; r < l.length; r++)(i += l[r].length + 1) > t ? (a += l[r] + "<br/>", i = 0) : a += l[r] + " "
-                    } catch (e) {}
+                    } catch (e) { }
                     return a
                 }
             }, {
                 key: "makeDataGroupSortable",
-                value: function(e, t) {
+                value: function (e, t) {
                     t.data("field", e), t.data("firstSort", !0), t.sortable({
-                        create: function() {
+                        create: function () {
                             $(this).height($(this).height())
                         },
                         "ui-floating": !1,
-                        start: function(e, t) {
+                        start: function (e, t) {
                             $("#sortable-ul-selector-id").sortable({
-                                sort: function(e, t) {
+                                sort: function (e, t) {
                                     var a = $(e.target);
                                     if (!/html|body/i.test(a.offsetParent()[0].tagName)) {
                                         var l = e.pageY - a.offsetParent().offset().top - t.helper.outerHeight(!0) / 2;
@@ -2160,7 +2402,7 @@
                             })
                         },
                         revert: !0,
-                        stop: function() {
+                        stop: function () {
                             modJs.orderDataGroup($(this).data("field"))
                         },
                         axis: "y",
@@ -2171,14 +2413,14 @@
                 }
             }, {
                 key: "orderDataGroup",
-                value: function(e) {
+                value: function (e) {
                     var t = [],
                         a = void 0,
                         l = $("#" + e[0] + "_div_inner [fieldid='" + e[0] + "_div']"),
                         i = $("#" + e[0]).val();
                     "" === i && (i = "[]");
                     var r = JSON.parse(i);
-                    l.each(function() {
+                    l.each(function () {
                         for (var e in a = $(this).attr("id"), r)
                             if (r[e].id === a) {
                                 t.push(r[e]);
@@ -2188,7 +2430,7 @@
                 }
             }, {
                 key: "editDataGroup",
-                value: function() {
+                value: function () {
                     var e = this.currentDataGroupField,
                         t = this.currentDataGroupItemId,
                         a = new n.default(this.getTableName() + "_field_" + e[0], !0, {
@@ -2218,7 +2460,7 @@
                 }
             }, {
                 key: "editDataGroupItem",
-                value: function(e) {
+                value: function (e) {
                     for (var t = e.substring(0, e.lastIndexOf("_")), a = $("#" + t).val(), l = JSON.parse(a), i = {}, r = 0; r < l.length; r++) {
                         var n = l[r];
                         n.id === e && (i = n)
@@ -2227,7 +2469,7 @@
                 }
             }, {
                 key: "dataGroupGetNextAutoIncrementId",
-                value: function(e) {
+                value: function (e) {
                     for (var t = 1, a = void 0, l = 0; l < e.length; l++) {
                         var i = e[l];
                         void 0 !== i.id && null != i.id || (i.id = 1), (a = i.id.substring(i.id.lastIndexOf("_") + 1, i.id.length)) >= t && (t = parseInt(a, 10) + 1)
@@ -2236,7 +2478,7 @@
                 }
             }, {
                 key: "deleteDataGroupItem",
-                value: function(e) {
+                value: function (e) {
                     for (var t = e.substring(0, e.lastIndexOf("_")), a = $("#" + t).val(), l = JSON.parse(a), i = [], r = 0; r < l.length; r++) {
                         var n = l[r];
                         n.id !== e && i.push(n)
@@ -2245,58 +2487,58 @@
                 }
             }, {
                 key: "fillForm",
-                value: function(e, t, a) {
+                value: function (e, t, a) {
                     var l = void 0;
                     null != a && void 0 !== a || (a = this.getFormFields()), null != t && void 0 !== t && "" !== t || (t = "#" + this.getTableName() + "Form");
                     for (var i = 0; i < a.length; i++)
                         if ("date" === a[i][1].type) "0000-00-00" !== e[a[i][0]] && "" !== e[a[i][0]] && null != e[a[i][0]] && void 0 !== e[a[i][0]] && $(t + " #" + a[i][0] + "_date").datepicker("setValue", e[a[i][0]]);
                         else if ("colorpick" === a[i][1].type) null != e[a[i][0]] && void 0 !== e[a[i][0]] && ($(t + " #" + a[i][0] + "_colorpick").colorpicker("setValue", e[a[i][0]]), $(t + " #" + a[i][0]).val(e[a[i][0]]));
-                    else if ("datetime" === a[i][1].type || "time" === a[i][1].type) {
-                        if ("0000-00-00 00:00:00" !== e[a[i][0]] && "" !== e[a[i][0]] && null != e[a[i][0]] && void 0 !== e[a[i][0]]) {
-                            var r = e[a[i][0]].split(" "),
-                                n = r[0].split("-"),
-                                o = r[1].split(":");
-                            $(t + " #" + a[i][0] + "_datetime").data("datetimepicker").setLocalDate(new Date(n[0], parseInt(n[1], 10) - 1, n[2], o[0], o[1], o[2]))
-                        }
-                    } else if ("label" === a[i][1].type) $(t + " #" + a[i][0]).html(e[a[i][0]]);
-                    else if ("placeholder" === a[i][1].type) {
-                        if (void 0 !== a[i][1]["remote-source"] && null != a[i][1]["remote-source"]) {
-                            var s = a[i][1]["remote-source"][0] + "_" + a[i][1]["remote-source"][1] + "_" + a[i][1]["remote-source"][2];
-                            l = this.fieldMasterData[s][e[a[i][0]]]
-                        } else l = e[a[i][0]];
-                        if (void 0 === l || null == l) l = "";
-                        else try {
-                            l = l.replace(/(?:\r\n|\r|\n)/g, "<br />")
-                        } catch (e) {}
-                        if (void 0 !== a[i][1].formatter && a[i][1].formatter && $.isFunction(a[i][1].formatter)) try {
-                            l = a[i][1].formatter(l)
-                        } catch (e) {}
-                        $(t + " #" + a[i][0]).html(l)
-                    } else if ("fileupload" === a[i][1].type) null != e[a[i][0]] && void 0 !== e[a[i][0]] && "" !== e[a[i][0]] && ($(t + " #" + a[i][0]).html(e[a[i][0]]), $(t + " #" + a[i][0]).attr("val", e[a[i][0]]), $(t + " #" + a[i][0]).show(), $(t + " #" + a[i][0] + "_download").show(), $(t + " #" + a[i][0] + "_remove").show()), !0 === a[i][1].readonly && $(t + " #" + a[i][0] + "_upload").remove();
-                    else if ("select" === a[i][1].type) void 0 !== e[a[i][0]] && null != e[a[i][0]] && "" !== e[a[i][0]] || (e[a[i][0]] = "NULL"), $(t + " #" + a[i][0]).val(e[a[i][0]]);
-                    else if ("select2" === a[i][1].type) void 0 !== e[a[i][0]] && null != e[a[i][0]] && "" !== e[a[i][0]] || (e[a[i][0]] = "NULL"), $(t + " #" + a[i][0]).select2("val", e[a[i][0]]);
-                    else if ("select2multi" === a[i][1].type) {
-                        void 0 !== e[a[i][0]] && null != e[a[i][0]] && "" !== e[a[i][0]] || (e[a[i][0]] = "NULL");
-                        var u = [];
-                        if (void 0 !== e[a[i][0]] && null != e[a[i][0]] && "" !== e[a[i][0]]) try {
-                            u = JSON.parse(e[a[i][0]])
-                        } catch (e) {}
-                        $(t + " #" + a[i][0]).select2("val", u);
-                        var c = $(t + " #" + a[i][0]).find(".select2-choices").height();
-                        $(t + " #" + a[i][0]).find(".controls").css("min-height", c + "px"), $(t + " #" + a[i][0]).css("min-height", c + "px")
-                    } else if ("datagroup" === a[i][1].type) try {
-                        var d = this.dataGroupToHtml(e[a[i][0]], a[i]);
-                        $(t + " #" + a[i][0]).val(e[a[i][0]]), $(t + " #" + a[i][0] + "_div").html(""), $(t + " #" + a[i][0] + "_div").append(d), this.makeDataGroupSortable(a[i], $(t + " #" + a[i][0] + "_div_inner"))
-                    } catch (e) {} else "signature" === a[i][1].type ? "" === e[a[i][0]] && void 0 === e[a[i][0]] && null == e[a[i][0]] || $(t + " #" + a[i][0]).data("signaturePad").fromDataURL(e[a[i][0]]) : "simplemde" === a[i][1].type ? $(t + " #" + a[i][0]).data("simplemde").value(e[a[i][0]]) : $(t + " #" + a[i][0]).val(e[a[i][0]])
+                        else if ("datetime" === a[i][1].type || "time" === a[i][1].type) {
+                            if ("0000-00-00 00:00:00" !== e[a[i][0]] && "" !== e[a[i][0]] && null != e[a[i][0]] && void 0 !== e[a[i][0]]) {
+                                var r = e[a[i][0]].split(" "),
+                                    n = r[0].split("-"),
+                                    o = r[1].split(":");
+                                $(t + " #" + a[i][0] + "_datetime").data("datetimepicker").setLocalDate(new Date(n[0], parseInt(n[1], 10) - 1, n[2], o[0], o[1], o[2]))
+                            }
+                        } else if ("label" === a[i][1].type) $(t + " #" + a[i][0]).html(e[a[i][0]]);
+                        else if ("placeholder" === a[i][1].type) {
+                            if (void 0 !== a[i][1]["remote-source"] && null != a[i][1]["remote-source"]) {
+                                var s = a[i][1]["remote-source"][0] + "_" + a[i][1]["remote-source"][1] + "_" + a[i][1]["remote-source"][2];
+                                l = this.fieldMasterData[s][e[a[i][0]]]
+                            } else l = e[a[i][0]];
+                            if (void 0 === l || null == l) l = "";
+                            else try {
+                                l = l.replace(/(?:\r\n|\r|\n)/g, "<br />")
+                            } catch (e) { }
+                            if (void 0 !== a[i][1].formatter && a[i][1].formatter && $.isFunction(a[i][1].formatter)) try {
+                                l = a[i][1].formatter(l)
+                            } catch (e) { }
+                            $(t + " #" + a[i][0]).html(l)
+                        } else if ("fileupload" === a[i][1].type) null != e[a[i][0]] && void 0 !== e[a[i][0]] && "" !== e[a[i][0]] && ($(t + " #" + a[i][0]).html(e[a[i][0]]), $(t + " #" + a[i][0]).attr("val", e[a[i][0]]), $(t + " #" + a[i][0]).show(), $(t + " #" + a[i][0] + "_download").show(), $(t + " #" + a[i][0] + "_remove").show()), !0 === a[i][1].readonly && $(t + " #" + a[i][0] + "_upload").remove();
+                        else if ("select" === a[i][1].type) void 0 !== e[a[i][0]] && null != e[a[i][0]] && "" !== e[a[i][0]] || (e[a[i][0]] = "NULL"), $(t + " #" + a[i][0]).val(e[a[i][0]]);
+                        else if ("select2" === a[i][1].type) void 0 !== e[a[i][0]] && null != e[a[i][0]] && "" !== e[a[i][0]] || (e[a[i][0]] = "NULL"), $(t + " #" + a[i][0]).select2("val", e[a[i][0]]);
+                        else if ("select2multi" === a[i][1].type) {
+                            void 0 !== e[a[i][0]] && null != e[a[i][0]] && "" !== e[a[i][0]] || (e[a[i][0]] = "NULL");
+                            var u = [];
+                            if (void 0 !== e[a[i][0]] && null != e[a[i][0]] && "" !== e[a[i][0]]) try {
+                                u = JSON.parse(e[a[i][0]])
+                            } catch (e) { }
+                            $(t + " #" + a[i][0]).select2("val", u);
+                            var c = $(t + " #" + a[i][0]).find(".select2-choices").height();
+                            $(t + " #" + a[i][0]).find(".controls").css("min-height", c + "px"), $(t + " #" + a[i][0]).css("min-height", c + "px")
+                        } else if ("datagroup" === a[i][1].type) try {
+                            var d = this.dataGroupToHtml(e[a[i][0]], a[i]);
+                            $(t + " #" + a[i][0]).val(e[a[i][0]]), $(t + " #" + a[i][0] + "_div").html(""), $(t + " #" + a[i][0] + "_div").append(d), this.makeDataGroupSortable(a[i], $(t + " #" + a[i][0] + "_div_inner"))
+                        } catch (e) { } else "signature" === a[i][1].type ? "" === e[a[i][0]] && void 0 === e[a[i][0]] && null == e[a[i][0]] || $(t + " #" + a[i][0]).data("signaturePad").fromDataURL(e[a[i][0]]) : "simplemde" === a[i][1].type ? $(t + " #" + a[i][0]).data("simplemde").value(e[a[i][0]]) : $(t + " #" + a[i][0]).val(e[a[i][0]])
                 }
             }, {
                 key: "cancel",
-                value: function() {
+                value: function () {
                     $("#" + this.getTableName() + "Form").hide(), $("#" + this.getTableName()).show()
                 }
             }, {
                 key: "renderFormField",
-                value: function(e) {
+                value: function (e) {
                     var t = 0;
                     if (void 0 === this.fieldTemplates[e[1].type] || null == this.fieldTemplates[e[1].type]) return "";
                     var a = this.fieldTemplates[e[1].type];
@@ -2323,12 +2565,12 @@
                 }
             }, {
                 key: "renderFormSelectOptions",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = "";
                     null != t && void 0 !== t && !0 === t[1]["allow-null"] && (void 0 !== t[1]["null-label"] && null != t[1]["null-label"] ? a += '<option value="NULL">' + this.gt(t[1]["null-label"]) + "</option>" : a += '<option value="NULL">Select</option>');
                     var l = [];
                     for (var i in e) l.push(e[i]);
-                    !0 === t[1].sort && l.sort(function(e, t) {
+                    !0 === t[1].sort && l.sort(function (e, t) {
                         return (e = e[1]) < (t = t[1]) ? -1 : e > t ? 1 : 0
                     });
                     for (var r = 0; r < l.length; r++) {
@@ -2341,12 +2583,12 @@
                 }
             }, {
                 key: "renderFormSelectOptionsRemote",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = "";
                     !0 === t[1]["allow-null"] && (void 0 !== t[1]["null-label"] && null != t[1]["null-label"] ? a += '<option value="NULL">' + this.gt(t[1]["null-label"]) + "</option>" : a += '<option value="NULL">Select</option>');
                     var l = [];
                     for (var i in e) l.push([i, e[i]]);
-                    "true" === t[1].sort && l.sort(function(e, t) {
+                    "true" === t[1].sort && l.sort(function (e, t) {
                         return (e = e[1]) < (t = t[1]) ? -1 : e > t ? 1 : 0
                     });
                     for (var r = 0; r < l.length; r++) {
@@ -2359,120 +2601,120 @@
                 }
             }, {
                 key: "setCustomTemplates",
-                value: function(e) {
+                value: function (e) {
                     this.customTemplates = e
                 }
             }, {
                 key: "setEmailTemplates",
-                value: function(e) {
+                value: function (e) {
                     this.emailTemplates = e
                 }
             }, {
                 key: "getCustomTemplate",
-                value: function(e) {
+                value: function (e) {
                     return this.customTemplates[e]
                 }
             }, {
                 key: "setFieldTemplates",
-                value: function(e) {
+                value: function (e) {
                     this.fieldTemplates = e
                 }
             }, {
                 key: "getMetaFieldForRendering",
-                value: function(e) {
+                value: function (e) {
                     return ""
                 }
             }, {
                 key: "clearDeleteParams",
-                value: function() {
+                value: function () {
                     this.deleteParams = {}
                 }
             }, {
                 key: "getShowAddNew",
-                value: function() {
+                value: function () {
                     return this.showAddNew
                 }
             }, {
                 key: "getAddNewLabel",
-                value: function() {
+                value: function () {
                     return "Add New"
                 }
             }, {
                 key: "setShowAddNew",
-                value: function(e) {
+                value: function (e) {
                     this.showAddNew = e
                 }
             }, {
                 key: "setShowDelete",
-                value: function(e) {
+                value: function (e) {
                     this.showDelete = e
                 }
             }, {
                 key: "setShowEdit",
-                value: function(e) {
+                value: function (e) {
                     this.showEdit = e
                 }
             }, {
                 key: "setShowSave",
-                value: function(e) {
+                value: function (e) {
                     this.showSave = e
                 }
             }, {
                 key: "setShowCancel",
-                value: function(e) {
+                value: function (e) {
                     this.showCancel = e
                 }
             }, {
                 key: "getCustomTableParams",
-                value: function() {
+                value: function () {
                     return {}
                 }
             }, {
                 key: "getActionButtons",
-                value: function(e) {
+                value: function (e) {
                     return modJs.getActionButtonsHtml(e.aData[0], e.aData)
                 }
-            }, 
+            },
             {
                 key: "getActionButtonsHtml",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = '<div style="width:80px;">_edit__delete__clone_</div>';
                     return a = this.showAddNew ? a.replace("_clone_", '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>') : a.replace("_clone_", ""), a = this.showDelete ? a.replace("_delete_", '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>') : a.replace("_delete_", ""), a = (a = (a = this.showEdit ? a.replace("_edit_", '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>') : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(/_BASE_/g, this.baseUrl)
                 }
             },
-             {
+            {
                 key: "generateRandom",
-                value: function(e) {
+                value: function (e) {
                     for (var t = new Date, a = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", l = "", i = e; i > 0; --i) l += a[Math.round(Math.random() * (a.length - 1))];
                     return l + t.getTime()
                 }
             }, {
                 key: "checkFileType",
-                value: function(e, t) {
+                value: function (e, t) {
                     var a = document.getElementById(e),
                         l = "";
                     return a.value.lastIndexOf(".") > 0 && (l = a.value.substring(a.value.lastIndexOf(".") + 1, a.value.length)), l = l.toLowerCase(), !(t.split(",").indexOf(l) < 0) || (a.value = "", this.showMessage("File Type Error", "Selected file type is not supported"), this.clearFileElement(e), !1)
                 }
             }, {
                 key: "clearFileElement",
-                value: function(e) {
+                value: function (e) {
                     var t = $("#" + e);
                     t.replaceWith(t = t.val("").clone(!0))
                 }
             }, {
                 key: "fixJSON",
-                value: function(e) {
+                value: function (e) {
                     return "1" === this.noJSONRequests && (e = window.btoa(e)), e
                 }
             }, {
                 key: "getClientDate",
-                value: function(e) {
+                value: function (e) {
                     var t = this.getClientGMTOffset();
                     return e.addMinutes(60 * t)
                 }
             }, {
                 key: "getClientGMTOffset",
-                value: function() {
+                value: function () {
                     var e = new Date,
                         t = new Date(e.getFullYear(), 0, 1, 0, 0, 0, 0),
                         a = t.toGMTString();
@@ -2480,45 +2722,45 @@
                 }
             }, {
                 key: "getHelpLink",
-                value: function() {
+                value: function () {
                     return null
                 }
             }, {
                 key: "showLoader",
-                value: function() {
+                value: function () {
                     $("#iceloader").show()
                 }
             }, {
                 key: "hideLoader",
-                value: function() {
+                value: function () {
                     $("#iceloader").hide()
                 }
             }, {
                 key: "generateOptions",
-                value: function(e) {
+                value: function (e) {
                     var t = "";
                     for (var a in e) t += '<option value="__val__">__text__</option>'.replace("__val__", a).replace("__text__", e[a]);
                     return t
                 }
             }, {
                 key: "isModuleInstalled",
-                value: function(e, t) {
+                value: function (e, t) {
                     return void 0 !== modulesInstalled && null !== modulesInstalled && 1 === modulesInstalled[e + "_" + t]
                 }
             }, {
                 key: "setCustomFields",
-                value: function(e) {
+                value: function (e) {
                     for (var t = void 0, a = void 0, l = 0; l < e.length; l++)
                         if ("Hidden" !== (t = e[l]).display && "" !== t.data && void 0 !== t.data) try {
                             if (void 0 === (a = JSON.parse(t.data)) || null == a) continue;
                             if (2 !== a.length) continue;
                             if (void 0 === a[1].type || null == a[1].type) continue;
                             this.customFields.push(a)
-                        } catch (e) {}
+                        } catch (e) { }
                 }
             }, {
                 key: "addCustomFields",
-                value: function(e) {
+                value: function (e) {
                     for (var t = 0; t < this.customFields.length; t++) e.push(this.customFields[t]);
                     return e
                 }
