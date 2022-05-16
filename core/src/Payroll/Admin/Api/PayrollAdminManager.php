@@ -37,5 +37,6 @@ class PayrollAdminManager extends AbstractModuleManager
         $this->addModelClass('DeductionGroup');
         $this->addModelClass('PayslipTemplate');
         $this->addModelClass('PayrollCalculations');
+        $this->addModelClass('vw_gl_summary');
     }
 }
