@@ -128,7 +128,7 @@
                 key: "getDataMapping",
                 value: function () {
                   return [
-                    // "employee_id",
+                    "id",
                     "first_name",
                     "middle_name",
                     "last_name",
@@ -144,9 +144,10 @@
                 key: "getHeaders",
                 value: function () {
                   return [
-                    // {
-                    //   sTitle: "ID",
-                    // },
+                    {
+                      sTitle: "ID",
+                      // bVisible: !1,
+                    },
                     {
                       sTitle: "First Name",
                     },
@@ -296,7 +297,7 @@
                       (a = this.showView
                         ? a.replace(
                           "_view_",
-                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Approve Transfer" onclick="modJs.openStatus(_id_);return false;"></img>'
+                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Approve Transfer" onclick="modJs.view(_id_);return false;"></img>'
                         )
                         : a.replace("_view_", "")),
                       (a = (a = (a = this.showEdit
@@ -2954,6 +2955,47 @@
                 key: "doCustomValidation",
                 value: function (e) {
                   return null;
+                },
+              },
+              {
+                key: "view",
+                value: function (e) {
+                  alert("this");
+                  this.currentId = e;
+                  // alert(e);return false;
+                  var profile = this.getCurrentProfile();
+                  let currentProfile = profile.id;
+                  // alert(currentProfile);
+
+                  let id = e;
+
+                  // $.ajax({
+                  //   url: "../../../../rokel_hrm/core/hide_buttons.php",
+                  //   type: "post",
+                  //   contentType: "application/json",
+                  //   dataType: "json",
+                  //   data: JSON.stringify({
+                  //     id_: id,
+                  //     currentProfile_: currentProfile,
+
+                  //     // category: category
+                  //   }),
+                  //   success: function (data, textStatus, jQxhr) {
+                  //     // console.log(data);
+                  //     // alert(data);
+                  //   },
+                  // });
+
+                  var t = {
+                    id: e,
+                    map: JSON.stringify(this.getSourceMapping()),
+                  },
+                    l = JSON.stringify(t),
+                    a = [];
+                  (a.callBackData = []),
+                    (a.callBackSuccess = "renderEmployee"),
+                    (a.callBackFail = "viewFailCallBack"),
+                    this.customAction("get", "modules=employees", l, a);
                 },
               },
               {

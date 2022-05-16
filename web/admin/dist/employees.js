@@ -3066,6 +3066,7 @@
                 {
                   key: "view",
                   value: function (e) {
+                    alert(e);
                     this.currentId = e;
                     // alert(e);return false;
                     var profile = this.getCurrentProfile();
@@ -3075,7 +3076,7 @@
                     let id = e;
 
                     $.ajax({
-                      url: "../../../../rokel_hrm_mine/core/hide_buttons.php",
+                      url: "../../../../rokel_hrm/core/hide_buttons.php",
                       type: "post",
                       contentType: "application/json",
                       dataType: "json",
