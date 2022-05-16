@@ -5,6 +5,7 @@
  */
 namespace Users\Admin\Api;
 
+use Employees\Common\Model\Employee;
 use Users\Common\Model\User;
 use Classes\IceResponse;
 use Classes\SubActionManager;
@@ -21,6 +22,8 @@ class UsersActionManager extends SubActionManager
                 "You are not allowed to change the password in demo mode"
             );
         }
+        $employee = new Employee();
+        $employee->Load("id = ?", array($req->employee_id));
 
         $user = new User();
         $user->Load("id = ?", array($req->id));

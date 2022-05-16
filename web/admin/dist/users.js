@@ -113,7 +113,7 @@
                             ["username", {
                                 label: "User Name",
                                 type: "text",
-                                validation: "username"
+                                validation: "none"
                             }],
                             ["email", {
                                 label: "Email",

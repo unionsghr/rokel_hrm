@@ -2432,8 +2432,8 @@
                     (e.employee = this.lastSavedEmployee.id),
                       (e.user_level = "Employee"),
                       (e.email = this.lastSavedEmployee.work_email),
-                      (e.username =
-                        this.lastSavedEmployee.work_email.split("@")[0]),
+                      // (e.username = this.lastSavedEmployee.work_email.split("@")[0]),
+                      (e.username = this.lastSavedEmployee.employee_id),
                       (top.location.href = this.getCustomUrl(
                         "?g=admin&n=users&m=admin_Admin&action=new&object=" +
                           Base64.encodeURI(JSON.stringify(e))

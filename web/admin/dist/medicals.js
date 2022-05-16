@@ -282,20 +282,20 @@
                           validation: "",
                         },
                       ],
-                      [
-                        "status",
-                        {
-                          label: "Status",
-                          type: "select",
-                          validation: "",
-                          "allow-null": false,
-                          "null-label": "Select",
-                          source: [
-                            ["Draft", "Draft"],
-                            ["Submitted", "Submit"],
-                          ],
-                        },
-                      ],
+                      // [
+                      //   "status",
+                      //   {
+                      //     label: "Status",
+                      //     type: "select",
+                      //     validation: "",
+                      //     "allow-null": false,
+                      //     "null-label": "Select",
+                      //     source: [
+                      //       ["Draft", "Draft"],
+                      //       ["Submitted", "Submit"],
+                      //     ],
+                      //   },
+                      // ],
                       [
                         "attachment1",
                         {
@@ -3251,8 +3251,16 @@
                 },
               },
               {
+                key: "submit",
+                value: function (e, t) {
+                  alert('submit');return false;
+                }
+
+              },
+              {
                 key: "save",
                 value: function (e, t) {
+                  // alert('save here');return false;
 
                 //   if (
                 //     confirm(
@@ -3291,7 +3299,7 @@
                 //     this.renderModel(""), $("#staffmedical").modal("hide");
                 //     location.reload();
                 // }
-                  
+                  console.log(e);
                   var a = new n.default(this.getTableName() + "_submit", !0, {
                     ShowPopup: !1,
                     LabelErrorClass: "error",
@@ -3616,6 +3624,31 @@
                       : (o.find(".saveBtn").off(),
                         o.find(".saveBtn").data("modJs", this),
                         o.find(".saveBtn").on("click", function () {
+                          // alert('Great');return false;
+                          return (
+                            null !=
+                              $(this).data("modJs").saveSuccessItemCallback &&
+                            void 0 !==
+                              $(this).data("modJs").saveSuccessItemCallback
+                              ? $(this)
+                                  .data("modJs")
+                                  .save(
+                                    $(this)
+                                      .data("modJs")
+                                      .retriveItemsAfterSave(),
+                                    $(this).data("modJs")
+                                      .saveSuccessItemCallback
+                                  )
+                              : $(this).data("modJs").save(),
+                            !1
+                          );
+                          // alert('Great');return false;
+                        })),
+                        !1 === this.showSave
+                      ? o.find(".submitBtn").remove()
+                      : (o.find(".submitBtn").off(),
+                        o.find(".submitBtn").data("modJs", this),
+                        o.find(".submitBtn").on("click", function () {
                           // alert('Great');return false;
                           return (
                             null !=
