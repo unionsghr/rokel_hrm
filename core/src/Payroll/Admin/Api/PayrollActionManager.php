@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Thilina
@@ -24,7 +25,7 @@ use Salary\Common\Model\PayrollEmployee;
 use Salary\Common\Model\SalaryComponent;
 use Utils\LogManager;
 use Utils\Math\EvalMath;
-  
+
 class PayrollActionManager extends SubActionManager
 {
 
@@ -56,22 +57,22 @@ class PayrollActionManager extends SubActionManager
         // $currentEmpId = $this->getCurrentProfileId();
         // LogManager::getInstance()->info("=========Payroll=========currentEmpId=>".$currentEmpId);
 
-        $val = $this->getFromCalculationCache($col->id."-".$payroll->id."-".$employeeId);
+        $val = $this->getFromCalculationCache($col->id . "-" . $payroll->id . "-" . $employeeId);
         if (!empty($val)) {
             return $val;
-        } 
- 
+        }
+
         if (!empty($col->calculation_hook)) {
             $sum = BaseService::getInstance()->executeCalculationHook(
                 array($employeeId, $payroll->date_start, $payroll->date_end),
                 $col->calculation_hook,
                 $col->calculation_function
             );
-            
+
             // $val = number_format(round($sum, 2), 2, '.', '');  
-            $val = number_format($sum, 2);         
+            $val = number_format($sum, 2);
             // LogManager::getInstance()->info("===============salary :".$val);
-            $this->addToCalculationCache($col->id."-".$payroll->id."-".$employeeId, $val);
+            $this->addToCalculationCache($col->id . "-" . $payroll->id . "-" . $employeeId, $val);
             return $val;
         }
 
@@ -81,15 +82,17 @@ class PayrollActionManager extends SubActionManager
         $payRollEmp->Load("id = ?", array($payrollEmployeeId));
 
         //Salary
-        LogManager::getInstance()->info("salary components row:-----1".$col->salary_components);
-        if (!empty($col->salary_components) &&
-            !empty(json_decode($col->salary_components, true))) {
+        // LogManager::getInstance()->info("salary components row:-----1".$col->salary_components);
+        if (
+            !empty($col->salary_components) &&
+            !empty(json_decode($col->salary_components, true))
+        ) {
             $salaryComponent = new SalaryComponent();
             $salaryComponents = $salaryComponent->Find(
-                "id in (".implode(",", json_decode($col->salary_components, true)).")",
+                "id in (" . implode(",", json_decode($col->salary_components, true)) . ")",
                 array()
             );
-            LogManager::getInstance()->info("salary components:-----2".$salaryComponents);
+            // LogManager::getInstance()->info("salary components:-----2".$salaryComponents);
             foreach ($salaryComponents as $salaryComponent) {
                 $sum += $this->getTotalForEmployeeSalaryByComponent($employeeId, $salaryComponent->id);
             }
@@ -97,31 +100,33 @@ class PayrollActionManager extends SubActionManager
 
         //Deductions
         $deductions = array();
-        if (!empty($col->deductions) &&
-            !empty(json_decode($col->deductions, true))) {
+        if (
+            !empty($col->deductions) &&
+            !empty(json_decode($col->deductions, true))
+        ) {
             $deduction = new Deduction();
             if (empty($payRollEmp->deduction_group)) {
                 $deductions = $deduction->Find(
-                    "id in (".implode(",", json_decode($col->deductions, true)).")",
+                    "id in (" . implode(",", json_decode($col->deductions, true)) . ")",
                     array()
                 );
             } else {
                 $deductions = $deduction->Find(
-                    "deduction_group = ? and id in (".implode(",", json_decode($col->deductions, true)).")",
+                    "deduction_group = ? and id in (" . implode(",", json_decode($col->deductions, true)) . ")",
                     array($payRollEmp->deduction_group)
                 );
             }
-            
-                /////////////////   NEW  ////////////////////////////
+
+            /////////////////   NEW  ////////////////////////////
             $execeptionIds = json_decode($payRollEmp->deduction_exemptions, true);
             foreach ($deductions as $deduct) {
-                if(in_array($deduct->id, $execeptionIds)){
+                if (in_array($deduct->id, $execeptionIds)) {
                     continue;
                 }
                 $sum += $this->calculateDeductionValue($employeeId, $deduct, $payroll);
             }
 
-////////////////////                 SYSTEM     ////////////////////////////
+            ////////////////////                 SYSTEM     ////////////////////////////
             // $allowedDeductions = $this->getAllowedDeductionsForEmployee($employeeId, $payRollEmp->deduction_group);
             // foreach ($deductions as $deduction) {
             //     if (!in_array($deduction->id, $allowedDeductions)) {
@@ -138,11 +143,13 @@ class PayrollActionManager extends SubActionManager
             $evalMath->evaluate('max(x,y) = (y - x) * ceil(tanh(exp(tanh(y - x)) - exp(0))) + x');
             $evalMath->evaluate('min(x,y) = y - (y - x) * ceil(tanh(exp(tanh(y - x)) - exp(0)))');
 
-            if (!empty($col->add_columns) &&
-                !empty(json_decode($col->add_columns, true))) {
+            if (
+                !empty($col->add_columns) &&
+                !empty(json_decode($col->add_columns, true))
+            ) {
                 $colIds = json_decode($col->add_columns, true);
                 $payrollColumn = new PayrollColumn();
-                $payrollColumns = $payrollColumn->Find("id in (".implode(",", $colIds).")", array());
+                $payrollColumns = $payrollColumn->Find("id in (" . implode(",", $colIds) . ")", array());
                 foreach ($payrollColumns as $payrollColumn) {
                     $sum += $this->calculatePayrollColumn(
                         $payrollColumn,
@@ -154,11 +161,13 @@ class PayrollActionManager extends SubActionManager
                 }
             }
 
-            if (!empty($col->sub_columns) &&
-                !empty(json_decode($col->sub_columns, true))) {
+            if (
+                !empty($col->sub_columns) &&
+                !empty(json_decode($col->sub_columns, true))
+            ) {
                 $colIds = json_decode($col->sub_columns, true);
                 $payrollColumn = new PayrollColumn();
-                $payrollColumns = $payrollColumn->Find("id in (".implode(",", $colIds).")", array());
+                $payrollColumns = $payrollColumn->Find("id in (" . implode(",", $colIds) . ")", array());
                 foreach ($payrollColumns as $payrollColumn) {
                     $sum -= $this->calculatePayrollColumn(
                         $payrollColumn,
@@ -170,12 +179,14 @@ class PayrollActionManager extends SubActionManager
                 }
             }
 
-            if (!empty($col->calculation_columns) &&
-                !empty(json_decode($col->calculation_columns, true)) && !empty($col->calculation_function)) {
+            if (
+                !empty($col->calculation_columns) &&
+                !empty(json_decode($col->calculation_columns, true)) && !empty($col->calculation_function)
+            ) {
                 $cc = json_decode($col->calculation_columns);
                 $func = $col->calculation_function;
                 foreach ($cc as $c) {
-                    $value = $this->getFromCalculationCache($c->column."-".$payroll->id."-".$employeeId);
+                    $value = $this->getFromCalculationCache($c->column . "-" . $payroll->id . "-" . $employeeId);
                     if (empty($value)) {
                         $value = 0.00;
                     }
@@ -184,18 +195,18 @@ class PayrollActionManager extends SubActionManager
                 try {
                     $sum += $evalMath->evaluate($func);
                 } catch (\Exception $e) {
-                    LogManager::getInstance()->info("Error:".$e->getMessage());
+                    LogManager::getInstance()->info("Error:" . $e->getMessage());
                 }
             }
         }
 
         // return $sum;
-        $val = number_format(round($sum, 2), 2, '.', '');
+        // $val = number_format(round($sum, 2), 2, '.', '');
 
-        // $val = number_format($sum, 2);
-        
-        // $val = round($sum, 2);
-        $this->addToCalculationCache($col->id."-".$payroll->id."-".$employeeId, $val);
+        //this will format the amount on the payroll report correctly 
+        $val = number_format($sum, 2);
+
+        $this->addToCalculationCache($col->id . "-" . $payroll->id . "-" . $employeeId, $val);
         return $val;
     }
 
@@ -206,7 +217,7 @@ class PayrollActionManager extends SubActionManager
         if (!empty($deduction->componentType) && !empty(json_decode($deduction->componentType, true))) {
             $salaryComponent = new SalaryComponent();
             $salaryComponents = $salaryComponent->Find(
-                "componentType in (".implode(",", json_decode($deduction->componentType, true)).")",
+                "componentType in (" . implode(",", json_decode($deduction->componentType, true)) . ")",
                 array()
             );
         }
@@ -215,7 +226,7 @@ class PayrollActionManager extends SubActionManager
         if (!empty($deduction->component) && !empty(json_decode($deduction->component, true))) {
             $salaryComponent = new SalaryComponent();
             $salaryComponents2 = $salaryComponent->Find(
-                "id in (".implode(",", json_decode($deduction->component, true)).")",
+                "id in (" . implode(",", json_decode($deduction->component, true)) . ")",
                 array()
             );
         }
@@ -236,7 +247,7 @@ class PayrollActionManager extends SubActionManager
         }
 
         if (!empty($deduction->payrollColumn)) {
-            $columnVal = $this->getFromCalculationCache($deduction->payrollColumn."-".$payroll->id."-".$employeeId);
+            $columnVal = $this->getFromCalculationCache($deduction->payrollColumn . "-" . $payroll->id . "-" . $employeeId);
             if (!empty($columnVal)) {
                 $sum += $columnVal;
             }
@@ -305,7 +316,7 @@ class PayrollActionManager extends SubActionManager
         return $sum;
     }
 
-    
+
     private function getAllowedDeductionsForEmployee($employeeId, $deductionGroup)
     {
         $payrollEmp = new PayrollEmployee();
@@ -317,7 +328,7 @@ class PayrollActionManager extends SubActionManager
             $allowed =  $deduction->Find("deduction_group = ?", array($deductionGroup));
         } else {
             $allowedIds = json_decode($payrollEmp->deduction_allowed, true);
-            $allowed =  $deduction->Find("id in (".implode(",", $allowedIds).")");
+            $allowed =  $deduction->Find("id in (" . implode(",", $allowedIds) . ")");
         }
 
         $allowedFiltered = array();
@@ -380,12 +391,12 @@ class PayrollActionManager extends SubActionManager
             $cssIds[] = $c->id;
         }
 
-        
+
         $employeeNamesById = array();
         // $employeeAccountById = array();
         $baseEmp = new Employee();
         $baseEmpList = $baseEmp->Find(
-            "department in (".implode(",", $cssIds).") and status = ?",
+            "department in (" . implode(",", $cssIds) . ") and status = ?",
             array('Active')
         );
 
@@ -393,7 +404,7 @@ class PayrollActionManager extends SubActionManager
 
         $empIds = array();
         foreach ($baseEmpList as $baseEmp) {
-            $employeeNamesById[$baseEmp->id] = $baseEmp->first_name." ".$baseEmp->middle_name." ".$baseEmp->last_name;
+            $employeeNamesById[$baseEmp->id] = $baseEmp->first_name . " " . $baseEmp->middle_name . " " . $baseEmp->last_name;
             $empIds[] = $baseEmp->id;
         }
 
@@ -401,13 +412,13 @@ class PayrollActionManager extends SubActionManager
 
         $emp = new $rowTable();
         $emps = $emp->Find(
-            "pay_frequency = ? and deduction_group = ? and employee in (".implode(",", $empIds).")",
+            "pay_frequency = ? and deduction_group = ? and employee in (" . implode(",", $empIds) . ")",
             array($payroll->pay_period, $payroll->deduction_group)
         );
         if (!$emps) {
-            error_log("Error:".$emp->ErrorMsg());
+            error_log("Error:" . $emp->ErrorMsg());
         } else {
-            error_log("Employees:".json_encode($emps));
+            error_log("Employees:" . json_encode($emps));
         }
 
         $employees = array();
@@ -422,7 +433,7 @@ class PayrollActionManager extends SubActionManager
 
         $column = new $columnTable();
         $columns = $column->Find(
-            "enabled = ? and id in (".implode(",", $columnList).") order by colorder, id",
+            "enabled = ? and id in (" . implode(",", $columnList) . ") order by colorder, id",
             array('Yes')
         );
 
@@ -445,7 +456,7 @@ class PayrollActionManager extends SubActionManager
                 foreach ($columns as $column) {
                     if (isset($valueMap[$e->id][$column->id]) && $column->editable == "Yes") {
                         $this->addToCalculationCache(
-                            $column->id."-".$payroll->id."-".$e->id,
+                            $column->id . "-" . $payroll->id . "-" . $e->id,
                             $valueMap[$e->id][$column->id]->amount
                         );
                         continue;
@@ -489,8 +500,8 @@ class PayrollActionManager extends SubActionManager
             }
             $columns = $newCols;
         }
-        
-        return new IceResponse(IceResponse::SUCCESS, array($employees,$columns,$values));
+
+        return new IceResponse(IceResponse::SUCCESS, array($employees, $columns, $values));
     }
 
 
@@ -525,24 +536,20 @@ class PayrollActionManager extends SubActionManager
                 continue;
             }
             $data = new $valueTable();
-            $data->Load("payroll = ? and employee = ? and payroll_item = ?", array($payrollId,$val[1],$val[0]));
+            $data->Load("payroll = ? and employee = ? and payroll_item = ?", array($payrollId, $val[1], $val[0]));
             if (empty($data->id)) {
                 $data->payroll = $payrollId;
                 $data->employee = $val[1];
                 $data->payroll_item = $val[0];
             }
             $data->amount = $val[2];
-            LogManager::getInstance()->info("Saving payroll data :".json_encode($data));
+            LogManager::getInstance()->info("Saving payroll data :" . json_encode($data));
             $ok = $data->Save();
             if (!$ok) {
-                LogManager::getInstance()->error("Error saving payroll data:".$data->ErrorMsg());
+                LogManager::getInstance()->error("Error saving payroll data:" . $data->ErrorMsg());
             }
         }
 
         return new IceResponse(IceResponse::SUCCESS, true);
     }
-
-    
 }
-
-

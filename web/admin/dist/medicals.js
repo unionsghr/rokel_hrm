@@ -44,9 +44,9 @@
         (window.StaffMedicalAdapter = l.StaffMedicalAdapter),
           (window.DependentMedicalAdapter = l.DependentMedicalAdapter),
           (window.MedicalLimitAdapter = l.MedicalLimitAdapter);
-          (window.WorkInjuriesAdapter = l.WorkInjuriesAdapter);
-          (window.MedEnquiryAdapter = l.MedEnquiryAdapter);
-          
+        (window.WorkInjuriesAdapter = l.WorkInjuriesAdapter);
+        (window.MedEnquiryAdapter = l.MedEnquiryAdapter);
+
       },
       {
         "./lib": 2,
@@ -75,8 +75,8 @@
             (l = r) && l.__esModule
               ? l
               : {
-                  default: l,
-                };
+                default: l,
+              };
 
         function s(e, t) {
           if (!(e instanceof t))
@@ -95,7 +95,7 @@
           if ("function" != typeof t && null !== t)
             throw new TypeError(
               "Super expression must either be null or a function, not " +
-                typeof t
+              typeof t
             );
           (e.prototype = Object.create(t && t.prototype, {
             constructor: {
@@ -106,82 +106,206 @@
             },
           })),
             t &&
-              (Object.setPrototypeOf
-                ? Object.setPrototypeOf(e, t)
-                : (e.__proto__ = t));
+            (Object.setPrototypeOf
+              ? Object.setPrototypeOf(e, t)
+              : (e.__proto__ = t));
         }
         var c = (function (e) {
-            function t() {
-              return (
-                s(this, t),
-                o(
-                  this,
-                  (t.__proto__ || Object.getPrototypeOf(t)).apply(
-                    this,
-                    arguments
-                  )
-                )
-              );
-            }
+          function t() {
             return (
-              u(t, n.default),
-              i(t, [
-                {
-                  key: "getDataMapping",
-                  value: function () {
-                    return [
-                      "id",
-                      "employee",
-                      "from_date",
-                      "admission_type",
-                      "type_of_illness",
-                      "hospital",
-                      "physician",
-                      "cost",
-                      "status",
-                      "reference",
-                    ];
-                  },
+              s(this, t),
+              o(
+                this,
+                (t.__proto__ || Object.getPrototypeOf(t)).apply(
+                  this,
+                  arguments
+                )
+              )
+            );
+          }
+          return (
+            u(t, n.default),
+            i(t, [
+              {
+                key: "getDataMapping",
+                value: function () {
+                  return [
+                    "id",
+                    "employee",
+                    "from_date",
+                    "admission_type",
+                    "type_of_illness",
+                    "hospital",
+                    "physician",
+                    "cost",
+                    "status",
+                    "reference",
+                  ];
                 },
-                {
-                  key: "getHeaders",
-                  value: function () {
-                    return [
+              },
+              {
+                key: "getHeaders",
+                value: function () {
+                  return [
+                    {
+                      sTitle: "ID",
+                      bVisible: !1,
+                    },
+                    { sTitle: "Employee" },
+                    {
+                      sTitle: "In Date",
+                    },
+                    //  {
+                    //      "sTitle": "Out Date"
+                    //  },
+                    {
+                      sTitle: "Admission Type",
+                    },
+                    {
+                      sTitle: "Illness",
+                    },
+                    //  {
+                    //      "sTitle": "Medication Given"
+                    //  },
+                    {
+                      sTitle: "Hospital",
+                    },
+                    {
+                      sTitle: "Physician",
+                    },
+                    {
+                      sTitle: "Cost (SLL)",
+                    },
+                    {
+                      sTitle: "Status",
+                    },
+                    {
+                      sTitle: "Posting Reference",
+                    },
+                  ];
+                },
+              },
+              {
+                key: "getFormFields",
+                value: function () {
+                  return [
+                    [
+                      "id",
                       {
-                        sTitle: "ID",
-                        bVisible: !1,
+                        label: "ID",
+                        type: "hidden",
                       },
-                      { sTitle: "Employee" },
+                    ],
+                    [
+                      "employee",
                       {
-                        sTitle: "In Date",
+                        label: "Employee",
+                        type: "select2",
+                        "null-label": "Select",
+                        sort: "none",
+                        "allow-null": false,
+                        "remote-source": [
+                          "Employee",
+                          "id",
+                          "first_name+middle_name+last_name",
+                          "getActiveSubordinateEmployees",
+                        ],
                       },
-                      //  {
-                      //      "sTitle": "Out Date"
-                      //  },
+                    ],
+                    [
+                      "from_date",
                       {
-                        sTitle: "Admission Type",
+                        label: "Admission Date",
+                        type: "date",
+                        validation: "",
                       },
+                    ],
+                    [
+                      "to_date",
                       {
-                        sTitle: "Illness",
+                        label: "Discharged Date",
+                        type: "date",
+                        validation: "",
                       },
-                      //  {
-                      //      "sTitle": "Medication Given"
-                      //  },
+                    ],
+                    [
+                      "admission_type",
                       {
-                        sTitle: "Hospital",
+                        label: "Admission Type",
+                        type: "select",
+                        validation: "",
+                        "allow-null": true,
+                        "null-label": "Select",
+                        source: [
+                          ["In-Patient", "In-Patient"],
+                          ["Out-Patient", "Out-Patient"],
+                        ],
                       },
+                    ],
+                    [
+                      "type_of_illness",
                       {
-                        sTitle: "Physician",
+                        label: "Illness Type",
+                        type: "text",
+                        validation: "",
                       },
+                    ],
+                    [
+                      "medication_given",
                       {
-                        sTitle: "Cost (SLL)",
+                        label: "Medication",
+                        type: "text",
+                        validation: "",
                       },
+                    ],
+                    [
+                      "hospital",
                       {
-                        sTitle: "Status",
+                        label: "Hospital/Facility Name",
+                        type: "text",
+                        validation: "none",
                       },
+                    ],
+                    [
+                      "physician",
                       {
-                        sTitle: "Posting Reference",
+                        label: "Physician/Attendant",
+                        type: "text",
+                        validation: "none",
                       },
+                    ],
+                    [
+                      "cost",
+                      {
+                        label: "Cost (SLL)",
+                        type: "text",
+                        validation: "",
+                      },
+                    ],
+                    [
+                      "attachment1",
+                      {
+                        label: "Attach Document",
+                        type: "fileupload",
+                        validation: "none",
+                      },
+                    ],
+                    [
+                      "attachment2",
+                      {
+                        label: "Other Attachment 1",
+                        type: "fileupload",
+                        validation: "none",
+                      },
+                    ],
+                    [
+                      "attachment3",
+                      {
+                        label: "Other Attachment 2",
+                        type: "fileupload",
+                        validation: "none",
+                      },
+<<<<<<< HEAD
                     ];
                   },
                 },
@@ -322,76 +446,125 @@
                       ],
                     ];
                   },
+=======
+                    ],
+                  ];
+>>>>>>> 9d58bb488dc1c76242ec5355f33e466d025042c6
                 },
-                {
-                  key: "getFilters",
-                  value: function () {
-                    return [
-                      [
-                        "employee",
-                        {
-                          label: "Employee",
-                          type: "select2",
-                          "null-label": "Select",
-                          sort: "none",
-                          "allow-null": false,
-                          "remote-source": [
-                            "Employee",
-                            "id",
-                            "first_name+middle_name+last_name",
-                            "getActiveSubordinateEmployees",
-                          ],
-                        },
-                      ],
-                    ];
-                  },
+              },
+              {
+                key: "getFilters",
+                value: function () {
+                  return [
+                    [
+                      "employee",
+                      {
+                        label: "Employee",
+                        type: "select2",
+                        "null-label": "Select",
+                        sort: "none",
+                        "allow-null": false,
+                        "remote-source": [
+                          "Employee",
+                          "id",
+                          "first_name+middle_name+last_name",
+                          "getActiveSubordinateEmployees",
+                        ],
+                      },
+                    ],
+                  ];
                 },
-                {
-                  key: "getActionButtonsHtml",
-                  value: function (e, t) {
+              },
+              {
+                key: "getActionButtonsHtml",
+                value: function (e, t) {
+
+                  if (t[8] == "Approved") {
+                    //assign approved
+                    var approved = 1;
+                    var t =
+                      '<div style="width:110px;"><img class="tableActionButton" src="_BASE_images/clone.png" style="cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatus1(_id_);return false;"></img></div>';
+                    return (t = (t = t.replace(/_id_/g, e)).replace(
+                      /_BASE_/g,
+                      this.baseUrl
+                    ));
+                  } else if (t[8] == "Submitted") {
                     var a =
                       '<div style="width:120px;">_edit__delete__clone__view_</div>';
                     return (
                       (a = this.showAddNew
                         ? a.replace(
-                            "_clone_",
-                            '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
-                          )
+                          "_clone_",
+                          '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
+                        )
                         : a.replace("_clone_", "")),
                       (a = this.showDelete
                         ? a.replace(
-                            "_delete_",
-                            '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
-                          )
+                          "_delete_",
+                          '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
+                        )
                         : a.replace("_delete_", "")),
                       (a = this.showView
                         ? a.replace(
-                            "_view_",
-                            '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatus(_id_);return false;"></img>'
-                          )
+                          "_view_",
+                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatusSubmitted(_id_);return false;"></img>'
+                        )
                         : a.replace("_view_", "")),
                       (a = (a = (a = this.showEdit
                         ? a.replace(
-                            "_edit_",
-                            '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
-                          )
+                          "_edit_",
+                          '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
+                        )
                         : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(
-                        /_BASE_/g,
-                        this.baseUrl
-                      ))
+                          /_BASE_/g,
+                          this.baseUrl
+                        ))
                     );
-                  },
+                  } else {
+                    var a =
+                      '<div style="width:120px;">_edit__delete__clone__view_</div>';
+                    return (
+                      (a = this.showAddNew
+                        ? a.replace(
+                          "_clone_",
+                          '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
+                        )
+                        : a.replace("_clone_", "")),
+                      (a = this.showDelete
+                        ? a.replace(
+                          "_delete_",
+                          '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
+                        )
+                        : a.replace("_delete_", "")),
+                      (a = this.showView
+                        ? a.replace(
+                          "_view_",
+                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatus(_id_);return false;"></img>'
+                        )
+                        : a.replace("_view_", "")),
+                      (a = (a = (a = this.showEdit
+                        ? a.replace(
+                          "_edit_",
+                          '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
+                        )
+                        : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(
+                          /_BASE_/g,
+                          this.baseUrl
+                        ))
+                    );
+                  }
                 },
-                // {
-                //   key: "getHelpLink",
-                //   value: function () {
-                //     return "https://icehrm.gitbook.io/icehrm/training-and-reviews/training#adding-a-new-course";
-                //   },
-                // },
-              ]),
-              t
-            );
-          })(),
+              },
+              // {
+              //   key: "getHelpLink",
+              //   value: function () {
+              //     return "https://icehrm.gitbook.io/icehrm/training-and-reviews/training#adding-a-new-course";
+              //   },
+              // },
+            ]),
+            t
+          );
+        })(),
           d = (function (e) {
             function t() {
               return (
@@ -667,7 +840,7 @@
                       (void 0 !== e.status &&
                         null !== e.status &&
                         "" !== e.status) ||
-                        (e.status = "Approved"),
+                      (e.status = "Approved"),
                       e
                     );
                   },
@@ -675,36 +848,37 @@
                 {
                   key: "getActionButtonsHtml",
                   value: function (e, t) {
+                    console.log(e);
                     var a =
                       '<div style="width:120px;">_edit__delete__clone__view_</div>';
                     return (
                       (a = this.showAddNew
                         ? a.replace(
-                            "_clone_",
-                            '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
-                          )
+                          "_clone_",
+                          '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
+                        )
                         : a.replace("_clone_", "")),
                       (a = this.showDelete
                         ? a.replace(
-                            "_delete_",
-                            '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
-                          )
+                          "_delete_",
+                          '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
+                        )
                         : a.replace("_delete_", "")),
                       (a = this.showView
                         ? a.replace(
-                            "_view_",
-                            '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Change Dependent Status" onclick="modJs.openDependent(_id_);return false;"></img>'
-                          )
+                          "_view_",
+                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Change Dependent Status" onclick="modJs.openDependent(_id_);return false;"></img>'
+                        )
                         : a.replace("_view_", "")),
                       (a = (a = (a = this.showEdit
                         ? a.replace(
-                            "_edit_",
-                            '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
-                          )
+                          "_edit_",
+                          '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
+                        )
                         : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(
-                        /_BASE_/g,
-                        this.baseUrl
-                      ))
+                          /_BASE_/g,
+                          this.baseUrl
+                        ))
                     );
                   },
                 },
@@ -865,7 +1039,7 @@
                       (void 0 !== e.status &&
                         null !== e.status &&
                         "" !== e.status) ||
-                        (e.status = "Scheduled"),
+                      (e.status = "Scheduled"),
                       e
                     );
                   },
@@ -873,36 +1047,37 @@
                 {
                   key: "getActionButtonsHtml",
                   value: function (e, t) {
+                    console.log(e);
                     var a =
                       '<div style="width:120px;">_edit__delete__clone__view_</div>';
                     return (
                       (a = this.showAddNew
                         ? a.replace(
-                            "_clone_",
-                            '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
-                          )
+                          "_clone_",
+                          '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
+                        )
                         : a.replace("_clone_", "")),
                       (a = this.showDelete
                         ? a.replace(
-                            "_delete_",
-                            '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
-                          )
+                          "_delete_",
+                          '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
+                        )
                         : a.replace("_delete_", "")),
                       (a = this.showView
                         ? a.replace(
-                            "_view_",
-                            '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Change Limit Status" onclick="modJs.openLimit(_id_);return false;"></img>'
-                          )
+                          "_view_",
+                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Change Limit Status" onclick="modJs.openLimit(_id_);return false;"></img>'
+                        )
                         : a.replace("_view_", "")),
                       (a = (a = (a = this.showEdit
                         ? a.replace(
-                            "_edit_",
-                            '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
-                          )
+                          "_edit_",
+                          '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
+                        )
                         : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(
-                        /_BASE_/g,
-                        this.baseUrl
-                      ))
+                          /_BASE_/g,
+                          this.baseUrl
+                        ))
                     );
                   },
                 },
@@ -995,7 +1170,7 @@
                             "Employee",
                             "id",
                             "first_name+middle_name+last_name",
-                            
+
                           ],
                         },
                       ],
@@ -1025,7 +1200,7 @@
                             "Employee",
                             "id",
                             "first_name+middle_name+last_name",
-                            
+
                           ],
                         },
                       ],
@@ -1085,7 +1260,7 @@
                       (void 0 !== e.status &&
                         null !== e.status &&
                         "" !== e.status) ||
-                        (e.status = "Scheduled"),
+                      (e.status = "Scheduled"),
                       e
                     );
                   },
@@ -1093,20 +1268,21 @@
                 {
                   key: "getActionButtonsHtml",
                   value: function (e, t) {
+                    console.log(e);
                     var a =
                       '<div style="width:120px;">_edit__delete__clone_</div>';
                     return (
                       (a = this.showAddNew
                         ? a.replace(
-                            "_clone_",
-                            '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
-                          )
+                          "_clone_",
+                          '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
+                        )
                         : a.replace("_clone_", "")),
                       (a = this.showDelete
                         ? a.replace(
-                            "_delete_",
-                            '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
-                          )
+                          "_delete_",
+                          '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
+                        )
                         : a.replace("_delete_", "")),
                       // (a = this.showView
                       //   ? a.replace(
@@ -1116,17 +1292,17 @@
                       //   : a.replace("_view_", "")),
                       (a = (a = (a = this.showEdit
                         ? a.replace(
-                            "_edit_",
-                            '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
-                          )
+                          "_edit_",
+                          '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
+                        )
                         : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(
-                        /_BASE_/g,
-                        this.baseUrl
-                      ))
+                          /_BASE_/g,
+                          this.baseUrl
+                        ))
                     );
                   },
                 },
-                
+
               ]),
               t
             );
@@ -1154,7 +1330,7 @@
                       "id",
                       "employee",
                       "grade",
-                      "amount",                      
+                      "amount",
                       "consumption",
                       "balance"
                       // "status",
@@ -1209,7 +1385,7 @@
                       //       "Employee",
                       //       "id",
                       //       "first_name+middle_name+last_name",
-                            
+
                       //     ],
                       //   },
                       // ],
@@ -1248,7 +1424,7 @@
                             "Employee",
                             "id",
                             "first_name+middle_name+last_name",
-                            
+
                           ],
                         },
                       ],
@@ -1309,7 +1485,7 @@
                       (void 0 !== e.status &&
                         null !== e.status &&
                         "" !== e.status) ||
-                        (e.status = "Scheduled"),
+                      (e.status = "Scheduled"),
                       e
                     );
                   },
@@ -1317,20 +1493,21 @@
                 {
                   key: "getActionButtonsHtml",
                   value: function (e, t) {
+                    console.log(e);
                     var a =
                       '<div style="width:120px;">_edit__delete__clone_</div>';
                     return (
                       (a = this.showAddNew
                         ? a.replace(
-                            "_clone_",
-                            ''
-                          )
+                          "_clone_",
+                          ''
+                        )
                         : a.replace("_clone_", "")),
                       (a = this.showDelete
                         ? a.replace(
-                            "_delete_",
-                            ''
-                          )
+                          "_delete_",
+                          ''
+                        )
                         : a.replace("_delete_", "")),
                       // (a = this.showView
                       //   ? a.replace(
@@ -1340,13 +1517,13 @@
                       //   : a.replace("_view_", "")),
                       (a = (a = (a = this.showEdit
                         ? a.replace(
-                            "_edit_",
-                            ''
-                          )
+                          "_edit_",
+                          ''
+                        )
                         : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(
-                        /_BASE_/g,
-                        this.baseUrl
-                      ))
+                          /_BASE_/g,
+                          this.baseUrl
+                        ))
                     );
                   },
                 },
@@ -1368,7 +1545,7 @@
                     this.showAddNew = e;
                   },
                 },
-                
+
               ]),
               t
             );
@@ -1442,8 +1619,8 @@
                       : void 0 !== t.status &&
                         null != t.status &&
                         "SUCCESS" !== t.status
-                      ? null
-                      : t
+                        ? null
+                        : t
                     : null;
                 },
               },
@@ -1476,19 +1653,19 @@
           value: !0,
         });
         var l = (function () {
-            function e(e, t) {
-              for (var a = 0; a < t.length; a++) {
-                var l = t[a];
-                (l.enumerable = l.enumerable || !1),
-                  (l.configurable = !0),
-                  "value" in l && (l.writable = !0),
-                  Object.defineProperty(e, l.key, l);
-              }
+          function e(e, t) {
+            for (var a = 0; a < t.length; a++) {
+              var l = t[a];
+              (l.enumerable = l.enumerable || !1),
+                (l.configurable = !0),
+                "value" in l && (l.writable = !0),
+                Object.defineProperty(e, l.key, l);
             }
-            return function (t, a, l) {
-              return a && e(t.prototype, a), l && e(t, l), t;
-            };
-          })(),
+          }
+          return function (t, a, l) {
+            return a && e(t.prototype, a), l && e(t, l), t;
+          };
+        })(),
           i = n(e("./ModuleBase")),
           r = n(e("../api-common/RequestCache"));
 
@@ -1496,8 +1673,8 @@
           return e && e.__esModule
             ? e
             : {
-                default: e,
-              };
+              default: e,
+            };
         }
         var s = (function (e) {
           function t(e, a, l, i) {
@@ -1531,7 +1708,7 @@
               if ("function" != typeof t && null !== t)
                 throw new TypeError(
                   "Super expression must either be null or a function, not " +
-                    typeof t
+                  typeof t
                 );
               (e.prototype = Object.create(t && t.prototype, {
                 constructor: {
@@ -1542,9 +1719,9 @@
                 },
               })),
                 t &&
-                  (Object.setPrototypeOf
-                    ? Object.setPrototypeOf(e, t)
-                    : (e.__proto__ = t));
+                (Object.setPrototypeOf
+                  ? Object.setPrototypeOf(e, t)
+                  : (e.__proto__ = t));
             })(t, i.default),
             l(t, [
               {
@@ -1578,7 +1755,7 @@
                   var t = e;
                   null == t && (t = this.initialFilter),
                     null != t &&
-                      (this.setFilter(t),
+                    (this.setFilter(t),
                       (this.filtersAlreadySet = !0),
                       $("#" + this.getTableName() + "_resetFilters").show(),
                       (this.currentFilterString = this.getFilterString(t)));
@@ -1640,7 +1817,7 @@
                 value: function (e, t) {
                   try {
                     this.closePlainMessage();
-                  } catch (e) {}
+                  } catch (e) { }
                   this.showMessage("Error saving", t),
                     this.trackEvent("addFailed", this.tab, this.table);
                 },
@@ -1686,6 +1863,7 @@
               {
                 key: "get",
                 value: function (e) {
+                  //alert("what happens here?")
                   var t = this;
                   if (this.getRemoteTable())
                     return (
@@ -1754,7 +1932,7 @@
                       i),
                     this.isSubProfileTable() && (r += "&type=sub"),
                     this.remoteTableSkipProfileRestriction() &&
-                      (r += "&skip=1"),
+                    (r += "&skip=1"),
                     r
                   );
                 },
@@ -1791,9 +1969,9 @@
                   }
                   (this.sourceData = t),
                     void 0 !== e.callBack &&
-                      null !== e.callBack &&
-                      ((void 0 !== e.callBackData && null !== e.callBackData) ||
-                        (e.callBackData = []),
+                    null !== e.callBack &&
+                    ((void 0 !== e.callBackData && null !== e.callBackData) ||
+                      (e.callBackData = []),
                       e.callBackData.push(t),
                       e.callBackData.push(a),
                       this.callFunction(e.callBack, e.callBackData)),
@@ -1801,14 +1979,14 @@
                     (void 0 !== e.noRender &&
                       null !== e.noRender &&
                       !0 === e.noRender) ||
-                      (this.createTable(this.getTableName()),
+                    (this.createTable(this.getTableName()),
                       $("#" + this.getTableName() + "Form").hide(),
                       $("#" + this.getTableName()).show());
                 },
               },
               {
                 key: "getFailCallBack",
-                value: function (e, t) {},
+                value: function (e, t) { },
               },
               {
                 key: "getElement",
@@ -1846,18 +2024,18 @@
                     null !== e.callBack &&
                     ((void 0 !== e.callBackData && null !== e.callBackData) ||
                       (e.callBackData = []),
-                    e.callBackData.push(t),
-                    this.callFunction(e.callBack, e.callBackData, this)),
+                      e.callBackData.push(t),
+                      this.callFunction(e.callBack, e.callBackData, this)),
                     (this.currentElement = t),
                     (void 0 !== e.noRender &&
                       null !== e.noRender &&
                       !0 === e.noRender) ||
-                      this.renderForm(t);
+                    this.renderForm(t);
                 },
               },
               {
                 key: "getElementFailCallBack",
-                value: function (e, t) {},
+                value: function (e, t) { },
               },
               {
                 key: "getTableData",
@@ -1879,24 +2057,24 @@
                     i = "";
                   void 0 !== e[3] && null !== e[3] && (l = e[3]),
                     void 0 !== e[4] &&
-                      null !== e[4] &&
-                      (i = JSON.stringify(e[4]));
+                    null !== e[4] &&
+                    (i = JSON.stringify(e[4]));
                   var r = this.requestCache.getKey(this.moduleRelativeURL, {
-                      t: e[0],
-                      key: e[1],
-                      value: e[2],
-                      method: l,
-                      methodParams: i,
-                      a: "getFieldValues",
-                    }),
+                    t: e[0],
+                    key: e[1],
+                    value: e[2],
+                    method: l,
+                    methodParams: i,
+                    a: "getFieldValues",
+                  }),
                     n = this.requestCache.getData(r);
                   null != n &&
                     "SUCCESS" === n.status &&
                     (t.callBackData.push(n.data),
-                    null !== t.callBackSuccess &&
+                      null !== t.callBackSuccess &&
                       void 0 !== t.callBackSuccess &&
                       t.callBackData.push(t.callBackSuccess),
-                    a.callFunction(t.callBack, t.callBackData));
+                      a.callFunction(t.callBack, t.callBackData));
                   var s = function e(l) {
                     if ("SUCCESS" === l.status) {
                       a.requestCache.setData(this.success.key, l);
@@ -1904,8 +2082,8 @@
                       (i.callBackData = [t.callBackData[0]]),
                         i.callBackData.push(l.data),
                         null !== i.callBackSuccess &&
-                          void 0 !== i.callBackSuccess &&
-                          i.callBackData.push(t.callBackSuccess),
+                        void 0 !== i.callBackSuccess &&
+                        i.callBackData.push(t.callBackSuccess),
                         a.callFunction(i.callBack, i.callBackData);
                     } else
                       "Access violation" === l.message &&
@@ -1933,7 +2111,7 @@
                 value: function (e) {
                   try {
                     localStorage.clear();
-                  } catch (e) {}
+                  } catch (e) { }
                   $.post(
                     this.moduleRelativeURL,
                     {
@@ -1954,46 +2132,46 @@
                   (a = this.fixJSON(a)),
                     i
                       ? $.post(
-                          this.moduleRelativeURL,
-                          {
-                            t: this.table,
-                            a: "ca",
-                            sa: e,
-                            mod: t,
-                            req: a,
-                          },
-                          function (e) {
-                            "SUCCESS" === e.status
-                              ? (l.callBackData.push(e.data),
-                                r.callFunction(
-                                  l.callBackSuccess,
-                                  l.callBackData
-                                ))
-                              : (l.callBackData.push(e.data),
-                                r.callFunction(l.callBackFail, l.callBackData));
-                          },
-                          "json"
-                        )
+                        this.moduleRelativeURL,
+                        {
+                          t: this.table,
+                          a: "ca",
+                          sa: e,
+                          mod: t,
+                          req: a,
+                        },
+                        function (e) {
+                          "SUCCESS" === e.status
+                            ? (l.callBackData.push(e.data),
+                              r.callFunction(
+                                l.callBackSuccess,
+                                l.callBackData
+                              ))
+                            : (l.callBackData.push(e.data),
+                              r.callFunction(l.callBackFail, l.callBackData));
+                        },
+                        "json"
+                      )
                       : $.getJSON(
-                          this.moduleRelativeURL,
-                          {
-                            t: this.table,
-                            a: "ca",
-                            sa: e,
-                            mod: t,
-                            req: a,
-                          },
-                          function (e) {
-                            "SUCCESS" === e.status
-                              ? (l.callBackData.push(e.data),
-                                r.callFunction(
-                                  l.callBackSuccess,
-                                  l.callBackData
-                                ))
-                              : (l.callBackData.push(e.data),
-                                r.callFunction(l.callBackFail, l.callBackData));
-                          }
-                        );
+                        this.moduleRelativeURL,
+                        {
+                          t: this.table,
+                          a: "ca",
+                          sa: e,
+                          mod: t,
+                          req: a,
+                        },
+                        function (e) {
+                          "SUCCESS" === e.status
+                            ? (l.callBackData.push(e.data),
+                              r.callFunction(
+                                l.callBackSuccess,
+                                l.callBackData
+                              ))
+                            : (l.callBackData.push(e.data),
+                              r.callFunction(l.callBackFail, l.callBackData));
+                        }
+                      );
                 },
               },
               {
@@ -2067,40 +2245,40 @@
           };
         })();
         var i = {
-            float: function (e) {
-              return !(null == e || !e.match(/^[-+]?[0-9]+(\.[0-9]+)?$/));
-            },
-            number: function (e) {
-              return !(null == e || !e.match(/^[0-9]+$/));
-            },
-            numberOrEmpty: function (e) {
-              if ("" === e) return !0;
-              return !(null == e || !e.match(/^[0-9]+$/));
-            },
-            email: function (e) {
-              return (
-                null != e &&
-                /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(
-                  e
-                )
-              );
-            },
-            emailOrEmpty: function (e) {
-              if ("" === e) return !0;
-              return (
-                null != e &&
-                /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(
-                  e
-                )
-              );
-            },
-            username: function (e) {
-              return null != e && /^[a-zA-Z0-9.-]+$/.test(e);
-            },
-            input: function (e) {
-              return null != e && e.length > 0;
-            },
+          float: function (e) {
+            return !(null == e || !e.match(/^[-+]?[0-9]+(\.[0-9]+)?$/));
           },
+          number: function (e) {
+            return !(null == e || !e.match(/^[0-9]+$/));
+          },
+          numberOrEmpty: function (e) {
+            if ("" === e) return !0;
+            return !(null == e || !e.match(/^[0-9]+$/));
+          },
+          email: function (e) {
+            return (
+              null != e &&
+              /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(
+                e
+              )
+            );
+          },
+          emailOrEmpty: function (e) {
+            if ("" === e) return !0;
+            return (
+              null != e &&
+              /^\s*[\w\-+_]+(\.[\w\-+_]+)*@[\w\-+_]+\.[\w\-+_]+(\.[\w\-+_]+)*\s*$/.test(
+                e
+              )
+            );
+          },
+          username: function (e) {
+            return null != e && /^[a-zA-Z0-9.-]+$/.test(e);
+          },
+          input: function (e) {
+            return null != e && e.length > 0;
+          },
+        },
           r = (function () {
             function e(t, a, l) {
               !(function (e, t) {
@@ -2164,20 +2342,20 @@
                         void 0 === i || null == i || "" === i
                           ? $("#" + this.formId + " #help_err_" + a).html(i)
                           : void 0 === l || null == l || "" === l
-                          ? $("#" + this.formId + " #help_err_" + a).html(
+                            ? $("#" + this.formId + " #help_err_" + a).html(
                               "Required"
                             )
-                          : "float" === l || "number" === l
-                          ? $("#" + this.formId + " #help_err_" + a).html(
-                              "Number required"
-                            )
-                          : "email" === l
-                          ? $("#" + this.formId + " #help_err_" + a).html(
-                              "Email required"
-                            )
-                          : $("#" + this.formId + " #help_err_" + a).html(
-                              "Required"
-                            );
+                            : "float" === l || "number" === l
+                              ? $("#" + this.formId + " #help_err_" + a).html(
+                                "Number required"
+                              )
+                              : "email" === l
+                                ? $("#" + this.formId + " #help_err_" + a).html(
+                                  "Email required"
+                                )
+                                : $("#" + this.formId + " #help_err_" + a).html(
+                                  "Required"
+                                );
                     },
                   },
                   {
@@ -2185,21 +2363,21 @@
                     value: function () {
                       this.formError &&
                         (void 0 !== this.settings.thirdPartyPopup &&
-                        null != this.settings.thirdPartyPopup
+                          null != this.settings.thirdPartyPopup
                           ? this.settings.thirdPartyPopup.alert()
                           : !0 === this.settings.ShowPopup &&
-                            (void 0 !== this.tempOptions.popupTop &&
+                          (void 0 !== this.tempOptions.popupTop &&
                             null != this.tempOptions.popupTop
-                              ? this.alert(
-                                  "Errors Found",
-                                  this.errorMessages,
-                                  this.tempOptions.popupTop
-                                )
-                              : this.alert(
-                                  "Errors Found",
-                                  this.errorMessages,
-                                  -1
-                                )));
+                            ? this.alert(
+                              "Errors Found",
+                              this.errorMessages,
+                              this.tempOptions.popupTop
+                            )
+                            : this.alert(
+                              "Errors Found",
+                              this.errorMessages,
+                              -1
+                            )));
                     },
                   },
                   {
@@ -2211,86 +2389,86 @@
                         (this.errorMessages = ""),
                         (this.formObject = {});
                       var a = function (e) {
-                          var a = null,
-                            l = e.attr("name");
-                          !1 !== t.settings.LabelErrorClass &&
-                            $("label[for='" + l + "']").removeClass(
-                              t.settings.LabelErrorClass
-                            );
-                          var i = e.attr("id"),
-                            r = e.attr("type");
-                          if (
-                            e.hasClass("select2-focusser") ||
-                            e.hasClass("select2-input")
-                          )
-                            return !0;
-                          if (jQuery.inArray(r, t.inputTypes) >= 0) {
-                            if (e.hasClass("uploadInput")) a = e.attr("val");
-                            else if ("radio" === r || "checkbox" === r)
-                              a = $("input[name='" + l + "']:checked").val();
-                            else if (e.hasClass("select2Field"))
-                              a =
-                                null !=
-                                  $("#" + t.formId + " #" + i).select2(
-                                    "data"
-                                  ) &&
-                                void 0 !==
-                                  $("#" + t.formId + " #" + i).select2("data")
-                                  ? $("#" + t.formId + " #" + i).select2("data")
-                                      .id
-                                  : "";
-                            else if (e.hasClass("select2Multi"))
-                              if (
-                                null !=
-                                  $("#" + t.formId + " #" + i).select2(
-                                    "data"
-                                  ) &&
-                                void 0 !==
-                                  $("#" + t.formId + " #" + i).select2("data")
-                              ) {
-                                var n = $("#" + t.formId + " #" + i).select2(
+                        var a = null,
+                          l = e.attr("name");
+                        !1 !== t.settings.LabelErrorClass &&
+                          $("label[for='" + l + "']").removeClass(
+                            t.settings.LabelErrorClass
+                          );
+                        var i = e.attr("id"),
+                          r = e.attr("type");
+                        if (
+                          e.hasClass("select2-focusser") ||
+                          e.hasClass("select2-input")
+                        )
+                          return !0;
+                        if (jQuery.inArray(r, t.inputTypes) >= 0) {
+                          if (e.hasClass("uploadInput")) a = e.attr("val");
+                          else if ("radio" === r || "checkbox" === r)
+                            a = $("input[name='" + l + "']:checked").val();
+                          else if (e.hasClass("select2Field"))
+                            a =
+                              null !=
+                                $("#" + t.formId + " #" + i).select2(
                                   "data"
-                                );
-                                a = [];
-                                for (var s = 0; s < n.length; s++)
-                                  a.push(n[s].id);
-                                a = JSON.stringify(a);
-                              } else a = "";
-                            else
-                              a = e.hasClass("signatureField")
+                                ) &&
+                                void 0 !==
+                                $("#" + t.formId + " #" + i).select2("data")
+                                ? $("#" + t.formId + " #" + i).select2("data")
+                                  .id
+                                : "";
+                          else if (e.hasClass("select2Multi"))
+                            if (
+                              null !=
+                              $("#" + t.formId + " #" + i).select2(
+                                "data"
+                              ) &&
+                              void 0 !==
+                              $("#" + t.formId + " #" + i).select2("data")
+                            ) {
+                              var n = $("#" + t.formId + " #" + i).select2(
+                                "data"
+                              );
+                              a = [];
+                              for (var s = 0; s < n.length; s++)
+                                a.push(n[s].id);
+                              a = JSON.stringify(a);
+                            } else a = "";
+                          else
+                            a = e.hasClass("signatureField")
+                              ? $("#" + t.formId + " #" + i)
+                                .data("signaturePad")
+                                .isEmpty()
+                                ? ""
+                                : $("#" + i)
+                                  .data("signaturePad")
+                                  .toDataURL()
+                              : e.hasClass("simplemde")
                                 ? $("#" + t.formId + " #" + i)
-                                    .data("signaturePad")
-                                    .isEmpty()
-                                  ? ""
-                                  : $("#" + i)
-                                      .data("signaturePad")
-                                      .toDataURL()
-                                : e.hasClass("simplemde")
-                                ? $("#" + t.formId + " #" + i)
-                                    .data("simplemde")
-                                    .value()
+                                  .data("simplemde")
+                                  .value()
                                 : e.hasClass("tinymce")
-                                ? tinyMCE.get(i).getContent({
+                                  ? tinyMCE.get(i).getContent({
                                     format: "raw",
                                   })
-                                : e.val();
-                            var o = e.attr("validation"),
-                              u = !1;
-                            void 0 !== o &&
+                                  : e.val();
+                          var o = e.attr("validation"),
+                            u = !1;
+                          void 0 !== o &&
                             null != o &&
                             void 0 !== t.validator[o] &&
                             null != t.validator[o]
-                              ? (u = t.validator[o](a))
-                              : ((u =
-                                  !t.validateAll ||
-                                  (void 0 !== o && null != o && "none" === o) ||
-                                  t.validator.input(a)),
-                                (t.formObject[i] = a)),
-                              u
-                                ? (t.clearError(e, null), (t.formObject[i] = a))
-                                : t.addError(e, null);
-                          }
-                        },
+                            ? (u = t.validator[o](a))
+                            : ((u =
+                              !t.validateAll ||
+                              (void 0 !== o && null != o && "none" === o) ||
+                              t.validator.input(a)),
+                              (t.formObject[i] = a)),
+                            u
+                              ? (t.clearError(e, null), (t.formObject[i] = a))
+                              : t.addError(e, null);
+                        }
+                      },
                         l = $("#" + this.formId + " :input");
                       return (
                         l.each(function () {
@@ -2372,8 +2550,8 @@
             (l = r) && l.__esModule
               ? l
               : {
-                  default: l,
-                };
+                default: l,
+              };
         var s = (function () {
           function e() {
             !(function (e, t) {
@@ -2415,7 +2593,7 @@
             i(e, [
               {
                 key: "init",
-                value: function (e, t, a, l) {},
+                value: function (e, t, a, l) { },
               },
               {
                 key: "setNoJSONRequests",
@@ -2556,7 +2734,7 @@
                     }
                   void 0 === this.translations[e] &&
                     ((t[e] = e),
-                    localStorage.setItem("terms", JSON.stringify(t)));
+                      localStorage.setItem("terms", JSON.stringify(t)));
                 },
               },
               {
@@ -2572,9 +2750,9 @@
                     void 0 === t || null == t
                       ? this.ga.push(["_trackEvent", this.instanceId, e])
                       : void 0 === a || null == a
-                      ? this.ga.push(["_trackEvent", this.instanceId, e, t])
-                      : this.ga.push(["_trackEvent", this.instanceId, e, t, a]);
-                  } catch (e) {}
+                        ? this.ga.push(["_trackEvent", this.instanceId, e, t])
+                        : this.ga.push(["_trackEvent", this.instanceId, e, t, a]);
+                  } catch (e) { }
                 },
               },
               {
@@ -2701,17 +2879,17 @@
                     (this.fieldMasterDataKeys[e] = !0),
                     null != a && a(),
                     null !== this.fieldMasterDataCallback &&
-                    void 0 !== this.fieldMasterDataCallback &&
-                    this.isAllLoaded(this.fieldMasterDataKeys) &&
-                    null !== this.fieldMasterDataCallbackData &&
-                    void 0 !== this.fieldMasterDataCallbackData
+                      void 0 !== this.fieldMasterDataCallback &&
+                      this.isAllLoaded(this.fieldMasterDataKeys) &&
+                      null !== this.fieldMasterDataCallbackData &&
+                      void 0 !== this.fieldMasterDataCallbackData
                       ? this.fieldMasterDataCallback(
-                          this.fieldMasterDataCallbackData
-                        )
+                        this.fieldMasterDataCallbackData
+                      )
                       : null !== this.fieldMasterDataCallback &&
-                        void 0 !== this.fieldMasterDataCallback &&
-                        this.isAllLoaded(this.fieldMasterDataKeys) &&
-                        this.fieldMasterDataCallback();
+                      void 0 !== this.fieldMasterDataCallback &&
+                      this.isAllLoaded(this.fieldMasterDataKeys) &&
+                      this.fieldMasterDataCallback();
                 },
               },
               {
@@ -2859,7 +3037,7 @@
                 value: function (e) {
                   null != this.currentView &&
                     ((this.previousView = this.currentView),
-                    $("#" + this.currentView).hide()),
+                      $("#" + this.currentView).hide()),
                     $("#" + e).show(),
                     (this.currentView = e),
                     this.moveToTop();
@@ -2873,7 +3051,7 @@
               },
               {
                 key: "moveToTop",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "callFunction",
@@ -2901,12 +3079,12 @@
                   var e = "";
                   return (
                     this.getShowAddNew() &&
-                      (e =
-                        '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
-                        this.gt(this.getAddNewLabel()) +
-                        ' <i class="fa fa-plus"></i></button>'),
+                    (e =
+                      '<button onclick="modJs.renderForm();return false;" class="btn btn-small btn-primary">' +
+                      this.gt(this.getAddNewLabel()) +
+                      ' <i class="fa fa-plus"></i></button>'),
                     null != this.getFilters() &&
-                      ("" !== e && (e += "&nbsp;&nbsp;"),
+                    ("" !== e && (e += "&nbsp;&nbsp;"),
                       (e +=
                         '<button onclick="modJs.showFilters();return false;" class="btn btn-small btn-primary">' +
                         this.gt("Filter") +
@@ -2914,23 +3092,23 @@
                       (e += "&nbsp;&nbsp;"),
                       this.filtersAlreadySet
                         ? (e +=
-                            '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default">__filterString__ <i class="fa fa-times"></i></button>')
                         : (e +=
-                            '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
+                          '<button id="__id___resetFilters" onclick="modJs.resetFilters();return false;" class="btn btn-small btn-default" style="display:none;">__filterString__ <i class="fa fa-times"></i></button>')),
                     (e = e.replace(/__id__/g, this.getTableName())),
                     "" !==
-                      (e =
-                        "" !== this.currentFilterString &&
+                    (e =
+                      "" !== this.currentFilterString &&
                         null != this.currentFilterString
-                          ? e.replace(
-                              /__filterString__/g,
-                              this.currentFilterString
-                            )
-                          : e.replace(/__filterString__/g, "Reset Filters")) &&
-                      (e =
-                        '<div class="row"><div class="col-xs-12">' +
-                        e +
-                        "</div></div>"),
+                        ? e.replace(
+                          /__filterString__/g,
+                          this.currentFilterString
+                        )
+                        : e.replace(/__filterString__/g, "Reset Filters")) &&
+                    (e =
+                      '<div class="row"><div class="col-xs-12">' +
+                      e +
+                      "</div></div>"),
                     e
                   );
                 },
@@ -2967,7 +3145,7 @@
                     if (
                       (this.showActionButtons() &&
                         t.push(this.getActionButtonHeader()),
-                      this.showActionButtons())
+                        this.showActionButtons())
                     )
                       for (var i = 0; i < l.length; i++)
                         l[i].push(this.getActionButtonsHtml(l[i][0], l[i]));
@@ -2976,23 +3154,23 @@
                       this.getTableTopButtonHtml() +
                       this.getTableHTMLTemplate();
                     var n = $(
-                        "#" + e + " .dataTables_paginate .active a"
-                      ).html(),
+                      "#" + e + " .dataTables_paginate .active a"
+                    ).html(),
                       s = 0;
                     void 0 !== n &&
                       null != n &&
                       (s = 15 * parseInt(n, 10) - 15),
                       $("#" + e).html(r);
                     var o = {
-                        oLanguage: {
-                          sLengthMenu: "_MENU_ records per page",
-                        },
-                        aaData: l,
-                        aoColumns: t,
-                        bSort: this.isSortable(),
-                        iDisplayLength: 15,
-                        iDisplayStart: s,
+                      oLanguage: {
+                        sLengthMenu: "_MENU_ records per page",
                       },
+                      aaData: l,
+                      aoColumns: t,
+                      bSort: this.isSortable(),
+                      iDisplayLength: 15,
+                      iDisplayStart: s,
+                    },
                       u = this.getCustomTableParams();
                     $.extend(o, u),
                       $("#" + e + " #grid").dataTable(o),
@@ -3021,7 +3199,7 @@
                     sTitle: "",
                     sClass: "center",
                   }),
-                  t))
+                    t))
                     t[a].sTitle = this.gt(t[a].sTitle);
                   var l;
                   l =
@@ -3068,19 +3246,19 @@
               },
               {
                 key: "getHeaders",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "getDataMapping",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "getFormFields",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "getTableData",
-                value: function () {},
+                value: function () { },
               },
               {
                 key: "getFilters",
@@ -3157,9 +3335,9 @@
                 key: "showMessage",
                 value: function (e, t) {
                   var a =
-                      arguments.length > 2 && void 0 !== arguments[2]
-                        ? arguments[2]
-                        : null,
+                    arguments.length > 2 && void 0 !== arguments[2]
+                      ? arguments[2]
+                      : null,
                     l =
                       arguments.length > 3 && void 0 !== arguments[3]
                         ? arguments[3]
@@ -3177,14 +3355,14 @@
                       : this.renderModel("message", e, t),
                     null != a
                       ? ($(n).modal({
-                          show: !0,
-                        }),
+                        show: !0,
+                      }),
                         $(n).on("hidden.bs.modal", function () {
                           a.apply(r, l), $(".modal-backdrop").remove();
                         }))
                       : $(n).modal({
-                          backdrop: "static",
-                        });
+                        backdrop: "static",
+                      });
                 },
               },
               {
@@ -3199,14 +3377,14 @@
                       : this.renderModelFromDom("message", e, t),
                     null != a
                       ? ($(n).modal({
-                          show: !0,
-                        }),
+                        show: !0,
+                      }),
                         $(n).on("hidden.bs.modal", function () {
                           a.apply(r, l), $(".modal-backdrop").remove();
                         }))
                       : $(n).modal({
-                          backdrop: "static",
-                        });
+                        backdrop: "static",
+                      });
                 },
               },
               {
@@ -3256,6 +3434,7 @@
                   alert('submit');return false;
                 }
 
+<<<<<<< HEAD
               },
               {
                 key: "save",
@@ -3300,6 +3479,84 @@
                 //     location.reload();
                 // }
                   console.log(e);
+=======
+                  if (
+                    confirm(
+                      "Do you want to submit for approval now?"
+                    )
+                  ) {
+                    // {alert('great'); return false;}
+
+                    $("#id").val(e);
+
+                    // alert(e); return false;
+                    var profile = this.getCurrentProfile();
+
+                    let currentprofile = JSON.stringify(profile.id);
+
+                    //    alert(currentprofile);
+
+                    $("#employee_Id").val(e);
+                    //  alert(e);
+                    //  $("#" + this.itemNameLower + "medical").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), $("#" + this.itemNameLower + "_employee_Id").val(e), this.statusChangeId = e
+                    // alert(e);
+
+                    this.renderModel(""),
+                      $("#staffmedical").modal("show"),
+                      $("#employee_Id").val;
+
+                    let id_ = e;
+
+                    $.ajax({
+                      url: "../../../../rokel_hrm/core/viewStaffMedical.php",
+                      type: "post",
+                      contentType: "application/json",
+                      dataType: "json",
+                      async: false,
+                      data: JSON.stringify({
+                        id: id_,
+                        currentUser: currentprofile,
+                      }),
+                      success: function (data, textStatus, jQxhr) {
+
+
+                        if (data.responseCode == "000") {
+                          // alert("here"); return false;
+
+                          let medical_summary = data.data;
+
+                          // alert(JSON.stringify(medical_summary)); return false;
+                          // <h5><b>Payroll: &nbsp;</b> ${payroll_summary.payroll}</h5>
+
+                          var theDiv =
+                            document.getElementById("medicalModelBody");
+                          theDiv.innerHTML = `
+                        <head>
+                        <style>
+                        table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        }
+                        tr:nth-child(even) {
+                            background-color: #dddddd;
+                          }
+                        th, td {
+                        padding: 5px;
+                        text-align: left;    
+                        }
+                        </style
+                        </head>
+                       
+                        `;
+                          // theDiv.appendChild(content);
+                        } else {
+                          alert("Unavailable Data...");
+                        }
+                      },
+                    });
+                  }
+
+>>>>>>> 9d58bb488dc1c76242ec5355f33e466d025042c6
                   var a = new n.default(this.getTableName() + "_submit", !0, {
                     ShowPopup: !1,
                     LabelErrorClass: "error",
@@ -3392,8 +3649,8 @@
                     if (e.hasOwnProperty(u)) {
                       if (
                         ((n = ""),
-                        (s = null),
-                        "select" === (i = this.getMetaFieldValues(u, o)).type ||
+                          (s = null),
+                          "select" === (i = this.getMetaFieldValues(u, o)).type ||
                           "select2" === i.type)
                       ) {
                         if (
@@ -3403,18 +3660,18 @@
                           (a = i["remote-source"]),
                             "NULL" === e[u]
                               ? (n =
-                                  void 0 !== i["null-label"] &&
+                                void 0 !== i["null-label"] &&
                                   null != i["null-label"]
-                                    ? i["null-label"]
-                                    : "Not Selected")
+                                  ? i["null-label"]
+                                  : "Not Selected")
                               : (s = n =
-                                  this.fieldMasterData[
-                                    a[0] + "_" + a[1] + "_" + a[2]
-                                  ][e[u]]);
+                                this.fieldMasterData[
+                                a[0] + "_" + a[1] + "_" + a[2]
+                                ][e[u]]);
                         else if (((l = i.source[0]), "NULL" === e[u]))
                           n =
                             void 0 !== i["null-label"] &&
-                            null != i["null-label"]
+                              null != i["null-label"]
                               ? i["null-label"]
                               : "Not Selected";
                         else
@@ -3427,7 +3684,7 @@
                         r = [];
                         try {
                           r = JSON.parse(e[u]);
-                        } catch (e) {}
+                        } catch (e) { }
                         "" !== (n = r.join(",")) && (s = n);
                       } else "" !== (n = e[u]) && (s = n);
                       null != s &&
@@ -3457,9 +3714,9 @@
                 value: function (e) {
                   for (
                     var t = this.templates.filterTemplate,
-                      a = "",
-                      l = this.getFilters(),
-                      i = 0;
+                    a = "",
+                    l = this.getFilters(),
+                    i = 0;
                     i < l.length;
                     i++
                   ) {
@@ -3524,22 +3781,22 @@
                       e.preventDefault(), e.stopPropagation();
                       try {
                         modJs.filterQuery();
-                      } catch (e) {}
+                      } catch (e) { }
                       return !1;
                     }),
                     void 0 !== this.filter &&
-                      null != this.filter &&
-                      "" !== this.filter &&
-                      this.fillForm(
-                        this.filter,
-                        "#" + this.getTableName() + "_filter",
-                        this.getFilters()
-                      );
+                    null != this.filter &&
+                    "" !== this.filter &&
+                    this.fillForm(
+                      this.filter,
+                      "#" + this.getTableName() + "_filter",
+                      this.getFilters()
+                    );
                 },
               },
               {
                 key: "preRenderForm",
-                value: function (e) {},
+                value: function (e) { },
               },
               {
                 key: "renderForm",
@@ -3549,9 +3806,9 @@
                     this.preRenderForm(e);
                   for (
                     var a = this.templates.formTemplate,
-                      l = "",
-                      i = this.getFormFields(),
-                      r = 0;
+                    l = "",
+                    i = this.getFormFields(),
+                    r = 0;
                     r < i.length;
                     r++
                   ) {
@@ -3573,8 +3830,8 @@
                     u = this.generateRandom(14);
                   this.showFormOnPopup
                     ? (o = $(
-                        '<div class="reviewBlock popupForm" data-content="Form"></div>'
-                      )).attr("id", u)
+                      '<div class="reviewBlock popupForm" data-content="Form"></div>'
+                    )).attr("id", u)
                     : (o = $("#" + this.getTableName() + "Form")),
                     o.html(a),
                     o.find(".datefield").datepicker({
@@ -3628,22 +3885,23 @@
                           return (
                             null !=
                               $(this).data("modJs").saveSuccessItemCallback &&
-                            void 0 !==
+                              void 0 !==
                               $(this).data("modJs").saveSuccessItemCallback
                               ? $(this)
-                                  .data("modJs")
-                                  .save(
-                                    $(this)
-                                      .data("modJs")
-                                      .retriveItemsAfterSave(),
-                                    $(this).data("modJs")
-                                      .saveSuccessItemCallback
-                                  )
+                                .data("modJs")
+                                .save(
+                                  $(this)
+                                    .data("modJs")
+                                    .retriveItemsAfterSave(),
+                                  $(this).data("modJs")
+                                    .saveSuccessItemCallback
+                                )
                               : $(this).data("modJs").save(),
                             !1
                           );
                           // alert('Great');return false;
                         })),
+<<<<<<< HEAD
                         !1 === this.showSave
                       ? o.find(".submitBtn").remove()
                       : (o.find(".submitBtn").off(),
@@ -3698,6 +3956,37 @@
                       });
                     }),
                     this.showFormOnPopup)
+=======
+                      !1 === this.showCancel
+                        ? o.find(".cancelBtn").remove()
+                        : (o.find(".cancelBtn").off(),
+                          o.find(".cancelBtn").data("modJs", this),
+                          o.find(".cancelBtn").on("click", function () {
+                            return $(this).data("modJs").cancel(), !1;
+                          })),
+                      o.find("[mask]").each(function () {
+                        $(this).inputmask($(this).attr("mask"));
+                      }),
+                      o.find("[datemask]").each(function () {
+                        $(this).inputmask({
+                          mask: "y-1-2",
+                          placeholder: "YYYY-MM-DD",
+                          leapday: "-02-29",
+                          separator: "-",
+                          alias: "yyyy/mm/dd",
+                        });
+                      }),
+                      o.find("[datetimemask]").each(function () {
+                        $(this).inputmask("datetime", {
+                          mask: "y-2-1 h:s:00",
+                          placeholder: "YYYY-MM-DD hh:mm:ss",
+                          leapday: "-02-29",
+                          separator: "-",
+                          alias: "yyyy/mm/dd",
+                        });
+                      }),
+                      this.showFormOnPopup)
+>>>>>>> 9d58bb488dc1c76242ec5355f33e466d025042c6
                   ) {
                     this.showMessage("Edit", "", null, null, !0),
                       $("#plainMessageModel .modal-body").html(""),
@@ -3731,7 +4020,7 @@
                 value: function (e, t) {
                   (null != t && void 0 !== t) || (t = this.getFormFields()),
                     (null != e && void 0 !== e && "" !== e) ||
-                      (e = "#" + this.getTableName() + "Form");
+                    (e = "#" + this.getTableName() + "Form");
                   for (var a = 0; a < t.length; a++)
                     ("text" !== t[a][1].type && "textarea" !== t[a][1].type) ||
                       (void 0 !== t[a][1].default &&
@@ -3747,7 +4036,7 @@
               },
               {
                 key: "postRenderForm",
-                value: function (e, t) {},
+                value: function (e, t) { },
               },
               {
                 key: "dataGroupToHtml",
@@ -3769,17 +4058,17 @@
                     u++
                   ) {
                     for (var c in ((i = a[u]),
-                    void 0 !== t[1]["pre-format-function"] &&
+                      void 0 !== t[1]["pre-format-function"] &&
                       null != t[1]["pre-format-function"] &&
                       (i = t[1]["pre-format-function"].apply(this, [i])),
-                    (l = (l = (l = (l = s).replace(
-                      "#_delete_#",
-                      '<a id="#_id_#_delete" onclick="modJs.deleteDataGroupItem(\'#_id_#\');return false;" type="button" style="float:right;margin-right:3px;" tooltip="Delete"><li class="fa fa-times"></li></a>'
-                    )).replace(
-                      "#_edit_#",
-                      '<a id="#_id_#_edit" onclick="modJs.editDataGroupItem(\'#_id_#\');return false;" type="button" style="float:right;margin-right:5px;" tooltip="Edit"><li class="fa fa-edit"></li></a>'
-                    )).replace(/#_id_#/g, i.id)),
-                    i))
+                      (l = (l = (l = (l = s).replace(
+                        "#_delete_#",
+                        '<a id="#_id_#_delete" onclick="modJs.deleteDataGroupItem(\'#_id_#\');return false;" type="button" style="float:right;margin-right:3px;" tooltip="Delete"><li class="fa fa-times"></li></a>'
+                      )).replace(
+                        "#_edit_#",
+                        '<a id="#_id_#_edit" onclick="modJs.editDataGroupItem(\'#_id_#\');return false;" type="button" style="float:right;margin-right:5px;" tooltip="Edit"><li class="fa fa-edit"></li></a>'
+                      )).replace(/#_id_#/g, i.id)),
+                      i))
                       void 0 !== (n = i[c]) &&
                         null != n &&
                         "string" == typeof n &&
@@ -3860,38 +4149,38 @@
                     this.showDomElement("Add " + e[1].label, s, null, null, !0),
                     void 0 !== t && null != t
                       ? this.fillForm(
-                          t,
-                          "#" + this.getTableName() + "_field_" + e[0],
-                          e[1].form
-                        )
+                        t,
+                        "#" + this.getTableName() + "_field_" + e[0],
+                        e[1].form
+                      )
                       : this.setDefaultValues(
-                          "#" + this.getTableName() + "_field_" + e[0],
-                          e[1].form
-                        ),
+                        "#" + this.getTableName() + "_field_" + e[0],
+                        e[1].form
+                      ),
                     $(".groupAddBtn").off(),
                     void 0 !== t && null != t && void 0 !== t.id
                       ? $(".groupAddBtn").on("click", function (e) {
-                          e.preventDefault(), e.stopPropagation();
-                          try {
-                            modJs.editDataGroup();
-                          } catch (e) {
-                            console.log(
-                              "Error editing data group: " + e.message
-                            );
-                          }
-                          return !1;
-                        })
+                        e.preventDefault(), e.stopPropagation();
+                        try {
+                          modJs.editDataGroup();
+                        } catch (e) {
+                          console.log(
+                            "Error editing data group: " + e.message
+                          );
+                        }
+                        return !1;
+                      })
                       : $(".groupAddBtn").on("click", function (e) {
-                          e.preventDefault(), e.stopPropagation();
-                          try {
-                            modJs.addDataGroup();
-                          } catch (e) {
-                            console.log(
-                              "Error adding data group: " + e.message
-                            );
-                          }
-                          return !1;
-                        });
+                        e.preventDefault(), e.stopPropagation();
+                        try {
+                          modJs.addDataGroup();
+                        } catch (e) {
+                          console.log(
+                            "Error adding data group: " + e.message
+                          );
+                        }
+                        return !1;
+                      });
                 },
               },
               {
@@ -3926,17 +4215,17 @@
                         return (
                           $(
                             "#" +
-                              this.getTableName() +
-                              "_field_" +
-                              e[0] +
-                              "_error"
+                            this.getTableName() +
+                            "_field_" +
+                            e[0] +
+                            "_error"
                           ).html(t.message),
                           $(
                             "#" +
-                              this.getTableName() +
-                              "_field_" +
-                              e[0] +
-                              "_error"
+                            this.getTableName() +
+                            "_field_" +
+                            e[0] +
+                            "_error"
                           ).show(),
                           !1
                         );
@@ -3949,8 +4238,8 @@
                       e[0] + "_" + this.dataGroupGetNextAutoIncrementId(r)),
                       r.push(l),
                       void 0 !== e[1]["sort-function"] &&
-                        null != e[1]["sort-function"] &&
-                        r.sort(e[1]["sort-function"]),
+                      null != e[1]["sort-function"] &&
+                      r.sort(e[1]["sort-function"]),
                       (i = JSON.stringify(r));
                     var s = this.dataGroupToHtml(i, e);
                     $("#" + e[0] + "_div").html(""),
@@ -3979,7 +4268,7 @@
                       (i += l[r].length + 1) > t
                         ? ((a += l[r] + "<br/>"), (i = 0))
                         : (a += l[r] + " ");
-                  } catch (e) {}
+                  } catch (e) { }
                   return a;
                 },
               },
@@ -4067,17 +4356,17 @@
                         return (
                           $(
                             "#" +
-                              this.getTableName() +
-                              "_field_" +
-                              e[0] +
-                              "_error"
+                            this.getTableName() +
+                            "_field_" +
+                            e[0] +
+                            "_error"
                           ).html(i.message),
                           $(
                             "#" +
-                              this.getTableName() +
-                              "_field_" +
-                              e[0] +
-                              "_error"
+                            this.getTableName() +
+                            "_field_" +
+                            e[0] +
+                            "_error"
                           ).show(),
                           !1
                         );
@@ -4097,8 +4386,8 @@
                       (l.id = o.id),
                         (c[u] = l),
                         void 0 !== e[1]["sort-function"] &&
-                          null != e[1]["sort-function"] &&
-                          c.sort(e[1]["sort-function"]),
+                        null != e[1]["sort-function"] &&
+                        c.sort(e[1]["sort-function"]),
                         (r = JSON.stringify(c)),
                         $("#" + e[0]).val(r);
                       var f = this.dataGroupToHtml(r, e);
@@ -4124,10 +4413,10 @@
                 value: function (e) {
                   for (
                     var t = e.substring(0, e.lastIndexOf("_")),
-                      a = $("#" + t).val(),
-                      l = JSON.parse(a),
-                      i = {},
-                      r = 0;
+                    a = $("#" + t).val(),
+                    l = JSON.parse(a),
+                    i = {},
+                    r = 0;
                     r < l.length;
                     r++
                   ) {
@@ -4156,10 +4445,10 @@
                 value: function (e) {
                   for (
                     var t = e.substring(0, e.lastIndexOf("_")),
-                      a = $("#" + t).val(),
-                      l = JSON.parse(a),
-                      i = [],
-                      r = 0;
+                    a = $("#" + t).val(),
+                    l = JSON.parse(a),
+                    i = [],
+                    r = 0;
                     r < l.length;
                     r++
                   ) {
@@ -4180,7 +4469,7 @@
                   var l = void 0;
                   (null != a && void 0 !== a) || (a = this.getFormFields()),
                     (null != t && void 0 !== t && "" !== t) ||
-                      (t = "#" + this.getTableName() + "Form");
+                    (t = "#" + this.getTableName() + "Form");
                   for (var i = 0; i < a.length; i++)
                     if ("date" === a[i][1].type)
                       "0000-00-00" !== e[a[i][0]] &&
@@ -4198,7 +4487,7 @@
                           "setValue",
                           e[a[i][0]]
                         ),
-                        $(t + " #" + a[i][0]).val(e[a[i][0]]));
+                          $(t + " #" + a[i][0]).val(e[a[i][0]]));
                     else if (
                       "datetime" === a[i][1].type ||
                       "time" === a[i][1].type
@@ -4244,7 +4533,7 @@
                       else
                         try {
                           l = l.replace(/(?:\r\n|\r|\n)/g, "<br />");
-                        } catch (e) {}
+                        } catch (e) { }
                       if (
                         void 0 !== a[i][1].formatter &&
                         a[i][1].formatter &&
@@ -4252,19 +4541,19 @@
                       )
                         try {
                           l = a[i][1].formatter(l);
-                        } catch (e) {}
+                        } catch (e) { }
                       $(t + " #" + a[i][0]).html(l);
                     } else if ("fileupload" === a[i][1].type)
                       null != e[a[i][0]] &&
                         void 0 !== e[a[i][0]] &&
                         "" !== e[a[i][0]] &&
                         ($(t + " #" + a[i][0]).html(e[a[i][0]]),
-                        $(t + " #" + a[i][0]).attr("val", e[a[i][0]]),
-                        $(t + " #" + a[i][0]).show(),
-                        $(t + " #" + a[i][0] + "_download").show(),
-                        $(t + " #" + a[i][0] + "_remove").show()),
+                          $(t + " #" + a[i][0]).attr("val", e[a[i][0]]),
+                          $(t + " #" + a[i][0]).show(),
+                          $(t + " #" + a[i][0] + "_download").show(),
+                          $(t + " #" + a[i][0] + "_remove").show()),
                         !0 === a[i][1].readonly &&
-                          $(t + " #" + a[i][0] + "_upload").remove();
+                        $(t + " #" + a[i][0] + "_upload").remove();
                     else if ("select" === a[i][1].type)
                       (void 0 !== e[a[i][0]] &&
                         null != e[a[i][0]] &&
@@ -4290,7 +4579,7 @@
                       )
                         try {
                           u = JSON.parse(e[a[i][0]]);
-                        } catch (e) {}
+                        } catch (e) { }
                       $(t + " #" + a[i][0]).select2("val", u);
                       var c = $(t + " #" + a[i][0])
                         .find(".select2-choices")
@@ -4309,20 +4598,20 @@
                             a[i],
                             $(t + " #" + a[i][0] + "_div_inner")
                           );
-                      } catch (e) {}
+                      } catch (e) { }
                     else
                       "signature" === a[i][1].type
                         ? ("" === e[a[i][0]] &&
-                            void 0 === e[a[i][0]] &&
-                            null == e[a[i][0]]) ||
-                          $(t + " #" + a[i][0])
-                            .data("signaturePad")
-                            .fromDataURL(e[a[i][0]])
+                          void 0 === e[a[i][0]] &&
+                          null == e[a[i][0]]) ||
+                        $(t + " #" + a[i][0])
+                          .data("signaturePad")
+                          .fromDataURL(e[a[i][0]])
                         : "simplemde" === a[i][1].type
-                        ? $(t + " #" + a[i][0])
+                          ? $(t + " #" + a[i][0])
                             .data("simplemde")
                             .value(e[a[i][0]])
-                        : $(t + " #" + a[i][0]).val(e[a[i][0]]);
+                          : $(t + " #" + a[i][0]).val(e[a[i][0]]);
                 },
               },
               {
@@ -4344,7 +4633,7 @@
                   var a = this.fieldTemplates[e[1].type];
                   if (
                     ((e[1].label = this.gt(e[1].label)),
-                    "none" !== e[1].validation &&
+                      "none" !== e[1].validation &&
                       "emailOrEmpty" !== e[1].validation &&
                       "numberOrEmpty" !== e[1].validation &&
                       "placeholder" !== e[1].type &&
@@ -4376,7 +4665,7 @@
                         /_label_/g,
                         e[1].label
                       )),
-                      void 0 !== e[1].source && null != e[1].source)
+                        void 0 !== e[1].source && null != e[1].source)
                     )
                       a = a.replace(
                         "_options_",
@@ -4438,21 +4727,21 @@
                         void 0 !== e[1].filetypes && null != e[1].filetypes
                           ? a.replace(/_filetypes_/g, e[1].filetypes)
                           : a.replace(/_filetypes_/g, "all")).replace(
-                        /_rand_/g,
-                        this.generateRandom(14)
-                      ));
+                            /_rand_/g,
+                            this.generateRandom(14)
+                          ));
                   } else
                     "datagroup" === e[1].type
                       ? (a = (a = a.replace(/_id_/g, e[0])).replace(
-                          /_label_/g,
-                          e[1].label
-                        ))
+                        /_label_/g,
+                        e[1].label
+                      ))
                       : "signature" === e[1].type
-                      ? (a = (a = a.replace(/_id_/g, e[0])).replace(
+                        ? (a = (a = a.replace(/_id_/g, e[0])).replace(
                           /_label_/g,
                           e[1].label
                         ))
-                      : ("tinymce" !== e[1].type &&
+                        : ("tinymce" !== e[1].type &&
                           "simplemde" !== e[1].type) ||
                         (a = (a = a.replace(/_id_/g, e[0])).replace(
                           /_label_/g,
@@ -4461,29 +4750,29 @@
                   return (
                     (a =
                       void 0 !== e[1].validation &&
-                      null != e[1].validation &&
-                      "" !== e[1].validation
+                        null != e[1].validation &&
+                        "" !== e[1].validation
                         ? a.replace(
-                            /_validation_/g,
-                            'validation="' + e[1].validation + '"'
-                          )
+                          /_validation_/g,
+                          'validation="' + e[1].validation + '"'
+                        )
                         : a.replace(/_validation_/g, "")),
                     (a =
                       void 0 !== e[1].help && null !== e[1].help
                         ? (a = a.replace(/_helpline_/g, e[1].help)).replace(
-                            /_hidden_class_help_/g,
-                            ""
-                          )
+                          /_hidden_class_help_/g,
+                          ""
+                        )
                         : (a = a.replace(/_helpline_/g, "")).replace(
-                            /_hidden_class_help_/g,
-                            "hide"
-                          )),
+                          /_hidden_class_help_/g,
+                          "hide"
+                        )),
                     (a =
                       void 0 !== e[1].placeholder && null !== e[1].placeholder
                         ? a.replace(
-                            /_placeholder_/g,
-                            'placeholder="' + e[1].placeholder + '"'
-                          )
+                          /_placeholder_/g,
+                          'placeholder="' + e[1].placeholder + '"'
+                        )
                         : a.replace(/_placeholder_/g, "")),
                     (a =
                       void 0 !== e[1].mask && null !== e[1].mask
@@ -4501,9 +4790,9 @@
                     !0 === t[1]["allow-null"] &&
                     (void 0 !== t[1]["null-label"] && null != t[1]["null-label"]
                       ? (a +=
-                          '<option value="NULL">' +
-                          this.gt(t[1]["null-label"]) +
-                          "</option>")
+                        '<option value="NULL">' +
+                        this.gt(t[1]["null-label"]) +
+                        "</option>")
                       : (a += '<option value="NULL">Select</option>'));
                   var l = [];
                   for (var i in e) l.push(e[i]);
@@ -4530,9 +4819,9 @@
                   !0 === t[1]["allow-null"] &&
                     (void 0 !== t[1]["null-label"] && null != t[1]["null-label"]
                       ? (a +=
-                          '<option value="NULL">' +
-                          this.gt(t[1]["null-label"]) +
-                          "</option>")
+                        '<option value="NULL">' +
+                        this.gt(t[1]["null-label"]) +
+                        "</option>")
                       : (a += '<option value="NULL">Select</option>'));
                   var l = [];
                   for (var i in e) l.push([i, e[i]]);
@@ -4639,6 +4928,7 @@
               {
                 key: "openStatus",
                 value: function (e) {
+                  
                   var profile = this.getCurrentProfile();
 
                   let currentprofile = JSON.stringify(profile.id);
@@ -4771,7 +5061,278 @@
                   });
                 },
               },
+              {
+                key: "openStatusSubmitted",
+                value: function (e) {
 
+                  var profile = this.getCurrentProfile();
+
+                  let currentprofile = JSON.stringify(profile.id);
+
+                  //    alert(currentprofile);
+
+                  $("#employee_Id").val(e);
+                  //  alert(e);
+                  //  $("#" + this.itemNameLower + "medical").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), $("#" + this.itemNameLower + "_employee_Id").val(e), this.statusChangeId = e
+                  // alert(e);
+
+                  this.renderModel(""),
+                    $("#submittedstaffmedical").modal("show"),
+                    $("#employee_Id").val;
+
+                  let id_ = e;
+
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/viewStaffMedical.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({
+                      id: id_,
+                      currentUser: currentprofile,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+                      // let approval = data.data1
+                      // if(data.data1 == 'Approved'){
+                      //     alert(JSON.stringify(approval));
+                      // }else if(data.data1 == 'Rejected'){
+                      //     alert(JSON.stringify(approval));
+                      // }
+
+                      if (data.responseCode == "000") {
+                        // alert("here"); return false;
+
+                        let medical_summary = data.data;
+
+                        // alert(JSON.stringify(medical_summary)); return false;
+                        // <h5><b>Payroll: &nbsp;</b> ${payroll_summary.payroll}</h5>
+
+                        var theDiv =
+                          document.getElementById("medicalModelBodySubmitted");
+                        theDiv.innerHTML = `
+                        <head>
+                        <style>
+                        table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        }
+                        tr:nth-child(even) {
+                            background-color: #dddddd;
+                          }
+                        th, td {
+                        padding: 5px;
+                        text-align: left;    
+                        }
+                        </style>
+                        </head>
+                        <body>
+                        
+                        <table style="width:100%">
+                        <th style = "color:black; background-color: #8ea9dc;"> ITEM </th>
+                        <th style = "color:black; background-color: #8ea9dc;"> VALUE </th>
+                        <tr>
+                            <th>Employee</th>
+                            <td>${medical_summary.employee}</td>
+                        </tr>
+                        <tr>
+                            <th>Admission Date</th>
+                            <td>${medical_summary.from_date}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Discharged Date</th>
+                            <td>${medical_summary.to_date}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Admission Type</th>
+                            <td>${medical_summary.admission_type}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Type of Illness</th>
+                            <td>${medical_summary.type_of_illness}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Medication Given</th>
+                            <td>${medical_summary.medication_given}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Cost of Treatment (SLL)</th>
+                            <td>${medical_summary.cost}</td>                            
+                        </tr>
+                    
+                        <tr>
+                            <th>Health Facility Name </th>
+                            <td>${medical_summary.hospital}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Physician's Name</th>
+                            <td>${medical_summary.physician}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>${medical_summary.status}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Approved Date</th>
+                            <td>${medical_summary.approved_date}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Approved By</th>
+                            <td>${medical_summary.approved_by}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Posting Reference</th>
+                            <td>${medical_summary.reference}</td>                            
+                        </tr>                        
+
+                        </table>
+
+                        </body>
+                        `;
+                        // theDiv.appendChild(content);
+                      } else {
+                        alert("Unavailable Data...");
+                      }
+                    },
+                  });
+                },
+              },
+              {
+                key: "openStatus1",
+                value: function (e) {
+
+                  var profile = this.getCurrentProfile();
+
+                  let currentprofile = JSON.stringify(profile.id);
+
+                  //    alert(currentprofile);
+
+                  $("#employee_Id").val(e);
+                  //  alert(e);
+                  //  $("#" + this.itemNameLower + "medical").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), $("#" + this.itemNameLower + "_employee_Id").val(e), this.statusChangeId = e
+                  // alert(e);
+
+                  this.renderModel(""),
+                    $("#appstaffmedical").modal("show"),
+                    $("#employee_Id").val;
+
+                  let id_ = e;
+
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/viewStaffMedical.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({
+                      id: id_,
+                      currentUser: currentprofile,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+                      // let approval = data.data1
+                      // if(data.data1 == 'Approved'){
+                      //     alert(JSON.stringify(approval));
+                      // }else if(data.data1 == 'Rejected'){
+                      //     alert(JSON.stringify(approval));
+                      // }
+
+                      if (data.responseCode == "000") {
+                        // alert("here"); return false;
+
+                        let medical_summary = data.data;
+
+                        // alert(JSON.stringify(medical_summary)); return false;
+                        // <h5><b>Payroll: &nbsp;</b> ${payroll_summary.payroll}</h5>
+
+                        var theDiv =
+                          document.getElementById("medicalModelBody1");
+                        theDiv.innerHTML = `
+                        <head>
+                        <style>
+                        table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        }
+                        tr:nth-child(even) {
+                            background-color: #dddddd;
+                          }
+                        th, td {
+                        padding: 5px;
+                        text-align: left;    
+                        }
+                        </style>
+                        </head>
+                        <body>
+                        
+                        <table style="width:100%">
+                        <th style = "color:black; background-color: #8ea9dc;"> ITEM </th>
+                        <th style = "color:black; background-color: #8ea9dc;"> VALUE </th>
+                        <tr>
+                            <th>Employee</th>
+                            <td>${medical_summary.employee}</td>
+                        </tr>
+                        <tr>
+                            <th>Admission Date</th>
+                            <td>${medical_summary.from_date}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Discharged Date</th>
+                            <td>${medical_summary.to_date}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Admission Type</th>
+                            <td>${medical_summary.admission_type}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Type of Illness</th>
+                            <td>${medical_summary.type_of_illness}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Medication Given</th>
+                            <td>${medical_summary.medication_given}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Cost of Treatment (SLL)</th>
+                            <td>${medical_summary.cost}</td>                            
+                        </tr>
+                    
+                        <tr>
+                            <th>Health Facility Name </th>
+                            <td>${medical_summary.hospital}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Physician's Name</th>
+                            <td>${medical_summary.physician}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>${medical_summary.status}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Approved Date</th>
+                            <td>${medical_summary.approved_date}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Approved By</th>
+                            <td>${medical_summary.approved_by}</td>                            
+                        </tr>
+                        <tr>
+                            <th>Posting Reference</th>
+                            <td>${medical_summary.reference}</td>                            
+                        </tr>                        
+
+                        </table>
+
+                        </body>
+                        `;
+                        // theDiv.appendChild(content);
+                      } else {
+                        alert("Unavailable Data...");
+                      }
+                    },
+                  });
+                },
+              },
               {
                 key: "approve",
                 value: function (e) {
@@ -5294,6 +5855,8 @@
               {
                 key: "closeDialog",
                 value: function () {
+                  $("#submittedstaffmedical").modal("hide");
+                  $("#appstaffmedical").modal("hide");
                   $("#staffmedical").modal("hide");
                   $("#dependentmedical").modal("hide");
                   $("#medicalLimits").modal("hide");
@@ -5308,36 +5871,37 @@
               {
                 key: "getActionButtonsHtml",
                 value: function (e, t) {
+                  console.log(e);
                   var a =
                     '<div style="width:120px;">_edit__delete__clone__view_</div>';
                   return (
                     (a = this.showAddNew
                       ? a.replace(
-                          "_clone_",
-                          '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
-                        )
+                        "_clone_",
+                        '<img class="tableActionButton" src="_BASE_images/clone.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img>'
+                      )
                       : a.replace("_clone_", "")),
                     (a = this.showDelete
                       ? a.replace(
-                          "_delete_",
-                          '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
-                        )
+                        "_delete_",
+                        '<img class="tableActionButton" src="_BASE_images/delete.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="Delete" onclick="modJs.deleteRow(_id_);return false;"></img>'
+                      )
                       : a.replace("_delete_", "")),
                     (a = this.showView
                       ? a.replace(
-                          "_view_",
-                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatus(_id_);return false;"></img>'
-                        )
+                        "_view_",
+                        '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatus(_id_);return false;"></img>'
+                      )
                       : a.replace("_view_", "")),
                     (a = (a = (a = this.showEdit
                       ? a.replace(
-                          "_edit_",
-                          '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
-                        )
+                        "_edit_",
+                        '<img class="tableActionButton" src="_BASE_images/edit.png" style="cursor:pointer;" rel="tooltip" title="Edit" onclick="modJs.edit(_id_);return false;"></img>'
+                      )
                       : a.replace("_edit_", "")).replace(/_id_/g, e)).replace(
-                      /_BASE_/g,
-                      this.baseUrl
-                    ))
+                        /_BASE_/g,
+                        this.baseUrl
+                      ))
                   );
                 },
               },
@@ -5353,14 +5917,14 @@
                   var t = {};
                   return (
                     "Approved" == e ||
-                      ("Pending" == e
-                        ? ((t.Approved = "Approved"), (t.Rejected = "Rejected"))
-                        : "Rejected" == e ||
-                          "Cancelled" == e ||
-                          "Processing" == e ||
-                          ((t["Cancellation Requested"] =
-                            "Cancellation Requested"),
-                          (t.Cancelled = "Cancelled"))),
+                    ("Pending" == e
+                      ? ((t.Approved = "Approved"), (t.Rejected = "Rejected"))
+                      : "Rejected" == e ||
+                      "Cancelled" == e ||
+                      "Processing" == e ||
+                      ((t["Cancellation Requested"] =
+                        "Cancellation Requested"),
+                        (t.Cancelled = "Cancelled"))),
                     t
                   );
                 },
@@ -5376,10 +5940,10 @@
                 value: function (e) {
                   for (
                     var t = new Date(),
-                      a =
-                        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-                      l = "",
-                      i = e;
+                    a =
+                      "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+                    l = "",
+                    i = e;
                     i > 0;
                     --i
                   )
@@ -5394,13 +5958,13 @@
                     l = "";
                   return (
                     a.value.lastIndexOf(".") > 0 &&
-                      (l = a.value.substring(
-                        a.value.lastIndexOf(".") + 1,
-                        a.value.length
-                      )),
+                    (l = a.value.substring(
+                      a.value.lastIndexOf(".") + 1,
+                      a.value.length
+                    )),
                     (l = l.toLowerCase()),
                     !(t.split(",").indexOf(l) < 0) ||
-                      ((a.value = ""),
+                    ((a.value = ""),
                       this.showMessage(
                         "File Type Error",
                         "Selected file type is not supported"
@@ -5496,7 +6060,7 @@
                         if (2 !== a.length) continue;
                         if (void 0 === a[1].type || null == a[1].type) continue;
                         this.customFields.push(a);
-                      } catch (e) {}
+                      } catch (e) { }
                 },
               },
               {

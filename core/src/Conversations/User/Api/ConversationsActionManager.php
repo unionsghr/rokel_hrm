@@ -1,4 +1,5 @@
 <?php
+
 namespace Conversations\User\Api;
 
 use cebe\markdown\MarkdownExtra;
@@ -8,6 +9,7 @@ use Classes\IceConstants;
 use Classes\IceResponse;
 use Classes\SubActionManager;
 use Conversations\Common\Model\Conversation;
+use Conversations\Common\Model\Announcement;
 use Employees\Common\Model\Employee;
 use ForceUTF8\Encoding;
 use Stripe\Error\Base;
@@ -21,7 +23,9 @@ class ConversationsActionManager extends SubActionManager
         $conversation->attachment = isset($req->attachment) ? $req->attachment : null;
         $conversation->type = $req->type;
         $conversation->employee = $this->getCurrentUserProfileId();
+        $conversation->sender = isset($req->sender) ? $req->sender : null;
         $conversation->target = isset($req->target) ? $req->target : null;
+        $conversation->department = json_encode(isset($req->department) ? $req->department : null);
         $conversation->timeint = time();
 
         $currentEmployeeTimeZone = BaseService::getInstance()->getCurrentEmployeeTimeZone();
@@ -42,9 +46,9 @@ class ConversationsActionManager extends SubActionManager
             $employee = new Employee();
             $employee->Load('id = ?', array($conversation->employee));
 
-            $notificationMsg = $employee->first_name." ".$employee->middle_name." ".$employee->last_name
-                ." posted a new Announcement on "
-                .date("F j, Y, g:i a", strtotime($conversation->created));
+            $notificationMsg = $employee->first_name . " " . $employee->middle_name . " " . $employee->last_name
+                . " posted a new Announcement on "
+                . date("F j, Y, g:i a", strtotime($conversation->created));
             $this->baseService->notificationManager->addNotificationToAll(
                 $notificationMsg,
                 '{"type":"url","url":"g=modules&n=announcements&m=module_Discussions"}',
@@ -64,15 +68,20 @@ class ConversationsActionManager extends SubActionManager
     }
 
 
-    public function getConversations($req)
+    public function getAnnouncements($req)
     {
 
         $start = $req->start;
         $limit = $req->limit;
         $top = $req->top;
         $type = $req->type;
+        $employee = isset($req->sender) ? $req->sender : null;
 
-        $conversation = new Conversation();
+        // $conversation = new Conversation();
+
+        $conversation = new Announcement();
+        //print_r($conversation);
+
         if (!$top) {
             if ($start === 0) {
                 $conversations = $conversation->Find(
@@ -108,13 +117,67 @@ class ConversationsActionManager extends SubActionManager
         return new IceResponse(IceResponse::SUCCESS, $enrichedConversations);
     }
 
+    public function getConversations($req)
+    {
+        
+        $start = $req->start;
+        $limit = $req->limit;
+        $top = $req->top;
+        $type = $req->type;
+        $employee = isset($req->sender) ? $req->sender : null;
+
+        $conversation = new Conversation();
+
+        if (!$top) {
+            if ($start === 0) {
+                $conversations = $conversation->Find(
+                    "type = ? and target = ? or sender = ? order by timeint desc limit ?",
+                    array('Message', $employee, $employee, $limit + 1)
+                );
+            } else {
+                $conversations = $conversation->Find(
+                    "type = ? and target = ? or sender = ? and timeint < ? order by timeint desc limit ?",
+                    array('Message', $employee, $employee, $start, $limit + 1)
+                );
+            }
+        } else {
+            // print($start);
+            if ($start === 0) {
+                $conversations = $conversation->Find(
+                    "type = ? and target = ? or sender = ? order by timeint desc limit ?",
+                    array('Message', $employee, $employee, $limit + 1)
+                );
+            } else {
+
+                $conversations = $conversation->Find(
+                    "type = ? and (target = ? or sender = ?) and timeint > ? order by timeint limit ?",
+                    array($type, $employee, $employee, $start, $limit + 1)
+                );
+            }
+        }
+
+
+        $enrichedConversations = [];
+        foreach ($conversations as $conversation) {
+            $enrichedConversations[] = $this->enrichConversation($conversation);
+        }
+
+        return new IceResponse(IceResponse::SUCCESS, $enrichedConversations);
+    }
+
     protected function enrichConversation($conversation)
     {
         $employee = new Employee();
+        $employee1 = new Employee();
+        $employee2 = new Employee();
         $employee->Load('id = ?', array($conversation->employee));
+        $employee1->Load('id = ?', array($conversation->target));
+        $employee2->Load('id = ?', array($conversation->sender));
         $employee = FileService::getInstance()->updateSmallProfileImage($employee);
 
-        $conversation->employeeName = $employee->first_name.' '.$employee->last_name;
+        $conversation->employeeName = $employee->first_name . ' ' . $employee->last_name;
+        $conversation->targetName = $employee1->first_name . ' ' . $employee1->last_name;
+        $conversation->senderName = $employee2->first_name . ' ' . $employee2->last_name;
         $conversation->employeeImage = $employee->image;
 
         $conversation->date = date("F j, Y, g:i a", strtotime($conversation->created));

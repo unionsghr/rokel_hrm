@@ -1,0 +1,30 @@
+<div id="obj_#_id_#" class="img-push conversation" style="display:none;">
+    <div class="box-header">
+        <div class="user-block">
+            <img class="img-circle" src="#_employeeImage_#" alt="">
+            <span class="username">
+
+
+
+                <span class="description2 time">From </span><a href="#">#_employeeName_#</a><span class="description2 time">To </span>
+                <a href="#">#_target_#</a><span class="description2 time">#_date_#</span>
+
+
+            </span>
+        </div>
+        <div class="box-tools">
+            <button type="button" class="btn btn-box-tool delete-button" onclick="modJs.deleteConversation('#_id_#'); return false;" style="display:none;"><i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="conversation-body conversation-small">
+        #_message_#
+    </div>
+
+    <button class="btn btn-mini btn-default conversation-expand" onclick="modJs.toggleConversationSize(#_id_#);return false;" style="margin: 20px 50px;display:none;"><i class="fa fa-expand"></i>&nbsp;&nbsp;&nbsp;<span class="conversation-expand-label">
+            <t>Show More</t>
+        </span></button>
+    <div>
+        #_attachment_#
+    </div>
+</div>
