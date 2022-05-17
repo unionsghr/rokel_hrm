@@ -1,19 +1,19 @@
 <?php
 $moduleName = 'medical';
 $moduleGroup = 'admin';
-define('MODULE_PATH',dirname(__FILE__));
-include APP_BASE_PATH.'header.php';
-include APP_BASE_PATH.'modulejslibs.inc.php';
+define('MODULE_PATH', dirname(__FILE__));
+include APP_BASE_PATH . 'header.php';
+include APP_BASE_PATH . 'modulejslibs.inc.php';
 $user = \Classes\BaseService::getInstance()->getCurrentUser();
 ?><div class="span9">
 
 	<ul class="nav nav-tabs" id="modTab" style="margin-bottom:0px;margin-left:5px;border-bottom: none;">
-		<li class="active"><a id="tabStaffMedical" href="#tabPageStaffMedical"><?=t('Staff Medical')?></a></li>
-		<li class=""><a id="tabDependentMedical" href="#tabPageDependentMedical"><?=t('Dependents Medical')?></a></li>
-        <li class=""><a id="tabMedicalLimit" href="#tabPageMedicalLimit"><?=t('Medical Limits Setup')?></a></li>
-		<li class=""><a id="tabWorkInjuries" href="#tabPageWorkInjuries"><?=t(' Injuries')?></a></li>
-		<li class=""><a id="tabMedEnquiry" href="#tabPageMedEnquiry"><?=t('Staff Medical Enquiry')?></a></li>
-    </ul>
+		<li class="active"><a id="tabStaffMedical" href="#tabPageStaffMedical"><?= t('Staff Medical') ?></a></li>
+		<li class=""><a id="tabDependentMedical" href="#tabPageDependentMedical"><?= t('Dependents Medical') ?></a></li>
+		<li class=""><a id="tabMedicalLimit" href="#tabPageMedicalLimit"><?= t('Medical Limits Setup') ?></a></li>
+		<li class=""><a id="tabWorkInjuries" href="#tabPageWorkInjuries"><?= t(' Injuries') ?></a></li>
+		<li class=""><a id="tabMedEnquiry" href="#tabPageMedEnquiry"><?= t('Staff Medical Enquiry') ?></a></li>
+	</ul>
 
 	<div class="tab-content">
 		<div class="tab-pane active" id="tabPageStaffMedical">
@@ -60,20 +60,26 @@ $user = \Classes\BaseService::getInstance()->getCurrentUser();
 
 </div>
 <script>
-var modJsList = new Array();
+	var modJsList = new Array();
 
-modJsList['tabStaffMedical'] = new StaffMedicalAdapter('StaffMedical','StaffMedical');
-modJsList['tabStaffMedical'].setRemoteTable(true);
-modJsList['tabDependentMedical'] = new DependentMedicalAdapter('DependentMedical','DependentMedical');
-modJsList['tabDependentMedical'].setRemoteTable(true);
-modJsList['tabMedicalLimit'] = new MedicalLimitAdapter('MedicalLimit','MedicalLimit');
-modJsList['tabMedicalLimit'].setRemoteTable(true);
-modJsList['tabWorkInjuries'] = new WorkInjuriesAdapter('WorkInjuries','WorkInjuries');
-modJsList['tabWorkInjuries'].setRemoteTable(true);
-modJsList['tabMedEnquiry'] = new MedEnquiryAdapter('MedEnquiry','MedEnquiry');
-modJsList['tabMedEnquiry'].setRemoteTable(true);
+	modJsList['tabStaffMedical'] = new StaffMedicalAdapter('StaffMedical', 'StaffMedical');
+	modJsList['tabStaffMedical'].setRemoteTable(true);
+	modJsList['tabDependentMedical'] = new DependentMedicalAdapter('DependentMedical', 'DependentMedical');
+	modJsList['tabDependentMedical'].setRemoteTable(true);
+	modJsList['tabMedicalLimit'] = new MedicalLimitAdapter('MedicalLimit', 'MedicalLimit');
+	modJsList['tabMedicalLimit'].setRemoteTable(true);
+	modJsList['tabWorkInjuries'] = new WorkInjuriesAdapter('WorkInjuries', 'WorkInjuries');
+	modJsList['tabWorkInjuries'].setRemoteTable(true);
+	modJsList['tabMedEnquiry'] = new MedEnquiryAdapter('MedEnquiry', 'MedEnquiry');
+	modJsList['tabMedEnquiry'].setRemoteTable(true);
 
-var modJs = modJsList['tabStaffMedical'];
-
+	var modJs = modJsList['tabStaffMedical'];
 </script>
-<?php include APP_BASE_PATH.'footer.php';?>
+<!-- <script>
+	$(document).ready(function() {
+		const list = document.getElementsByTagName("td");
+		console.log(list.innerHTML);
+		// alert("here....")
+	});
+</script> -->
+<?php include APP_BASE_PATH . 'footer.php'; ?>

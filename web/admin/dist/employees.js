@@ -3066,7 +3066,7 @@
                 {
                   key: "view",
                   value: function (e) {
-                    alert(e);
+                    // alert(e);
                     this.currentId = e;
                     // alert(e);return false;
                     var profile = this.getCurrentProfile();

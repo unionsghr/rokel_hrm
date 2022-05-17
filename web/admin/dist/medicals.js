@@ -290,166 +290,23 @@
                         validation: "none",
                       },
                     ],
-                    [
-                      "attachment2",
-                      {
-                        label: "Other Attachment 1",
-                        type: "fileupload",
-                        validation: "none",
-                      },
-                    ],
-                    [
-                      "attachment3",
-                      {
-                        label: "Other Attachment 2",
-                        type: "fileupload",
-                        validation: "none",
-                      },
-<<<<<<< HEAD
-                    ];
-                  },
-                },
-                {
-                  key: "getFormFields",
-                  value: function () {
-                    return [
-                      [
-                        "id",
-                        {
-                          label: "ID",
-                          type: "hidden",
-                        },
-                      ],
-                      [
-                        "employee",
-                        {
-                          label: "Employee",
-                          type: "select2",
-                          "null-label": "Select",
-                          sort: "none",
-                          "allow-null": false,
-                          "remote-source": [
-                            "Employee",
-                            "id",
-                            "first_name+middle_name+last_name",
-                            "getActiveSubordinateEmployees",
-                          ],
-                        },
-                      ],
-                      [
-                        "from_date",
-                        {
-                          label: "Admission Date",
-                          type: "date",
-                          validation: "",
-                        },
-                      ],
-                      [
-                        "to_date",
-                        {
-                          label: "Discharged Date",
-                          type: "date",
-                          validation: "",
-                        },
-                      ],
-                      [
-                        "admission_type",
-                        {
-                          label: "Admission Type",
-                          type: "select",
-                          validation: "",
-                          "allow-null": true,
-                          "null-label": "Select",
-                          source: [
-                            ["In-Patient", "In-Patient"],
-                            ["Out-Patient", "Out-Patient"],
-                          ],
-                        },
-                      ],
-                      [
-                        "type_of_illness",
-                        {
-                          label: "Illness Type",
-                          type: "text",
-                          validation: "",
-                        },
-                      ],
-                      [
-                        "medication_given",
-                        {
-                          label: "Medication",
-                          type: "text",
-                          validation: "",
-                        },
-                      ],
-                      [
-                        "hospital",
-                        {
-                          label: "Hospital/Facility Name",
-                          type: "text",
-                          validation: "none",
-                        },
-                      ],
-                      [
-                        "physician",
-                        {
-                          label: "Physician/Attendant",
-                          type: "text",
-                          validation: "none",
-                        },
-                      ],
-                      [
-                        "cost",
-                        {
-                          label: "Cost (SLL)",
-                          type: "text",
-                          validation: "",
-                        },
-                      ],
-                      // [
-                      //   "status",
-                      //   {
-                      //     label: "Status",
-                      //     type: "select",
-                      //     validation: "",
-                      //     "allow-null": false,
-                      //     "null-label": "Select",
-                      //     source: [
-                      //       ["Draft", "Draft"],
-                      //       ["Submitted", "Submit"],
-                      //     ],
-                      //   },
-                      // ],
-                      [
-                        "attachment1",
-                        {
-                          label: "Attach Document",
-                          type: "fileupload",
-                          validation: "none",
-                        },
-                      ],
-                      [
-                        "attachment2",
-                        {
-                          label: "Other Attachment 1",
-                          type: "fileupload",
-                          validation: "none",
-                        },
-                      ],
-                      [
-                        "attachment3",
-                        {
-                          label: "Other Attachment 2",
-                          type: "fileupload",
-                          validation: "none",
-                        },
-                      ],
-                    ];
-                  },
-=======
-                    ],
+                    // [
+                    //   "attachment2",
+                    //   {
+                    //     label: "Other Attachment 1",
+                    //     type: "fileupload",
+                    //     validation: "none",
+                    //   },
+                    // ],
+                    // [
+                    //   "attachment3",
+                    //   {
+                    //     label: "Other Attachment 2",
+                    //     type: "fileupload",
+                    //     validation: "none",
+                    //   },
+                    // ],
                   ];
->>>>>>> 9d58bb488dc1c76242ec5355f33e466d025042c6
                 },
               },
               {
@@ -1782,6 +1639,9 @@
               {
                 key: "add",
                 value: function (e, t, a, l) {
+                  console.log(e.cost);
+                  // $val = number_format(e.cost, 2);
+                  // e.cost = $val;
                   var i = this;
                   null == a && (a = !0),
                     $(e).attr("a", "add"),
@@ -1863,7 +1723,7 @@
               {
                 key: "get",
                 value: function (e) {
-                  //alert("what happens here?")
+                  // 
                   var t = this;
                   if (this.getRemoteTable())
                     return (
@@ -1958,6 +1818,7 @@
               {
                 key: "getSuccessCallBack",
                 value: function (e, t) {
+                  // console.log(e);
                   for (
                     var a = [], l = this.getDataMapping(), i = 0;
                     i < t.length;
@@ -3434,7 +3295,6 @@
                   alert('submit');return false;
                 }
 
-<<<<<<< HEAD
               },
               {
                 key: "save",
@@ -3479,7 +3339,6 @@
                 //     location.reload();
                 // }
                   console.log(e);
-=======
                   if (
                     confirm(
                       "Do you want to submit for approval now?"
@@ -3556,7 +3415,6 @@
                     });
                   }
 
->>>>>>> 9d58bb488dc1c76242ec5355f33e466d025042c6
                   var a = new n.default(this.getTableName() + "_submit", !0, {
                     ShowPopup: !1,
                     LabelErrorClass: "error",
@@ -3901,62 +3759,6 @@
                           );
                           // alert('Great');return false;
                         })),
-<<<<<<< HEAD
-                        !1 === this.showSave
-                      ? o.find(".submitBtn").remove()
-                      : (o.find(".submitBtn").off(),
-                        o.find(".submitBtn").data("modJs", this),
-                        o.find(".submitBtn").on("click", function () {
-                          // alert('Great');return false;
-                          return (
-                            null !=
-                              $(this).data("modJs").saveSuccessItemCallback &&
-                            void 0 !==
-                              $(this).data("modJs").saveSuccessItemCallback
-                              ? $(this)
-                                  .data("modJs")
-                                  .save(
-                                    $(this)
-                                      .data("modJs")
-                                      .retriveItemsAfterSave(),
-                                    $(this).data("modJs")
-                                      .saveSuccessItemCallback
-                                  )
-                              : $(this).data("modJs").save(),
-                            !1
-                          );
-                          // alert('Great');return false;
-                        })),
-                    !1 === this.showCancel
-                      ? o.find(".cancelBtn").remove()
-                      : (o.find(".cancelBtn").off(),
-                        o.find(".cancelBtn").data("modJs", this),
-                        o.find(".cancelBtn").on("click", function () {
-                          return $(this).data("modJs").cancel(), !1;
-                        })),
-                    o.find("[mask]").each(function () {
-                      $(this).inputmask($(this).attr("mask"));
-                    }),
-                    o.find("[datemask]").each(function () {
-                      $(this).inputmask({
-                        mask: "y-1-2",
-                        placeholder: "YYYY-MM-DD",
-                        leapday: "-02-29",
-                        separator: "-",
-                        alias: "yyyy/mm/dd",
-                      });
-                    }),
-                    o.find("[datetimemask]").each(function () {
-                      $(this).inputmask("datetime", {
-                        mask: "y-2-1 h:s:00",
-                        placeholder: "YYYY-MM-DD hh:mm:ss",
-                        leapday: "-02-29",
-                        separator: "-",
-                        alias: "yyyy/mm/dd",
-                      });
-                    }),
-                    this.showFormOnPopup)
-=======
                       !1 === this.showCancel
                         ? o.find(".cancelBtn").remove()
                         : (o.find(".cancelBtn").off(),
@@ -3986,7 +3788,6 @@
                         });
                       }),
                       this.showFormOnPopup)
->>>>>>> 9d58bb488dc1c76242ec5355f33e466d025042c6
                   ) {
                     this.showMessage("Edit", "", null, null, !0),
                       $("#plainMessageModel .modal-body").html(""),
@@ -5397,6 +5198,26 @@
                   alert("Rejected Successfully");
                   this.renderModel(""), $("#staffmedical").modal("hide");
                   location.reload();
+                },
+              },
+              {
+                key: "download",
+                value: function (e) {
+                  var e = $("#employee_Id").val();
+
+                  //get the document name or download the document
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/download_medic_attachment.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify({
+                      staffMedicalId: e,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+
+                    },
+                  });
                 },
               },
               {

@@ -1,0 +1,70 @@
+if there is no flag or status provided
+SELECT m.* FROM `group_meeting` a, meetings m, groups b
+                WHERE a.meeting_id = m.id
+              and m.date between '2020-01-20' and '9999-01-20'
+                and a.group_id = b.id
+                AND b.id = 1
+-----------------------------------------------------------
+
+for task
+
+  SELECT m.* FROM `board_task` a, tasks m, boards b
+                                    WHERE m.due_date between '2020-01-20' and '9999-01-20'
+                                    and a.task_id = m.id
+                                    and a.board_id = b.id
+                                    AND a.board_id = 1
+                                    UNION                                    
+                                    SELECT m.* FROM `group_task` a, tasks m, groups b
+                                    WHERE a.task_id = m.id
+                                    and m.due_date between '2020-01-20' and '9999-01-20'
+                                    and a.group_id = b.id
+                                    AND b.id = 2
+
+
+--------------------------------------------------------------------
+SUM ALL PROGRESS
+SELECT SUM(progress)
+FROM projects
+WHERE goal_id = 1;
+
+-------------------------------------------------------------------------
+COUNT OF ALL PROJECTS
+SELECT COUNT(progress)
+FROM projects
+WHERE goal_id = 1
+-----------------------------------------------------------
+SELECT  m.*,b.firstname FROM `announcement_board` a, announcements m, boards b
+                                    WHERE a.announcement_id = m.id
+                                    and a.board_id = b.id
+
+
+---------------------------------------------
+header:{
+                        left:'prev,next today',
+                        center: 'title',
+                        right: 'year,month,basicWeek,basicDay'
+                    },
+
+------------------------------------------------------
+style="max-width: 700px"
+
+----------------------------------------------------
+
+ @if (count($currentMeetings) > 0)
+                      @foreach ($currentMeetings as $currentMeeting)
+                        @role('super-admin')
+                        <option value="{{ $currentMeeting->id }}">
+                          {{ $currentMeeting->title }}
+                        </option>
+                      @else
+                        @if (auth()->user()->id == $currentMeeting->posted_by)
+                          <option value="{{ $currentMeeting->id }}">
+                            {{ $currentMeeting->title }}
+                          </option>
+                        @endif
+                        @endrole
+
+                      @endforeach
+                    @endif
+--------------------------------------------
+$birth_day = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row_data['birth_day']));
