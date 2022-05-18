@@ -240,7 +240,7 @@
                     value: function(e, t) {
                         var a = t[0],
                             l = void 0;
-                        if (l = (l = 0 === a.indexOf("https:") ? '<a href="' + a + '" target="_blank" style="font-size:14px;font-weight:bold;">Download Report <img src="_BASE_images/download.png"></img> </a>' : '<a href="' + modJs.getCustomActionUrl("download", {
+                        if (l = (l = 0 === a.indexOf("https:") ? '<a href="' + a + '" target="_blank" style="font-size:14px;font-weight:bold;">Download Report1 <img src="_BASE_images/download.png"></img> </a>' : '<a href="' + modJs.getCustomActionUrl("download", {
                                 file: a
                             }) + '" target="_blank" style="font-size:14px;font-weight:bold;">Download Report <img src="_BASE_images/download.png"></img> </a>').replace(/_BASE_/g, this.baseUrl), "PDF" === this.currentReport.output || "JSON" === this.currentReport.output) this.showMessage("Download Report", l);
                         else {

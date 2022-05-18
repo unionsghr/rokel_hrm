@@ -396,7 +396,7 @@
                       (a = this.showView
                         ? a.replace(
                           "_view_",
-                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatus(_id_);return false;"></img>'
+                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View-submitted" onclick="modJs.openStatus(_id_);return false;"></img>'
                         )
                         : a.replace("_view_", "")),
                       (a = (a = (a = this.showEdit
@@ -4729,6 +4729,27 @@
               {
                 key: "openStatus",
                 value: function (e) {
+
+                  //get the document name or download the document
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/download_medic_attachment.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify({
+                      staffMedicalId: e,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+
+
+                      var a = document.getElementById('download_medic'); //or grab it by tagname etc
+                      var text1 = "data/";
+                      var final_txt = text1.concat(data.data);
+                      // console.log(final_txt);
+                      a.href = final_txt;
+
+                    },
+                  });
                   
                   var profile = this.getCurrentProfile();
 
@@ -4866,6 +4887,27 @@
                 key: "openStatusSubmitted",
                 value: function (e) {
 
+                  //get the document name or download the document
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/download_medic_attachment.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify({
+                      staffMedicalId: e,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+
+
+                      var a = document.getElementById('download_medic'); //or grab it by tagname etc
+                      var text1 = "data/";
+                      var final_txt = text1.concat(data.data);
+                      // console.log(final_txt);
+                      a.href = final_txt;
+
+                    },
+                  });
+
                   var profile = this.getCurrentProfile();
 
                   let currentprofile = JSON.stringify(profile.id);
@@ -5001,6 +5043,27 @@
               {
                 key: "openStatus1",
                 value: function (e) {
+
+                  //get the document name or download the document
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/download_medic_attachment.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify({
+                      staffMedicalId: e,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+
+
+                      var a = document.getElementById('download_medic'); //or grab it by tagname etc
+                      var text1 = "data/";
+                      var final_txt = text1.concat(data.data);
+                      // console.log(final_txt);
+                      a.href = final_txt;
+
+                    },
+                  });
 
                   var profile = this.getCurrentProfile();
 

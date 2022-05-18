@@ -335,7 +335,7 @@
 				<div id="medicalModelBody"></div>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-small" onclick="modJs.download();">View Attachment</button>
+				<a id="download_medic" class="btn btn-small" >View Attachment</a>
 				<button class="btn" onclick="modJs.closeDialog();">Cancel</button>
 				<button class="btn btn-success" onclick="modJs.submitStaff();return false;"></i>Submit</button>
 				<button class="btn btn-success" onclick="modJs.approve();return false;">Approve <i class="fa fa-check"></i></button>

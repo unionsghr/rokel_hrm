@@ -23,19 +23,15 @@ $staff_id = $data->staffMedicalId;
 //get the attachment of that staff medical record
 $sql = " select attachment1 from staffmedical WHERE id = '$staff_id'";
 $result = mysqli_query($mysqli, $sql);
+$attachment = mysqli_fetch_array($result);
+$data = $attachment['attachment1'];
 
-$notch = mysqli_fetch_array($result);
+//get the file with the file extension
+$sql_file = "select filename from files where name = '$data'";
+$result = mysqli_query($mysqli, $sql_file);
+$filename = mysqli_fetch_array($result);
+$data = $filename['filename'];
 
-$data = $notch['attachment1'];
-
-
-// while ($notch = mysqli_fetch_array($result)) {
-//   $a = $notch['attachment1'];
-//   array_push($data, $a);
-// }
-
-print_r($data);
-die();
 
 
 // echo json_encode($data);
