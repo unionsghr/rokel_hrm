@@ -22,7 +22,8 @@ $data = json_decode($json);
 $id = isset($data->id) ? $data->id : 0;
 
 $sql = "SELECT 
-(select concat(first_name,' ', middle_name, ' ', last_name) from employees where id = employee) as employee,
+(select concat(first_name,' ', middle_name, ' ', last_name) from employees where id = employee) as employee, 
+employee as emp_id,
 from_date as from_date,
 to_date as to_date,
 admission_type as admission_type,
@@ -40,12 +41,21 @@ from staffmedical where id = $id";
 $result = mysqli_query($mysqli, $sql);
 $row = mysqli_fetch_assoc($result);
 
+$employee_id = $row['emp_id'];
+
+//select the balance of the employee
+// $sql1 = " select balance from medenquiry WHERE emp_id = '$employee_id'";
+// $result1 = mysqli_query($mysqli, $sql1);
+
+// $balance_data = mysqli_fetch_assoc($result1);
+// $balance = $balance_data['balance'];
+
 $message = json_encode(
     array(
         "responseCode" => "000",
         "message" => "Successful",
-        "data" => $row
-        // "data1" => $row_,
+        "data" => $row,
+        // "data1" => $balance
     )
 
 );

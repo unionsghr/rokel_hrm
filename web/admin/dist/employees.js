@@ -2358,7 +2358,7 @@
 
                     //add salary components for this employee
                     $.ajax({
-                      url: "../../../../rokel_hrm_mine/core/add_salarycomponents.php",
+                      url: "../../../../rokel_hrm/core/add_salarycomponents.php",
                       type: "post",
                       contentType: "application/json",
                       dataType: "json",
@@ -2428,7 +2428,7 @@
                     // return false
                     // alert(k); return false;
                     $.ajax({
-                      url: "../../../../rokel_hrm_mine/core/suspend_employee.php",
+                      url: "../../../../rokel_hrm/core/suspend_employee.php",
                       type: "post",
                       contentType: "application/json",
                       dataType: "json",
@@ -2553,7 +2553,7 @@
                       // let id = e;
                       // // alert(emp);
                       // $.ajax({
-                      //   url: "../../../../rokel_hrm_mine/core/end_of_service.php",
+                      //   url: "../../../../rokel_hrm/core/end_of_service.php",
                       //   type: "post",
                       //   contentType: "application/json",
                       //   dataType: "json",
@@ -2614,7 +2614,7 @@
                     let id = e;
 
                     $.ajax({
-                      url: "../../../../rokel_hrm_mine/core/end_of_service.php",
+                      url: "../../../../rokel_hrm/core/end_of_service.php",
                       type: "post",
                       contentType: "application/json",
                       dataType: "json",
@@ -2974,7 +2974,7 @@
                       let emp = e;
                       // alert(emp);
                       $.ajax({
-                        url: "../../../../rokel_hrm_mine/core/reinstate_employee.php",
+                        url: "../../../../rokel_hrm/core/reinstate_employee.php",
                         type: "post",
                         contentType: "application/json",
                         dataType: "json",
@@ -8752,7 +8752,7 @@
 
                   //immediately the form displays select the appropriate job titles
                   $.ajax({
-                    url: "../../../../rokel_hrm_mine/core/get_jobtitles.php",
+                    url: "../../../../rokel_hrm/core/get_jobtitles.php",
                     type: "post",
                     contentType: "application/json",
                     dataType: "json",
@@ -8795,7 +8795,7 @@
                     }
 
                     $.ajax({
-                      url: "../../../../rokel_hrm_mine/core/get_jobtitles.php",
+                      url: "../../../../rokel_hrm/core/get_jobtitles.php",
                       type: "post",
                       contentType: "application/json",
                       dataType: "json",

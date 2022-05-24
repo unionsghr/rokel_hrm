@@ -340,7 +340,7 @@
                     //assign approved
                     var approved = 1;
                     var t =
-                      '<div style="width:110px;"><img class="tableActionButton" src="_BASE_images/clone.png" style="cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatus1(_id_);return false;"></img></div>';
+                      '<div style="width:110px;"><img class="tableActionButton" src="_BASE_images/clone.png" style="cursor:pointer;" rel="tooltip" title="Copy" onclick="modJs.copyRow(_id_);return false;"></img><img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View11" onclick="modJs.openStatus1(_id_);return false;"></img></div>';
                     return (t = (t = t.replace(/_id_/g, e)).replace(
                       /_BASE_/g,
                       this.baseUrl
@@ -364,7 +364,7 @@
                       (a = this.showView
                         ? a.replace(
                           "_view_",
-                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View" onclick="modJs.openStatusSubmitted(_id_);return false;"></img>'
+                          '<img class="tableActionButton" src="_BASE_images/view.png" style="margin-left:15px;cursor:pointer;" rel="tooltip" title="View1" onclick="modJs.openStatusSubmitted(_id_);return false;"></img>'
                         )
                         : a.replace("_view_", "")),
                       (a = (a = (a = this.showEdit
@@ -1639,28 +1639,72 @@
               {
                 key: "add",
                 value: function (e, t, a, l) {
-                  console.log(e.cost);
+
+                  //holds the employee id
+                  var employee_id = e.employee;
+
+                  //just holds the context
+                  var i = this;
+
+                  //check the available balance for employee
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/check_available_balance.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify({
+                      employee: employee_id,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
+
+                      if (e.cost > data.data) {
+                        if (confirm('Medical Expense limit reached do you still want to proceed')) {
+
+                          null == a && (a = !0),
+                            $(e).attr("a", "add"),
+                            $(e).attr("t", i.table),
+                            i.showLoader(),
+                            i.requestCache.invalidateTable(i.table),
+                            $.post(
+                              i.moduleRelativeURL,
+                              e,
+                              function (e) {
+                                "SUCCESS" === e.status
+                                  ? i.addSuccessCallBack(t, e.object, a, l, i)
+                                  : i.addFailCallBack(t, e.object);
+                              },
+                              "json"
+                            ).always(function () {
+                              i.hideLoader();
+                            }),
+                            i.trackEvent("add", i.tab, i.table);
+                        }
+                      } else {
+                        null == a && (a = !0),
+                          $(e).attr("a", "add"),
+                          $(e).attr("t", i.table),
+                          i.showLoader(),
+                          i.requestCache.invalidateTable(i.table),
+                          $.post(
+                            i.moduleRelativeURL,
+                            e,
+                            function (e) {
+                              "SUCCESS" === e.status
+                                ? i.addSuccessCallBack(t, e.object, a, l, i)
+                                : i.addFailCallBack(t, e.object);
+                            },
+                            "json"
+                          ).always(function () {
+                            i.hideLoader();
+                          }),
+                          i.trackEvent("add", i.tab, i.table);
+                      }
+                    },
+                  });
+
                   // $val = number_format(e.cost, 2);
                   // e.cost = $val;
-                  var i = this;
-                  null == a && (a = !0),
-                    $(e).attr("a", "add"),
-                    $(e).attr("t", this.table),
-                    i.showLoader(),
-                    this.requestCache.invalidateTable(this.table),
-                    $.post(
-                      this.moduleRelativeURL,
-                      e,
-                      function (e) {
-                        "SUCCESS" === e.status
-                          ? i.addSuccessCallBack(t, e.object, a, l, i)
-                          : i.addFailCallBack(t, e.object);
-                      },
-                      "json"
-                    ).always(function () {
-                      i.hideLoader();
-                    }),
-                    this.trackEvent("add", this.tab, this.table);
+
                 },
               },
               {
@@ -3292,7 +3336,7 @@
               {
                 key: "submit",
                 value: function (e, t) {
-                  alert('submit');return false;
+                  alert('submit'); return false;
                 }
 
               },
@@ -3301,95 +3345,95 @@
                 value: function (e, t) {
                   // alert('save here');return false;
 
-                //   if (
-                //     confirm(
-                //       "Do you want to submit for approval now?"
-                //     )
-                //   ){
-                //     var e = $("#employee_Id").val();
-                //     // alert("Approval...."); return false;
-                //     // var approval;
-                //     var profile = this.getCurrentProfile();
-                //     let currentProfile = profile.id;
-                //     // alert(currentProfile);
-                //     let id_ = e;
-                //     $.ajax({
-                //       url: "../../../../rokel_hrm/core/submit_StaffMedical.php",
-                //       type: "post",
-                //       contentType: "application/json",
-                //       dataType: "json",
-                //       async: false,
-                //       data: JSON.stringify({
-                //         id: id_,
-                //         currentUser: currentProfile,
-                //       }),
-                //       success: function (data, textStatus, jQxhr) {
-                //         if (data.responseCode == "000") {
-                //           // alert("here"); return false;
-                //           let response = data.data;
-  
-                //           alert(JSON.stringify(response));
-                //         } else {
-                //           alert("Data not found");
-                //         }
-                //       },
-                //     });
-                //     alert("Successfully Submitted");
-                //     this.renderModel(""), $("#staffmedical").modal("hide");
-                //     location.reload();
-                // }
-                  console.log(e);
-                  if (
-                    confirm(
-                      "Do you want to submit for approval now?"
-                    )
-                  ) {
-                    // {alert('great'); return false;}
+                  //   if (
+                  //     confirm(
+                  //       "Do you want to submit for approval now?"
+                  //     )
+                  //   ){
+                  //     var e = $("#employee_Id").val();
+                  //     // alert("Approval...."); return false;
+                  //     // var approval;
+                  //     var profile = this.getCurrentProfile();
+                  //     let currentProfile = profile.id;
+                  //     // alert(currentProfile);
+                  //     let id_ = e;
+                  //     $.ajax({
+                  //       url: "../../../../rokel_hrm/core/submit_StaffMedical.php",
+                  //       type: "post",
+                  //       contentType: "application/json",
+                  //       dataType: "json",
+                  //       async: false,
+                  //       data: JSON.stringify({
+                  //         id: id_,
+                  //         currentUser: currentProfile,
+                  //       }),
+                  //       success: function (data, textStatus, jQxhr) {
+                  //         if (data.responseCode == "000") {
+                  //           // alert("here"); return false;
+                  //           let response = data.data;
 
-                    $("#id").val(e);
+                  //           alert(JSON.stringify(response));
+                  //         } else {
+                  //           alert("Data not found");
+                  //         }
+                  //       },
+                  //     });
+                  //     alert("Successfully Submitted");
+                  //     this.renderModel(""), $("#staffmedical").modal("hide");
+                  //     location.reload();
+                  // }
+                  // console.log(e);
+                  // if (
+                  //   confirm(
+                  //     "Do you want to submit for approval now?"
+                  //   )
+                  // ) {
+                  // {alert('great'); return false;}
 
-                    // alert(e); return false;
-                    var profile = this.getCurrentProfile();
+                  $("#id").val(e);
 
-                    let currentprofile = JSON.stringify(profile.id);
+                  // alert(e); return false;
+                  var profile = this.getCurrentProfile();
 
-                    //    alert(currentprofile);
+                  let currentprofile = JSON.stringify(profile.id);
 
-                    $("#employee_Id").val(e);
-                    //  alert(e);
-                    //  $("#" + this.itemNameLower + "medical").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), $("#" + this.itemNameLower + "_employee_Id").val(e), this.statusChangeId = e
-                    // alert(e);
+                  //    alert(currentprofile);
 
-                    this.renderModel(""),
-                      $("#staffmedical").modal("show"),
-                      $("#employee_Id").val;
+                  $("#employee_Id").val(e);
+                  //  alert(e);
+                  //  $("#" + this.itemNameLower + "medical").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), $("#" + this.itemNameLower + "_employee_Id").val(e), this.statusChangeId = e
+                  // alert(e);
 
-                    let id_ = e;
+                  this.renderModel(""),
+                    //$("#staffmedical").modal("show"),
+                    $("#employee_Id").val;
 
-                    $.ajax({
-                      url: "../../../../rokel_hrm/core/viewStaffMedical.php",
-                      type: "post",
-                      contentType: "application/json",
-                      dataType: "json",
-                      async: false,
-                      data: JSON.stringify({
-                        id: id_,
-                        currentUser: currentprofile,
-                      }),
-                      success: function (data, textStatus, jQxhr) {
+                  let id_ = e;
+
+                  $.ajax({
+                    url: "../../../../rokel_hrm/core/viewStaffMedical.php",
+                    type: "post",
+                    contentType: "application/json",
+                    dataType: "json",
+                    async: false,
+                    data: JSON.stringify({
+                      id: id_,
+                      currentUser: currentprofile,
+                    }),
+                    success: function (data, textStatus, jQxhr) {
 
 
-                        if (data.responseCode == "000") {
-                          // alert("here"); return false;
+                      if (data.responseCode == "000") {
+                        // alert("here"); return false;
 
-                          let medical_summary = data.data;
+                        let medical_summary = data.data;
 
-                          // alert(JSON.stringify(medical_summary)); return false;
-                          // <h5><b>Payroll: &nbsp;</b> ${payroll_summary.payroll}</h5>
+                        // alert(JSON.stringify(medical_summary)); return false;
+                        // <h5><b>Payroll: &nbsp;</b> ${payroll_summary.payroll}</h5>
 
-                          var theDiv =
-                            document.getElementById("medicalModelBody");
-                          theDiv.innerHTML = `
+                        var theDiv =
+                          document.getElementById("medicalModelBody");
+                        theDiv.innerHTML = `
                         <head>
                         <style>
                         table, th, td {
@@ -3407,13 +3451,13 @@
                         </head>
                        
                         `;
-                          // theDiv.appendChild(content);
-                        } else {
-                          alert("Unavailable Data...");
-                        }
-                      },
-                    });
-                  }
+                        // theDiv.appendChild(content);
+                      } else {
+                        alert("Unavailable Data...");
+                      }
+                    },
+                  });
+                  // }
 
                   var a = new n.default(this.getTableName() + "_submit", !0, {
                     ShowPopup: !1,
@@ -4730,6 +4774,10 @@
                 key: "openStatus",
                 value: function (e) {
 
+                  //get the download attachment button and set it to null
+                  var view_btn = document.getElementById('download_medic');
+                  view_btn.href = "";
+
                   //get the document name or download the document
                   $.ajax({
                     url: "../../../../rokel_hrm/core/download_medic_attachment.php",
@@ -4740,17 +4788,21 @@
                       staffMedicalId: e,
                     }),
                     success: function (data, textStatus, jQxhr) {
-
+                      console.log(data.data);
 
                       var a = document.getElementById('download_medic'); //or grab it by tagname etc
                       var text1 = "data/";
                       var final_txt = text1.concat(data.data);
-                      // console.log(final_txt);
+                      if (data.data) {
+                        console.log(final_txt);
+                      } else {
+                        console.log("no data");
+                      }
                       a.href = final_txt;
 
                     },
                   });
-                  
+
                   var profile = this.getCurrentProfile();
 
                   let currentprofile = JSON.stringify(profile.id);
@@ -5055,11 +5107,11 @@
                     }),
                     success: function (data, textStatus, jQxhr) {
 
-
                       var a = document.getElementById('download_medic'); //or grab it by tagname etc
                       var text1 = "data/";
+
+                      console.log(data.data);
                       var final_txt = text1.concat(data.data);
-                      // console.log(final_txt);
                       a.href = final_txt;
 
                     },
@@ -5072,15 +5124,16 @@
                   //    alert(currentprofile);
 
                   $("#employee_Id").val(e);
-                  //  alert(e);
+                  // alert(e);
+
                   //  $("#" + this.itemNameLower + "medical").modal("show"), $("#" + this.itemNameLower + "_status").html(this.getStatusOptions(t)), $("#" + this.itemNameLower + "_status").val(t), $("#" + this.itemNameLower + "_employee_Id").val(e), this.statusChangeId = e
                   // alert(e);
 
-                  this.renderModel(""),
-                    $("#appstaffmedical").modal("show"),
-                    $("#employee_Id").val;
+                  this.renderModel("");
+                  $("#appstaffmedical").modal("show");
+                  $("#employee_Id").val;
 
-                  let id_ = e;
+                  let id_= e;
 
                   $.ajax({
                     url: "../../../../rokel_hrm/core/viewStaffMedical.php",
@@ -5104,6 +5157,7 @@
                         // alert("here"); return false;
 
                         let medical_summary = data.data;
+                        let medical_bal = data.data1;
 
                         // alert(JSON.stringify(medical_summary)); return false;
                         // <h5><b>Payroll: &nbsp;</b> ${payroll_summary.payroll}</h5>
@@ -5159,7 +5213,7 @@
                             <th>Cost of Treatment (SLL)</th>
                             <td>${medical_summary.cost}</td>                            
                         </tr>
-                    
+                       
                         <tr>
                             <th>Health Facility Name </th>
                             <td>${medical_summary.hospital}</td>                            
@@ -5189,7 +5243,7 @@
 
                         </body>
                         `;
-                        // theDiv.appendChild(content);
+                        theDiv.appendChild(content);
                       } else {
                         alert("Unavailable Data...");
                       }
